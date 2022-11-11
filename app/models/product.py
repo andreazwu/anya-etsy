@@ -1,9 +1,14 @@
-from .db import db
+from .db import db, environment, SCHEMA, add_prefix_for_prod
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 
 class Product(db.Model):
     __tablename__ = "products"
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
     id = db.Column(db.Integer, primary_key=True)
     category = db.Column(db.String(255), nullable=False)
     name = db.Column(db.String(255), nullable=False)
