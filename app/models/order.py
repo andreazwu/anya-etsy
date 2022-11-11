@@ -10,7 +10,8 @@ class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     order_number = db.Column(db.String(10), nullable=False, unique=True)
     is_delivered = db.Column(db.Boolean, nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False)
+    created_at = db.Column(db.DateTime(timezone=True),
+                           nullable=False, server_default=db.func.now())
 #relationship
     cartItems = db.relationship("CartItem", back_populates="order", cascade="all, delete")
 

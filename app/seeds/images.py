@@ -1,3 +1,5 @@
+from app.models import db, Image, environment, SCHEMA
+
 def seed_images():
   #-----------halloween-----------
   #1
@@ -95,106 +97,106 @@ def seed_images():
   #-----------thanksgiving-----------
 
   product16_image1 = Image(
-    url='https://i.etsystatic.com/21444879/r/il/2e7235/2610897501/il_794xN.2610897501_5oeo.jpg', product=product16)
+    url='https://i.etsystatic.com/21444879/r/il/2e7235/2610897501/il_794xN.2610897501_5oeo.jpg', product_id=16)
 
   product16_image2 = Image(
-    url='https://i.etsystatic.com/21444879/r/il/be4ddb/2610896447/il_794xN.2610896447_ygr2.jpg', product=product16)
+    url='https://i.etsystatic.com/21444879/r/il/be4ddb/2610896447/il_794xN.2610896447_ygr2.jpg', product_id=16)
 
   product16_image3 = Image(
-    url='https://i.etsystatic.com/21444879/r/il/135652/2563247990/il_794xN.2563247990_a945.jpg', product=product16)
+    url='https://i.etsystatic.com/21444879/r/il/135652/2563247990/il_794xN.2563247990_a945.jpg', product_id=16)
 
   product16_image4 = Image(
-    url='https://i.etsystatic.com/21444879/r/il/8d262e/2610896737/il_794xN.2610896737_g3ch.jpg', product=product16)
+    url='https://i.etsystatic.com/21444879/r/il/8d262e/2610896737/il_794xN.2610896737_g3ch.jpg', product_id=16)
 
   product17_image1 = Image(
-    url='https://i.etsystatic.com/6055087/r/il/345c68/2007778382/il_794xN.2007778382_3jsr.jpg', product=product17)
+    url='https://i.etsystatic.com/6055087/r/il/345c68/2007778382/il_794xN.2007778382_3jsr.jpg', product_id=17)
 
   product17_image2 = Image(
-    url='https://i.etsystatic.com/6055087/r/il/91c818/1628624608/il_794xN.1628624608_pjgm.jpg', product=product17)
+    url='https://i.etsystatic.com/6055087/r/il/91c818/1628624608/il_794xN.1628624608_pjgm.jpg', product_id=17)
 
   product18_image1 = Image(
-    url='https://i.etsystatic.com/32805993/r/il/2a3a99/4314179767/il_794xN.4314179767_mfl6.jpg', product=product18)
+    url='https://i.etsystatic.com/32805993/r/il/2a3a99/4314179767/il_794xN.4314179767_mfl6.jpg', product_id=18)
 
   product18_image2 = Image(
-    url='https://i.etsystatic.com/32805993/r/il/6bca7e/4266778732/il_794xN.4266778732_eyvx.jpg', product=product18)
+    url='https://i.etsystatic.com/32805993/r/il/6bca7e/4266778732/il_794xN.4266778732_eyvx.jpg', product_id=18)
 
   product19_image1 = Image(
-    url='https://i.etsystatic.com/13760155/r/il/27eb32/4122817523/il_794xN.4122817523_8bf1.jpg', product=product19)
+    url='https://i.etsystatic.com/13760155/r/il/27eb32/4122817523/il_794xN.4122817523_8bf1.jpg', product_id=19)
 
   product19_image2 = Image(
-    url='https://i.etsystatic.com/13760155/r/il/34823a/4122818559/il_75x75.4122818559_4i1r.jpg', product=product19)
+    url='https://i.etsystatic.com/13760155/r/il/34823a/4122818559/il_75x75.4122818559_4i1r.jpg', product_id=19)
 
   product20_image1 = Image(
-    url='https://i.etsystatic.com/12351151/r/il/ff1b3e/3451532909/il_794xN.3451532909_dp6t.jpg', product=product20)
+    url='https://i.etsystatic.com/12351151/r/il/ff1b3e/3451532909/il_794xN.3451532909_dp6t.jpg', product_id=20)
 
   product20_image2 = Image(
-    url='https://i.etsystatic.com/12351151/r/il/ed109b/3403809100/il_794xN.3403809100_pczb.jpg', product=product20)
+    url='https://i.etsystatic.com/12351151/r/il/ed109b/3403809100/il_794xN.3403809100_pczb.jpg', product_id=20)
 
   #-----------christmas-----------
 
   product21_image1 = Image(
-    url='https://i.etsystatic.com/8826700/r/il/905c0c/1670582790/il_794xN.1670582790_so9x.jpg', product=product21)
+    url='https://i.etsystatic.com/8826700/r/il/905c0c/1670582790/il_794xN.1670582790_so9x.jpg', product_id=21)
 
   product21_image2 = Image(
-    url='https://i.etsystatic.com/16526275/r/il/234a24/3508612539/il_794xN.3508612539_gu7e.jpg', product=product21)
+    url='https://i.etsystatic.com/16526275/r/il/234a24/3508612539/il_794xN.3508612539_gu7e.jpg', product_id=21)
 
   product22_image1 = Image(
-    url='https://i.etsystatic.com/8826700/r/il/c2c338/864885702/il_794xN.864885702_3lem.jpg', product=product22)
+    url='https://i.etsystatic.com/8826700/r/il/c2c338/864885702/il_794xN.864885702_3lem.jpg', product_id=22)
 
   product22_image2 = Image(
-    url='https://i.etsystatic.com/8826700/r/il/1ee27a/3498139355/il_794xN.3498139355_ke6d.jpg', product=product22)
+    url='https://i.etsystatic.com/8826700/r/il/1ee27a/3498139355/il_794xN.3498139355_ke6d.jpg', product_id=22)
 
   product22_image3 = Image(
-    url='https://i.etsystatic.com/8826700/r/il/836cba/3498139323/il_794xN.3498139323_l35c.jpg', product=product22)
+    url='https://i.etsystatic.com/8826700/r/il/836cba/3498139323/il_794xN.3498139323_l35c.jpg', product_id=22)
 
 
   product22_image4 = Image(
-    url='https://i.etsystatic.com/8826700/r/il/a69117/1698270685/il_794xN.1698270685_bvkd.jpg', product=product22)
+    url='https://i.etsystatic.com/8826700/r/il/a69117/1698270685/il_794xN.1698270685_bvkd.jpg', product_id=22)
 
   product23_image1 = Image(
-    url='https://i.etsystatic.com/8826700/r/il/80ecd8/880320395/il_794xN.880320395_qrh2.jpg', product=product23)
+    url='https://i.etsystatic.com/8826700/r/il/80ecd8/880320395/il_794xN.880320395_qrh2.jpg', product_id=23)
 
   product23_image2 = Image(
-    url='https://i.etsystatic.com/8826700/r/il/f6fae2/682901948/il_794xN.682901948_dyie.jpg', product=product23)
+    url='https://i.etsystatic.com/8826700/r/il/f6fae2/682901948/il_794xN.682901948_dyie.jpg', product_id=23)
 
   product24_image1 = Image(
-    url='https://i.etsystatic.com/8826700/r/il/268e1b/684729134/il_794xN.684729134_iojt.jpg', product=product24)
+    url='https://i.etsystatic.com/8826700/r/il/268e1b/684729134/il_794xN.684729134_iojt.jpg', product_id=24)
 
   product24_image2 = Image(
-    url='https://i.etsystatic.com/8826700/r/il/8a4864/684848391/il_794xN.684848391_iofr.jpg', product=product24)
+    url='https://i.etsystatic.com/8826700/r/il/8a4864/684848391/il_794xN.684848391_iofr.jpg', product_id=24)
 
   product25_image2 = Image(
-    url='https://i.etsystatic.com/8826700/r/il/83e31e/861924349/il_794xN.861924349_5xlx.jpg',product=product25)
+    url='https://i.etsystatic.com/8826700/r/il/83e31e/861924349/il_794xN.861924349_5xlx.jpg',product_id=25)
 
   product25_image2 = Image(
-    url='https://i.etsystatic.com/8826700/r/il/46f665/861924353/il_794xN.861924353_o228.jpg', product=product25)
+    url='https://i.etsystatic.com/8826700/r/il/46f665/861924353/il_794xN.861924353_o228.jpg', product_id=25)
 
   product26_image1 = Image(
-    url='https://i.etsystatic.com/16985177/r/il/7625bf/2582146128/il_794xN.2582146128_setd.jpg', product=product26)
+    url='https://i.etsystatic.com/16985177/r/il/7625bf/2582146128/il_794xN.2582146128_setd.jpg', product_id=26)
 
   product27_image1 = Image(
-    url='https://i.etsystatic.com/16985177/r/il/3c32cf/4208078816/il_794xN.4208078816_hrm6.jpg', product=product27)
+    url='https://i.etsystatic.com/16985177/r/il/3c32cf/4208078816/il_794xN.4208078816_hrm6.jpg', product_id=27)
 
   product27_image2 = Image(
-    url='https://i.etsystatic.com/16985177/r/il/96dd3f/4255735543/il_794xN.4255735543_nr2v.jpg', product=product27)
+    url='https://i.etsystatic.com/16985177/r/il/96dd3f/4255735543/il_794xN.4255735543_nr2v.jpg', product_id=27)
 
   product27_image3 = Image(
-    url='https://i.etsystatic.com/16985177/r/il/c6ab9d/4255735433/il_794xN.4255735433_fq26.jpg', product=product27)
+    url='https://i.etsystatic.com/16985177/r/il/c6ab9d/4255735433/il_794xN.4255735433_fq26.jpg', product_id=27)
 
   product27_image4 = Image(
-    url='https://i.etsystatic.com/16985177/r/il/2956d8/4255735589/il_794xN.4255735589_mfw6.jpg', product=product27)
+    url='https://i.etsystatic.com/16985177/r/il/2956d8/4255735589/il_794xN.4255735589_mfw6.jpg', product_id=27)
 
   product28_image1 = Image(
-    url='https://i.etsystatic.com/16985177/r/il/2b5bad/4261377960/il_794xN.4261377960_4zxg.jpg', product=product28)
+    url='https://i.etsystatic.com/16985177/r/il/2b5bad/4261377960/il_794xN.4261377960_4zxg.jpg', product_id=28)
 
   product29_image1 = Image(
-    url='https://i.etsystatic.com/16985177/r/il/0bbf7e/4255572834/il_794xN.4255572834_he3l.jpg',product=product29)
+    url='https://i.etsystatic.com/16985177/r/il/0bbf7e/4255572834/il_794xN.4255572834_he3l.jpg',product_id=29)
 
   product29_image2 = Image(
-    url='https://i.etsystatic.com/16985177/r/il/4c7f80/4302966043/il_794xN.4302966043_70lx.jpg', product=product29)
+    url='https://i.etsystatic.com/16985177/r/il/4c7f80/4302966043/il_794xN.4302966043_70lx.jpg', product_id=29)
 
   product30_image1 = Image(
-    url='https://i.etsystatic.com/16985177/r/il/d16656/2503700475/il_794xN.2503700475_n5ew.jpg', product=product30)
+    url='https://i.etsystatic.com/16985177/r/il/d16656/2503700475/il_794xN.2503700475_n5ew.jpg', product_id=30)
 
   #-----------easter-----------
   imageaw1 = Image(
@@ -428,11 +430,7 @@ def seed_images():
   db.session.add(product22_image2)
   db.session.add(product23_image1)
   db.session.add(product23_image2)
-  db.session.add(product23_image3)
-  db.session.add(product23_image4)
-  db.session.add(product24_image1)
   db.session.add(product24_image2)
-  db.session.add(product25_image1)
   db.session.add(product25_image2)
   db.session.add(product26_image1)
   db.session.add(product27_image1)
