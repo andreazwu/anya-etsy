@@ -24,12 +24,13 @@ export const authenticate = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-  
+
     dispatch(setUser(data));
   }
 }
 
 export const login = (email, password) => async (dispatch) => {
+  console.log("LOGIN THUNK GETS HIT AT ALL??")
   const response = await fetch('/api/auth/login', {
     method: 'POST',
     headers: {
@@ -40,11 +41,13 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
-  
-  
+
+  console.log("LOGIN THUNK RESPONSE:", response)
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
+    console.log("LOGIN THUNK: DATA:", data)
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -70,19 +73,21 @@ export const logout = () => async (dispatch) => {
 };
 
 
-export const signUp = (username, email, password) => async (dispatch) => {
+export const signUp = (firstName, lastName, username, email, password) => async (dispatch) => {
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
+      firstName,
+      lastName,
       username,
       email,
       password,
     }),
   });
-  
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))

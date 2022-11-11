@@ -7,7 +7,7 @@ def seed_users():
         last_name="User",
         username="AnyaHoliday",
         email="demo@gmail.com",
-        hashed_password="password"
+        password="password"
         )
 
     user2 = User(
@@ -15,7 +15,7 @@ def seed_users():
         last_name="Wang",
         username="AnyaTuTu",
         email="aijia@gmail.com",
-        hashed_password="password2"
+        password="password2"
         )
 
     user3 = User(
@@ -23,7 +23,7 @@ def seed_users():
         last_name="Zhang",
         username="AnyaBaoBao",
         email="nannan@gmail.com",
-        hashed_password="password3"
+        password="password3"
         )
 
     user4 = User(
@@ -31,7 +31,7 @@ def seed_users():
         last_name="Yang",
         username="AnyaShaSha",
         email="yasha@gmail.com",
-        hashed_password="password4"
+        password="password4"
         )
 
     user5 = User(
@@ -39,7 +39,7 @@ def seed_users():
         last_name="Wu",
         username="AnyaAnAnAn",
         email="andrea@gmail.com",
-        hashed_password="password5"
+        password="password5"
         )
 
     db.session.add(demo)
