@@ -5,6 +5,8 @@ import './index.css';
 import App from './App';
 import configureStore from './store';
 import * as sessionActions from "./store/session";
+// import { restoreCSRF, csrfFetch } from "./store/csrf";
+
 
 const store = configureStore();
 

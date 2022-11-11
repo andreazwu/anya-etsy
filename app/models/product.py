@@ -15,7 +15,7 @@ class Product(db.Model):
     description = db.Column(db.String(2000), nullable=False)
     price = db.Column(db.Float(10,2), nullable=False)
     stock = db.Column(db.Integer, nullable=False)
-    seller_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    seller_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
 # relationship attributes
     user = db.relationship("User", back_populates="products")
