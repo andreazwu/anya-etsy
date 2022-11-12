@@ -1,7 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, DecimalField, IntegerField, SubmitField, TextAreaField, SelectField
 from wtforms.validators import DataRequired, Email, ValidationError, Length, NumberRange
-from app.models import Product
 
 
 HOLIDAYS = ["Halloween", "Valentine", "Thanksgiving", "Christmas", "Easter", "Spring Festival"]
