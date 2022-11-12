@@ -37,7 +37,47 @@ def get_all_products():
 
 
 
-# line 40
+#line 40: query filter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# line 80
 @product.route("/current")
 def get_my_products():
   pass
@@ -87,7 +127,7 @@ def get_my_products():
 
 
 
-#line 90
+#line 130
 @product.route("/<int:product_id>")
 def get_one_product():
   pass
@@ -147,7 +187,7 @@ def get_one_product():
 
 
 
-#line 150
+#line 190
 @product.route("", methods=["POST"])
 def create_product():
   pass
@@ -197,7 +237,7 @@ def create_product():
 
 
 
-#line 200
+#line 240
 @product.route("/<int:product_id>/images", methods=["POST"])
 def add_product_image():
   pass
@@ -237,7 +277,7 @@ def add_product_image():
 
 
 
-#line 240
+#line 280
 @product.route("/<int:product_id>", methods=["PUT"])
 def edit_product():
   pass
@@ -287,7 +327,7 @@ def edit_product():
 
 
 
-#line 290
+#line 330
 @product.route("/<int:product_id>", methods=["DELETE"])
 def delete_product():
   pass
@@ -307,7 +347,7 @@ def delete_product():
 
 
 
-#line 310
+#line 350
 @product.route("/<int:product_id>/reviews")
 def get_product_reviews():
   pass
@@ -337,7 +377,37 @@ def get_product_reviews():
 
 
 
-#line 340
+#line 380
 @product.route("/<int:product_id>/reviews", methods=["POST"])
 def create_review():
+  pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 410 (add product<id> to cart)
+@product.route("/<int:product_id/cart_items>", methods=["POST"])
+def create_cart_item():
   pass
