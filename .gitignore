@@ -1,9 +1,11 @@
+*.db
+*/dev.db
 dev.db
+app/dev.db
+
 .env
 __pycache__/
 *.py[cod]
 .venv
 .DS_Store
 .vscode/
-.vscode/
-

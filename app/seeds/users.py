@@ -7,7 +7,7 @@ def seed_users():
         last_name="User",
         username="AnyaHoliday",
         email="demo@gmail.com",
-        password="password"
+        password="demo_user"
         )
 
     user2 = User(
