@@ -57,15 +57,6 @@ def get_my_cart_items():
 
 
 
-
-
-
-
-
-
-
-
-
 #line 60
 @cart_item_routes.route("/<int:cart_item_id>", methods=["PUT"])
 @login_required
