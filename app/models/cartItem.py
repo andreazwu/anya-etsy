@@ -13,7 +13,7 @@ class CartItem(db.Model):
     order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('orders.id')), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
 #relationship
-    order = db.relationship("Order", back_populates="cartItems")
+    # order = db.relationship("Order", back_populates="cartItems")
     user = db.relationship("User", back_populates="cartItems")
     product = db.relationship("Product", back_populates="cartItems")
 #####################################

@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import CartItem, db, Product
-from app.forms import CartItemForm
+from app.forms import CartItemForm, ProductForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
 cart_item_routes = Blueprint('cart_items', __name__)
@@ -22,14 +22,31 @@ def get_my_cart_items():
 
 
 
-
-
-
-
-
-
-
-
+#line 25
+@cart_item_routes.route("/checkout", methods=["PUT"])
+@login_required
+def checkout_cart_items():
+  pass
+  # print("!!!!!!!!!!!!!!!!!!!startstartstart")
+  # form = CartItemForm()
+  # productForm = ProductForm()
+  # print("!!!!!!!!!!!!!!!!!!!startstartstart")
+  # form['csrf_token'].data = request.cookies['csrf_token']
+  # productForm['csrf_token'].data = request.cookies['csrf_token']
+  # cartItems = CartItem.query.filter(CartItem.user_id == current_user.id).filter(CartItem.order_id == 0).all()
+  # print("cartItems@@@@@@@@@@@@@@@", cartItems)
+  # print("user~~~~~~~~~~",current_user.id)
+  # if cartItemForm.validate_on_submit():
+  #   for cartItem in cartItems:
+  #     cartItem.product['stock'] -= cartItem['quantity']
+  #     if cartItemForm.validate_on_submit():
+  #       cartItem['order_id'] = 1
+  #      db.session.commit()
+  # if form.validate_on_submit():
+  #     for cartItem in cartItems:
+  #       cartItem['order_id'] = 1
+  #       db.session.commit()
+  # return {"message": "Successfully Checkout!"}
 
 
 

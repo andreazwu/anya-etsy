@@ -51,14 +51,14 @@ def search_product(keyword):
 
 
 
-
-
-
-
-
-
-
-
+#  fetch("http://localhost:3000/api/products/search/witch", {
+#    method: 'GET',
+#    headers: {
+#     'Content-type': 'application/json'
+#   }
+#  })
+#  .then(res => res.json())
+#  .then(console.log)
 
 
 
@@ -402,7 +402,6 @@ def create_review(product_id):
     return new_review.to_dict(), 201
   else:
     return {"errors": validation_errors_to_error_messages(form.errors)}, 400
-
 
 
 
