@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Review
+from app.models import db, Review
 from app.forms import ReviewForm
 from .auth_routes import validation_errors_to_error_messages
 
@@ -55,14 +55,14 @@ def edit_review(review_id):
   # review = Review.query.get(review_id)
   review = Review.query.filter(Review.id == review_id).first()
   print(current_user)
-  if review.user_id == current_user.id
+  if review.user_id == current_user.id:
     if form.validate_on_submit():
       review.review = form.data['review']
       review.srars = form.data['stars']
 
       db.session.commit()
 
-      return jsonify(review.to_dict()), 201
+      return review.to_dict(), 201
     else:
       return {'errors': validation_errors_to_error_messages(form.errors)}, 400
   else:
