@@ -4,11 +4,11 @@ from app.models import Review
 from app.forms import ReviewForm
 
 
-review = Blueprint('reviews', __name__)
+review_routes = Blueprint('reviews', __name__)
 
 
 #line 10
-@review.route("/current")
+@review_routes.route("/current")
 def get_my_reviews():
   pass
 
@@ -48,7 +48,7 @@ def get_my_reviews():
 
 
 #line 50
-@review.route("/<int:review_id>", methods=["PUT"])
+@review_routes.route("/<int:review_id>", methods=["PUT"])
 def edit_review():
   pass
 
@@ -88,6 +88,6 @@ def edit_review():
 
 
 #line 90
-@review.route("/<int:review_id>", methods=["DELETE"])
+@review_routes.route("/<int:review_id>", methods=["DELETE"])
 def delete_review():
   pass

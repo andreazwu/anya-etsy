@@ -7,6 +7,8 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.product_routes import product_routes
+from .api.review_routes import review_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -28,6 +30,8 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(product_routes, url_prefix='/api/products')
+app.register_blueprint(review_routes, url_prefix='/api/reviews')
 db.init_app(app)
 Migrate(app, db)
 
@@ -65,8 +69,8 @@ def inject_csrf_token(response):
 @app.route('/<path:path>')
 def react_root(path):
     """
-    This route will direct to the public directory in our  
-    react builds in the production environment for favicon 
+    This route will direct to the public directory in our
+    react builds in the production environment for favicon
     or index.html requests
     """
     if path == 'favicon.ico':
@@ -81,7 +85,7 @@ def api_help():
     Returns all API routes and their doc strings
     """
     acceptable_methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
-    route_list = { rule.rule: [[ method for method in rule.methods if method in acceptable_methods ], 
-                    app.view_functions[rule.endpoint].__doc__ ] 
+    route_list = { rule.rule: [[ method for method in rule.methods if method in acceptable_methods ],
+                    app.view_functions[rule.endpoint].__doc__ ]
                     for rule in app.url_map.iter_rules() if rule.endpoint != 'static' }
     return route_list
