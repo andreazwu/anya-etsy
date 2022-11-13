@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, Review, User
 from app.forms import ReviewForm
@@ -49,26 +49,26 @@ def get_my_reviews():
 
 #line 50
 @review_routes.route("/<int:review_id>", methods=["PUT"])
-def edit_review():
-  pass
+@login_required
+def edit_review(review_id):
+  form = ReviewForm()
+  form['csrf_token'].data = request.cookies["csrf_token"]
+  # review = Review.query.get(review_id)
+  review = Review.query.filter(Review.id == review_id).first()
+  print(current_user)
+  if review.user_id == current_user.id:
+    if form.validate_on_submit():
+      review.review = form.data['review']
+      review.srars = form.data['stars']
 
+      db.session.commit()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      return review.to_dict(), 201
+    else:
+      return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+  else:
+    return {'errors': ['Unauthorized! This is not your review']}, 403
+  # return "edit review"
 
 
 
