@@ -21,5 +21,5 @@ class Image(db.Model):
             'id': self.id,
             'url': self.url,
             'productId': self.product_id,
-            'reviewId': self.review_id
+            # 'reviewId': self.review_id
         }
