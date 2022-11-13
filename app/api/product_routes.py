@@ -68,6 +68,15 @@ def search_product(keyword):
 
 
 
+
+
+
+
+
+
+
+
+
 # line 80
 @product_routes.route("/current")
 @login_required
