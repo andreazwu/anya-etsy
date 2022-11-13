@@ -1,5 +1,5 @@
-from flask import Blueprint, jsonify, json
-from flask_login import login_required
+from flask import Blueprint, jsonify
+from flask_login import login_required, current_user
 from app.models import db, Product, Image
 from app.forms import ProductForm
 
@@ -70,29 +70,36 @@ def get_all_products():
 
 
 
+
+
+
+
+
+
+
 # line 80
 @product_routes.route("/current")
+@login_required
 def get_my_products():
-  return "product listed by the current user"
+  user_id = current_user.id
+  products = Product.query.filter(Product.seller_id == user_id).all()
 
+  products_result = []
 
+  if products is not None:
+    for product in products:
+      product = product.to_dict()
 
+      product_id = product["id"]
+      preview_img = db.session.query(Image).filter(Image.product_id == product_id).first()
+      if preview_img is not None:
+        product["previewImage"] = preview_img.url
 
+      product['price'] = str(product['price'])
 
+      products_result.append(product)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return jsonify({"Products": products_result}), 200
 
 
 
@@ -121,9 +128,9 @@ def get_my_products():
 
 
 #line 130
-@product_routes.route("/<int:product_id>")
-def get_one_product():
-  pass
+# @product_routes.route("/<int:product_id>")
+# def get_one_product():
+#   pass
 
 
 
@@ -271,9 +278,9 @@ def add_product_image():
 
 
 #line 280
-@product_routes.route("/<int:product_id>", methods=["PUT"])
-def edit_product():
-  pass
+# @product_routes.route("/<int:product_id>", methods=["PUT"])
+# def edit_product():
+#   pass
 
 
 
@@ -322,8 +329,23 @@ def edit_product():
 
 #line 330
 @product_routes.route("/<int:product_id>", methods=["DELETE"])
-def delete_product():
-  pass
+def delete_product(product_id):
+  product = Product.query.get(product_id)
+  print(product.seller_id)
+
+  if product.seller_id == current_user.id:
+    db.session.delete(product)
+    db.session.commit()
+
+    return jsonify({
+      "message": "Product successfully deleted!",
+      "status_code": 200
+    }), 200
+
+  else:
+    return jsonify({
+      "errors": "Unauthorized! You are not the owner of this product!"
+    }), 403
 
 
 
