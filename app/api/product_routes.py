@@ -30,14 +30,14 @@ def get_all_products():
     return jsonify({"Products": products_result}), 200
 
 
+
+
+
+
+
+
+
 #line 40: query filter
-
-
-
-
-
-
-
 
 
 
@@ -81,6 +81,7 @@ def get_all_products():
 @product_routes.route("/current")
 @login_required
 def get_my_products():
+  print(current_user)
   user_id = current_user.id
   products = Product.query.filter(Product.seller_id == user_id).all()
 
@@ -100,7 +101,6 @@ def get_my_products():
       products_result.append(product)
 
     return jsonify({"Products": products_result}), 200
-
 
 
 
@@ -329,6 +329,7 @@ def add_product_image():
 
 #line 330
 @product_routes.route("/<int:product_id>", methods=["DELETE"])
+@login_required
 def delete_product(product_id):
   product = Product.query.get(product_id)
   print(product.seller_id)
@@ -346,22 +347,6 @@ def delete_product(product_id):
     return jsonify({
       "errors": "Unauthorized! You are not the owner of this product!"
     }), 403
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #line 350
 @product_routes.route("/<int:product_id>/reviews")
 def get_product_reviews():
