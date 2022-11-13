@@ -42,32 +42,11 @@ def get_all_products():
 def search_product(keyword):
   products = Product.query.filter(Product.name.like(f"%{keyword}%")).all()
 
-  products_result = []
-
-  if products is not None:
-    for product in products:
-      product = product.to_dict()
-
-      product_id = product["id"]
-      preview_img = db.session.query(Image).filter(Image.product_id == product_id).first()
-      if preview_img is not None:
-        product["previewImage"] = preview_img.url
-
-      products_result.append(product)
-
-    return {"Products": products_result}, 200
-
-
-
-
-
-
-
-
-
-
-
-
+  return {
+    "Products": [
+      product.to_dict_search() for product in products
+    ]
+  }, 200
 
 
 
