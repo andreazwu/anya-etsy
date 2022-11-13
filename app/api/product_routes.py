@@ -17,13 +17,15 @@ def get_all_products():
   if products is not None:
     for product in products:
       product = product.to_dict()
+
       product_id = product["id"]
-      product['price'] = str(product['price'])
       preview_img = db.session.query(Image).filter(Image.product_id == product_id).first()
       if preview_img is not None:
         product["previewImage"] = preview_img.url
+
+      product['price'] = str(product['price'])
+      
       product_flatted.append(product)
-      # print(product)
 
     return jsonify({"Products": product_flatted}), 200
 
