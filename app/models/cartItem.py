@@ -13,7 +13,7 @@ class CartItem(db.Model):
     order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('orders.id')), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
 #relationship
-    order = db.relationship("Order", back_populates="cartItems")
+    # order = db.relationship("Order", back_populates="cartItems")
     user = db.relationship("User", back_populates="cartItems")
     product = db.relationship("Product", back_populates="cartItems")
 #####################################
@@ -24,4 +24,23 @@ class CartItem(db.Model):
             'productId': self.product_id,
             'orderId': self.order_id,
             'quantity': self.quantity
+        }
+
+    def to_dict_current(self):
+        return {
+            'id': self.id,
+            'userId': self.user_id,
+            'productId': self.product_id,
+            'orderId': self.order_id,
+            'quantity': self.quantity,
+            'Product': {
+                "id": self.product.id,
+                'category': self.product.category,
+                'name': self.product.name,
+                'description': self.product.description,
+                'price': self.product.price,
+                'stock': self.product.stock,
+                'sellerId': self.product.seller_id,
+                'previewImage': self.product.images[0].url
+            }
         }
