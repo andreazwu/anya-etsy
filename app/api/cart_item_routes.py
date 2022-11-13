@@ -4,11 +4,11 @@ from app.models import CartItem
 from app.forms import CartItemForm
 
 
-cart_item = Blueprint('cart_items', __name__)
+cart_item_routes = Blueprint('cart_items', __name__)
 
 
 #line 10
-@cart_item.route("/current")
+@cart_item_routes.route("/current")
 def get_my_cart_items():
   pass
 
@@ -58,7 +58,7 @@ def get_my_cart_items():
 
 
 #line 60
-@cart_item.route("/<int:cart_item_id>", methods=["PUT"])
+@cart_item_routes.route("/<int:cart_item_id>", methods=["PUT"])
 def edit_cart_item():
   pass
 
@@ -108,6 +108,6 @@ def edit_cart_item():
 
 
 #line 110
-@cart_item.route("/<int:cart_item_id>", methods=["DELETE"])
+@cart_item_routes.route("/<int:cart_item_id>", methods=["DELETE"])
 def delete_cart_item():
   pass

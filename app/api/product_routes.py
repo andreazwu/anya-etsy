@@ -1,40 +1,31 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, json
 from flask_login import login_required
-from app.models import Product
+from app.models import db, Product, Image
 from app.forms import ProductForm
 
 
-product = Blueprint('products', __name__)
+product_routes = Blueprint('products', __name__)
 
 
 #line 10
-@product.route("")
+@product_routes.route("")
 def get_all_products():
-  pass
+  products = Product.query.all()
 
+  product_flatted = []
 
+  if products is not None:
+    for product in products:
+      product = product.to_dict()
+      product_id = product["id"]
+      product['price'] = str(product['price'])
+      preview_img = db.session.query(Image).filter(Image.product_id == product_id).first()
+      if preview_img is not None:
+        product["previewImage"] = preview_img.url
+      product_flatted.append(product)
+      # print(product)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return jsonify({"Products": product_flatted}), 200
 
 
 #line 40: query filter
@@ -78,7 +69,7 @@ def get_all_products():
 
 
 # line 80
-@product.route("/current")
+@product_routes.route("/current")
 def get_my_products():
   pass
 
@@ -128,7 +119,7 @@ def get_my_products():
 
 
 #line 130
-@product.route("/<int:product_id>")
+@product_routes.route("/<int:product_id>")
 def get_one_product():
   pass
 
@@ -188,7 +179,7 @@ def get_one_product():
 
 
 #line 190
-@product.route("", methods=["POST"])
+@product_routes.route("", methods=["POST"])
 def create_product():
   pass
 
@@ -238,7 +229,7 @@ def create_product():
 
 
 #line 240
-@product.route("/<int:product_id>/images", methods=["POST"])
+@product_routes.route("/<int:product_id>/images", methods=["POST"])
 def add_product_image():
   pass
 
@@ -278,7 +269,7 @@ def add_product_image():
 
 
 #line 280
-@product.route("/<int:product_id>", methods=["PUT"])
+@product_routes.route("/<int:product_id>", methods=["PUT"])
 def edit_product():
   pass
 
@@ -328,7 +319,7 @@ def edit_product():
 
 
 #line 330
-@product.route("/<int:product_id>", methods=["DELETE"])
+@product_routes.route("/<int:product_id>", methods=["DELETE"])
 def delete_product():
   pass
 
@@ -348,7 +339,7 @@ def delete_product():
 
 
 #line 350
-@product.route("/<int:product_id>/reviews")
+@product_routes.route("/<int:product_id>/reviews")
 def get_product_reviews():
   pass
 
@@ -378,7 +369,7 @@ def get_product_reviews():
 
 
 #line 380
-@product.route("/<int:product_id>/reviews", methods=["POST"])
+@product_routes.route("/<int:product_id>/reviews", methods=["POST"])
 def create_review():
   pass
 
@@ -408,6 +399,6 @@ def create_review():
 
 
 #line 410 (add product<id> to cart)
-@product.route("/<int:product_id/cart_items>", methods=["POST"])
+@product_routes.route("/<int:product_id>/cart_items", methods=["POST"])
 def create_cart_item():
   pass
