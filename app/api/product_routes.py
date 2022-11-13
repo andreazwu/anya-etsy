@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, Product, Review, Image, User
-from app.forms import ProductForm, ReviewForm, ImageForm
+from app.models import db, Product, Review, Image, User, CartItem
+from app.forms import ProductForm, ReviewForm, ImageForm, CartItemForm
 from datetime import datetime
 import random
 from .auth_routes import validation_errors_to_error_messages
@@ -410,5 +410,36 @@ def create_review(product_id):
 
 #line 410 (add product<id> to cart)
 @product_routes.route("/<int:product_id>/cart_items", methods=["POST"])
-def create_cart_item():
-  pass
+@login_required
+def create_cart_item(product_id):
+  item = Product.query.get(product_id)
+  form = CartItemForm()
+  form["csrf_token"].data = request.cookies["csrf_token"]
+  if item is None:
+    return {"errors" : "Product couldn't be found"}, 404
+  if item.seller_id == current_user.id:
+    return {"error" : "You can not add your own product to cart"}, 400
+  if form.validate_on_submit():
+    data = CartItem(
+      user_id = current_user.id,
+      product_id = product_id,
+      quantity = form.data["quantity"],
+      order_id = 0
+    )
+    db.session.add(data)
+    db.session.commit()
+    return data.to_dict(), 200
+  else:
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+
+# fetch("http://localhost:3000/api/products/5/cart_items", {
+#    method: 'POST',
+#    body: JSON.stringify({
+#     "quantity": 1
+#   }),
+#    headers: {
+#     'Content-type': 'application/json'
+#   }
+#  })
+#  .then(res => res.json())
+#  .then(console.log)
