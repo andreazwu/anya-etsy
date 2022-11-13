@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, Product, Review, Image, User
-from app.forms import ProductForm, ReviewForm
+from app.forms import ProductForm, ReviewForm, ImageForm
 from datetime import datetime
 import random
 from .auth_routes import validation_errors_to_error_messages
