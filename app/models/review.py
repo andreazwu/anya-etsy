@@ -57,6 +57,6 @@ class Review(db.Model):
                 "description": self.product.description,
                 "price": self.product.price,
                 "stock": self.product.stock,
-                # "previewImage": self.product_image.url <<<????
+                "previewImage": self.product.images[0].url
             }
     }
