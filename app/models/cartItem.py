@@ -25,3 +25,22 @@ class CartItem(db.Model):
             'orderId': self.order_id,
             'quantity': self.quantity
         }
+
+    def to_dict_current(self):
+        return {
+            'id': self.id,
+            'userId': self.user_id,
+            'productId': self.product_id,
+            'orderId': self.order_id,
+            'quantity': self.quantity,
+            'Product': {
+                "id": self.product.id,
+                'category': self.product.category,
+                'name': self.product.name,
+                'description': self.product.description,
+                'price': self.product.price,
+                'stock': self.product.stock,
+                'sellerId': self.product.seller_id,
+                'previewImage': self.product.images[0].url
+            }
+        }
