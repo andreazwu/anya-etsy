@@ -113,10 +113,10 @@ def edit_cart_item(cart_item_id):
 def delete_cart_item(cart_item_id):
   item = CartItem.query.get(cart_item_id)
   if not item:
-    return {"errors": "Cart Item couldn't be found"}
+    return {"errors": "Cart Item couldn't be found"}, 404
   if item.user_id == current_user.id:
     db.session.delete(item)
     db.session.commit()
     return {"message" : "Item in cart successfully deleted!"}, 200
   else:
-    return {"errors" : " You are not the owner of this cart-item"}
+    return {"errors" : " You are not the owner of this cart-item"}, 400
