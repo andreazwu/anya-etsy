@@ -8,7 +8,7 @@ from .auth_routes import validation_errors_to_error_messages
 product_routes = Blueprint('products', __name__)
 
 #line 10
-@product_routes.route("")
+@product_routes.route("/")
 def get_all_products():
   products = Product.query.all()
 
@@ -383,9 +383,16 @@ def get_product_reviews(product_id):
 def create_review(product_id):
   form = ReviewForm()
   form["csrf_token"].data = request.cookies["csrf_token"]
-  print("form in create_review", form.data)
-  print("current_user in create_review", current_user.id)
-
+  product = Product.query.get(product_id)
+  if product is None:
+    return {"errors": "Product couldn't be found"}, 404
+  if product.seller_id == current_user.id:
+    return {"error": "You can't review your product"}, 400
+  existed_reviews = Review.query.filter(Review.product_id == product_id).all()
+  if existed_reviews:
+    for review in existed_reviews:
+      if review.user_id == current_user.id:
+        return {"errors": "You have reviewed the product"}, 400
   if form.validate_on_submit():
     new_review = Review(
       user_id = current_user.id,
@@ -395,18 +402,11 @@ def create_review(product_id):
       created_at = datetime.now()
     )
     print("new_review in create_review", new_review)
-
     db.session.add(new_review)
     db.session.commit()
-
     return new_review.to_dict(), 201
   else:
     return {"errors": validation_errors_to_error_messages(form.errors)}, 400
-
-
-
-
-
 #line 410 (add product<id> to cart)
 @product_routes.route("/<int:product_id>/cart_items", methods=["POST"])
 @login_required
