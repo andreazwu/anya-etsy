@@ -12,7 +12,7 @@ product_routes = Blueprint('products', __name__)
 def get_all_products():
   products = Product.query.all()
 
-  product_flatted = []
+  products_result = []
 
   if products is not None:
     for product in products:
@@ -24,10 +24,10 @@ def get_all_products():
         product["previewImage"] = preview_img.url
 
       product['price'] = str(product['price'])
-      
-      product_flatted.append(product)
 
-    return jsonify({"Products": product_flatted}), 200
+      products_result.append(product)
+
+    return jsonify({"Products": products_result}), 200
 
 
 #line 40: query filter
@@ -73,7 +73,7 @@ def get_all_products():
 # line 80
 @product_routes.route("/current")
 def get_my_products():
-  pass
+  return "product listed by the current user"
 
 
 
