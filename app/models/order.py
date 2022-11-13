@@ -13,7 +13,7 @@ class Order(db.Model):
     created_at = db.Column(db.DateTime(timezone=True),
                            nullable=False, server_default=db.func.now())
 #relationship
-    cartItems = db.relationship("CartItem", back_populates="order", cascade="all, delete")
+    # cartItems = db.relationship("CartItem", back_populates="order", cascade="all, delete")
 
 #####################################
     def to_dict(self):
