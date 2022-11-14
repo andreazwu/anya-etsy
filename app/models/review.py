@@ -29,4 +29,34 @@ class Review(db.Model):
             'review': self.review,
             'stars': self.stars,
             'createdAt': self.created_at,
+            'User': { #<<<<<<<<<<<<< new
+                "id": self.user.id,
+                "first_name": self.user.first_name,
+                "last_name": self.user.last_name
+            }
         }
+
+    def to_dict_my_reviews(self):
+        return {
+            'id': self.id,
+            'userId': self.user_id,
+            'productId': self.product_id,
+            'review': self.review,
+            'stars': self.stars,
+            'createdAt': self.created_at,
+            'User': {
+                "id": self.user.id,
+                "first_name": self.user.first_name,
+                "last_name": self.user.last_name
+            },
+            'Product': {
+                "id": self.product.id,
+                "seller_id": self.product.seller_id,
+                "category": self.product.category,
+                "name": self.product.name,
+                "description": self.product.description,
+                "price": self.product.price,
+                "stock": self.product.stock,
+                "previewImage": self.product.images[0].url
+            }
+    }

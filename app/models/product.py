@@ -13,7 +13,7 @@ class Product(db.Model):
     category = db.Column(db.String(255), nullable=False)
     name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(2000), nullable=False)
-    price = db.Column(db.Float(10,2), nullable=False)
+    price = db.Column(db.Float, nullable=False)
     stock = db.Column(db.Integer, nullable=False)
     seller_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
@@ -26,6 +26,12 @@ class Product(db.Model):
     storeItems = db.relationship("StoreItem", back_populates="product", cascade="all, delete")
 
 #####################################
+    def get_avgstars(self):
+        if len(self.reviews)>0:
+            avg=sum(d.stars for d in self.reviews)/ len(self.reviews)
+            return round(avg,1)
+        else:
+            return 0.00
     def to_dict(self):
         return {
             'id': self.id,
@@ -35,4 +41,18 @@ class Product(db.Model):
             'price': self.price,
             'stock': self.stock,
             'sellerId': self.seller_id
+        }
+    def to_dict_search(self):
+        return {
+            'id': self.id,
+            'category': self.category,
+            'name': self.name,
+            'description': self.description,
+            'price': self.price,
+            'stock': self.stock,
+            'sellerId': self.seller_id,
+            'previewImage': self.images[0].url,
+            'avgRating': self.get_avgstars(),
+            'numReviews': len(self.reviews),
+            'storeName': self.user.username
         }

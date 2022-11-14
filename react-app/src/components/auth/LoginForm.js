@@ -22,6 +22,18 @@ const LoginForm = () => {
     }
   };
 
+  const DemoUser = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    const demoEmail = "demo@gmail.com";
+    const demoPassword = "demo_user";
+    return dispatch(login(demoEmail, demoPassword)).catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      })
+  }
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -61,6 +73,7 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <button type='submit'>Login</button>
+        <button onClick={DemoUser}>Demo User</button>
       </div>
     </form>
   );
