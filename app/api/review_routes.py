@@ -96,6 +96,11 @@ def delete_review(review_id):
   """
   review = Review.query.get(review_id)
 
+  if review.user_id is not current_user.id:
+    return {
+      "errors": "Unauthorized! You are not the owner of this review!"
+    }, 403
+
   if review is None:
     return {"errors":"Review couldn't be found"}, 404
 
