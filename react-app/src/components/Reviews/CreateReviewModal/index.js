@@ -1,0 +1,35 @@
+import React, { useState } from "react"
+import { Modal } from "../../../context/Modal"
+import CreateReview from "./CreateReview"
+
+import "./CreateReview.css"
+
+const CreateReviewModal = ({productId}) => {
+  const [showModal, setShowModal] = useState(false)
+
+  return (
+    <>
+      <button
+      className="create-review-button"
+      onClick={() => setShowModal(true)}>
+        Create Review
+      </button>
+
+
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+
+          <CreateReview
+          onCreation={() => setShowModal(false)}
+          productId={productId}
+          setShowModal={setShowModal}
+          />
+
+        </Modal>
+      )}
+
+    </>
+  )
+}
+
+export default CreateReviewModal
