@@ -3,10 +3,12 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneProduct } from "../../store/products";
 import LoadProductReviews from "../Reviews/LoadProductReviews";
-import CreateReviewModal from "../Reviews/CreateReviewModal"
+// import CreateReviewModal from "../Reviews/CreateReviewModal"
+import CreateReviewForm from "../Reviews/CreateReviewForm";
 import './productDetails.css'
 
 const ProductDetails = () => {
+    const history = useHistory()
     const { productId } = useParams();
     console.log("in ProductDetails----productId", productId)
     const [showNewReviewModal, setShowNewReviewModal] = useState(false)
@@ -59,11 +61,17 @@ const ProductDetails = () => {
                 {
                 sessionUser &&
                 !seller &&
-                <CreateReviewModal
-                    productId={productId}
-                    showNewReviewModal={showNewReviewModal}
-                    setShowNewReviewModal={setShowNewReviewModal}
-                />
+                // <CreateReviewModal
+                //     productId={productId}
+                //     showNewReviewModal={showNewReviewModal}
+                //     setShowNewReviewModal={setShowNewReviewModal}
+                // />
+                (<div>
+                    <div onClick={()=>history.push(`/products/${productId}/new-review`)}>
+                        Create a new review
+                        {/* <CreateReviewForm productId={productId}/> */}
+                    </div>
+                </div>)
                 }
             {console.log("product details, showNewReviewModal:", showNewReviewModal)}
             </div>

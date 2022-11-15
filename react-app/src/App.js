@@ -12,6 +12,7 @@ import ProductsBrower from './components/ProductsBrowser';
 import CreatePreoduct from './components/CreateProduct';
 import { authenticate } from './store/session';
 import LoadUserReviews from './components/Reviews/LoadUserReviews';
+import CreateReviewForm from './components/Reviews/CreateReviewForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,6 +48,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <Route path='/products/:productId/new-review' exact={true} >
+          <CreateReviewForm />
+        </Route>
         <Route path='/products/:productId' exact={true} >
           <ProductDetails />
         </Route>
