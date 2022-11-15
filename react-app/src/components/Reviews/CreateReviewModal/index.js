@@ -5,6 +5,7 @@ import CreateReview from "./CreateReview"
 import "./CreateReview.css"
 
 const CreateReviewModal = ({productId}) => {
+  console.log("CREATE REVIEW MODAL COMPONENT STARTS for product:", productId)
   const [showModal, setShowModal] = useState(false)
 
   return (

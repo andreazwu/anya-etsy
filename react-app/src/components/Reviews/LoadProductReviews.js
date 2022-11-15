@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { thunkGetProductReviews } from "../../store/reviews"
-import CreateReviewModal from "./CreateReviewModal"
+
 
 
 const LoadProductReviews = () => { //pass in productId props
@@ -18,13 +18,6 @@ const LoadProductReviews = () => { //pass in productId props
     dispatch(thunkGetProductReviews(productId))
   }, [dispatch, productId]) //add reviews dependency to reflect of new review
 
-  //------create review button-----
-  //verify if currentUser is owner of product
-  // const product = useSelector((state) => state.products.seller_id) //need products state
-  // const currentUser = useSelector((state) => state.session.user)
-  // let owner = false
-  // if (currentUser?.id === product.ownerId) owner = true
-  //------create review button-----
 
   if (!reviewsArr.length) return null
 
@@ -33,15 +26,6 @@ const LoadProductReviews = () => { //pass in productId props
       {/* [{},{}], each {} is:
       { id, userId, productId, review, stars,
         User: { id, firstName, lastName } } */}
-
-      {/* ideally only show "create review" button to NON-owner of product */}
-      <div>
-        {
-          // currentUser &&
-          // !owner &&
-          <CreateReviewModal productId={productId}/>
-        }
-      </div>
 
       {
         reviewsArr.map((review)=>(

@@ -49,3 +49,21 @@ select:focus {
   align-items: center;
   align-content: center;
 } */
+
+.create-review-button {
+  cursor: pointer;
+  width: 115px;
+  padding: 3px 10px;
+  margin: 3px 0px 20px 0px;
+  border: 1px rgb(241, 101, 34) solid;
+  border-radius: 4px;
+  background: rgb(241, 101, 34);
+  color: white;
+  font: bold;
+}
+
+.create-review-button:hover {
+  background: white;
+  border: 1px rgb(241, 101, 34) solid;
+  color:rgb(241, 101, 34);
+}

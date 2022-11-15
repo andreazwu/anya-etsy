@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneProduct } from "../../store/products";
-
+import LoadProductReviews from "../Reviews/LoadProductReviews";
+import CreateReviewModal from "../Reviews/CreateReviewModal"
 import './productDetails.css'
 
 const ProductDetails = () => {
@@ -17,6 +18,10 @@ const ProductDetails = () => {
     useEffect(() => {
         dispatch(getOneProduct(productId))
     }, [dispatch, productId])
+
+    //verify if currentUser is seller of product
+    let seller = false
+    if (sessionUser?.id === product?.sellerId) seller = true
 
     if (!product) return null;
     // if (!sellerId) return null;
@@ -43,19 +48,17 @@ const ProductDetails = () => {
             -------------------------------------------------------------
             <div className="single-product-reviews">
                 <div className="single-product-numReviews">{product.numReviews} reviews {product.avgRating} stars</div>
-                {/* <div className="single-product-createReview">
-                    {sessionUser && sellerId && sessionUser?.id !== sellerId
-                    ?
-                    <Link>
-                        <button className="createReview-button">Review this Product</button>
-                    </Link>
-                    : null
-
-                    }
-                </div> */}
-                    <Link>
-                        <button className="createReview-button">Review this Product</button>
-                    </Link>
+            {/* only show "create review" button to NON-seller of product */}
+            <div>
+                {
+                sessionUser &&
+                !seller &&
+                <CreateReviewModal productId={productId}/>
+                }
+            </div>
+            </div>
+            <div>
+                <LoadProductReviews productId={productId}/>
             </div>
 
         </div>
