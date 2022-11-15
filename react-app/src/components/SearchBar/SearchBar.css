@@ -1,18 +1,34 @@
-.searchBar-main,
-.searchBar-main-noUser {
+.searchBar-main {
   display: flex;
   flex-direction: column;
   position: relative;
   margin-right: 5px;
+  width: 50%;
 }
 
-.searchBar-main {
-  width: 62%;
+.navBar-searchBar-container {
+  border: black 2.5px solid;
+  border-radius: 30px;
+  background-color: #F3F3F3;
+  width: 98%;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  margin: 0 10px 0 5px;
 }
 
-.searchBar-main-noUser {
-  width: 65.7%;
+.product-not-found-outer {
+  border-top: 1px solid rgb(211, 211, 211);
+  background-color: #FDEBD2;
+  position: absolute;
+  left: 0;
+  top: 120px;
+  width: 100%;
+  height: 120px;
+  min-width: 100%;
+  z-index: -3;
 }
+
 
 .searchBar-form {
   display: flex;
@@ -32,29 +48,17 @@
   cursor: default;
 }
 
-.searchBar-glass {
-  height: 28px;
+.fa-sharp.fa-solid.fa-magnifying-glass {
+  font-size: 1.3rem;
 }
 
 .searchBar-button {
   background: none;
-  margin-right: 10px;
   border: none;
+  margin-right: 10px;
   cursor: pointer;
 }
 
-.search-upper,
-.product-not-found-outer {
-  border-top: 1px solid rgb(211, 211, 211);
-  background-color: #FDEBD2;
-  position: absolute;
-  left: 0;
-  top: 120px;
-  width: 100%;
-  height: 120px;
-  min-width: 100%;
-  z-index: -3;
-}
 
 .search-header,
 .product-not-found-header {
@@ -93,7 +97,7 @@
   top: 30px;
   left: 28px;
   font-family: GraphikRegular, Arial, Helvetica, sans-serif;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
 }
 
 .search-results {
@@ -105,14 +109,3 @@
   display: inline-block;
 }
 
-@media screen and (max-width: 1440px) {
-  .search-header {
-    width: 1200px;
-  }
-}
-
-@media screen and (max-width: 1280px) {
-  .search-header {
-    width: 1075px;
-  }
-}

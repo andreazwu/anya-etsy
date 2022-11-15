@@ -7,7 +7,7 @@ import './SearchBar.css'
 const SearchBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const productsObj = useSelector(state => state.session.user)
+  const productsObj = useSelector(state => state.session.products)
   const [keyword, setKeyword] = useState("");
   const [errors, setErrors] = useState([]);
 
@@ -17,9 +17,6 @@ const SearchBar = () => {
     if (keyword.trim().length === 0) {
       return setErrors(["Please enter a keyword!"])
     }
-
-    
-
     history.push(`/search/${keyword}`)
     setKeyword("")
     setErrors([])
@@ -34,7 +31,7 @@ const SearchBar = () => {
           )
         })}
     </div>
-    <div className='navBar-searchBar-outer'>
+    <div className='navBar-searchBar-container'>
       <form onSubmit={handleSearch} className="searchBar-form">
         <input
           placeholder='Search for anything'

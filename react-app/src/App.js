@@ -8,7 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import ProductDetails from './components/ProductDetails';
-import ProductsBrower from './components/ProductsBrowser';
+import ProductsBrowser from './components/ProductsBrowser';
 import { authenticate } from './store/session';
 import CreatePreoduct from './components/CreateProduct';
 import ProductsBySearch from './components/ProductsBySearch'
@@ -33,7 +33,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path='/'>
-          <ProductsBrower/>
+          <ProductsBrowser/>
         </Route>
         <Route path='/search/:keyword'>
             <ProductsBySearch />

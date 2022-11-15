@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getAllProducts } from '../../store/products';
-import "./ProductsBrower.css";
+import "./ProductsBrowser.css";
 
-const ProductsBrower = () => {
+const ProductsBrowser = () => {
   const dispatch = useDispatch();
   const currUser = useSelector(state => state.session.user)
   const productsObj = useSelector(state => state.products.allProducts)
@@ -153,4 +153,4 @@ const ProductsBrower = () => {
   )
 }
 
-export default ProductsBrower;
+export default ProductsBrowser;
