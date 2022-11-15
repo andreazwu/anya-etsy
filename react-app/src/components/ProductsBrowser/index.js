@@ -17,6 +17,7 @@ const ProductsBrower = () => {
   const thanksgivingProducts = productArr.filter(product => product.category === 'Thanksgiving')
   const christmasProducts = productArr.filter(product => product.category === 'Christmas')
   const springFestivalProducts = productArr.filter(product => product.category === 'Spring Festival')
+  const valentineProducts = productArr.filter(product => product.category === 'Valentine')
   const easterProducts = productArr.filter(product => product.category === 'Easter')
   const halloweenProducts = productArr.filter(product => product.category === 'Halloween')
 
@@ -69,6 +70,14 @@ const ProductsBrower = () => {
             </div>
           </NavLink>
           <div className='category-name'>Spring Festival</div>
+        </div>
+        <div className='circle-container'>
+          <NavLink to={`/products/${valentineProducts[0]?.id}`}>
+            <div className='img-outer'>
+              <img src={valentineProducts[1]?.previewImage} className='featured-img' alt='featured'></img>
+            </div>
+          </NavLink>
+          <div className='category-name'>Valentine</div>
         </div>
         <div className='circle-container'>
           <NavLink to={`/products/${easterProducts[0]?.id}`}>
