@@ -28,7 +28,7 @@ const LoadProductReviews = () => { //pass in productId props
       {
         reviewsArr.map((review)=>(
           <div className="single-review">
-            <h3>{review.User.firstName}{" "}{review.User.lastName}</h3>
+            <h3>{review.User.first_name}{" "}{review.User.last_name}</h3>
             <p className="single-review-date">
               {new Date(review.createdAt).toString().slice(3,-42)}
             </p>
@@ -40,11 +40,11 @@ const LoadProductReviews = () => { //pass in productId props
             </p>
 
             <p className="single-review-review">
-              <i className="fa fa-quote-left fa-lg" aria-hidden="true"></i>
+              {/* <i className="fa fa-quote-left fa-lg" aria-hidden="true"></i> */}
               <span>
                 {review.review}
               </span>
-              <i className="fa fa-quote-right fa-lg" aria-hidden="true"></i>
+              {/* <i className="fa fa-quote-right fa-lg" aria-hidden="true"></i> */}
             </p>
           </div>
         ))
