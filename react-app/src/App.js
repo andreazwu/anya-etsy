@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import LoadProductReviews from './components/Reviews/LoadProductReviews'; //delete
+import LoadUserReviews from './components/Reviews/LoadUserReviews';
 import { authenticate } from './store/session';
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
         {/* delete test route later */}
         <Route path='/products/:productId/reviews' exact={true}>
           <LoadProductReviews />
+        </Route>
+        <Route path='/my-reviews' exact={true}>
+          <LoadUserReviews />
         </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
