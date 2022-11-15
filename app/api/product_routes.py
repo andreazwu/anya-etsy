@@ -387,12 +387,12 @@ def create_review(product_id):
   if product is None:
     return {"errors": "Product couldn't be found"}, 404
   if product.seller_id == current_user.id:
-    return {"error": "You can't review your product"}, 400
+    return {"errors": "You can't review your own product"}, 400
   existed_reviews = Review.query.filter(Review.product_id == product_id).all()
   if existed_reviews:
     for review in existed_reviews:
       if review.user_id == current_user.id:
-        return {"errors": "You have reviewed the product"}, 400
+        return {"errors": "You have already left a review for this product"}, 400
   if form.validate_on_submit():
     new_review = Review(
       user_id = current_user.id,

@@ -3,7 +3,7 @@
 // ACTION TYPES:
 const LOAD_PRODUCT_REVIEWS = "REVIEWS/LOAD_PRODUCT_REVIEWS"
 const LOAD_USER_REVIEWS = "REVIEWS/LOAD_USER_REVIEWS"
-// const CREATE_REVIEW = "REVIEWS/CREATE_REVIEW"
+const CREATE_REVIEW = "REVIEWS/CREATE_REVIEW"
 // const UPDATE_REVIEW = "REVIEWS/UPDATE_REVIEW"
 const DELETE_REVIEW = "REVIEWS/DELETE_REVIEW"
 // const ADD_REVIEW_IMAGE = "REVIEWS/ADD_REVIEW_IMAGE"
@@ -25,7 +25,12 @@ const acLoadUserReviews = (reviews) => {
   }
 }
 
-// const acCreateReview
+const acCreateReview = (review) => {
+  return {
+    type: CREATE_REVIEW,
+    review
+  }
+}
 
 // const acUpdateReview
 
@@ -96,8 +101,35 @@ export const thunkGetUserReviews = () => async (dispatch) => {
   }
 }
 
-// // create new review thunk
-// export const thunkCreateNewReview = () => async (dispatch) => { }
+// create new review thunk
+export const thunkCreateNewReview = (newreview, productId, user) => async (dispatch) => {
+  const response = await fetch(`/api/products/${productId}/reviews`, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(newreview)
+  })
+  if (response.ok){
+    // from backend route "create_review":
+    // {'id': self.id,
+    // 'userId': self.user_id,
+    // 'productId': self.product_id,
+    // 'review': self.review,
+    // 'stars': self.stars,
+    // 'createdAt': self.created_at,
+    // 'User': {
+    //     "id": self.user.id,
+    //     "first_name": self.user.first_name,
+    //     "last_name": self.user.last_name
+    // }}
+    const review = await response.json()
+    dispatch(acCreateReview(review))
+    return review
+
+  } else {
+    const err = await response.json()
+    return err
+  }
+}
 
 // // update review thunk
 // export const thunkEditreview = () => async (dispatch) => {  }
@@ -147,8 +179,13 @@ const reviews = (state = initialState, action) => {
       // console.log("REVIEWSREDUCER LOAD USER REVIEWS BEGIN:", newState)
       return newState
 
-    // case CREATE_REVIEW:
-    //   return newState
+    case CREATE_REVIEW:
+      newState = {...state}
+      newState.product = {...state.product}
+      newState.user = {...state.user}
+      newState.product[action.review.id] = action.review
+      newState.user[action.review.id] = action.review
+      return newState
 
     case DELETE_REVIEW:
       newState = {...state}
