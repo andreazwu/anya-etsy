@@ -11,6 +11,7 @@ import ProductDetails from './components/ProductDetails';
 import ProductsBrower from './components/ProductsBrowser';
 import { authenticate } from './store/session';
 import CreatePreoduct from './components/CreateProduct';
+import ProductsBySearch from './components/ProductsBySearch'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -33,6 +34,9 @@ function App() {
       <Switch>
         <Route exact path='/'>
           <ProductsBrower/>
+        </Route>
+        <Route path='/search/:keyword'>
+            <ProductsBySearch />
         </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
