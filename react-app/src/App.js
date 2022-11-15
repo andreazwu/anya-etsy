@@ -7,9 +7,10 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import { authenticate } from './store/session';
-import CreatePreoduct from './components/CreateProduct';
 import ProductDetails from './components/ProductDetails';
+import ProductsBrower from './components/ProductsBrowser';
+import CreatePreoduct from './components/CreateProduct';
+import { authenticate } from './store/session';
 import LoadUserReviews from './components/Reviews/LoadUserReviews';
 
 function App() {
@@ -31,6 +32,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        <Route exact path='/'>
+          <ProductsBrower/>
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -43,17 +47,14 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/products/:productId' exact={true} >
+        <Route path='/products/:productId' exact={true} >
           <ProductDetails />
-        </ProtectedRoute>
-        <ProtectedRoute path='/new-product' exact={true} >
+        </Route>
+        <Route path='/new-product' exact={true} >
           <CreatePreoduct />
-        </ProtectedRoute>
-        <ProtectedRoute path='/my-reviews' exact={true} >
+        </Route>
+        <Route path='/my-reviews' exact={true} >
           <LoadUserReviews />
-        </ProtectedRoute>
-        <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
         </Route>
       </Switch>
     </BrowserRouter>
