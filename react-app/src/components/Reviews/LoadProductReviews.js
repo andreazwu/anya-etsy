@@ -16,7 +16,7 @@ const LoadProductReviews = () => { //pass in productId props
   useEffect(() => {
     console.log("LOADPRODUCTREVIEWS USE EFFECT RUNNING: DISPATCH THUNK")
     dispatch(thunkGetProductReviews(productId))
-  }, [dispatch, productId]) //add reviews dependency to reflect of new review
+  }, [dispatch, productId, reviewsArr.length])
 
 
   if (!reviewsArr.length) return null

@@ -1,0 +1,129 @@
+* {
+  font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
+}
+
+.delete-review-button {
+  cursor: pointer;
+  width: 115px;
+  padding: 3px 10px;
+  /* margin: 3px 0px 20px 0px; */
+  border: 1px rgb(241, 101, 34) solid;
+  border-radius: 4px;
+  background: rgb(241, 101, 34);
+  color: white;
+  font: bold;
+}
+
+.delete-review-button:hover {
+  background: white;
+  border: 1px rgb(241, 101, 34) solid;
+  color:rgb(241, 101, 34);
+}
+/*
+.fa-quote-left {
+  color: rgb(241, 101, 34);
+  margin-right: 6px;
+}
+
+.fa-quote-right {
+  color: rgb(241, 101, 34);
+  margin-left: 6px;
+} */
+
+.fa-star {
+  color: rgb(241, 101, 34);
+}
+
+.single-review {
+  font-weight: bolder;
+  margin-bottom: 30px;
+}
+
+.single-review h3 {
+  margin-bottom: -10px;
+}
+
+.single-review-date {
+  font-size: 14px;
+  color:rgb(187, 200, 228, 0.8);
+  font-style: normal;
+  margin-top: 10px;
+}
+
+.single-review-review {
+  margin-right: 20px;
+}
+
+.single-review-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 4px;
+  margin-right: 4px;
+  object-fit: cover;
+}
+
+
+
+.my-reviews-wrapper-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 10px 40px;
+}
+
+.my-reviews-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+  grid-gap: 5vH 10vW;
+  margin-bottom: 80px;
+
+}
+
+.my-reviews-button {
+  cursor: pointer;
+  width: 115px;
+  padding: 3px 10px;
+  margin: 20px 0px 3px 0px;
+  border: 1px rgb(241, 101, 34) solid;
+  border-radius: 4px;
+  background: rgb(241, 101, 34);
+  color: white;
+  font: bold;
+}
+
+
+.my-single-wrapper {
+  /* font-weight: 500; */
+  margin-bottom: 30px;
+}
+
+.my-single-header {
+  font-size: 20px;
+}
+
+.my-single-review-date {
+  font-size: 14px;
+  color:rgb(187, 200, 228, 0.8);
+  font-style: normal;
+  margin-top: 0px;
+}
+
+.my-single-rating {
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.my-single-image-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 20px;
+}
+
+.my-single-image {
+  object-fit: cover;
+  width: 150px;
+  height: 150px;
+  border-radius: 6px;
+}

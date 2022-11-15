@@ -12,7 +12,7 @@ const LoadUserReviews = () => {
 
   useEffect(()=>{
     dispatch(thunkGetUserReviews())
-  }, [dispatch, currentUser, reviewsObj])
+  }, [dispatch, currentUser, reviewsArr.length])
 
   if (!currentUser) return <Redirect to="/" />
 

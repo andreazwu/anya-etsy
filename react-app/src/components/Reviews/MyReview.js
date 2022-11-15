@@ -1,6 +1,8 @@
 import { Link, useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { thunkRemoveReview } from "../../store/reviews"
+import EditReviewModal from "./EditReviewModal"
+import "./Reviews.css"
 
 const MyReview = ({review}) => {
   const dispatch = useDispatch()
@@ -18,8 +20,8 @@ const MyReview = ({review}) => {
       <div className="my-single-header">
         Review For {" "}
         {/* <Link to={`/Products/${review.Product.id}`}> */}
-        <Link to={`/Products/${review.Product.id}/reviews`}>
-          {review.Product.name}
+        <Link to={`/Products/${review.Product.id}`}>
+          {review.Product.name.split(",")[0].split("|")[0]}
         </Link>:
       </div>
 
@@ -49,11 +51,20 @@ const MyReview = ({review}) => {
           {/* <i className="fa fa-quote-right fa-lg" aria-hidden="true"></i> */}
         </div>
 
+        <span>
+          <div>
+            <EditReviewModal productId={review.Product.id}/>
+          </div>
+        </span>
+
         <div>
-          <button onClick={deleteReviewHandleClick}>
+          <button
+          className="delete-review-button"
+          onClick={deleteReviewHandleClick}>
             Delete Review
           </button>
         </div>
+
       </div>
     </div>
   )

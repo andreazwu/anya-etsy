@@ -31,7 +31,7 @@ const ProductDetails = () => {
             <div className="single-product-img">
                 <img src={product.productImages[0]}></img></div>
             <div className="single-product-seller">{product.seller}</div>
-            <div>{product.salesNumber} sales  {product.avgRating} stars</div>
+            <div>{product.salesNumber} sales  {product.avgRating.toFixed(2)} stars</div>
             <div className="single-product-name">{product.name}</div>
             <div className="single-product-price">${product.price}</div>
             ------------------------------------------------------------
@@ -47,7 +47,7 @@ const ProductDetails = () => {
             <div className="single-product-description">Description: {product.description}</div>
             -------------------------------------------------------------
             <div className="single-product-reviews">
-                <div className="single-product-numReviews">{product.numReviews} reviews {product.avgRating} stars</div>
+                <div className="single-product-numReviews">{product.numReviews} reviews {product.avgRating.toFixed(2)} stars</div>
             {/* only show "create review" button to NON-seller of product */}
             <div>
                 {
