@@ -4,7 +4,7 @@
 const LOAD_PRODUCT_REVIEWS = "REVIEWS/LOAD_PRODUCT_REVIEWS"
 const LOAD_USER_REVIEWS = "REVIEWS/LOAD_USER_REVIEWS"
 const CREATE_REVIEW = "REVIEWS/CREATE_REVIEW"
-// const UPDATE_REVIEW = "REVIEWS/UPDATE_REVIEW"
+const UPDATE_REVIEW = "REVIEWS/UPDATE_REVIEW"
 const DELETE_REVIEW = "REVIEWS/DELETE_REVIEW"
 // const ADD_REVIEW_IMAGE = "REVIEWS/ADD_REVIEW_IMAGE"
 
@@ -32,7 +32,12 @@ const acCreateReview = (review) => {
   }
 }
 
-// const acUpdateReview
+const acUpdateReview = (review) => {
+  return {
+    type: UPDATE_REVIEW,
+    review
+  }
+}
 
 const acDeleteReview = (reviewId) => {
   return {
@@ -131,8 +136,19 @@ export const thunkCreateNewReview = (newreview, productId, user) => async (dispa
   }
 }
 
-// // update review thunk
-// export const thunkEditreview = () => async (dispatch) => {  }
+// update review thunk
+export const thunkEditreview = (myreview, reviewId) => async (dispatch) => {
+  const response = await fetch(`/api/reviews/${reviewId}`, {
+    method: "PUT",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(myreview)
+  })
+  if (response.ok) {
+    const review = await response.json()
+    dispatch(acUpdateReview(review))
+    return review
+  }
+}
 
 // delete review thunk
 export const thunkRemoveReview = (reviewId) => async (dispatch) => {
@@ -182,6 +198,14 @@ const reviews = (state = initialState, action) => {
       return newState
 
     case CREATE_REVIEW:
+      newState = {...state}
+      newState.product = {...state.product}
+      newState.user = {...state.user}
+      newState.product[action.review.id] = action.review
+      newState.user[action.review.id] = action.review
+      return newState
+
+    case UPDATE_REVIEW:
       newState = {...state}
       newState.product = {...state.product}
       newState.user = {...state.user}
