@@ -13,7 +13,7 @@ const CreateReviewModal = ({productId}) => {
       <button
       className="create-review-button"
       onClick={() => setShowModal(true)}>
-        Create Review
+        Review This Product
       </button>
 
 
