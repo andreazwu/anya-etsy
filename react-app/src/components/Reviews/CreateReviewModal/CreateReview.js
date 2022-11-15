@@ -5,7 +5,7 @@ import { thunkCreateNewReview } from "../../../store/reviews"
 
 import "./CreateReview.css"
 
-const CreateReview = ({productId, setShowModal}) => {
+const CreateReview = ({productId, setShowNewReviewModal}) => {
   const dispatch = useDispatch()
   const history = useHistory()
 
@@ -48,7 +48,7 @@ const CreateReview = ({productId, setShowModal}) => {
         }
       })
 
-    if (newReview) setShowModal(false)
+    if (newReview) setShowNewReviewModal(false)
     reset()
     // history.push(`/products/${productId}`) //<<<<<
   }
