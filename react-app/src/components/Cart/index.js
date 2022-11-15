@@ -5,8 +5,10 @@ import { getCartItemsThunk } from "../../store/cartItems";
 import CartItem from "./CartItem";
 import CartTotal from "./CartTotal";
 import './cart.css';
+import { authenticate } from './store/session';
 
 const Cart = () => {
+    const [loaded, setLoaded] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
     const [cartLoaded, setCartLoaded] = useState(false);
     const sessionUser = useSelector(state => state.session.user)
@@ -19,25 +21,39 @@ const Cart = () => {
     let initialSubtotal = 0;
     if (cartItems) {
       for (let cartItem of cartItems) {
-        initialSubtotal += (cartItem.quantity * cartItem.Product.price);
+        initialSubtotal += cartItem?.quantity * cartItem?.Product?.price;
       };
     }
 
     useEffect(() => {
         if (sessionUser) {
-          dispatch(getCartItemsThunk()).then(() => setCartLoaded(true))
+          dispatch(getCartItemsThunk())
         }
       }, [cartItems?.length])
 
+      useEffect(() => {
+        (async () => {
+          await dispatch(authenticate());
+          if (sessionUser) {
+            await dispatch(getCartItemsThunk());
+            setCartLoaded(true)
+          }
+          setLoaded(true);
+        })();
+      }, [dispatch, cartItems?.length]);
+
+      if (!loaded) {
+        return null;
+      }
     if (!sessionUser) {
       setShowLogin(true)
       return <Redirect to='/' />
     }
 
-    return cartLoaded && (
+    return  (
         <div className="">
           {cartItems?.length > 0 && <div className="">
-            {cartItems?.length > 0 && <h2 className="">{cartItems.length} items in your cart</h2>}
+            {cartItems?.length > 0 && <h2 className="">{cartItems.length} item(s) in your cart</h2>}
             {cartItems?.length > 0 && cartItems?.map((item, i) =>
               <CartItem key={i} item={item} />
             )}

@@ -10,13 +10,13 @@ export default function CartItem({ item }) {
     const [quantity, setQuantity] = useState(item?.quantity);
 console.log("%%%%%%%%%%%%%%%%%%%%item", item)
 
-    const [revenue, setRevenue] = useState(parseInt(item?.quantity * item?.Product.price))
-
+    const [revenue, setRevenue] = useState(parseInt(item?.quantity * item?.Product?.price))
+console.log("QQQQQQQQQQQQQQQQuantity", quantity)
     const options = [];
     for (let i = 1; i <= 100; i++) {
         options.push(i);
     }
-
+   
     useEffect(() => {
         dispatch(editCartItemThunk(item.id, quantity)).then(async () => {
             const allItems = await dispatch(getCartItemsThunk());
@@ -28,6 +28,11 @@ console.log("%%%%%%%%%%%%%%%%%%%%item", item)
             setRevenue(parseInt(editedItem?.quantity) * parseInt(editedItem?.Product.price))
         });
     }, [quantity]);
+
+    const handleChange = (e) => {
+        dispatch(editCartItemThunk(Number(item.id), Number(quantity)))
+        setQuantity(e.target.value)
+    }
 
     const deleteCartItem = async () => {
         await dispatch(deleteCartItemThunk(item.id));
@@ -45,7 +50,7 @@ console.log("%%%%%%%%%%%%%%%%%%%%item", item)
                 <button className='remove-item-button' onClick={() => deleteCartItem()}>Remove</button>
             </div>
                 <div className="quantity-select-container">
-                    <select className="cart-quantity-options" value={quantity} onChange={e => setQuantity(e.target.value)}>
+                    <select className="cart-quantity-options" value={quantity} onChange={handleChange}>
                         {options.map(option => (
                             <option key={option} value={option}>{option}</option>
                         ))}

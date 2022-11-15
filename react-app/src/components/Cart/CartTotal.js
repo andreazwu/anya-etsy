@@ -19,23 +19,23 @@ export default function CartTotal({ cartItems, initialSubtotal }) {
     return (
         <div className="">
             <div className="">
-                <span>Item(s) total </span>
+                <span>Item(s) total: </span>
                 <span>${subtotal}</span>
             </div>
             <div className="">
-                <span>Sales Tax</span>
-                <span>-${tax}</span>
+                <span>Sales Tax:</span>
+                <span>${tax}</span>
             </div>
             <div className="">
-                <span>Shipping</span>
+                <span>Shipping:</span>
                 <span style={{
                     color: 'red'
-                }}>-FREE</span>
+                }}>FREE</span>
             </div>
             <div className="">
                 <span style={{
                     display: 'inline'
-                }}>Total ({cartItems.length} items)</span>
+                }}>Total [{cartItems.length} item(s) ]:</span>
                 <span>${total}</span>
             </div>
             <div className="">
