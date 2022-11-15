@@ -130,7 +130,7 @@ export default function cartItemsReducer(state = {}, action) {
             return newState;
         }
         case CHECKOUT_CART: {
-            return { cartItemsList: [] };
+            return {};
         }
         default:
             return state;

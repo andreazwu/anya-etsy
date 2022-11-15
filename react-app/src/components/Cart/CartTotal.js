@@ -17,28 +17,28 @@ export default function CartTotal({ cartItems, initialSubtotal }) {
     };
 
     return (
-        <div className="">
-            <div className="">
+        <div className="cart-checkout-card">
+            <div className="checkout-card items-total">
                 <span>Item(s) total: </span>
                 <span>${subtotal}</span>
             </div>
-            <div className="">
+            <div className="checkout-card sales-tax">
                 <span>Sales Tax:</span>
                 <span>${tax}</span>
             </div>
-            <div className="">
+            <div className="checkout-card shipping-cost">
                 <span>Shipping:</span>
                 <span style={{
                     color: 'red'
                 }}>FREE</span>
             </div>
-            <div className="">
+            <div className="checkout-card items-total">
                 <span style={{
                     display: 'inline'
                 }}>Total [{cartItems.length} item(s) ]:</span>
                 <span>${total}</span>
             </div>
-            <div className="">
+            <div className="cart-checkout-button">
                 <button className="" onClick={deleteCart}>Proceed with purchase</button>
             </div>
         </div>

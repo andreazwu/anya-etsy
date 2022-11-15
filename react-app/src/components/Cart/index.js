@@ -5,7 +5,7 @@ import { getCartItemsThunk } from "../../store/cartItems";
 import CartItem from "./CartItem";
 import CartTotal from "./CartTotal";
 import './cart.css';
-import { authenticate } from './store/session';
+import { authenticate } from '../../store/session';
 
 const Cart = () => {
     const [loaded, setLoaded] = useState(false);
@@ -25,18 +25,18 @@ const Cart = () => {
       };
     }
 
-    useEffect(() => {
-        if (sessionUser) {
-          dispatch(getCartItemsThunk())
-        }
-      }, [cartItems?.length])
+    // useEffect(() => {
+    //     if (sessionUser) {
+    //       dispatch(getCartItemsThunk())
+    //     }
+    //   }, [cartItems?.length])
 
       useEffect(() => {
         (async () => {
           await dispatch(authenticate());
           if (sessionUser) {
-            await dispatch(getCartItemsThunk());
-            setCartLoaded(true)
+            await dispatch(getCartItemsThunk())
+              setCartLoaded(true)
           }
           setLoaded(true);
         })();
@@ -50,10 +50,10 @@ const Cart = () => {
       return <Redirect to='/' />
     }
 
-    return  (
-        <div className="">
-          {cartItems?.length > 0 && <div className="">
-            {cartItems?.length > 0 && <h2 className="">{cartItems.length} item(s) in your cart</h2>}
+    return  cartLoaded && (
+        <div className="cart-mostout-div">
+          {cartItems?.length > 0 && <div className="cart-leftpart">
+            {cartItems?.length > 0 && <h2 className="items-count-in-cart">{cartItems.length} item(s) in your cart</h2>}
             {cartItems?.length > 0 && cartItems?.map((item, i) =>
               <CartItem key={i} item={item} />
             )}

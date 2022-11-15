@@ -16,7 +16,7 @@ console.log("QQQQQQQQQQQQQQQQuantity", quantity)
     for (let i = 1; i <= 100; i++) {
         options.push(i);
     }
-   
+
     useEffect(() => {
         dispatch(editCartItemThunk(item.id, quantity)).then(async () => {
             const allItems = await dispatch(getCartItemsThunk());
@@ -29,10 +29,10 @@ console.log("QQQQQQQQQQQQQQQQuantity", quantity)
         });
     }, [quantity]);
 
-    const handleChange = (e) => {
-        dispatch(editCartItemThunk(Number(item.id), Number(quantity)))
-        setQuantity(e.target.value)
-    }
+    // const handleChange = (e) => {
+    //     dispatch(editCartItemThunk(Number(item.id), Number(quantity)))
+    //     setQuantity(e.target.value)
+    // }
 
     const deleteCartItem = async () => {
         await dispatch(deleteCartItemThunk(item.id));
@@ -40,17 +40,17 @@ console.log("QQQQQQQQQQQQQQQQuantity", quantity)
     }
 
     return (
-        <div className="outmost-div">
+        <div className="cart-item-container-div">
             <div className="cart-image-container" onClick={() => history.push(`/products/${item.id}`)}>
-                <span className="cart-item name-text">{item.Product.name}</span>
+                <span className="cart-item-name">{item.Product.name}</span>
                 <img src={item.Product.previewImage} alt='product' />
             </div>
             <div className="cart-product-name-remove">
                 <div>{item.Product.description}</div>
-                <button className='remove-item-button' onClick={() => deleteCartItem()}>Remove</button>
+                <button className='cart-item-remove-item-button' onClick={() => deleteCartItem()}>Remove</button>
             </div>
-                <div className="quantity-select-container">
-                    <select className="cart-quantity-options" value={quantity} onChange={handleChange}>
+                <div className="cart-item-quantity-select">
+                    <select className="cart-quantity-options" value={quantity} onChange={e => setQuantity(e.target.value)}>
                         {options.map(option => (
                             <option key={option} value={option}>{option}</option>
                         ))}
