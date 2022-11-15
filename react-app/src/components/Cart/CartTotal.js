@@ -12,8 +12,9 @@ export default function CartTotal({ cartItems, initialSubtotal }) {
 
     const deleteCart = async e => {
         e.preventDefault();
-        await dispatch(checkoutCartThunk());
-        history.push('/');
+        if (window.confirm('Are you sure you want to checkout?')){
+          await dispatch(checkoutCartThunk())}
+        history.push('/cart');
     };
 
     return (

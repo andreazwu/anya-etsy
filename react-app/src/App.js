@@ -47,12 +47,12 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/products/:productId' exact={true} >
+        <Route path='/products/:productId' exact={true} >
           <ProductDetails />
-        </ProtectedRoute>
-        <ProtectedRoute path='/new-product' exact={true} >
+        </Route>
+        <Route path='/new-product' exact={true} >
           <CreatePreoduct />
-        </ProtectedRoute>
+        </Route>
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
         </Route>

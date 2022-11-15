@@ -40,17 +40,18 @@ const Cart = () => {
           }
           setLoaded(true);
         })();
-      }, [dispatch, cartItems?.length]);
+      }, [dispatch, cartItems.length]);
 
       if (!loaded) {
         return null;
       }
-    if (!sessionUser) {
-      setShowLogin(true)
-      return <Redirect to='/' />
-    }
+      if (!sessionUser) return (
+        <div  className="cart-need-login">
+          Please log in to checkout your cart
+        </div>
+      )
 
-    return  cartLoaded && (
+    return setCartLoaded && (
         <div className="cart-mostout-div">
           {cartItems?.length > 0 && <div className="cart-leftpart">
             {cartItems?.length > 0 && <h2 className="items-count-in-cart">{cartItems.length} item(s) in your cart</h2>}

@@ -60,8 +60,8 @@ export const addCartItemThunk = (id, quantity) => async dispatch => {
 };
 
 export const editCartItemThunk = (id, quantity) => async dispatch => {
-    console.log("!!!!!!!!!!!!!!!!!editCartItemThunk")
-    console.log("!!!!!!!!!!!!!ID && QUantity", id, quantity)
+    // console.log("!!!!!!!!!!!!!!!!!editCartItemThunk")
+    // console.log("!!!!!!!!!!!!!ID && QUantity", id, quantity)
     const response = await fetch(`/api/cart_items/${id}`, {
         method: 'PUT',
         headers: {
@@ -69,11 +69,11 @@ export const editCartItemThunk = (id, quantity) => async dispatch => {
         },
         body: JSON.stringify({ quantity })
     });
-    console.log("!!!!!!!!!!@@@@@@@@@@@@@", response)
+    // console.log("!!!!!!!!!!@@@@@@@@@@@@@", response)
     if (response.ok) {
         const cartItem = await response.json();
         dispatch(editCartItemAction(id, quantity));
-        console.log("EditcartTHunk REsponse" ,cartItem)
+        // console.log("EditcartTHunk REsponse" ,cartItem)
         return cartItem;
     } else {
         const data = await response.json();
@@ -100,6 +100,7 @@ export const checkoutCartThunk = () => async dispatch => {
     const response = await fetch('/api/cart_items/checkout', {method: 'DELETE'});
     if (response.ok) {
         const data = await response.json();
+        console.log("ChekckXXXXXXXXXXXXXXXXXXcartTHunk REsponse" ,data)
         dispatch(checkoutCartAction());
         return data;
     } else {
@@ -134,7 +135,7 @@ export default function cartItemsReducer(state = {}, action) {
             return newState;
         }
         case CHECKOUT_CART: {
-            return {};
+            return { cartItemsList: [] };
         }
         default:
             return state;

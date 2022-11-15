@@ -8,11 +8,11 @@ export default function CartItem({ item }) {
     const dispatch = useDispatch();
     const history = useHistory()
     const [quantity, setQuantity] = useState(Number(item?.quantity));
-console.log("%%%%%%%%%%%%%%%%%%%%item", item)
+// console.log("%%%%%%%%%%%%%%%%%%%%item", item)
 
     let [revenue, setRevenue] = useState(Number(item?.quantity * item?.Product?.price))
-console.log("QQQQQQQQQQQQQQQQuantity", quantity)
-console.log("RRRRRRRRRRRRRRRRevenue", revenue)
+// console.log("QQQQQQQQQQQQQQQQuantity", quantity)
+// console.log("RRRRRRRRRRRRRRRRevenue", revenue)
     const options = [];
     for (let i = 1; i <= 100; i++) {
         options.push(i);
@@ -28,7 +28,7 @@ console.log("RRRRRRRRRRRRRRRRevenue", revenue)
             // console.log("(((((((((((((((((((editedItem", editedItem)
             setRevenue(Number(editedItem?.quantity) * Number(editedItem?.Product.price))
         });
-    }, [quantity, revenue]);
+    }, [quantity]);
 
     // const handleChange = (e) => {
     //     dispatch(editCartItemThunk(Number(item.id), Number(quantity)))
@@ -36,18 +36,19 @@ console.log("RRRRRRRRRRRRRRRRevenue", revenue)
     // }
 
     const deleteCartItem = async () => {
-        await dispatch(deleteCartItemThunk(item.id));
+        if (window.confirm('Are you sure you want to delete this item?')){
+        await dispatch(deleteCartItemThunk(item.id))}
         await dispatch(getCartItemsThunk());
     }
 
     return (
         <div className="cart-item-container-div">
             <div className="cart-image-container" onClick={() => history.push(`/products/${item.id}`)}>
-                <span className="cart-item-name">{item.Product.name}</span>
-                <img src={item.Product.previewImage} alt='product' />
+                <span className="cart-item-name">{item?.Product?.name}</span>
+                <img src={item?.Product?.previewImage} alt='product' />
             </div>
             <div className="cart-product-name-remove">
-                <div>{item.Product.description}</div>
+                <div>{item?.Product?.description}</div>
                 <button className='cart-item-remove-item-button' onClick={() => deleteCartItem()}><i class="fa-regular fa-trash-can"></i>  Remove</button>
             </div>
                 <div className="cart-item-quantity-select">
@@ -61,7 +62,7 @@ console.log("RRRRRRRRRRRRRRRRevenue", revenue)
                 <div className="item-total-container">
                     <p>$ {revenue}</p>
                     x{quantity}
-                    <p>(${item.Product.price} each)</p>
+                    <p>(${item?.Product?.price} each)</p>
                 </div>
             </div>
         </div>
