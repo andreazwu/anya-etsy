@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import ProductDetails from './components/ProductDetails';
+import ProductsBrower from './components/ProductsBrowser';
 import { authenticate } from './store/session';
 import CreatePreoduct from './components/CreateProduct';
 
@@ -30,6 +31,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        <Route exact path='/'>
+          <ProductsBrower/>
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>

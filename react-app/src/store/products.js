@@ -10,10 +10,10 @@ const MY_PRODUCTS = 'products/myproduct';
 
 ///// line 11 action
 // LOAD_ALL_PRODUCTS
-
-
-
-
+const allProducts = (products) => ({
+    type: LOAD_ALL_PRODUCTS,
+    products
+})
 
 
 
@@ -68,7 +68,7 @@ const addImg = (imgData) => {
 
 
 
-//line 71 MY_PRODUCT
+//line 71 MY_PRODUCTS
 
 
 
@@ -80,15 +80,15 @@ const addImg = (imgData) => {
 
 /////line 81 thunk
 // LOAD_ALL_PRODUCTS
+export const getAllProducts = () => async (dispatch) => {
+    const response = await fetch('/api/products');
 
-
-
-
-
-
-
-
-
+    if (response.ok) {
+        const products = await response.json();
+        dispatch(allProducts(products))
+        return products;
+    }
+}
 
 
 
@@ -109,6 +109,13 @@ export const getOneProduct = (productId) => async dispatch => {
         return product
     }
 }
+
+
+
+
+
+
+
 
 //line 120 CREATE_PRODUCT
 export const createProduct = (product) => async dispatch => {
@@ -160,6 +167,7 @@ export const addImgs = (imgDatas, productId) => async dispatch => {
     }
 }
 
+//line 170 UPDATE_PRODUCT
 
 
 
@@ -179,6 +187,7 @@ export const addImgs = (imgDatas, productId) => async dispatch => {
 
 
 
+//line 190 REMOVE_PRODUCT
 
 
 
@@ -188,16 +197,15 @@ export const addImgs = (imgDatas, productId) => async dispatch => {
 
 
 
-//line 151 ADD_IMG
 
 
 
 
+//line 204 MY_PRODUCTS
 
 
 
 
-//line 160 UPDATE_PRODUCT
 
 
 
@@ -209,107 +217,43 @@ export const addImgs = (imgDatas, productId) => async dispatch => {
 
 
 
-
-
-
-
-
-
-
-
-//line 180 REMOVE_PRODUCT
-
-
-
-
-
-
-
-
-
-
-
-
-
-//line 194 MY_PRODUCTS
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// line 210
+// line 220
 const initialState = {
     allProducts: {},
     singleProduct: {},
 }
 
 const products = (state = initialState, action) => {
+    let newState
     switch(action.type) {
         case LOAD_ALL_PRODUCTS:
+            newState = {...state, allProducts: {...state.allProducts}}
+            action.products.Products.forEach(product => {
+                newState.allProducts[product.id] = product;
+            })
+            newState.singleProduct={}
+            return newState
 
-
-
-
-
-
-
-
-
-
-
-            return state
-        // line 231
         case LOAD_ONE_PRODUCT:
-            const newState = { ...state, singleProduct: { ...action.product } };
+            newState = { ...state, singleProduct: { ...action.product } };
             console.log("in load_one_product reducer, newState:", newState)
             return newState
 
-
-
-
-
-             // line 241
         case CREATE_PRODUCT:
 
-
-
-
-
-
-
             return state
-             // line 251
+
         case UPDATE_PRODUCT:
 
 
-
-
-
-
-
             return state
-             // line 261
+
         case REMOVE_PRODUCT:
 
 
-
-
             return state
-             // line 268
+
         case MY_PRODUCTS:
-
-
-
 
             return state
         default:
