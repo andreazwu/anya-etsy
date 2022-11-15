@@ -115,7 +115,6 @@ export default function cartItemsReducer(state = {}, action) {
             return newState;
         }
         case EDIT_CART_ITEM: {
-            // console.log(action)
             const newState = { ...state }
             newState[action.id].quantity = action.quantity
             return newState

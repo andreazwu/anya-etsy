@@ -7,9 +7,8 @@ import './cart.css';
 export default function CartItem({ item }) {
     const dispatch = useDispatch();
     const history = useHistory()
-    // const product = item.Product;
-    const [quantity, setQuantity] = useState(item.quantity);
-console.log("%%%%%%%%%%%%%%%%%%%%", item)
+    const [quantity, setQuantity] = useState(item?.quantity);
+console.log("%%%%%%%%%%%%%%%%%%%%item", item)
 
     const [revenue, setRevenue] = useState(parseInt(item?.quantity * item?.Product.price))
 
@@ -21,12 +20,12 @@ console.log("%%%%%%%%%%%%%%%%%%%%", item)
     useEffect(() => {
         dispatch(editCartItemThunk(item.id, quantity)).then(async () => {
             const allItems = await dispatch(getCartItemsThunk());
-            console.log("^^^^^^^^^^^^^^^^^^", allItems)
-            const cartDetails = allItems.CartItems;
-            console.log("*******************", cartDetails)
+            console.log("^^^^^^^^^^^^^^^^^^allItems", allItems)
+            const cartDetails = allItems.CartItems
+            console.log("*******************cartDetails", cartDetails)
             const editedItem = cartDetails.find(editItem => editItem.id === item.id);
-            console.log("(((((((((((((((((((", editedItem)
-            setRevenue(editedItem?.quantity * editedItem?.Product.price)
+            console.log("(((((((((((((((((((editedItem", editedItem)
+            setRevenue(parseInt(editedItem?.quantity) * parseInt(editedItem?.Product.price))
         });
     }, [quantity]);
 
@@ -43,7 +42,7 @@ console.log("%%%%%%%%%%%%%%%%%%%%", item)
             </div>
             <div className="cart-product-name-remove">
                 <div>{item.Product.description}</div>
-                <div className='remove-item-button' onClick={() => deleteCartItem()}>Remove</div>
+                <button className='remove-item-button' onClick={() => deleteCartItem()}>Remove</button>
             </div>
                 <div className="quantity-select-container">
                     <select className="cart-quantity-options" value={quantity} onChange={e => setQuantity(e.target.value)}>
