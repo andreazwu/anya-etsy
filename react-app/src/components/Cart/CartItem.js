@@ -21,11 +21,11 @@ console.log("RRRRRRRRRRRRRRRRevenue", revenue)
     useEffect(() => {
         dispatch(editCartItemThunk(item.id, quantity)).then(async () => {
             const allItems = await dispatch(getCartItemsThunk());
-            console.log("^^^^^^^^^^^^^^^^^^allItems", allItems)
+            // console.log("^^^^^^^^^^^^^^^^^^allItems", allItems)
             const cartDetails = allItems.CartItems
-            console.log("*******************cartDetails", cartDetails)
+            // console.log("*******************cartDetails", cartDetails)
             const editedItem = cartDetails.find(editItem => editItem.id === item.id);
-            console.log("(((((((((((((((((((editedItem", editedItem)
+            // console.log("(((((((((((((((((((editedItem", editedItem)
             setRevenue(Number(editedItem?.quantity) * Number(editedItem?.Product.price))
         });
     }, [quantity, revenue]);
