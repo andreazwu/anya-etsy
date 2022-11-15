@@ -6,9 +6,9 @@ export default function CartTotal({ cartItems, initialSubtotal }) {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const subtotal = parseInt(initialSubtotal);
-    const tax = parseInt((subtotal * 0.0827).toFixed(2))
-    const total = parseInt(subtotal) + parseInt(tax);
+    const subtotal = Number(initialSubtotal);
+    const tax = Number((subtotal * 0.0827)).toFixed(2)
+    const total = Number(subtotal) + Number(tax);
 
     const deleteCart = async e => {
         e.preventDefault();

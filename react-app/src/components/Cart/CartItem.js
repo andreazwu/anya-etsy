@@ -7,11 +7,12 @@ import './cart.css';
 export default function CartItem({ item }) {
     const dispatch = useDispatch();
     const history = useHistory()
-    const [quantity, setQuantity] = useState(item?.quantity);
+    const [quantity, setQuantity] = useState(Number(item?.quantity));
 console.log("%%%%%%%%%%%%%%%%%%%%item", item)
 
-    const [revenue, setRevenue] = useState(parseInt(item?.quantity * item?.Product?.price))
+    let [revenue, setRevenue] = useState(Number(item?.quantity * item?.Product?.price))
 console.log("QQQQQQQQQQQQQQQQuantity", quantity)
+console.log("RRRRRRRRRRRRRRRRevenue", revenue)
     const options = [];
     for (let i = 1; i <= 100; i++) {
         options.push(i);
@@ -25,9 +26,9 @@ console.log("QQQQQQQQQQQQQQQQuantity", quantity)
             console.log("*******************cartDetails", cartDetails)
             const editedItem = cartDetails.find(editItem => editItem.id === item.id);
             console.log("(((((((((((((((((((editedItem", editedItem)
-            setRevenue(parseInt(editedItem?.quantity) * parseInt(editedItem?.Product.price))
+            setRevenue(Number(editedItem?.quantity) * Number(editedItem?.Product.price))
         });
-    }, [quantity]);
+    }, [quantity, revenue]);
 
     // const handleChange = (e) => {
     //     dispatch(editCartItemThunk(Number(item.id), Number(quantity)))
@@ -47,7 +48,7 @@ console.log("QQQQQQQQQQQQQQQQuantity", quantity)
             </div>
             <div className="cart-product-name-remove">
                 <div>{item.Product.description}</div>
-                <button className='cart-item-remove-item-button' onClick={() => deleteCartItem()}>Remove</button>
+                <button className='cart-item-remove-item-button' onClick={() => deleteCartItem()}><i class="fa-regular fa-trash-can"></i>  Remove</button>
             </div>
                 <div className="cart-item-quantity-select">
                     <select className="cart-quantity-options" value={quantity} onChange={e => setQuantity(e.target.value)}>
