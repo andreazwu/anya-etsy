@@ -6,15 +6,15 @@ import { thunkGetProductReviews } from "../../store/reviews"
 
 
 const LoadProductReviews = () => { //pass in productId props
-  console.log("COMPONENT - LOADPRODUCTREVIEWS STARTS")
+  // console.log("COMPONENT - LOADPRODUCTREVIEWS STARTS")
   const dispatch = useDispatch()
   const { productId } = useParams() //delete
   const productReviews = useSelector((state)=>state.reviews.product) //normalized obj
   const reviewsArr = Object.values(productReviews) //array
-  console.log("REVIEWSARR FROM USE SELECTOR:", reviewsArr)
+  // console.log("REVIEWSARR FROM USE SELECTOR:", reviewsArr)
 
   useEffect(() => {
-    console.log("LOADPRODUCTREVIEWS USE EFFECT RUNNING: DISPATCH THUNK")
+    // console.log("LOADPRODUCTREVIEWS USE EFFECT RUNNING: DISPATCH THUNK")
     dispatch(thunkGetProductReviews(productId))
   }, [dispatch, productId, reviewsArr.length])
 

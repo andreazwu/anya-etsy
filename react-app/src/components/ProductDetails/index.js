@@ -12,12 +12,13 @@ const ProductDetails = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)
     const product = useSelector(state => state.products.singleProduct)[0]
-
+    const reviewsObj = useSelector(state => state.reviews.product)
+    const reviewsArr = Object.values(reviewsObj)
     console.log("in ProductDetails----product", product)
 
     useEffect(() => {
         dispatch(getOneProduct(productId))
-    }, [dispatch, productId])
+    }, [dispatch, productId, reviewsArr.length])
 
     //verify if currentUser is seller of product
     let seller = false
@@ -48,6 +49,7 @@ const ProductDetails = () => {
             -------------------------------------------------------------
             <div className="single-product-reviews">
                 <div className="single-product-numReviews">{product.numReviews} reviews {product.avgRating.toFixed(2)} stars</div>
+            </div>
             {/* only show "create review" button to NON-seller of product */}
             <div>
                 {
@@ -56,8 +58,7 @@ const ProductDetails = () => {
                 <CreateReviewModal productId={productId}/>
                 }
             </div>
-            </div>
-            <div>
+            <div className="one-spot-reviews-container">
                 <LoadProductReviews productId={productId}/>
             </div>
 

@@ -52,12 +52,12 @@ const acDeleteReview = (reviewId) => {
 // THUNK ACs:
 // load all Product reviews thunk
 export const thunkGetProductReviews = (ProductId) => async (dispatch) => {
-  console.log("THUNK STARTS RUNNING, BEFORE FETCH FROM BACKEND")
+  // console.log("THUNK STARTS RUNNING, BEFORE FETCH FROM BACKEND")
   const response = await fetch(`/api/products/${ProductId}/reviews`)
-  console.log("THUNK STARTS RUNNING, AFTER FETCH FROM BACKEND")
+  // console.log("THUNK STARTS RUNNING, AFTER FETCH FROM BACKEND")
 
   if (response.ok) {
-    console.log("THUNK, BEFORE DISPATCH ACTION CREATOR")
+    // console.log("THUNK, BEFORE DISPATCH ACTION CREATOR")
     // {
     //   "Reviews": [
     //     {
@@ -75,7 +75,7 @@ export const thunkGetProductReviews = (ProductId) => async (dispatch) => {
     const data = await response.json() //object
     const reviewsArr = data.Reviews //array [{}, {}]
     dispatch(acLoadProductReviews(reviewsArr))
-    console.log("THUNK, AFTER DISPATCH ACTION CREATOR -- CYCLE ENDS")
+    // console.log("THUNK, AFTER DISPATCH ACTION CREATOR -- CYCLE ENDS")
     return data
   }
 }

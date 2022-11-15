@@ -50,7 +50,7 @@ const CreateReview = ({productId, setShowModal}) => {
 
     if (newReview) setShowModal(false)
     reset()
-    // history.push(`/products/${productId}/reviews`) //<<<<<
+    // history.push(`/products/${productId}`) //<<<<<
   }
 
   const reset = () => {
