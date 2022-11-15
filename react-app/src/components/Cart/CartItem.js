@@ -7,11 +7,11 @@ import './cart.css';
 export default function CartItem({ item }) {
     const dispatch = useDispatch();
     const history = useHistory()
-    // const product = item.product_detail;
+    // const product = item.Product;
     const [quantity, setQuantity] = useState(item.quantity);
 console.log("%%%%%%%%%%%%%%%%%%%%", item)
 
-    const [revenue, setRevenue] = useState(item?.quantity * item?.Product.price)
+    const [revenue, setRevenue] = useState(parseInt(item?.quantity * item?.Product.price))
 
     const options = [];
     for (let i = 1; i <= 100; i++) {
