@@ -84,19 +84,18 @@ def edit_cart_item(cart_item_id):
   item = CartItem.query.get(cart_item_id)
   form = CartItemForm()
   form["csrf_token"].data = request.cookies["csrf_token"]
+
   if item is None:
     return {"errors" : "Cart item couldn't be found"}, 404
   if form.validate_on_submit():
-    data = CartItem(
-      id = item.id,
-      user_id = current_user.id,
-      product_id = item.product_id,
-      quantity = form.data["quantity"],
-      order_id = 0
-    )
+
+
+    item.quantity = form.data["quantity"]
+    item.order_id = 0
+
 
     db.session.commit()
-    return data.to_dict(), 200
+    return item.to_dict(), 200
   else:
       return {"errors" : validation_errors_to_error_messages(form.errors)}, 400
 
@@ -113,6 +112,7 @@ def edit_cart_item(cart_item_id):
 #  })
 #  .then(res => res.json())
 #  .then(console.log)
+
 
 
 
