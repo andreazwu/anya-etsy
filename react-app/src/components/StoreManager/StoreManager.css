@@ -51,7 +51,7 @@
 
 .myproducts-product-image-container {
   min-width: 210px;
-  height: 190px;
+  height: 170px;
   margin-bottom: 1rem;
 }
 
@@ -62,8 +62,11 @@
 }
 
 .myproducts-product-info {
-  padding: 0 25px;
+  padding: 0px 10px 15px 25px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .myproducts-product-category {
@@ -75,11 +78,11 @@
   color: rgba(180, 173, 173, 0.8);
 }
 
-.myproducts-product-price {
-  /* color: rgba(180, 173, 173, 0.8); */
+/* .myproducts-product-price {
+  color: rgba(180, 173, 173, 0.8);
   margin-top: 88px;
-  /* font-size: 14px; */
-}
+  font-size: 14px;
+} */
 
 .myproducts-product-stock {
   /* margin-top: 90px; */

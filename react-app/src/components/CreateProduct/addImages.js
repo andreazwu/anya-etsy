@@ -14,17 +14,15 @@ const AddImages = (productId) => {
     const [url3, setUrl3] = useState()
 
     useEffect(() => {
-        if (url3) setImgs([url1, url2, url3])
-        else if (url2) setImgs([url1, url2])
-        else if (url1) setImgs([url1])
-        else setImgs([])
-        console.log('in ADDimgs-imgs:', imgs)
-        // if ((url1 && !url1.startWith('https://')) || (url2 && !url2.startWith('https://')) || (url3 && !url3.startWith('https://'))) {
-        //     errors.push("Please provide a vaild url with 'https://'")
-        // }
-        // if ((url1 && !url1.startWith('https://'))) {
-        //     errors.push("Please provide a vaild url with 'https://'")
-        // }
+        const errors = []
+        if (!url1 || !url1?.includes('https://')) errors.push("Please provide one image with 'https://'")
+
+        if (url2 && !url2?.includes('https://')) {
+            errors.push("Please provide a vaild image-2 with 'https://'")
+        }
+        if ((url3 && !url3?.includes('https://'))) {
+            errors.push("Please provide a vaild image-3 with 'https://'")
+        }
         setErrors(errors);
 
     }, [url1, url2, url3])
@@ -32,14 +30,26 @@ const AddImages = (productId) => {
 
     const imageSubmit = async(e) => {
         e.preventDefault()
-        const payload = {imgs, productId}
+        if (errors.length > 0) {
+            return
+        }
+
         const imgProductId = productId.productId
         console.log('in ADDimgs-imgProductId:', imgProductId)
 
-        const response = await dispatch(addImgs(imgs, imgProductId)).catch(async(res) => {
-            const error = await res.json()
-            console.log('in AddImages-error:', error)
-        })
+        if (url1) {
+            await dispatch(addImgs(url1, imgProductId))
+        }
+
+        if (url2) {
+            await dispatch(addImgs(url2, imgProductId))
+        }
+
+        if (url3) {
+            await dispatch(addImgs(url3, imgProductId))
+        }
+
+        history.push(`/store-manager`)
     }
 
     return (
