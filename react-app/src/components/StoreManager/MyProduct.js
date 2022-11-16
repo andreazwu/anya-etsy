@@ -2,10 +2,9 @@ import { Link, useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { thunkRemoveProduct } from "../../store/products"
 import noimage from "./noimage.jpg"
-
 import "./StoreManager.css"
 
-const MyProduct = ({product}) => {
+const MyProduct = ({ product }) => {
   const dispatch = useDispatch()
   const history = useHistory()
 
@@ -28,56 +27,56 @@ const MyProduct = ({product}) => {
   }
 
   return (
-    <div>
-      <Link style={{ textDecoration: "none", color: "black" }} to={`/products/${product.id}`}>
+    <div className="myproducts-product-container">
 
-      <div className="allproducts-product-image-container">
-        {product.previewImage ?
-          (<div><img src={product.previewImage} /></div>) :
-          (<div><img src={noimage} alt="noimage" /></div>)
-        }
-        </div>
 
-        <div className="allproducts-product-info">
+      <div className="myproducts-product-image-container">
+        <Link style={{ textDecoration: "none", color: "black" }} to={`/products/${product.id}`}>
+          {product.previewImage ?
+            (<img src={product.previewImage} />) :
+            (<img src={noimage} alt="noimage" />)
+          }
+        </Link>
 
-          <div className="allproducts-product-header">
-            <div className="allproducts-product-name">
-              {product.name.split(",")[0].split("|")[0]}
-            </div>
+      </div>
 
-            <div className="allproducts-product-rating">
-              {product.avgRating ?
-                (<span>★ {product.avgRating}</span>):
-                (<span>★ no review</span>)
-              }
-            </div>
+      <div className="myproducts-product-info">
+          <div className="myproducts-product-category">
+            {product.category}
           </div>
-
-          <div className="allproducts-product-price">
-            ${parseInt(product.price).toFixed(2)}
+          <div className="myproducts-product-name">
+            {product.name.split(",")[0].split("|")[0]}
           </div>
-          <div className="allproducts-product-stock">
+          <div className="myproducts-product-rating">
+            {product.avgRating ?
+              (<span>★ {product.avgRating.toFixed(1)}</span>):
+              (<span>★ no review</span>)
+            }
+          </div>
+          <div className="myproducts-product-price">
+            ${parseFloat(product.price).toFixed(2)}
+          </div>
+          <div className="myproducts-product-stock">
             {product.stock} left in stock
           </div>
         </div>
-      </Link>
 
-        <div className="myproduct-buttons-container">
-          {seller && (
-            <>
-              <button
-              className="myproduct-buttons"
-              onClick={editProductHandleClick}>
-                Edit
-              </button>
-              <button
-              className="myproduct-buttons"
-              onClick={deleteProductHandleClick}>
-                Delete
-              </button>
-            </>
-          )}
-        </div>
+      <div className="myproduct-buttons-container">
+        {/* {seller && (
+          <> */}
+          <button
+          className="myproduct-buttons"
+          onClick={editProductHandleClick}>
+            Edit
+          </button>
+          <button
+          className="myproduct-buttons"
+          onClick={deleteProductHandleClick}>
+            Delete
+          </button>
+          {/* </>
+        )} */}
+      </div>
     </div>
   )
 }

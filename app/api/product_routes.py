@@ -98,6 +98,15 @@ def get_my_products():
 
       product['price'] = str(product['price'])
 
+      productreviews = Review.query.filter(Review.product_id == product_id).all()
+      if productreviews:
+        numReviews = len(productreviews)
+        total_stars = 0
+        for review in productreviews:
+          total_stars += review.to_dict()["stars"]
+        avgRating = total_stars / numReviews
+      product['avgRating'] = avgRating
+
       products_result.append(product)
 
     return jsonify({"Products": products_result}), 200

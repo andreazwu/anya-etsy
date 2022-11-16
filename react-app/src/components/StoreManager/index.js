@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Redirect } from "react-router-dom"
+import { Redirect, Link } from "react-router-dom"
 import { thunkGetMyProducts } from "../../store/products"
 import MyProduct from "./MyProduct"
 import "./StoreManager.css"
@@ -19,32 +19,29 @@ const StoreManager = () => {
   if (!currentUser) return <Redirect to="/" />
 
   return (
-    <>
-      <div className="myproducts-header">
-        {
-          productsArr.length === 0 ?
-          (<>
-            <h1>My Products</h1>
-            <h4>You Haven't Listed Any Products!</h4>
-          </>):
-          <h1>My Products</h1>
+    <div className="my-products-main">
+      <div className="my-products-upper">
+        <div className="my-products-header">Shop Manager</div>
+        {currentUser?.username &&
+          <div className="my-products-shop">
+              <span className="shop-manager-shop-name">{currentUser?.username}</span>
+              &nbsp;
+              <i class="fa-solid fa-angle-right"></i>
+          </div>
         }
       </div>
 
-      <div className="wrapper-center">
-        <div className="allproducts-container myproducts">
+      <div className="my-products-outer">
+        <div className="my-products-inner">
           {
             productsArr.map((product) => (
-              //implement product in separate component add prop
-              <MyProduct key={product.id} product={product}>
-                {/* {console.log("LOAD USER PRODUCTS (STOREMANAGER) COMPONENT RETURN:", product)} */}
-              </MyProduct>
+              <MyProduct key={product.id} product={product}/>
             ))
           }
         </div>
       </div>
 
-    </>
+    </div>
   )
 }
 
