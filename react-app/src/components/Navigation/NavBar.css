@@ -6,3 +6,136 @@
   margin-left: 0.5em;
 }
 
+
+NavLink {
+  text-decoration: none;
+}
+
+.navBar-main {
+  box-sizing: border-box;
+  min-height: 101px;
+  margin: 0 auto;
+  width: 1450px;
+}
+
+.navBar-outer {
+  display: flex;
+  flex-direction: row;
+  margin: 20px auto 10px;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.navBar-link {
+  margin: 0 5px;
+  display: flex;
+  align-items: center;
+}
+
+.sign-in {
+  font-family: GraphikRegular, Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  border-radius: 35%;
+  padding: 0 10px;
+}
+
+.navBar-link-icon {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 50%;
+}
+
+.navBar-link-icon:hover,
+.navBar-link-profile:hover,
+.sign-in:hover {
+  background-color: rgba(128, 128, 128, 0.095);
+  cursor: pointer;
+}
+
+.navBar-link-profile {
+  padding: 0 10px 5px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 35%;
+}
+
+.navBar-home {
+  color: #F1641E;
+  font-family: GuardianEgypRegular, Arial, Helvetica, sans-serif;
+  font-size: 39px;
+  line-height: 19.6px;
+  padding-right: 5px;
+}
+
+.navBar-searchBar-outer {
+  border: black 2.5px solid;
+  border-radius: 30px;
+  background-color: #F3F3F3;
+  width: 98%;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  margin: 0 10px 0 5px;
+}
+
+.navBar-featured-outer {
+  display: flex;
+  justify-content: center;
+  font-family: GraphikLight, Arial, Helvetica, sans-serif;
+  font-size: 0.83rem;
+  box-sizing: border-box;
+  align-items: center;
+  width: 1450px;
+  letter-spacing: 0.03rem;
+}
+
+.navBar-feature, .navBar-feature-active {
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  padding: 0.5rem 0 1.09rem;
+  margin: 0 1.5rem;
+  white-space: nowrap;
+}
+
+.navBar-feature-active {
+  border-bottom: 1px solid black;
+}
+
+.navBar-feature:hover {
+  cursor: pointer;
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 1281px) and (max-width: 1440px) {
+  .navBar-main {
+    width: 1416px;
+  }
+
+  .navBar-featured-outer {
+    width: 1400px;
+    margin: 0 auto;
+  }
+
+  .navBar-feature, .navBar-feature-active {
+    margin: 0 1.6rem;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .navBar-main {
+    width: 1216px;
+  }
+
+  .navBar-featured-outer {
+    width: 1200px;
+    margin: 0 auto;
+  }
+
+  .navBar-feature, .navBar-feature-active {
+    margin: 0 1.1rem;
+  }
+}
+

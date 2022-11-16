@@ -63,7 +63,7 @@ def edit_review(review_id):
 
       db.session.commit()
 
-      return review.to_dict(), 201
+      return review.to_dict_my_reviews(), 201
     else:
       return {'errors': validation_errors_to_error_messages(form.errors)}, 400
   else:
