@@ -46,8 +46,8 @@ const MyProduct = ({ product }) => {
             {product.category}
           </div>
           <div className="myproducts-product-name">
-            {product.name}
-            {/* {product.name.split(",")[0].split("|")[0]} */}
+            {/* {product.name} */}
+            {product.name.split(",")[0].split("|")[0]}
           </div>
           <div className="myproducts-product-rating">
             {/* {product.avgRating ?

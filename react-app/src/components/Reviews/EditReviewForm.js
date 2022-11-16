@@ -32,7 +32,7 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
 
     const errorsArr = []
 
-    if (!editreview.length || editreview.length > 2000) errorsArr.push("please enter a valid review fewer than 2000 characters long")
+    if (editreview.length > 2000) errorsArr.push("please enter a valid review fewer than 2000 characters long")
 
     setErrors(errorsArr)
 
@@ -64,7 +64,7 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
   }
 
   return (
-    <div>
+    <div className="edit-review-form">
 
       <div className="validation-errors">
         {
@@ -92,6 +92,7 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
               Review:
               <textarea
                 type="text"
+                placeholder="Optional"
                 value={editreview}
                 onChange={(e) => setEditReview(e.target.value)}
               />
