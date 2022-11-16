@@ -40,6 +40,7 @@ const EditProduct = () => {
         const payload = {name, category, description, price, stock}
 
         const response = await dispatch(editProduct(payload, productId))
+        // if (response) setShowEditForm(false)
     }
 
     return (
