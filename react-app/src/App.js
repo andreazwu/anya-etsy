@@ -14,6 +14,7 @@ import { authenticate } from './store/session';
 import LoadUserReviews from './components/Reviews/LoadUserReviews';
 import CreateReviewForm from './components/Reviews/CreateReviewForm';
 import EditReviewForm from './components/Reviews/EditReviewForm';
+import StoreManager from './components/StoreManager';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -63,6 +64,9 @@ function App() {
         </Route>
         <Route path='/my-reviews' exact={true} >
           <LoadUserReviews />
+        </Route>
+        <Route path='/store-manager' exact={true} >
+          <StoreManager />
         </Route>
       </Switch>
     </BrowserRouter>

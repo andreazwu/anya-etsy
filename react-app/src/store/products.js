@@ -69,12 +69,12 @@ const addImg = (imgData) => {
 
 
 //line 71 MY_PRODUCTS
-
-
-
-
-
-
+const acLoadMyProducts = (products) => {
+    return {
+        type: MY_PRODUCTS,
+        products
+    }
+}
 
 
 
@@ -202,13 +202,13 @@ export const addImgs = (imgDatas, productId) => async dispatch => {
 
 
 //line 204 MY_PRODUCTS
-
-
-
-
-
-
-
+export const thunkGetMyProducts = () => async (dispatch) => {
+    const response = await fetch("/api/products/current")
+    if (response.ok) {
+        const products = await response.json()
+        dispatch(acLoadMyProducts(products))
+    }
+}
 
 
 
@@ -254,8 +254,13 @@ const products = (state = initialState, action) => {
             return state
 
         case MY_PRODUCTS:
+            newState = {...state}
+            const normalizedProducts = {}
+            action.products.Products.forEach(product => normalizedProducts[product.id] = product)
+            newState.allProducts = normalizedProducts
+            newState.singleProduct = {}
+            return newState
 
-            return state
         default:
             return state;
     }
