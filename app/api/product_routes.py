@@ -244,18 +244,17 @@ def add_product_image(product_id):
   """
   logged in user can add images to their product listing
   """
+  print('in addd_product_image-----start')
   product = Product.query.get(product_id)
   form = ImageForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-
   if product is None:
     return {"errors" : "Product couldn't be found"}, 404
   if product.seller_id != current_user.id:
     return {"errors" : "You are not the seller of this product"}, 403
   if form.validate_on_submit():
     new_image = Image(
-      url=form.data["url"],
-      product_id=product_id
+      url=form.data["url"]
     )
     db.session.add(new_image)
     db.session.commit()

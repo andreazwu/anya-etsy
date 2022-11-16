@@ -11,6 +11,7 @@ import ProductDetails from './components/ProductDetails';
 import ProductsBrower from './components/ProductsBrowser';
 import { authenticate } from './store/session';
 import CreatePreoduct from './components/CreateProduct';
+import EditProduct from './components/EditProduct';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -40,18 +41,15 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/products/:productId' exact={true} >
+        <Route path='/products/:productId' exact={true} >
           <ProductDetails />
-        </ProtectedRoute>
-        <ProtectedRoute path='/new-product' exact={true} >
+        </Route>
+        <Route path='/new-product' exact={true} >
           <CreatePreoduct />
-        </ProtectedRoute>
+        </Route>
+        <Route path='/edit-product/:productId' exact={true} >
+          <EditProduct />
+        </Route>
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
         </Route>
