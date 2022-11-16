@@ -420,10 +420,11 @@ def create_cart_item(product_id):
   cartItem = db.session.query(CartItem) \
                             .filter(CartItem.user_id == current_user.id) \
                             .filter(CartItem.product_id == product_id) \
+                            .filter(CartItem.order_id == 0)\
                             .first()
-  print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",cartItem.product_id)
-  print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",cartItem.quantity)
-  print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",cartItem.product.name)
+  # print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",cartItem.product_id)
+  # print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",cartItem.quantity)
+  # print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",cartItem.product.name)
   form = CartItemForm()
   form["csrf_token"].data = request.cookies["csrf_token"]
   if not item:
