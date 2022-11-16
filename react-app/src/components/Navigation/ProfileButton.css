@@ -14,16 +14,6 @@
   font-size: 12px;
 }
 
-.profile-user-img {
-  width: 27px;
-  border-radius: 50%;
-}
-
-.fa-solid.fa-user {
-  font-size: 20px;
-  margin-left: 3px;
-}
-
 .profile-dropdown {
   position: absolute;
   top: 50px;
@@ -44,6 +34,23 @@
   cursor: default;
 }
 
+.profile-user-img {
+  width: 27px;
+  border-radius: 50%;
+}
+
+.fa-solid.fa-user {
+  font-size: 20px;
+  margin-left: 3px;
+}
+
+.profile-name {
+  font-family: GraphikMedium, Arial, Helvetica, sans-serif;
+  color: #222222;
+  margin-left: 10px;
+  font-size: 20px;
+}
+
 .dropdown-item {
   display: flex;
   align-items: center;
@@ -53,13 +60,6 @@
 .dropdown-item:hover {
   background-color: rgba(128, 128, 128, 0.095);
   cursor: pointer;
-}
-
-.profile-name {
-  font-family: GraphikMedium, Arial, Helvetica, sans-serif;
-  color: #222222;
-  margin-left: 10px;
-  font-size: 20px;
 }
 
 .my-reviews {
@@ -86,13 +86,5 @@
 .sign-out-img {
   margin-left: 2px;
   transform: rotate(180deg);
-}
-
-.profile-shop-img {
-  height: 26px;
-}
-
-.review-star-img {
-  height: 29px;
 }
 
