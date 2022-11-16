@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { login } from '../../store/session';
+// import { Redirect } from 'react-router-dom';
+import { login } from '../../../store/session';
 
-const LoginForm = ({ setShowSignIn }) => {
+const LoginForm = () => {
   console.log("LOGINFORM COMPONENT STARTS:")
 
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const user = useSelector(state => state.session.user);
+  // const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onLogin = async (e) => {
@@ -19,8 +19,6 @@ const LoginForm = ({ setShowSignIn }) => {
     if (data) {
       console.log("LOGINFORM AFTER DISPATCH, DATA:", data)
       setErrors(data);
-    } else {
-      setShowSignIn(false)
     }
   };
 
