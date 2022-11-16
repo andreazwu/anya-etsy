@@ -1,8 +1,12 @@
-.createproduct-total {
-    background-image: url('https://github.com/lynnettenguyen/happily/blob/main/react-app/src/components/CSS/Images/new_shop.jpg?raw=true');
-    color: white;
-   
+* {
+    font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
+  }
 
+.createproduct-total {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .edit-product-errors {
