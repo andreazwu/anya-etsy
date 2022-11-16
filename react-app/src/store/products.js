@@ -282,8 +282,11 @@ const products = (state = initialState, action) => {
             return newState
 
         case REMOVE_PRODUCT:
-            newState = {...state, allProducts: { ...state.allProducts}}
+            newState = {...state}
+            newState.allProducts = {...state.allProducts}
+            newState.singleProduct = {...state.singleProduct}
             delete newState.allProducts[action.productId]
+            if (newState.singleProduct.id === action.productId) newState.singleProduct = {}
             return newState
 
         case MY_PRODUCTS:

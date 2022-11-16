@@ -48,10 +48,12 @@ const MyProduct = ({ product }) => {
       </div>
 
       <div className="myproducts-product-info">
+        <div>
           <div className="myproducts-product-category">
             {product.category}
           </div>
           <div className="myproducts-product-name">
+            {/* {product.name} */}
             {product.name.split(",")[0].split("|")[0]}
           </div>
           <div className="myproducts-product-rating">
@@ -71,6 +73,9 @@ const MyProduct = ({ product }) => {
               </span>
             }
           </div>
+        </div>
+
+        <div>
           <div className="myproducts-product-price">
             ${parseFloat(product.price).toFixed(2)}
           </div>
@@ -78,6 +83,8 @@ const MyProduct = ({ product }) => {
             {product.stock} left in stock
           </div>
         </div>
+
+      </div>
 
       <div className="myproduct-buttons-container">
         {/* {seller && (
