@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 
-const LoginForm = () => {
+const LoginForm = ({ setShowSignIn }) => {
   console.log("LOGINFORM COMPONENT STARTS:")
 
   const [errors, setErrors] = useState([]);
@@ -19,6 +19,8 @@ const LoginForm = () => {
     if (data) {
       console.log("LOGINFORM AFTER DISPATCH, DATA:", data)
       setErrors(data);
+    } else {
+      setShowSignIn(false)
     }
   };
 
@@ -42,9 +44,9 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  if (user) {
-    return <Redirect to='/' />;
-  }
+  // if (user) {
+  //   return <Redirect to='/' />;
+  // }
 
   return (
     <form onSubmit={onLogin}>
