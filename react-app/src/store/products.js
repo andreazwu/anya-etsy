@@ -6,17 +6,17 @@ const ADD_IMG = 'products/addimg';
 const UPDATE_PRODUCT = 'products/updateproduct';
 const REMOVE_PRODUCT = 'products/deleteproduct';
 const MY_PRODUCTS = 'products/myproduct';
+const RESET_PRODUCTS = 'products/RESET_PRODUCTS'
 
+export const acResetProducts = () => {
+    return { type: RESET_PRODUCTS }
+  }
 
-///// line 11 action
 // LOAD_ALL_PRODUCTS
 const allProducts = (products) => ({
     type: LOAD_ALL_PRODUCTS,
     products
 })
-
-
-
 
 //line 21 LOAD_ONE_PRODUCT
 const loadOneProduct = (product) => {
@@ -277,6 +277,11 @@ const products = (state = initialState, action) => {
             action.products.Products.forEach(product => normalizedProducts[product.id] = product)
             newState.allProducts = normalizedProducts
             newState.singleProduct = {}
+            return newState
+
+        case RESET_PRODUCTS:
+            newState = {...state}
+            newState.allProducts = {}
             return newState
 
         default:

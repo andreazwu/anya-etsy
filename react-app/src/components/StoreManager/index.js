@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Redirect, Link } from "react-router-dom"
-import { thunkGetMyProducts } from "../../store/products"
+import { thunkGetMyProducts, acResetProducts } from "../../store/products"
 import MyProduct from "./MyProduct"
 import "./StoreManager.css"
 
@@ -14,7 +14,10 @@ const StoreManager = () => {
 
   useEffect(()=>{
     dispatch(thunkGetMyProducts())
-  }, [dispatch, currentUser, productsObj]) //<<<<<
+    // return () => {
+    //   dispatch(acResetProducts())
+    // }
+  }, [dispatch]) //<<<<<
 
   if (!currentUser) return <Redirect to="/" />
 
