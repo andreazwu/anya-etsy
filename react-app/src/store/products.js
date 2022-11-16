@@ -6,19 +6,20 @@ const ADD_IMG = 'products/addimg';
 const UPDATE_PRODUCT = 'products/updateproduct';
 const REMOVE_PRODUCT = 'products/deleteproduct';
 const MY_PRODUCTS = 'products/myproduct';
+const RESET_PRODUCTS = 'products/RESET_PRODUCTS'
 const SEARCH_PRODUCTS = 'products/searchedProducts';
 
-///// line 11 action
+export const acResetProducts = () => {
+    return { type: RESET_PRODUCTS }
+  }
+
 // LOAD_ALL_PRODUCTS
 const allProducts = (products) => ({
     type: LOAD_ALL_PRODUCTS,
     products
 })
 
-
-
-
-//line 21 LOAD_ONE_PRODUCT
+// LOAD_ONE_PRODUCT
 const loadOneProduct = (product) => {
     return {
         type: LOAD_ONE_PRODUCT,
@@ -27,8 +28,7 @@ const loadOneProduct = (product) => {
 }
 
 
-
-// line 31CREATE_PRODUCT
+// line 31 CREATE_PRODUCT
 const createOneProduct = (product) => {
     return {
         type: CREATE_PRODUCT,
@@ -49,32 +49,32 @@ const addImg = (imgData) => {
 
 
 //line 51UPDATE_PRODUCT
-
-
-
-
-
-
+const updateOneProduct = (product) => {
+    return {
+        type: UPDATE_PRODUCT,
+        product
+    }
+}
 
 
 
 //line 61 REMOVE_PRODUCT
-
-
-
-
-
-
+const acRemoveProduct = (productId) => {
+    return {
+        type: REMOVE_PRODUCT,
+        productId
+    }
+}
 
 
 
 //line 71 MY_PRODUCTS
-
-
-
-
-
-
+const acLoadMyProducts = (products) => {
+    return {
+        type: MY_PRODUCTS,
+        products
+    }
+}
 
 
 
@@ -136,7 +136,7 @@ export const createProduct = (product) => async dispatch => {
             headers: {
                 'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(product)
+            body: JSON.stringify(product)
         });
 
         if (response.ok) {
@@ -153,72 +153,72 @@ export const createProduct = (product) => async dispatch => {
 
 // line 154 Add_IMG
 export const addImgs = (imgDatas, productId) => async dispatch => {
-    console.log("in addImg thunk----product", imgDatas, productId)
+    console.log("in addImg thunk----img", imgDatas, productId)
     for (const imgData of imgDatas) {
         try {
+            console.log("in addImg thunk----imgData",imgData)
                 const response = await fetch(`/api/products/${productId}/images`, {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify(imgData)
+                    body: JSON.stringify({url: imgData})
                 });
 
             if (response.ok) {
                 const newImg = await response.json();
-                console.log("in createProduct thunk----newImg", newImg)
-                dispatch(createOneProduct(newImg));
+                console.log("in addImgs thunk----newImg", newImg)
+                dispatch(addImg(newImg));
                 return newImg
             }
-
         } catch(error) {
             throw error
         }
     }
 }
 
-//line 180 UPDATE_PRODUCT
+//line 170 UPDATE_PRODUCT
+export const editProduct = (product, productId) => async dispatch => {
+    try {
+        const response = await fetch(`/api/products/${productId}`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+                },
+            body: JSON.stringify(product)
+        });
+        if (response.ok) {
+            const newProduct = await response.json();
+            dispatch(updateOneProduct(newProduct));
+            return newProduct
+        }
+    } catch(error) {
+        throw error
+    }
+}
+
+//line 190 REMOVE_PRODUCT
+export const thunkRemoveProduct = (productId) => async (dispatch) => {
+    const response = await fetch(`/api/products/${productId}`, {
+        method: "DELETE"
+    })
+    if (response.ok) {
+        dispatch(acRemoveProduct(productId))
+    }
+}
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//line 200 REMOVE_PRODUCT
-
-
-
-
-
-
-
-
-
-
-
-
-
-//line 214 MY_PRODUCTS
-
-
-
-
-
-
-
+//line 204 MY_PRODUCTS
+export const thunkGetMyProducts = () => async (dispatch) => {
+    const response = await fetch("/api/products/current")
+    if (response.ok) {
+        const products = await response.json()
+        dispatch(acLoadMyProducts(products))
+    }
+}
 
 
 
@@ -266,22 +266,26 @@ const products = (state = initialState, action) => {
             return newState
 
         case CREATE_PRODUCT:
-
-            return state
-
+            newState = { ...state, allProducts: { ...state.allProducts, [action.product.id]: action.product} };
+            return newState
+        case ADD_IMG:
+            newState = { ...state, singleProduct: { ...state.singleProduct, productImages:[action.imgData]}}
+            return newState
         case UPDATE_PRODUCT:
+            newState = { ...state, allProducts:{ [action.product.id]: {...state[action.product.id]}, ...action.product} };
+            return newState
 
 
-            return state
-
-        case REMOVE_PRODUCT:
 
 
-            return state
 
-        case MY_PRODUCTS:
 
-            return state
+
+
+
+
+
+
         case SEARCH_PRODUCTS:
             newState = {...state, searchedProducts: {}};
             // console.log("in SEARCH_PRODUCTS action.products:", action.products)
@@ -290,6 +294,28 @@ const products = (state = initialState, action) => {
             })
             // console.log("in SEARCH_PRODUCTS reducer, newState:", newState)
             return newState
+
+        case REMOVE_PRODUCT:
+            newState = {...state}
+            newState.allProducts = {...state.allProducts}
+            newState.singleProduct = {...state.singleProduct}
+            delete newState.allProducts[action.ProductId]
+            if (newState.singleProduct.id === action.productId) newState.singleProduct = {}
+            return newState
+
+        case MY_PRODUCTS:
+            newState = {...state}
+            const normalizedProducts = {}
+            action.products.Products.forEach(product => normalizedProducts[product.id] = product)
+            newState.allProducts = normalizedProducts
+            // newState.singleProduct = {}
+            return newState
+
+        case RESET_PRODUCTS:
+            newState = {...state}
+            newState.allProducts = {}
+            return newState
+
         default:
             return state;
     }

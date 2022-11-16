@@ -10,7 +10,13 @@ import User from './components/User';
 import ProductDetails from './components/ProductDetails';
 import ProductsBrowser from './components/ProductsBrowser';
 import { authenticate } from './store/session';
+import Cart from './components/Cart';
 import CreatePreoduct from './components/CreateProduct';
+import EditProduct from './components/EditProduct';
+import LoadUserReviews from './components/Reviews/LoadUserReviews';
+import CreateReviewForm from './components/Reviews/CreateReviewForm';
+import EditReviewForm from './components/Reviews/EditReviewForm';
+import StoreManager from './components/StoreManager';
 import ProductsBySearch from './components/ProductsBySearch'
 
 function App() {
@@ -50,15 +56,30 @@ function App() {
         <Route path='/users/:userId' exact={true} >
           <User />
         </Route>
+        <Route path='/products/:productId/new-review' exact={true} >
+          <CreateReviewForm />
+        </Route>
+        <Route path='/reviews/:reviewId/edit-review' exact={true} >
+          <EditReviewForm />
+        </Route>
         <Route path='/products/:productId' exact={true} >
           <ProductDetails />
         </Route>
         <Route path='/new-product' exact={true} >
           <CreatePreoduct />
         </Route>
-        <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+        <Route path='/edit-product/:productId' exact={true} >
+          <EditProduct />
         </Route>
+        <Route path='/my-reviews' exact={true} >
+          <LoadUserReviews />
+        </Route>
+        <Route path='/store-manager' exact={true} >
+          <StoreManager />
+        </Route>
+        <Route path='/cart' exact={true}>
+            <Cart />
+          </Route>
       </Switch>
     </BrowserRouter>
   );
