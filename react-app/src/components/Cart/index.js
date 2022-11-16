@@ -51,7 +51,7 @@ const Cart = () => {
         </div>
       )
 
-    return setCartLoaded && (
+    return cartLoaded && (
         <div className="cart-mostout-div">
           {cartItems?.length > 0 && <div className="cart-leftpart">
             {cartItems?.length > 0 && <h2 className="items-count-in-cart">{cartItems.length} item(s) in your cart</h2>}

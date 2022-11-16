@@ -421,19 +421,20 @@ def create_cart_item(product_id):
   print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",cartItem.product.name)
   form = CartItemForm()
   form["csrf_token"].data = request.cookies["csrf_token"]
-  if item is None:
+  if not item:
     return {"errors" : "Product couldn't be found"}, 404
   if item.seller_id == current_user.id:
     return {"errors" : "You can not add your own product to cart"}, 400
 
   if form.validate_on_submit():
-    if cartItem is None:
+    if not cartItem:
       data = CartItem(
         user_id = current_user.id,
         product_id = product_id,
         quantity = form.data["quantity"],
         order_id = 0
       )
+      print("!!!!!!!!!!!!!!!!!!!!!!!!!",data)
       db.session.add(data)
       db.session.commit()
       return data.to_dict(), 200
