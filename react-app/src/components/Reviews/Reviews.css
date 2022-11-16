@@ -6,7 +6,8 @@
   display: grid;
   grid-template-columns: minmax(0,40%) minmax(0, 60%);
   grid-template-rows: auto;
-  height: 290px;
+  height: auto;
+  margin-bottom: 60px;
 }
 
 .myreviews-image-container {
@@ -225,7 +226,7 @@ select:focus {
 }
 
 .modal-submit-button {
-  width: 100%;
+  width: 99%;
   padding: 10px;
   /* margin: 0px 25px 5px 25px; */
   margin-top: 10px;
