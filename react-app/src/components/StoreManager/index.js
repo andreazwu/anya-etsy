@@ -11,6 +11,7 @@ const StoreManager = () => {
   const currentUser = useSelector(state=>state.session.user)
   const productsObj = useSelector(state=>state.products.allProducts)
   const productsArr = Object.values(productsObj)
+  console.log("in storeManager--productArr", productsArr)
 
   useEffect(()=>{
     dispatch(thunkGetMyProducts())
