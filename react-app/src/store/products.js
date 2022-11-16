@@ -6,19 +6,20 @@ const ADD_IMG = 'products/addimg';
 const UPDATE_PRODUCT = 'products/updateproduct';
 const REMOVE_PRODUCT = 'products/deleteproduct';
 const MY_PRODUCTS = 'products/myproduct';
+const RESET_PRODUCTS = 'products/RESET_PRODUCTS'
+const SEARCH_PRODUCTS = 'products/searchedProducts';
 
+export const acResetProducts = () => {
+    return { type: RESET_PRODUCTS }
+  }
 
-///// line 11 action
 // LOAD_ALL_PRODUCTS
 const allProducts = (products) => ({
     type: LOAD_ALL_PRODUCTS,
     products
 })
 
-
-
-
-//line 21 LOAD_ONE_PRODUCT
+// LOAD_ONE_PRODUCT
 const loadOneProduct = (product) => {
     return {
         type: LOAD_ONE_PRODUCT,
@@ -27,8 +28,7 @@ const loadOneProduct = (product) => {
 }
 
 
-
-// line 31CREATE_PRODUCT
+// line 31 CREATE_PRODUCT
 const createOneProduct = (product) => {
     return {
         type: CREATE_PRODUCT,
@@ -49,36 +49,46 @@ const addImg = (imgData) => {
 
 
 //line 51UPDATE_PRODUCT
-
-
-
-
-
-
+const updateOneProduct = (product) => {
+    return {
+        type: UPDATE_PRODUCT,
+        product
+    }
+}
 
 
 
 //line 61 REMOVE_PRODUCT
-
-
-
-
-
-
+const acRemoveProduct = (productId) => {
+    return {
+        type: REMOVE_PRODUCT,
+        productId
+    }
+}
 
 
 
 //line 71 MY_PRODUCTS
+const acLoadMyProducts = (products) => {
+    return {
+        type: MY_PRODUCTS,
+        products
+    }
+}
 
 
 
+//line 81 SEARCH_PRODUCTS
+const loadSearchProducts = (products) => {
+    return {
+        type: SEARCH_PRODUCTS,
+        products
+    }
+}
 
 
 
-
-
-
-/////line 81 thunk
+/////line 91 thunk
 // LOAD_ALL_PRODUCTS
 export const getAllProducts = () => async (dispatch) => {
     const response = await fetch('/api/products');
@@ -97,7 +107,7 @@ export const getAllProducts = () => async (dispatch) => {
 
 
 
-//line 100 LOAD_ONE_PRODUCT
+//line 110 LOAD_ONE_PRODUCT
 export const getOneProduct = (productId) => async dispatch => {
     console.log("in thunk----productId", productId)
     const response = await fetch(`/api/products/${productId}`)
@@ -117,7 +127,7 @@ export const getOneProduct = (productId) => async dispatch => {
 
 
 
-//line 120 CREATE_PRODUCT
+//line 130 CREATE_PRODUCT
 export const createProduct = (product) => async dispatch => {
     console.log("in createProduct thunk----product", product)
     try {
@@ -126,7 +136,7 @@ export const createProduct = (product) => async dispatch => {
             headers: {
                 'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(product)
+            body: JSON.stringify(product)
         });
 
         if (response.ok) {
@@ -141,26 +151,26 @@ export const createProduct = (product) => async dispatch => {
     }
 }
 
-// Add_IMG
+// line 154 Add_IMG
 export const addImgs = (imgDatas, productId) => async dispatch => {
-    console.log("in addImg thunk----product", imgDatas, productId)
+    console.log("in addImg thunk----img", imgDatas, productId)
     for (const imgData of imgDatas) {
         try {
+            console.log("in addImg thunk----imgData",imgData)
                 const response = await fetch(`/api/products/${productId}/images`, {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify(imgData)
+                    body: JSON.stringify({url: imgData})
                 });
 
             if (response.ok) {
                 const newImg = await response.json();
-                console.log("in createProduct thunk----newImg", newImg)
-                dispatch(createOneProduct(newImg));
+                console.log("in addImgs thunk----newImg", newImg)
+                dispatch(addImg(newImg));
                 return newImg
             }
-
         } catch(error) {
             throw error
         }
@@ -168,40 +178,47 @@ export const addImgs = (imgDatas, productId) => async dispatch => {
 }
 
 //line 170 UPDATE_PRODUCT
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export const editProduct = (product, productId) => async dispatch => {
+    try {
+        const response = await fetch(`/api/products/${productId}`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+                },
+            body: JSON.stringify(product)
+        });
+        if (response.ok) {
+            const newProduct = await response.json();
+            dispatch(updateOneProduct(newProduct));
+            return newProduct
+        }
+    } catch(error) {
+        throw error
+    }
+}
 
 //line 190 REMOVE_PRODUCT
-
-
-
-
-
-
-
-
+export const thunkRemoveProduct = (productId) => async (dispatch) => {
+    const response = await fetch(`/api/products/${productId}`, {
+        method: "DELETE"
+    })
+    if (response.ok) {
+        dispatch(acRemoveProduct(productId))
+    }
+}
 
 
 
 
 
 //line 204 MY_PRODUCTS
+export const thunkGetMyProducts = () => async (dispatch) => {
+    const response = await fetch("/api/products/current")
+    if (response.ok) {
+        const products = await response.json()
+        dispatch(acLoadMyProducts(products))
+    }
+}
 
 
 
@@ -210,17 +227,26 @@ export const addImgs = (imgDatas, productId) => async dispatch => {
 
 
 
+// line 230 SEARCH_PRODUCTS Thunk
+export const getProductsBySearch = (keyword) => async (dispatch) => {
+    // console.log("SEARCH_PRODUCTS Thunk - keyword:", keyword)
+    const response = await fetch(`/api/products/search/${keyword}`);
+    // console.log("SEARCH_PRODUCTS Thunk - response:", response)
+    if (response.ok) {
+        const products = await response.json();
+        // console.log("SEARCH_PRODUCTS Thunk - products:", products)
+        dispatch(loadSearchProducts(products));
+        return products;
+    }
+}
 
 
 
-
-
-
-
-// line 220
+// line 245
 const initialState = {
     allProducts: {},
     singleProduct: {},
+    searchedProducts: {},
 }
 
 const products = (state = initialState, action) => {
@@ -236,26 +262,60 @@ const products = (state = initialState, action) => {
 
         case LOAD_ONE_PRODUCT:
             newState = { ...state, singleProduct: { ...action.product } };
-            console.log("in load_one_product reducer, newState:", newState)
+            // console.log("in load_one_product reducer, newState:", newState)
             return newState
 
         case CREATE_PRODUCT:
-
-            return state
-
+            newState = { ...state, allProducts: { ...state.allProducts, [action.product.id]: action.product} };
+            return newState
+        case ADD_IMG:
+            newState = { ...state, singleProduct: { ...state.singleProduct, productImages:[action.imgData]}}
+            return newState
         case UPDATE_PRODUCT:
+            newState = { ...state, allProducts:{ [action.product.id]: {...state[action.product.id]}, ...action.product} };
+            return newState
 
 
-            return state
+
+
+
+
+
+
+
+
+
+
+        case SEARCH_PRODUCTS:
+            newState = {...state, searchedProducts: {}};
+            // console.log("in SEARCH_PRODUCTS action.products:", action.products)
+            action.products.Products.forEach(product => {
+                newState.searchedProducts[product.id] = product
+            })
+            // console.log("in SEARCH_PRODUCTS reducer, newState:", newState)
+            return newState
 
         case REMOVE_PRODUCT:
-
-
-            return state
+            newState = {...state}
+            newState.allProducts = {...state.allProducts}
+            newState.singleProduct = {...state.singleProduct}
+            delete newState.allProducts[action.ProductId]
+            if (newState.singleProduct.id === action.productId) newState.singleProduct = {}
+            return newState
 
         case MY_PRODUCTS:
+            newState = {...state}
+            const normalizedProducts = {}
+            action.products.Products.forEach(product => normalizedProducts[product.id] = product)
+            newState.allProducts = normalizedProducts
+            // newState.singleProduct = {}
+            return newState
 
-            return state
+        case RESET_PRODUCTS:
+            newState = {...state}
+            newState.allProducts = {}
+            return newState
+
         default:
             return state;
     }

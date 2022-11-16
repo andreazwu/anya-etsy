@@ -40,8 +40,9 @@ def get_all_products():
 #line 40: query filter
 @product_routes.route("/search/<keyword>")
 def search_product(keyword):
+  # print("=================In search endroute START!!!")
   products = Product.query.filter(Product.name.like(f"%{keyword}%")).all()
-
+  # print("=================In search endroute - products:", products)
   return {
     "Products": [
       product.to_dict_search() for product in products
@@ -98,18 +99,18 @@ def get_my_products():
 
       product['price'] = str(product['price'])
 
+      productreviews = Review.query.filter(Review.product_id == product_id).all()
+      if productreviews:
+        numReviews = len(productreviews)
+        total_stars = 0
+        for review in productreviews:
+          total_stars += review.to_dict()["stars"]
+        avgRating = total_stars / numReviews
+      product['avgRating'] = avgRating
+
       products_result.append(product)
 
     return jsonify({"Products": products_result}), 200
-
-
-
-
-
-
-
-
-
 
 
 
@@ -141,17 +142,20 @@ def get_one_product(product_id):
   print ("review in get_one_product", reviews)
   print ("images in get_one_product", images)
   print ("seller in get_one_product", seller)
-
+  print ("--------------reviews----------", reviews)
   if reviews:
     numReviews = len(reviews)
     total_stars = 0
+    list_of_reviewers = []
     for review in reviews:
       total_stars += review.to_dict()["stars"]
+      list_of_reviewers.append(review.user_id)
     avgRating = total_stars / numReviews
 
   else:
     numReviews = 0
     avgRating = 0
+    list_of_reviewers = []
 
   if product:
     product_details = []
@@ -164,6 +168,7 @@ def get_one_product(product_id):
     product["salesNumber"] = random.randint(1,1000)
     product["productImages"] = [image.url for image in images]
     product["seller"] = seller.username
+    product["reviewers"] = list_of_reviewers
     product_details.append(product)
 
     print ("product_details in get_one_product", product_details)
@@ -244,10 +249,10 @@ def add_product_image(product_id):
   """
   logged in user can add images to their product listing
   """
+  print('in addd_product_image-----start')
   product = Product.query.get(product_id)
   form = ImageForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-
   if product is None:
     return {"errors" : "Product couldn't be found"}, 404
   if product.seller_id != current_user.id:
@@ -255,7 +260,7 @@ def add_product_image(product_id):
   if form.validate_on_submit():
     new_image = Image(
       url=form.data["url"],
-      product_id=product_id
+      product_id = product_id
     )
     db.session.add(new_image)
     db.session.commit()
@@ -387,12 +392,12 @@ def create_review(product_id):
   if product is None:
     return {"errors": "Product couldn't be found"}, 404
   if product.seller_id == current_user.id:
-    return {"error": "You can't review your product"}, 400
+    return {"errors": "You can't review your own product"}, 400
   existed_reviews = Review.query.filter(Review.product_id == product_id).all()
   if existed_reviews:
     for review in existed_reviews:
       if review.user_id == current_user.id:
-        return {"errors": "You have reviewed the product"}, 400
+        return {"errors": "You have already left a review for this product"}, 400
   if form.validate_on_submit():
     new_review = Review(
       user_id = current_user.id,
