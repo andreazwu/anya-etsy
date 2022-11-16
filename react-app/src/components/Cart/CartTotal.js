@@ -8,7 +8,7 @@ export default function CartTotal({ cartItems, initialSubtotal }) {
 
     const subtotal = Number(initialSubtotal);
     const tax = Number((subtotal * 0.0827)).toFixed(2)
-    const total = Number(subtotal) + Number(tax);
+    const total = (Number(subtotal) + Number(tax)).toFixed(2)
 
     const deleteCart = async e => {
         e.preventDefault();
@@ -33,14 +33,14 @@ export default function CartTotal({ cartItems, initialSubtotal }) {
                     color: 'red'
                 }}>FREE</span>
             </div>
-            <div className="checkout-card items-total">
+            <div className="checkout-card items-total last-total">
                 <span style={{
                     display: 'inline'
-                }}>Total [{cartItems.length} item(s) ]:</span>
+                }}>Total:</span>
                 <span>${total}</span>
             </div>
-            <div className="cart-checkout-button">
-                <button className="" onClick={deleteCart}>Proceed with purchase</button>
+            <div className="buy-item-button-container">
+                <button className="cart-checkout-button" onClick={deleteCart}>Proceed with purchase</button>
             </div>
         </div>
     );

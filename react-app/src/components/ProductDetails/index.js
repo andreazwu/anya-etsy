@@ -15,6 +15,7 @@ const ProductDetails = () => {
     console.log("in ProductDetails----product", product)
     const history = useHistory();
     let currentUser
+
     useEffect(() => {
         dispatch(getOneProduct(productId))
     }, [dispatch, productId])
@@ -26,11 +27,12 @@ const ProductDetails = () => {
        if(sessionUser){
            if (sessionUser.id == product.sellerId) {
                      await window.alert("You are the owner of this product! You cannot add it to cart")
+                     history.push('/')
                   }
          await dispatch(addCartItemThunk(productId, {quantity}))
          history.push('/cart')
         } else{
-            alert(`Please sign in to purchase.`)
+            window.alert(`Please sign in to purchase.`)
           }
     }
     if (sessionUser && product) {
@@ -38,7 +40,23 @@ const ProductDetails = () => {
           currentUser = false;
         } else currentUser = true;
       }
+      const options = [];
+      for (let i = 1; i <= product.stock; i++) {
+          options.push(i);
+      }
 
+     const getCartButtonMessage = (stock) => {
+        if (stock === 0) return 'Out of stock'
+
+
+        let messageBase = 'Add to cart';
+
+        if (stock <= 5) {
+              messageBase += ` | Only ${stock} available`
+        }
+
+        return messageBase;
+  }
 
     return (
         <div className="single-product-wrapper">
@@ -51,12 +69,21 @@ const ProductDetails = () => {
             ------------------------------------------------------------
             <div className="single-product-stock">stock: {product.stock}</div>
             <div className="single-product-quantity">
-                <input className="input-quantity" type="number" default ="1" min="1" max={product.stock} onChange={e => setQuantity(e.target.value)} />
+                <select className="input-quantity" value={quantity} onChange={e => setQuantity(e.target.value)}>
+                {options.map(option => (
+                            <option key={option} value={option}>{option}</option>
+                        ))}
+                </select>
             </div>
             <div className="single-product-addtocart">
 
-                {currentUser ? <button className="addtocart-button" onClick={() => addToCart()}>Add to cart</button>
-                : <div>Please log in to purchase</div>
+                {currentUser ?
+                              <button id="add-to-cart-button" type='button' variant='outlined'
+                              disabled={product.stock === 0}
+                              onClick={addToCart}>
+                              {getCartButtonMessage(product.stock)}
+                              </button>
+                : <button className="not-login-addtocart-button">Please log in to purchase</button>
                 }
             </div>
             <div className="single-product-description">Description: {product.description}</div>

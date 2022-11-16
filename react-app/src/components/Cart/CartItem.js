@@ -42,13 +42,15 @@ export default function CartItem({ item }) {
     }
 
     return (
+        <>
+        <div className="cart-item-name" onClick={() => history.push(`/products/${item.id}`)}>{item?.Product?.name}</div>
         <div className="cart-item-container-div">
             <div className="cart-image-container" onClick={() => history.push(`/products/${item.id}`)}>
-                <span className="cart-item-name">{item?.Product?.name}</span>
+
                 <img src={item?.Product?.previewImage} alt='product' />
             </div>
             <div className="cart-product-name-remove">
-                <div>{item?.Product?.description}</div>
+
                 <button className='cart-item-remove-item-button' onClick={() => deleteCartItem()}><i class="fa-regular fa-trash-can"></i>  Remove</button>
             </div>
                 <div className="cart-item-quantity-select">
@@ -66,5 +68,6 @@ export default function CartItem({ item }) {
                 </div>
             </div>
         </div>
+        </>
     );
 }

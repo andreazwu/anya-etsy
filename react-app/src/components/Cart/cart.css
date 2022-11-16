@@ -1,44 +1,65 @@
 .cart-mostout-div{
     display: flex;
     justify-content: space-around;
-    width: 100%
+    width: 100%;
+    align-items: top;
+
 }
 
 
 .cart-leftpart{
-    background-color: brown;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    align-items: flex-start
 
 }
 
 
 .items-count-in-cart{
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: 500
 
 }
 
 
 
 .cart-empty-message{
+    text-decoration: none;
+    margin-top: 50px;
+    text-decoration-line: underline;
+    text-decoration-color: lightgreen;
+    text-decoration-thickness: 20px;
 
 }
 .cart-need-login{
-    
+    font-size: 35px;
+    text-align: center;
+    margin-top: 150px;
+    text-decoration-line: underline;
+    text-decoration-color: lightgreen;
+    text-decoration-thickness: 20px;
+
 }
 
 /* #########cart  items  cards########### */
 
 .cart-item-container-div{
-    background-color: beige;
+    display: flex;
+    margin-top: -80px;
+    margin-bottom: 50px;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(217, 217, 217);
+    width: 100%;
 
 }
 
 
-
-
 .cart-image-container{
     width: 212.337px;
-    height: 168.613px;
+    height: 220.613px;
     margin-bottom: 35px;
-    background-color: red;
 }
 
 .cart-image-container > img {
@@ -49,33 +70,80 @@
     height: 168.613px;
     max-width: 212.337px;
     max-height: 168.613px;
+    margin-top: 40px;
+    transition: .2s ease-in-out;
+
+}
+.cart-image-container > img:hover {
+    cursor: pointer;
+    opacity: .2;
 }
 
 .cart-item-name{
-
+    width: 450px;
+    height: 60px;
+    position: relative;
+    left:250px;
+    top: 13px;
+    font-size: 18px;
+    cursor: pointer;
 }
-
+.cart-item-name:hover{
+    text-decoration: underline;
+}
 
 .cart-product-name-remove{
+    width: 30%;
+    max-width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 
 }
 
 
-.cart-product-remove-item-button{
-
+.cart-item-remove-item-button{
+    width: fit-content;
+    border-style: none;
+    padding: .5em .8em;
+    transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42), background 200ms ease-out,box-shadow 200ms ease-out;
+    margin-left: -5.9em;
+    margin-top: 110px;
+    background-color: white;
+    cursor: pointer;
 
 }
 
 
 
 .cart-item-quantity-select{
-
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    top: 2em;
 }
 
 
 
 .cart-quantity-options{
+    width: 5em;
+    height: 3em;
+    border: 1px solid rgb(195, 194, 194);
+    box-shadow: 0 0 5px #bdbdbd;
+    border-radius: .3em;
+    padding-left: .5em;
 
+}
+.cart-quantity-options:hover {
+    cursor: pointer;
+    border: 1px solid rgb(126, 126, 126);
+    box-shadow: 0 0 7px #bdbdbd;
+}
+
+.cart-item-remove-item-button:hover {
+  background-color: #EFEFEF;
+  cursor: pointer;
 }
 
 
@@ -91,14 +159,30 @@
 
 /* ###############Cart Total Card############## */
 .cart-checkout-card{
-border: 2px solid black
+    display: flex;
+    width: 30%;
+    position: sticky;
+    top: 20px;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 20em;
+    box-shadow: 0 0 12px #c3c3c3;
+    border-radius: .7em;
+    margin-top: 5em;
+    padding: 1em;
 }
 
 .checkout-card{
-    background-color: skyblue;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(172, 170, 170);
+    margin-bottom: 2em;
+    padding-bottom: 1em;
 
 }
-.items-total,
+.last-total{
+    font-weight: 550;
+}
 .sales-tax,
 .shipping-cost,
 .items.total  {
@@ -107,5 +191,29 @@ border: 2px solid black
 
 }
 .cart-checkout-button{
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 3em;
+    font-size: large;
+    height: 2.6em;
+    width: 90%;
+    justify-self: center;
+    cursor: pointer;
 
+}
+.buy-item-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.items-total.checkout-card {
+    border-bottom: none;
+    padding-bottom: .2em;
+}
+
+.cart-checkout-button:hover{
+    transform:scale(1.1,1.1);
+    /* -webkit-transform:scale(1.3,1.3);
+    -moz-transform:scale(1.3,1.3); */
 }

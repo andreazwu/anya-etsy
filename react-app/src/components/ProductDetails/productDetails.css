@@ -1,0 +1,9 @@
+.addtocart-button{
+    cursor: pointer
+
+}
+.not-login-addtocart-button{
+    cursor: not-allowed;
+    color: grey;
+
+}
