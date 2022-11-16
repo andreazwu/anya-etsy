@@ -12,6 +12,7 @@ import ProductsBrower from './components/ProductsBrowser';
 import { authenticate } from './store/session';
 import CreatePreoduct from './components/CreateProduct';
 import EditProduct from './components/EditProduct';
+import AddImages from './components/CreateProduct/addImages';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
