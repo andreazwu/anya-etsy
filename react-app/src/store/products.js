@@ -6,7 +6,7 @@ const ADD_IMG = 'products/addimg';
 const UPDATE_PRODUCT = 'products/updateproduct';
 const REMOVE_PRODUCT = 'products/deleteproduct';
 const MY_PRODUCTS = 'products/myproduct';
-
+const SEARCH_PRODUCTS = 'products/searchedProducts';
 
 ///// line 11 action
 // LOAD_ALL_PRODUCTS
@@ -78,7 +78,17 @@ const addImg = (imgData) => {
 
 
 
-/////line 81 thunk
+//line 81 SEARCH_PRODUCTS
+const loadSearchProducts = (products) => {
+    return {
+        type: SEARCH_PRODUCTS,
+        products
+    }
+}
+
+
+
+/////line 91 thunk
 // LOAD_ALL_PRODUCTS
 export const getAllProducts = () => async (dispatch) => {
     const response = await fetch('/api/products');
@@ -97,7 +107,7 @@ export const getAllProducts = () => async (dispatch) => {
 
 
 
-//line 100 LOAD_ONE_PRODUCT
+//line 110 LOAD_ONE_PRODUCT
 export const getOneProduct = (productId) => async dispatch => {
     console.log("in thunk----productId", productId)
     const response = await fetch(`/api/products/${productId}`)
@@ -117,7 +127,7 @@ export const getOneProduct = (productId) => async dispatch => {
 
 
 
-//line 120 CREATE_PRODUCT
+//line 130 CREATE_PRODUCT
 export const createProduct = (product) => async dispatch => {
     console.log("in createProduct thunk----product", product)
     try {
@@ -141,7 +151,7 @@ export const createProduct = (product) => async dispatch => {
     }
 }
 
-// Add_IMG
+// line 154 Add_IMG
 export const addImgs = (imgDatas, productId) => async dispatch => {
     console.log("in addImg thunk----product", imgDatas, productId)
     for (const imgData of imgDatas) {
@@ -167,7 +177,7 @@ export const addImgs = (imgDatas, productId) => async dispatch => {
     }
 }
 
-//line 170 UPDATE_PRODUCT
+//line 180 UPDATE_PRODUCT
 
 
 
@@ -187,7 +197,7 @@ export const addImgs = (imgDatas, productId) => async dispatch => {
 
 
 
-//line 190 REMOVE_PRODUCT
+//line 200 REMOVE_PRODUCT
 
 
 
@@ -201,7 +211,7 @@ export const addImgs = (imgDatas, productId) => async dispatch => {
 
 
 
-//line 204 MY_PRODUCTS
+//line 214 MY_PRODUCTS
 
 
 
@@ -217,10 +227,26 @@ export const addImgs = (imgDatas, productId) => async dispatch => {
 
 
 
-// line 220
+// line 230 SEARCH_PRODUCTS Thunk
+export const getProductsBySearch = (keyword) => async (dispatch) => {
+    // console.log("SEARCH_PRODUCTS Thunk - keyword:", keyword)
+    const response = await fetch(`/api/products/search/${keyword}`);
+    // console.log("SEARCH_PRODUCTS Thunk - response:", response)
+    if (response.ok) {
+        const products = await response.json();
+        // console.log("SEARCH_PRODUCTS Thunk - products:", products)
+        dispatch(loadSearchProducts(products));
+        return products;
+    }
+}
+
+
+
+// line 245
 const initialState = {
     allProducts: {},
     singleProduct: {},
+    searchedProducts: {},
 }
 
 const products = (state = initialState, action) => {
@@ -256,6 +282,14 @@ const products = (state = initialState, action) => {
         case MY_PRODUCTS:
 
             return state
+        case SEARCH_PRODUCTS:
+            newState = {...state, searchedProducts: {...state.searchedProducts}};
+            // console.log("in SEARCH_PRODUCTS action.products:", action.products)
+            action.products.Products.forEach(product => {
+                newState.searchedProducts[product.id] = product
+            })
+            // console.log("in SEARCH_PRODUCTS reducer, newState:", newState)
+            return newState
         default:
             return state;
     }

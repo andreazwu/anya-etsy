@@ -40,8 +40,9 @@ def get_all_products():
 #line 40: query filter
 @product_routes.route("/search/<keyword>")
 def search_product(keyword):
+  # print("=================In search endroute START!!!")
   products = Product.query.filter(Product.name.like(f"%{keyword}%")).all()
-
+  # print("=================In search endroute - products:", products)
   return {
     "Products": [
       product.to_dict_search() for product in products

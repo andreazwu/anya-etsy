@@ -1,37 +1,36 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
-import { getAllProducts } from '../../store/products';
+import { getProductsBySearch } from '../../store/products';
 import './ProductsBySearch.css'
 
 const ProductsBySearch = () =>{
   const dispatch = useDispatch();
   const { keyword } = useParams();
+  const currUser = useSelector(state => state.session.user)
+  const productsArr = useSelector(state => Object.values(state.products.searchedProducts))
+  console.log(productsArr)
 
   useEffect(() => {
-    dispatch(getAllProducts())
+    dispatch(getProductsBySearch(keyword))
   }, [dispatch])
-
-  const productsArr = useSelector(state => Object.values(state.products.allProducts))
-  const keywordProducts = productsArr.filter(product => product.name.includes(keyword))
-  console.log(keywordProducts)
 
 
   return (
     <div className='search-product-container'>
       <div className='search-header-container'>
         <div className='search-header'>
-          {keywordProducts?.length > 0 ?
-            <><div className='search-sum'> {keywordProducts?.length} search sum for "{keyword}</div><span className='search-sum'>"</span></>
+          {productsArr?.length > 0 ?
+            <><div className='search-sum'> {productsArr?.length} search result for "{keyword}</div><span className='search-sum'>"</span></>
             :
-            <><div className='search-sum'> We couldn't find any sum for "{keyword}</div><span className='search-sum'>" &nbsp;</span><div className='search-again-message'>Try searching for something else instead?</div></>
+            <><div className='search-sum'> We couldn't find any item for "{keyword}</div><span className='search-sum'>" &nbsp;</span><div className='search-again-message'>Try searching for something else instead?</div></>
           }
         </div>
       </div>
       <div className='search-main'>
         {/* <div className='search-caption'></div> */}
         <div className='search-products-main'>
-          {keywordProducts?.map((product, i) => {
+          {productsArr?.map((product, i) => {
             return (
               <NavLink to={`/products/${product?.id}`} key={i}>
                 <div className='search-product-body'>
@@ -39,7 +38,7 @@ const ProductsBySearch = () =>{
                     <img src={product?.previewImage} className='search-product-img' alt='images'></img>
                   </div>
                   <div className='search-product-name'>{product.name}</div>
-                  {product?.num_reviews > 0 && <>
+                  {product?.numReviews > 0 && <>
                     <div className='search-product-stars'>
                       {/* {product?.avg_stars <= 0.5 && <span>{starsDisplay(halfStars)}</span>}
                       {product?.avg_stars > 0.5 && product?.avg_stars <= 1 && <span>{starsDisplay(oneStar)}</span>}
@@ -51,12 +50,12 @@ const ProductsBySearch = () =>{
                       {product?.avg_stars > 3.5 && product?.avg_stars <= 4 && <span>{starsDisplay(fourStar)}</span>}
                       {product?.avg_stars > 4 && product?.avg_stars <= 4.5 && <span>{starsDisplay(fourHalfStar)}</span>}
                       {product?.avg_stars > 4.5 && <span>{starsDisplay(fiveStar)}</span>} */}
-                      <span className='search-product-num-reviews'>({product.num_reviews})</span>
+                      <span className='search-product-num-reviews'>({product.numReviews})</span>
                     </div>
                   </>
                   }
                   <div className='search-product-price'>${product?.price}</div>
-                  <div className='search-product-shop'>{product?.shop_name}</div>
+                  <div className='search-product-shop'>{currUser?.username}</div>
                 </div>
               </NavLink>
             )
