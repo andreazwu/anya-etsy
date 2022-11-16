@@ -193,7 +193,7 @@ const reviews = (state = initialState, action) => {
       //payload = reviews = [{}, {}]
       action.reviews.forEach((review) => normalizedUserReviews[review.id] = review)
       newState.user = normalizedUserReviews
-      newState.product = {}
+      // newState.product = {}
       // console.log("REVIEWSREDUCER LOAD USER REVIEWS BEGIN:", newState)
       return newState
 
@@ -231,19 +231,3 @@ const reviews = (state = initialState, action) => {
 
 
 export default reviews
-
-// reviews: {
-//   Product: {
-//     [reviewId]: { id, userId, ProductId, review, stars, createdAt
-//                   User: { id, firstName, lastName },
-//                   ReviewImages: [ { id, url }, {}, {} ] }
-//   },
-//   user: {
-//     [reviewId]: { id, userId, ProductId, review, stars, createdAt
-//                   User: { id, firstName, lastName },
-//                   Product: { id, ownerId, add, city, state, coun,
-//                           lat, lng, name, price,
-//                           previewImage },
-//                   ReviewImages: [ { id, url }, {}, {} ] }
-//   }
-// }

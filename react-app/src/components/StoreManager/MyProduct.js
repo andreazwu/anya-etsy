@@ -1,8 +1,12 @@
 import { Link, useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { thunkRemoveProduct } from "../../store/products"
+import EditProduct from "../EditProduct"
 import noimage from "./noimage.jpg"
 import "./StoreManager.css"
+import { useState } from "react"
+import { Modal } from "../../context/Modal"
+
 
 const MyProduct = ({ product }) => {
   const dispatch = useDispatch()
@@ -21,9 +25,12 @@ const MyProduct = ({ product }) => {
   }
 
   //handle edit product click
-  const editProductHandleClick = async () => {
-    // history.push(`/myproducts/edit/${product.id}`)
-    // await dispatch(thunkEditProduct(Product.id))
+  const [productId, setProductId] = useState()
+  const [showEditForm, setShowEditForm] = useState(false)
+
+  const editProductHandleClick = (id) => {
+    setProductId(id)
+    setShowEditForm(true)
   }
 
   return (
@@ -41,18 +48,34 @@ const MyProduct = ({ product }) => {
       </div>
 
       <div className="myproducts-product-info">
+        <div>
           <div className="myproducts-product-category">
             {product.category}
           </div>
           <div className="myproducts-product-name">
+            {/* {product.name} */}
             {product.name.split(",")[0].split("|")[0]}
           </div>
           <div className="myproducts-product-rating">
-            {product.avgRating ?
+            {/* {product.avgRating ?
               (<span>★ {product.avgRating.toFixed(1)}</span>):
               (<span>★ no review</span>)
+            } */}
+            {
+              Number(product.avgRating) % 1 ?
+              <span>
+                {[...Array(Math.floor(product.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
+                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+              </span>
+              :
+              <span>
+                {[...Array(product.avgRating)].map((star) => (<i className="fa-solid fa-star"></i>))}
+              </span>
             }
           </div>
+        </div>
+
+        <div>
           <div className="myproducts-product-price">
             ${parseFloat(product.price).toFixed(2)}
           </div>
@@ -61,14 +84,24 @@ const MyProduct = ({ product }) => {
           </div>
         </div>
 
+      </div>
+
       <div className="myproduct-buttons-container">
         {/* {seller && (
           <> */}
-          <button
-          className="myproduct-buttons"
-          onClick={editProductHandleClick}>
-            Edit
-          </button>
+          <Link to={`/edit-product/${product.id}`}>
+            <button className="myproduct-buttons">
+              Edit
+            </button>
+          </Link>
+          {/* <button className="myproduct-buttons" onClick={() => editProductHandleClick(product?.id)}> Edit </button>
+          <div>
+            {showEditForm && (
+              <Modal onClose={() => setShowEditForm(false)}>
+                <EditProduct productId={productId} setShowEditForm={setShowEditForm} />
+              </Modal>
+            )}
+          </div> */}
           <button
           className="myproduct-buttons"
           onClick={deleteProductHandleClick}>
