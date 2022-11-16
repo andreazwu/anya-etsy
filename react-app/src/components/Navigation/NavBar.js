@@ -1,9 +1,9 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
-import SearchBar from './SearchBar';
-import logo from './images/logo.jpg';
+import LogoutButton from '../auth/LogoutButton';
+import SearchBar from '../SearchBar';
+import logo from '../images/logo.jpg';
 import './NavBar.css';
 
 const NavBar = () => {
