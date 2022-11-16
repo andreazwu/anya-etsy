@@ -1,7 +1,3 @@
-a {
-  color: black
-}
-
 .home-header {
   display: flex;
   justify-content: center;
@@ -196,6 +192,7 @@ a {
 .display-product-price,
 .sponsored-product-price,
 .edit-pick-product-price {
+  color: black;
   background-color: white;
   padding: 4px;
   border-radius: 10px;

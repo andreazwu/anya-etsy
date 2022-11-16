@@ -2,9 +2,10 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getAllProducts } from '../../store/products';
-import "./ProductsBrower.css";
+import Footer from '../Navigation/Footer.js';
+import "./ProductsBrowser.css";
 
-const ProductsBrower = () => {
+const ProductsBrowser = () => {
   const dispatch = useDispatch();
   const currUser = useSelector(state => state.session.user)
   const productsObj = useSelector(state => state.products.allProducts)
@@ -17,6 +18,7 @@ const ProductsBrower = () => {
   const thanksgivingProducts = productArr.filter(product => product.category === 'Thanksgiving')
   const christmasProducts = productArr.filter(product => product.category === 'Christmas')
   const springFestivalProducts = productArr.filter(product => product.category === 'Spring Festival')
+  const valentineProducts = productArr.filter(product => product.category === 'Valentine')
   const easterProducts = productArr.filter(product => product.category === 'Easter')
   const halloweenProducts = productArr.filter(product => product.category === 'Halloween')
 
@@ -69,6 +71,14 @@ const ProductsBrower = () => {
             </div>
           </NavLink>
           <div className='category-name'>Spring Festival</div>
+        </div>
+        <div className='circle-container'>
+          <NavLink to={`/products/${valentineProducts[0]?.id}`}>
+            <div className='img-outer'>
+              <img src={valentineProducts[1]?.previewImage} className='featured-img' alt='featured'></img>
+            </div>
+          </NavLink>
+          <div className='category-name'>Valentine</div>
         </div>
         <div className='circle-container'>
           <NavLink to={`/products/${easterProducts[0]?.id}`}>
@@ -140,8 +150,9 @@ const ProductsBrower = () => {
           )
         })}
       </div>
+      <Footer />
     </div>
   )
 }
 
-export default ProductsBrower;
+export default ProductsBrowser;
