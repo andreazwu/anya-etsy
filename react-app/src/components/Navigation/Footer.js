@@ -25,13 +25,13 @@ const Footer = () => {
             <div className='socials-inner'>
               <div><i class="fa-brands fa-linkedin"></i></div>
               <div>
-                <a href='https://www.linkedin.com/in/yashayang/' className="social-link" target="_blank">Aijia</a>
+                <a href='linkedin.com/in/aijia-wang-b18726131' className="social-link" target="_blank">Aijia</a>
               </div>
             </div>
             <div className='socials-inner'>
               <div><i class="fa-brands fa-linkedin"></i></div>
               <div>
-                <a href='https://www.linkedin.com/in/yashayang/' className="social-link" target="_blank">Nannan</a>
+                <a href='linkedin.com/in/nannan-zhang-2333b021b' className="social-link" target="_blank">Nannan</a>
               </div>
             </div>
             <div className='socials-inner'>
@@ -43,7 +43,7 @@ const Footer = () => {
             <div className='socials-inner'>
               <div><i class="fa-brands fa-linkedin"></i></div>
               <div>
-                <a href='https://www.linkedin.com/in/yashayang/' className="social-link" target="_blank">Andrea</a>
+                <a href='linkedin.com/in/andreazwu' className="social-link" target="_blank">Andrea</a>
               </div>
             </div>
           </div>

@@ -9,7 +9,7 @@
   height: 150px;
   min-height: 100px;
   min-width: 100%;
-  /* z-index: -3; */
+  z-index: -3;
 }
 
 .search-header {
