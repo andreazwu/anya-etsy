@@ -190,3 +190,24 @@ select:focus {
   border: 1px rgb(241, 101, 34) solid;
   color:rgb(241, 101, 34);
 }
+
+
+/* ----product detail create review button-------- */
+.create-new-review-button {
+  cursor: pointer;
+  width: 180px;
+  height: 35px;
+  padding: 3px 10px;
+  margin: 3px 0px 20px 0px;
+  border: 1px rgb(241, 101, 34) solid;
+  border-radius: 4px;
+  background: rgb(241, 101, 34);
+  color: white;
+  font: bold;
+}
+
+.create-new-review-button:hover {
+  background: white;
+  border: 1px rgb(241, 101, 34) solid;
+  color:rgb(241, 101, 34);
+}

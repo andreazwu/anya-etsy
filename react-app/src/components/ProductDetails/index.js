@@ -10,7 +10,7 @@ import './productDetails.css'
 const ProductDetails = () => {
     const history = useHistory()
     const { productId } = useParams();
-    console.log("in ProductDetails----productId", productId)
+    // console.log("in ProductDetails----productId", productId)
     const [showNewReviewModal, setShowNewReviewModal] = useState(false)
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)
@@ -18,7 +18,7 @@ const ProductDetails = () => {
     const reviewsObj = useSelector(state => state.reviews.product)
     const reviewsArr = Object.values(reviewsObj)
 
-    console.log("in ProductDetails----product", product)
+    // console.log("in ProductDetails----product", product)
 
     useEffect(() => {
         dispatch(getOneProduct(productId))
@@ -28,13 +28,14 @@ const ProductDetails = () => {
     let seller = false
     if (sessionUser?.id === product?.sellerId) seller = true
 
-    {console.log("product details, (before return), showNewReviewModal:", showNewReviewModal)}
+    // {console.log("product details, (before return), showNewReviewModal:", showNewReviewModal)}
 
     if (!product) return null;
     // if (!sellerId) return null;
 
     return (
         <div className="single-product-wrapper">
+            {/* {console.log("--------", product.reviewers)} */}
             <div className="single-product-img">
                 <img src={product.productImages[0]}></img></div>
             <div className="single-product-seller">{product.seller}</div>
@@ -56,24 +57,23 @@ const ProductDetails = () => {
             <div className="single-product-reviews">
                 <div className="single-product-numReviews">{product.numReviews} reviews {product.avgRating.toFixed(2)} stars</div>
             </div>
-            {/* only show "create review" button to NON-seller of product */}
+            {/* only show "create review" button to logged in user/ who has not left a review/ NON-seller */}
             <div>
                 {
                 sessionUser &&
                 !seller &&
-                // <CreateReviewModal
-                //     productId={productId}
-                //     showNewReviewModal={showNewReviewModal}
-                //     setShowNewReviewModal={setShowNewReviewModal}
-                // />
+                !product.reviewers.includes(sessionUser.id) &&
                 (<div>
-                    <button onClick={()=>history.push(`/products/${productId}/new-review`)}>
+                    <button
+                        className="create-new-review-button"
+                        onClick={()=>history.push(`/products/${productId}/new-review`)}
+                    >
                         Create a new review
                         {/* <CreateReviewForm productId={productId}/> */}
                     </button>
                 </div>)
                 }
-            {console.log("product details, showNewReviewModal:", showNewReviewModal)}
+            {/* {console.log("product details, showNewReviewModal:", showNewReviewModal)} */}
             </div>
             <div className="one-spot-reviews-container">
                 <LoadProductReviews productId={productId}/>

@@ -127,15 +127,6 @@ def get_my_products():
 
 
 
-
-
-
-
-
-
-
-
-
 #line 130
 @product_routes.route("/<int:product_id>")
 def get_one_product(product_id):
@@ -150,17 +141,20 @@ def get_one_product(product_id):
   print ("review in get_one_product", reviews)
   print ("images in get_one_product", images)
   print ("seller in get_one_product", seller)
-
+  print ("--------------reviews----------", reviews)
   if reviews:
     numReviews = len(reviews)
     total_stars = 0
+    list_of_reviewers = []
     for review in reviews:
       total_stars += review.to_dict()["stars"]
+      list_of_reviewers.append(review.user_id)
     avgRating = total_stars / numReviews
 
   else:
     numReviews = 0
     avgRating = 0
+    list_of_reviewers = []
 
   if product:
     product_details = []
@@ -173,6 +167,7 @@ def get_one_product(product_id):
     product["salesNumber"] = random.randint(1,1000)
     product["productImages"] = [image.url for image in images]
     product["seller"] = seller.username
+    product["reviewers"] = list_of_reviewers
     product_details.append(product)
 
     print ("product_details in get_one_product", product_details)
