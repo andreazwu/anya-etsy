@@ -10,6 +10,7 @@ import User from './components/User';
 import ProductDetails from './components/ProductDetails';
 import ProductsBrowser from './components/ProductsBrowser';
 import CreatePreoduct from './components/CreateProduct';
+import EditProduct from './components/EditProduct';
 import { authenticate } from './store/session';
 import LoadUserReviews from './components/Reviews/LoadUserReviews';
 import CreateReviewForm from './components/Reviews/CreateReviewForm';
@@ -65,6 +66,9 @@ function App() {
         </Route>
         <Route path='/new-product' exact={true} >
           <CreatePreoduct />
+        </Route>
+        <Route path='/edit-product/:productId' exact={true} >
+          <EditProduct />
         </Route>
         <Route path='/my-reviews' exact={true} >
           <LoadUserReviews />
