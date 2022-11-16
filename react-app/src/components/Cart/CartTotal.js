@@ -6,7 +6,7 @@ export default function CartTotal({ cartItems, initialSubtotal }) {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const subtotal = Number(initialSubtotal);
+    const subtotal = Number(initialSubtotal).toFixed(2);
     const tax = Number((subtotal * 0.0827)).toFixed(2)
     const total = (Number(subtotal) + Number(tax)).toFixed(2)
 
