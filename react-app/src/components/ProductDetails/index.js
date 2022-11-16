@@ -86,7 +86,10 @@ const ProductDetails = () => {
 }
 
     return (
+        <>
         <div className="single-product-wrapper">
+            <div className="product-left-part">
+
             <div className='product-image-main'>
                 <div className='product-preview-image-outer'>
                     { product.productImages.length > 0 && product.productImages.map((image, i) => {
@@ -100,39 +103,23 @@ const ProductDetails = () => {
                 </div>
             </div>
 
+           <div className="single-product-reviews">
+           <div className="single-product-numReviews">{product.numReviews} review(s)
+                <span className="product-detail-avgrating-star">
+                    {
+                    Number(product.avgRating) % 1 ?
+                    <span>
+                        {[...Array(Math.floor(product.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
+                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                    </span>
+                    :
+                    <span>
+                        {[...Array(product.avgRating)].map((star) => (<i className="fa-solid fa-star"></i>))}
+                    </span>
+                    }
+                </span>
+                </div>
 
-
-
-            <div className="single-product-seller">{product.seller}</div>
-            <div>{product.salesNumber} sales {reviewStars(product.avgRating)}
-            </div>
-            <div className="single-product-name">{product.name}</div>
-            <div className="single-product-price">${product.price}</div>
-            ------------------------------------------------------------
-            <div className="single-product-stock">stock: {product.stock}</div>
-            <div className="single-product-quantity">
-                <select className="input-quantity" value={quantity} onChange={e => setQuantity(e.target.value)}>
-                {options.map(option => (
-                            <option key={option} value={option}>{option}</option>
-                        ))}
-                </select>
-            </div>
-            <div className="single-product-addtocart">
-
-                {currentUser ?
-                              <button id="add-to-cart-button" type='button' variant='outlined'
-                              disabled={product.stock === 0}
-                              onClick={addToCart}>
-                              {getCartButtonMessage(product.stock)}
-                              </button>
-                : <button className="not-login-addtocart-button">Please log in to purchase</button>
-                }
-            </div>
-            <div className="single-product-description">Description: {product.description}</div>
-            -------------------------------------------------------------
-            <div className="single-product-reviews">
-                <div className="single-product-numReviews">{product.numReviews} reviews {product.avgRating.toFixed(2)} stars</div>
-            </div>
             {/* only show "create review" button to logged in user/ who has not left a review/ NON-seller */}
             <div>
                 {
@@ -154,8 +141,55 @@ const ProductDetails = () => {
             <div className="one-spot-reviews-container">
                 <LoadProductReviews productId={productId}/>
             </div>
+            </div>
+                </div>
+                    <div className="product-right-part">
+            <div className="single-product-seller">{product.seller}</div>
+            <div className="single-product-sales">{product.salesNumber} sales  <span className="vertical-seperate">|</span>
+            <span className="product-detail-avgrating-star">
+            {
+              Number(product.avgRating) % 1 ?
+              <span>
+                {[...Array(Math.floor(product.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
+                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+              </span>
+              :
+              <span>
+                {[...Array(product.avgRating)].map((star) => (<i className="fa-solid fa-star"></i>))}
+              </span>
+            }
+            </span>
+            </div>
+            <div className="single-product-name">{product.name}</div>
+
+            <div className="single-product-price">${product.price}</div>
+
+            <div className="single-product-stock">stock: {product.stock}</div>
+            <div className="single-product-quantity">
+                <select className="input-quantity" value={quantity} onChange={e => setQuantity(e.target.value)}>
+                {options.map(option => (
+                            <option key={option} value={option}>{option}</option>
+                        ))}
+                </select>
+            </div>
+            <div className="single-product-addtocart">
+
+                {currentUser ?
+                              <button id="add-to-cart-button" type='button' variant='outlined'
+                              disabled={product.stock === 0}
+                              onClick={addToCart}>
+                              {getCartButtonMessage(product.stock)}
+                              </button>
+                : <button className="not-login-addtocart-button">Please log in to purchase</button>
+                }
+            </div>
+            <div className="single-product-description">Description: {product.description}</div>
+            </div>
+
+      </div>
         <Footer />
-        </div>
+
+        </>
     )
 }
 
