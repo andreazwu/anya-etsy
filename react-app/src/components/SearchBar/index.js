@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getProductsBySearch } from '../../store/products';
 import './SearchBar.css'
@@ -7,9 +7,8 @@ import './SearchBar.css'
 const SearchBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const allProducts = useSelector(state => state.products.allProducts)
   const [keyword, setKeyword] = useState("");
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
 
 
   const handleSearch = async (e) => {
@@ -23,18 +22,18 @@ const SearchBar = () => {
       history.push(`/search/${keyword}`)
     }
     setKeyword("")
-    setErrors([])
+    // setErrors([])
   }
 
   return (
     <div className='searchBar-main'>
-    <div>
+    {/* <div>
       {errors?.map((error, i) => {
           return (
             <div key={i} className='search-errors'>{error}</div>
           )
         })}
-    </div>
+    </div> */}
     <div className='navBar-searchBar-container'>
       <form onSubmit={handleSearch} className="searchBar-form">
         <input

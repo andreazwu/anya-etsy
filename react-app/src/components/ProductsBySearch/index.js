@@ -10,7 +10,6 @@ const ProductsBySearch = () =>{
   const { keyword } = useParams();
   const currUser = useSelector(state => state.session.user)
   const productsArr = useSelector(state => Object.values(state.products.searchedProducts))
-  console.log(productsArr)
 
   useEffect(() => {
     dispatch(getProductsBySearch(keyword))
