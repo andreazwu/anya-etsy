@@ -1,12 +1,15 @@
+import { useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { thunkRemoveReview } from "../../store/reviews"
-import EditReviewModal from "./EditReviewModal"
+// import EditReviewModal from "./EditReviewModal"
+import EditReviewForm from "./EditReviewForm"
 import "./Reviews.css"
 
-const MyReview = ({review}) => {
+const MyReview = ({review, user}) => {
   const dispatch = useDispatch()
   const history = useHistory()
+  const [showEditReview, setShowEditReview] = useState(false)
 
   const deleteReviewHandleClick = async () => {
     if (window.confirm("Are you sure you want to remove this review?")){
@@ -51,12 +54,27 @@ const MyReview = ({review}) => {
           {/* <i className="fa fa-quote-right fa-lg" aria-hidden="true"></i> */}
         </div>
 
-        <span>
+        {/* <span>
           <div>
             <EditReviewModal productId={review.Product.id}/>
           </div>
-        </span>
+        </span> */}
+        <div>
+          <button
+          className="edit-review-button"
+          // onClick={()=>history.push(`/products/${review.Product.id}/edit-review`)}>
+          onClick={()=>setShowEditReview(true)}>
+            Edit Review
+          </button>
+        </div>
 
+        {showEditReview &&
+          <EditReviewForm
+            myreview={review}
+            showEditReview={showEditReview}
+            setShowEditReview={setShowEditReview}
+            />
+        }
         <div>
           <button
           className="delete-review-button"

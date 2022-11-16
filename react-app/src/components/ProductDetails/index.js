@@ -67,10 +67,10 @@ const ProductDetails = () => {
                 //     setShowNewReviewModal={setShowNewReviewModal}
                 // />
                 (<div>
-                    <div onClick={()=>history.push(`/products/${productId}/new-review`)}>
+                    <button onClick={()=>history.push(`/products/${productId}/new-review`)}>
                         Create a new review
                         {/* <CreateReviewForm productId={productId}/> */}
-                    </div>
+                    </button>
                 </div>)
                 }
             {console.log("product details, showNewReviewModal:", showNewReviewModal)}

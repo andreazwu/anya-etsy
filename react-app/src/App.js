@@ -13,6 +13,7 @@ import CreatePreoduct from './components/CreateProduct';
 import { authenticate } from './store/session';
 import LoadUserReviews from './components/Reviews/LoadUserReviews';
 import CreateReviewForm from './components/Reviews/CreateReviewForm';
+import EditReviewForm from './components/Reviews/EditReviewForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -50,6 +51,9 @@ function App() {
         </ProtectedRoute>
         <Route path='/products/:productId/new-review' exact={true} >
           <CreateReviewForm />
+        </Route>
+        <Route path='/reviews/:reviewId/edit-review' exact={true} >
+          <EditReviewForm />
         </Route>
         <Route path='/products/:productId' exact={true} >
           <ProductDetails />

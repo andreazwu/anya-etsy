@@ -12,7 +12,9 @@ const LoadUserReviews = () => {
 
   useEffect(()=>{
     dispatch(thunkGetUserReviews())
-  }, [dispatch, currentUser, reviewsArr.length])
+  }, [dispatch, currentUser,
+    // reviewsObj])
+    reviewsArr.length])
 
   if (!currentUser) return <Redirect to="/" />
 
@@ -35,7 +37,7 @@ const LoadUserReviews = () => {
             <div className="my-reviews-wrapper-wrapper">
               <div className="my-reviews-wrapper">
                 {reviewsArr.map((review) => (
-                  <MyReview key={review.id} review={review} />
+                  <MyReview key={review.id} review={review} user={currentUser}/>
                 ))}
               </div>
             </div>
