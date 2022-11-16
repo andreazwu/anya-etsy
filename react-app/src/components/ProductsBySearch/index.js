@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { getProductsBySearch } from '../../store/products';
 import './ProductsBySearch.css'
+import Footer from '../Navigation/Footer.js';
 
 const ProductsBySearch = () =>{
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const ProductsBySearch = () =>{
 
 
   return (
+    <>
     <div className='search-product-container'>
       <div className='search-header-container'>
         <div className='search-header'>
@@ -32,7 +34,7 @@ const ProductsBySearch = () =>{
         <div className='search-products-main'>
           {productsArr?.map((product, i) => {
             return (
-              <NavLink to={`/products/${product?.id}`} key={i}>
+              <NavLink to={`/products/${product?.id}`} style={{textDecoration: 'none'}} key={i}>
                 <div className='search-product-body'>
                   <div className='search-product-img-container'>
                     <img src={product?.previewImage} className='search-product-img' alt='images'></img>
@@ -58,11 +60,14 @@ const ProductsBySearch = () =>{
                   <div className='search-product-shop'>{currUser?.username}</div>
                 </div>
               </NavLink>
+
             )
           })}
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   )
 }
 

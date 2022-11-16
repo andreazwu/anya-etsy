@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getAllProducts } from '../../store/products';
+import Footer from '../Navigation/Footer.js';
 import "./ProductsBrowser.css";
 
 const ProductsBrowser = () => {
@@ -149,6 +150,7 @@ const ProductsBrowser = () => {
           )
         })}
       </div>
+      <Footer />
     </div>
   )
 }

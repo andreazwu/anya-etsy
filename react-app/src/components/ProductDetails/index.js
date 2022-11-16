@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneProduct } from "../../store/products";
-
+import Footer from '../Navigation/Footer.js';
 import './productDetails.css'
 
 const ProductDetails = () => {
@@ -57,7 +57,7 @@ const ProductDetails = () => {
                         <button className="createReview-button">Review this Product</button>
                     </Link>
             </div>
-
+        <Footer />
         </div>
     )
 }

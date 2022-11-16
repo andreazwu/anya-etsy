@@ -78,6 +78,7 @@
   position: relative;
   display: inline-block;
   margin: 0.3rem 0 0.2rem;
+  color:black;
 }
 
 .search-product-stars {
@@ -101,8 +102,9 @@
 
 .search-product-price {
   font-family: GraphikRegular, Arial, Helvetica, sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: 0.3rem;
+  color: black;
 }
 
 .search-product-shop {
