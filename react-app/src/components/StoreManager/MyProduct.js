@@ -48,9 +48,20 @@ const MyProduct = ({ product }) => {
             {product.name.split(",")[0].split("|")[0]}
           </div>
           <div className="myproducts-product-rating">
-            {product.avgRating ?
+            {/* {product.avgRating ?
               (<span>★ {product.avgRating.toFixed(1)}</span>):
               (<span>★ no review</span>)
+            } */}
+            {
+              Number(product.avgRating) % 1 ?
+              <span>
+                {[...Array(Math.floor(product.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
+                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+              </span>
+              :
+              <span>
+                {[...Array(product.avgRating)].map((star) => (<i className="fa-solid fa-star"></i>))}
+              </span>
             }
           </div>
           <div className="myproducts-product-price">
