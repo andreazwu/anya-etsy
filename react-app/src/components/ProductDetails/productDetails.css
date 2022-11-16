@@ -83,6 +83,16 @@ font-family: GraphikLight, Arial, Helvetica, sans-serif;
   opacity: 0.4;
   padding-left: .5rem
 }
+.single-product-name{
+  font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
+  font-size: 26px;
+  font-weight: 300;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  width: 570px;
+  line-height: 32px;
+}
 
 /* ##########stock, cart,description,############### */
 .addtocart-button{
