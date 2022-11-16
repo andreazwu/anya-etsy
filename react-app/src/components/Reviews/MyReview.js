@@ -27,9 +27,9 @@ const MyReview = ({review, user}) => {
   return (
     <div className="myreviews-review-container">
       <div div className="myreviews-image-container">
-        {/* <Link style={{ textDecoration: "none", color: "black" }} to={`/products/${review?.Product.id}`}> */}
+        <Link style={{ textDecoration: "none", color: "black" }} to={`/products/${review?.Product?.id}`}>
           <img src={review?.Product?.previewImage} />
-        {/* </Link> */}
+        </Link>
         <div className="review-button-wrap">
           <span>
             <button

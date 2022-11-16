@@ -1,8 +1,12 @@
 import { Link, useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { thunkRemoveProduct } from "../../store/products"
+import EditProduct from "../EditProduct"
 import noimage from "./noimage.jpg"
 import "./StoreManager.css"
+import { useState } from "react"
+import { Modal } from "../../context/Modal"
+
 
 const MyProduct = ({ product }) => {
   const dispatch = useDispatch()
@@ -21,9 +25,12 @@ const MyProduct = ({ product }) => {
   }
 
   //handle edit product click
-  const editProductHandleClick = async () => {
-    // history.push(`/myproducts/edit/${product.id}`)
-    // await dispatch(thunkEditProduct(Product.id))
+  const [productId, setProductId] = useState()
+  const [showEditForm, setShowEditForm] = useState(false)
+
+  const editProductHandleClick = (id) => {
+    setProductId(id)
+    setShowEditForm(true)
   }
 
   return (
@@ -82,11 +89,19 @@ const MyProduct = ({ product }) => {
       <div className="myproduct-buttons-container">
         {/* {seller && (
           <> */}
-          <button
-          className="myproduct-buttons"
-          onClick={editProductHandleClick}>
-            Edit
-          </button>
+          <Link to={`/edit-product/${product.id}`}>
+            <button className="myproduct-buttons">
+              Edit
+            </button>
+          </Link>
+          {/* <button className="myproduct-buttons" onClick={() => editProductHandleClick(product?.id)}> Edit </button>
+          <div>
+            {showEditForm && (
+              <Modal onClose={() => setShowEditForm(false)}>
+                <EditProduct productId={productId} setShowEditForm={setShowEditForm} />
+              </Modal>
+            )}
+          </div> */}
           <button
           className="myproduct-buttons"
           onClick={deleteProductHandleClick}>

@@ -180,7 +180,7 @@ textarea:focus {
   outline: none;
 }
 
-select {
+.form-input-wrapper select {
   /* color: rgb(241, 101, 34); */
   /* width: 12%; */
   font-size: 14px;

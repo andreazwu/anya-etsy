@@ -1,10 +1,10 @@
-import React, { useState, useEffect, Component } from "react"
+import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import { thunkEditReview } from "../../store/reviews"
 import LoadUserReviews from "./LoadUserReviews"
 
-// import "./EditReview.css"
+import "./Reviews.css"
 
 const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
   console.log("EDIT REVIEW FORM COMPONENT STARTS, myreview:", myreview)
@@ -35,18 +35,18 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
 
     setShowEditReview(false)
 
-    const reviewInfo = { editreview, stars }
+    const reviewInfo = { "review": editreview, "stars": stars }
     console.log("before dispatch thunk, reviewInfo:", reviewInfo)
     const editedReview = await dispatch(thunkEditReview(reviewInfo, reviewId))
       .then(()=>history.push(`/my-reviews`))
-      // .catch(async (res) => {
-      //   const message = await res.json()
-      //   const messageErrors = []
-      //   if (message) {
-      //     messageErrors.push(message.message)
-      //     setErrors(messageErrors)
-      //   }
-      // })
+      .catch(async (res) => {
+        const message = await res.json()
+        const messageErrors = []
+        if (message) {
+          messageErrors.push(message.message)
+          setErrors(messageErrors)
+        }
+      })
     if (editedReview) history.push(`/my-reviews`)
     reset()
   }
