@@ -184,6 +184,7 @@ export const editProduct = (product, productId) => async dispatch => {
         });
         if (response.ok) {
             const newProduct = await response.json();
+            console.log("in editProduct thunk----newproduct", newProduct)
             dispatch(updateOneProduct(newProduct));
             return newProduct
         }
@@ -211,6 +212,7 @@ export const thunkGetMyProducts = () => async (dispatch) => {
     const response = await fetch("/api/products/current")
     if (response.ok) {
         const products = await response.json()
+        console.log('in thunkGetMyProducts--products', products)
         dispatch(acLoadMyProducts(products))
     }
 }
@@ -267,19 +269,8 @@ const products = (state = initialState, action) => {
             newState = { ...state, singleProduct: { ...state.singleProduct, productImages:[action.imgData]}}
             return newState
         case UPDATE_PRODUCT:
-            newState = { ...state, allProducts:{ [action.product.id]: {...state[action.product.id]}, ...action.product} };
+            newState = { ...state, allProducts:{ ...state.allProducts, [action.product.id]: action.product}};
             return newState
-
-
-
-
-
-
-
-
-
-
-
 
         case SEARCH_PRODUCTS:
             newState = {...state, searchedProducts: {}};
@@ -291,11 +282,8 @@ const products = (state = initialState, action) => {
             return newState
 
         case REMOVE_PRODUCT:
-            newState = {...state}
-            newState.allProducts = {...state.allProducts}
-            newState.singleProduct = {...state.singleProduct}
-            delete newState.allProducts[action.ProductId]
-            if (newState.singleProduct.id === action.productId) newState.singleProduct = {}
+            newState = {...state, allProducts: { ...state.allProducts}}
+            delete newState.allProducts[action.productId]
             return newState
 
         case MY_PRODUCTS:
