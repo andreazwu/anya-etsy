@@ -112,11 +112,11 @@
     border-style: none;
     padding: .5em .8em;
     transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42), background 200ms ease-out,box-shadow 200ms ease-out;
-    margin-left: -5.9em;
+    margin-left: -1.9em;
     margin-top: 110px;
     background-color: white;
     cursor: pointer;
-
+    font-size: 18px
 }
 
 
