@@ -11,7 +11,7 @@ const ProductDetails = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)
     const product = useSelector(state => state.products.singleProduct)[0]
-    const [selectedImage, setSelectedImage] = useState(product.productImages[0])
+    const [selectedImage, setSelectedImage] = useState(product?.productImages[0])
     const avgRating = product?.avgRating
     console.log("in ProductDetails----avgRating", avgRating)
     console.log("in ProductDetails----product", product)
