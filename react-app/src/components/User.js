@@ -23,10 +23,10 @@ function User() {
   return (
     <ul>
       <li>
-        <strong>First Name</strong> {user.first_name}
+        <strong>First Name</strong> {user.firstName}
       </li>
       <li>
-        <strong>Last Name</strong> {user.last_name}
+        <strong>Last Name</strong> {user.lastName}
       </li>
       <li>
         <strong>User Id</strong> {userId}
