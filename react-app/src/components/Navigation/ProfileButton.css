@@ -1,15 +1,18 @@
-.navBar-profile-outer {
+.navbar-profile-container {
   position: relative;
   z-index: 3;
 }
 
-.navBar-profile,
-.sign-out-outer {
+.navbar-profile-button {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
+.fa-solid.fa-angle-down {
+  margin-left: 5px;
+  font-size: 12px;
+}
 
 .profile-user-img {
   width: 27px;
@@ -65,6 +68,7 @@
   margin-left: 14px;
   color: black;
 }
+
 .my-products,
 .sign-out {
   font-family: GraphikRegular, Arial, Helvetica, sans-serif;
@@ -92,15 +96,3 @@
   height: 29px;
 }
 
-.triangle-dropdown {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  top: 45px;
-  right: 26px;
-  transform: rotate(135deg);
-  border-left: 1px solid rgba(105, 105, 105, 0.223);
-  border-bottom: 1px solid rgba(105, 105, 105, 0.223);
-  background-color: white;
-  z-index: 3;
-}

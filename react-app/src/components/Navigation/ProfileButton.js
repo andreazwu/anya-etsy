@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import myShop from '../images/myShop.svg'
@@ -26,20 +25,18 @@ const ProfileButton = ({user}) => {
   }, [showMenu])
 
   return (
-    <div className='navBar-profile-outer'>
-    <div onClick={openMenu} className='navBar-profile'>
+    <div className='navbar-profile-container'>
+    <div onClick={openMenu} className='navbar-profile-button'>
       <i class="fa-solid fa-user"></i>
       <i class="fa-solid fa-angle-down"></i>
     </div>
-    {showMenu ?
-      <>
-        <span className="triangle-dropdown"></span>
+    {showMenu && <>
         <div className='profile-dropdown'>
           <div className='dropdown-item-top'>
             <div className='profile-user-img'><i class="fa-solid fa-user"></i></div>
             <div className='profile-name'>{user.firstName}</div>
           </div>
-          <NavLink to='//my-reviews' style={{textDecoration: 'none'}}>
+          <NavLink to='/my-reviews' style={{textDecoration: 'none'}}>
             <div className='dropdown-item'>
               <div className='my-reviews-img'><i class="fa-solid fa-list-ul"></i></div>
               <div className='my-reviews'>My reviews</div>
@@ -56,8 +53,7 @@ const ProfileButton = ({user}) => {
             <LogoutButton />
           </div>
         </div>
-      </> : <></>
-    }
+      </>}
     </div >
   )
 }
