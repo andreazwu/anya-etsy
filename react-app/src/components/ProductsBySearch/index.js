@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { getProductsBySearch } from '../../store/products';
-import './ProductsBySearch.css'
+import './search.css'
 import Footer from '../Navigation/Footer.js';
 
 const ProductsBySearch = () =>{
