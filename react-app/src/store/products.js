@@ -179,7 +179,7 @@ export const editProduct = (product, productId) => async dispatch => {
         });
         if (response.ok) {
             const newProduct = await response.json();
-            dispatch(createOneProduct(newProduct));
+            dispatch(updateOneProduct(newProduct));
             return newProduct
         }
     } catch(error) {

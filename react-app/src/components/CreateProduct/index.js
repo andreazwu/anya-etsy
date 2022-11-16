@@ -17,8 +17,6 @@ const CreatePreoduct = () => {
     const [productId, setProductId] = useState()
     const [page, setPage] = useState(0)
     const [errors, setErrors] = useState([]);
-    const [checkDuplicate, setCheckDuplicate] = useState(false)
-    const [hasSubmitted, setHasSubmitted] = useState(false);
 
     useEffect(() => {
         dispatch(getAllProducts())
@@ -58,30 +56,42 @@ const CreatePreoduct = () => {
             <div className='createproduct-wrapper'>
                 <h1>Create Product</h1>
                 <form className='createproduct-form' onSubmit={createSubmit}>
-                    <div className='createproduct-errors'>
+                    {/* <div className='createproduct-errors'>
                         <ul>
                             {errors && errors.map((err) => (
                                 <li key={err}>{err}</li>
                             ))}
                         </ul>
-                    </div>
+                    </div> */}
                     <div className='createproduct-content'>
                         <label className='createproduct-label'>
-                            <span className="createproduct-title">name* </span>
+                            <span className="createproduct-title">Name* </span>
                             <span className="createproduct-sub-title">Include keywords that buyers would use to search for your item.</span>
                             <br></br>
-                                <input className='createproduct-input'
-                                    type="text"
-                                    value={name}
-                                    required
-                                    onChange={(e) => setName(e.target.value)}
-                                />
+                            {errors?.map((error, i) => {
+                                if (error.split(":")[0] === 'Name')
+                                    return (
+                                        <div key={i} className='edit-product-errors'>•{error.split(":")[1]}</div>
+                                    )
+                            })}
+                            <input className='createproduct-input'
+                                type="text"
+                                value={name}
+                                required
+                                onChange={(e) => setName(e.target.value)}
+                            />
                         </label>
                         <br></br>
                         <label className='createproduct-label'>
-                            <span className="createproduct-title">category* </span>
+                            <span className="createproduct-title">Category* </span>
                             <span className="createproduct-sub-title">Select a category to help shoppers search your product.</span>
                             <br></br>
+                            {errors?.map((error, i) => {
+                                if (error.split(":")[0] === 'Category')
+                                    return (
+                                        <div key={i} className='edit-product-errors'>•{error.split(":")[1]}</div>
+                                    )
+                            })}
                             <select
                                 htmlFor='category'
                                 name='category'
@@ -100,39 +110,57 @@ const CreatePreoduct = () => {
                         </label>
                         <br></br>
                         <label className='createproduct-label'>
-                            <span className="createproduct-title">description* </span>
+                            <span className="createproduct-title">Description* </span>
                             <span className="createproduct-sub-title">Start with a brief overview that describes your item's finest features.</span>
                             <br></br>
-                                <input className='createproduct-input'
-                                    type="text"
-                                    value={description}
-                                    required
-                                    onChange={(e) => setDescription(e.target.value)}
-                                />
+                            {errors?.map((error, i) => {
+                                if (error.split(":")[0] === 'Description')
+                                    return (
+                                        <div key={i} className='edit-product-errors'>•{error.split(":")[1]}</div>
+                                    )
+                            })}
+                            <input className='createproduct-input'
+                                type="text"
+                                value={description}
+                                required
+                                onChange={(e) => setDescription(e.target.value)}
+                            />
                         </label>
                         <br></br>
                         <label className='createproduct-label'>
-                            <span className="createproduct-title">price* </span>
+                            <span className="createproduct-title">Price* </span>
                             <span className="createproduct-sub-title">Remember to factor in the cost of materials, labor, and other business expenses.</span>
                             <br></br>
-                                <input className='createproduct-input'
-                                    type="text"
-                                    value={price}
-                                    required
-                                    onChange={(e) => setPrice(e.target.value)}
-                                />
+                            {errors?.map((error, i) => {
+                                if (error.split(":")[0] === 'Price')
+                                    return (
+                                        <div key={i} className='edit-product-errors'>•{error.split(":")[1]}</div>
+                                    )
+                            })}
+                            <input className='createproduct-input'
+                                type="text"
+                                value={price}
+                                required
+                                onChange={(e) => setPrice(e.target.value)}
+                            />
                         </label>
                         <br></br>
                         <label className='createproduct-label'>
-                            <span className="createproduct-title">stock* </span>
+                            <span className="createproduct-title">Stock* </span>
                             <span className="createproduct-sub-title">Provide the stock of your product.</span>
                             <br></br>
-                                <input className='createproduct-input'
-                                    type="text"
-                                    value={stock}
-                                    required
-                                    onChange={(e) => setStock(e.target.value)}
-                                />
+                            {errors?.map((error, i) => {
+                                if (error.split(":")[0] === 'Stock')
+                                    return (
+                                        <div key={i} className='edit-product-errors'>•{error.split(":")[1]}</div>
+                                    )
+                            })}
+                            <input className='createproduct-input'
+                                type="text"
+                                value={stock}
+                                required
+                                onChange={(e) => setStock(e.target.value)}
+                            />
                         </label>
                         <br></br>
                         <button className="createproduct-button" type="submit">create and next</button>
