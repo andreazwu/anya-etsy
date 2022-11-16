@@ -278,35 +278,35 @@ def seed_images():
 
   #-----------spring-festival-----------
   product41_image1 = Image(
-      url="https://ae01.alicdn.com/kf/S51aaee9477644172b3d9c0e0121dfea0G.jpg",
+      url="https://img.alicdn.com/imgextra/i4/23670720/O1CN016cTlCZ1HBnuEYti9l_!!23670720.jpg",
       product_id=41)
 
   product41_image2 = Image(
-      url="https://ae01.alicdn.com/kf/S05a385a4ab654955810e892d1af8e00bt.jpg",
+      url="https://img.alicdn.com/imgextra/i4/23670720/O1CN016cTlCZ1HBnuEYti9l_!!23670720.jpg",
       product_id=41)
 
   product41_image3 = Image(
-      url="https://ae01.alicdn.com/kf/Sab5dd64ed03a4fc5a77e046207601435l.jpg",
+      url="https://img.alicdn.com/imgextra/i2/23670720/O1CN01w5Y5mo1HBnu67NDOk_!!23670720.jpg",
       product_id=41)
 
   product42_image1 = Image(
-      url="https://ae01.alicdn.com/kf/Hd16c1ecac5184d75bc2746f92826f171x.jpg",
+      url="https://img.alicdn.com/imgextra/i1/183601810/O1CN01brakCW1PF1fOHM91d_!!183601810.jpg",
       product_id=42)
 
   product42_image2 = Image(
-      url="https://ae01.alicdn.com/kf/H0e0f3e1217874d7c8be6e9047c71faeaU.jpg",
+      url="https://img.alicdn.com/imgextra/O1CN01wjIvaO1PF1cP5Bto5_!!183601810.jpg",
       product_id=42)
 
   product42_image3 = Image(
-      url="https://ae01.alicdn.com/kf/Hb85e4d9bd1264f919491fd975bf799de6.jpg",
+      url="https://img.alicdn.com/imgextra/i1/183601810/O1CN01MtkzJ81PF1fMeem5L_!!183601810.jpg",
       product_id=42)
 
   product43_image1 = Image(
-      url="https://ae01.alicdn.com/kf/S67040f1023654f84bafac6e5681cc7cec.jpg",
+      url="https://ae01.alicdn.com/kf/S39000c0ad5544a6f8adce7d822ee383aS.jpg",
       product_id=43)
 
   product43_image2 = Image(
-      url="https://ae01.alicdn.com/kf/S39000c0ad5544a6f8adce7d822ee383aS.jpg",
+      url="https://ae01.alicdn.com/kf/S67040f1023654f84bafac6e5681cc7cec.jpg",
       product_id=43)
 
   product43_image3 = Image(
@@ -314,17 +314,17 @@ def seed_images():
       product_id=43)
 
   product44_image1 = Image(
-      url="https://ae01.alicdn.com/kf/H8628c11befe04540ae63ea3a34eb265ct.jpg",
+      url="https://img.alicdn.com/imgextra/i3/2213945712695/O1CN01Gre3EU1VmMBeaTwWd_!!2213945712695.jpg",
       product_id=44)
   product44_image2 = Image(
-      url="https://ae01.alicdn.com/kf/Hf025fe44e5cf422281fe5e0c6762db51e.jpg",
+      url="https://img.alicdn.com/imgextra/i4/2213945712695/O1CN01XzR9rT1VmMBVXCvr2_!!2213945712695.jpg",
       product_id=44)
   product44_image3 = Image(
-      url="https://ae01.alicdn.com/kf/H1519a9db576645de90167f76dd5b2b9cV.jpg",
+      url="https://img.alicdn.com/imgextra/i1/2213945712695/O1CN01NZtqfO1VmMBZ2JKFm_!!2213945712695.jpg",
       product_id=44)
 
   product45_image1 = Image(
-      url="https://ae01.alicdn.com/kf/S5b5d1de8a61f4f6c8784d7a7b638fd58m/2023-Rabbit-Year-Red-Envelope-Chinese-New-Year-Decorations-2023-Hongbao-Spring-Festival-Lucky-Money-Red.jpg_Q90.jpg_.webp",
+      url="https://gd4.alicdn.com/imgextra/i2/3042927121/O1CN01PbJn6W22TTAoFGMz8_!!3042927121.jpg",
       product_id=45)
   product45_image2 = Image(
       url="https://ae01.alicdn.com/kf/S4c9774c6ee674aec96c4dadcc3c0527dZ.jpg?width=750&height=880&hash=1630",
@@ -334,20 +334,20 @@ def seed_images():
       product_id=45)
 
   product46_image1 = Image(
-      url="https://ae01.alicdn.com/kf/Sd79bc8243be243ca9e8af7d601169dc9c.jpg",
+      url="https://img.alicdn.com/imgextra/i1/74257871/O1CN01I7QPTr280y775wNkG_!!74257871.jpg",
       product_id=46)
   product46_image2 = Image(
-      url="https://ae01.alicdn.com/kf/Sea7ca67f96cd4cc591bc2fae7946010aV.jpg",
+      url="https://img.alicdn.com/imgextra/i2/74257871/O1CN01SfEbMH280y7Dm2Bhv_!!74257871.jpg",
       product_id=46)
 
   product47_image1 = Image(
-      url="https://ae03.alicdn.com/kf/S3183244c51a14cd9900312eeca3ed4a6k.jpg",
+      url="https://img.alicdn.com/imgextra/i3/2209252358565/O1CN01Mn4mKL2D8p1fqV83L_!!2209252358565.jpg",
       product_id=47)
   product47_image2 = Image(
-      url="https://ae03.alicdn.com/kf/S77d0298966f546dc80c869afdf272208z.jpg",
+      url="https://img.alicdn.com/imgextra/i4/2209252358565/O1CN019Eq9Wt2D8p1j2Zpwv_!!2209252358565.jpg",
       product_id=47)
   product47_image3 = Image(
-      url="https://ae03.alicdn.com/kf/Secdd92f867ae4177ba83805cef5dfffbm.jpg",
+      url="https://img.alicdn.com/imgextra/i1/2209252358565/O1CN01jmuMAG2D8p1bXXCnb_!!2209252358565.jpg",
       product_id=47)
 
   product48_image1 = Image(
@@ -361,17 +361,17 @@ def seed_images():
       product_id=48)
 
   product49_image1 = Image(
-      url="https://ae01.alicdn.com/kf/S70e15ba5381b4937b143d331c8788087m/6Pcs-New-Year-Lanterns-Pendants-2023-Spring-Festival-Flocking-Pendant-Chinese-New-Year-Decorations-Hanging-Ornaments.jpg_Q90.jpg_.webp",
+      url="https://img.alicdn.com/imgextra/i4/23670720/O1CN01YgoufN1HBntmJiF0z_!!23670720.jpg",
       product_id=49)
   product49_image2 = Image(
-      url="https://ae01.alicdn.com/kf/Sd90ff78f328f48709564bb35cbc6f752S/6Pcs-New-Year-Lanterns-Pendants-2023-Spring-Festival-Flocking-Pendant-Chinese-New-Year-Decorations-Hanging-Ornaments.jpg_Q90.jpg_.webp",
+      url="https://img.alicdn.com/imgextra/i2/23670720/O1CN01J4FyYa1HBntfEsC0x_!!23670720.jpg",
       product_id=49)
 
   product50_image1 = Image(
-      url="https://ae01.alicdn.com/kf/S916bdb27f0d54400ae855554f06bf7ffu.jpg",
+      url="https://img.alicdn.com/imgextra/i2/2574823912/O1CN01ty6WRz1elk4ChivX9_!!2574823912.jpg",
       product_id=50)
   product50_image2 = Image(
-      url="https://ae01.alicdn.com/kf/S000779180bfc4183a3f34e0075aea4e4m.jpg",
+      url="https://img.alicdn.com/imgextra/i1/2574823912/O1CN01od44iX1elk4Chij3B_!!2574823912.jpg",
       product_id=50)
 
 
