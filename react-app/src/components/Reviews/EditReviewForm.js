@@ -6,23 +6,15 @@ import { thunkEditReview } from "../../store/reviews"
 // import "./EditReview.css"
 
 const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
+  console.log("EDIT REVIEW FORM COMPONENT STARTS, myreview:", myreview)
   const dispatch = useDispatch()
   const history = useHistory()
-  // const {productId} = useParams()
 
   const [editreview, setEditReview] = useState(myreview.review)
   const [stars, setStars] = useState(myreview.stars)
   const [errors, setErrors] = useState([])
 
   const [hasSubmitted, setHasSubmitted] = useState(false)
-
-  // const currentUser = useSelector((state) => state.session.user)
-
-
-  // useEffect(() => {
-  //   if (currentUser) setErrors([])
-  //   else setErrors(["You must be logged in to leave a review"])
-  // }, [currentUser])
 
 
   const handleSubmit = async (e) => {
