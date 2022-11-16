@@ -49,12 +49,12 @@ const addImg = (imgData) => {
 
 
 //line 51UPDATE_PRODUCT
-
-
-
-
-
-
+const updateOneProduct = (product) => {
+    return {
+        type: UPDATE_PRODUCT,
+        product
+    }
+}
 
 
 
@@ -136,7 +136,7 @@ export const createProduct = (product) => async dispatch => {
             headers: {
                 'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(product)
+            body: JSON.stringify(product)
         });
 
         if (response.ok) {
@@ -153,39 +153,49 @@ export const createProduct = (product) => async dispatch => {
 
 // line 154 Add_IMG
 export const addImgs = (imgDatas, productId) => async dispatch => {
-    console.log("in addImg thunk----product", imgDatas, productId)
+    console.log("in addImg thunk----img", imgDatas, productId)
     for (const imgData of imgDatas) {
         try {
+            console.log("in addImg thunk----imgData",imgData)
                 const response = await fetch(`/api/products/${productId}/images`, {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify(imgData)
+                    body: JSON.stringify({url: imgData})
                 });
 
             if (response.ok) {
                 const newImg = await response.json();
-                console.log("in createProduct thunk----newImg", newImg)
-                dispatch(createOneProduct(newImg));
+                console.log("in addImgs thunk----newImg", newImg)
+                dispatch(addImg(newImg));
                 return newImg
             }
-
         } catch(error) {
             throw error
         }
     }
 }
 
-//line 180 UPDATE_PRODUCT
-
-
-
-
-
-
-
-
+//line 170 UPDATE_PRODUCT
+export const editProduct = (product, productId) => async dispatch => {
+    try {
+        const response = await fetch(`/api/products/${productId}`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+                },
+            body: JSON.stringify(product)
+        });
+        if (response.ok) {
+            const newProduct = await response.json();
+            dispatch(updateOneProduct(newProduct));
+            return newProduct
+        }
+    } catch(error) {
+        throw error
+    }
+}
 
 //line 190 REMOVE_PRODUCT
 export const thunkRemoveProduct = (productId) => async (dispatch) => {
@@ -256,13 +266,14 @@ const products = (state = initialState, action) => {
             return newState
 
         case CREATE_PRODUCT:
-
-            return state
-
+            newState = { ...state, allProducts: { ...state.allProducts, [action.product.id]: action.product} };
+            return newState
+        case ADD_IMG:
+            newState = { ...state, singleProduct: { ...state.singleProduct, productImages:[action.imgData]}}
+            return newState
         case UPDATE_PRODUCT:
-
-
-            return state
+            newState = { ...state, allProducts:{ [action.product.id]: {...state[action.product.id]}, ...action.product} };
+            return newState
 
 
 

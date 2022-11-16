@@ -9,8 +9,10 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import ProductDetails from './components/ProductDetails';
 import ProductsBrowser from './components/ProductsBrowser';
-import CreatePreoduct from './components/CreateProduct';
 import { authenticate } from './store/session';
+import Cart from './components/Cart';
+import CreatePreoduct from './components/CreateProduct';
+import EditProduct from './components/EditProduct';
 import LoadUserReviews from './components/Reviews/LoadUserReviews';
 import CreateReviewForm from './components/Reviews/CreateReviewForm';
 import EditReviewForm from './components/Reviews/EditReviewForm';
@@ -66,12 +68,18 @@ function App() {
         <Route path='/new-product' exact={true} >
           <CreatePreoduct />
         </Route>
+        <Route path='/edit-product/:productId' exact={true} >
+          <EditProduct />
+        </Route>
         <Route path='/my-reviews' exact={true} >
           <LoadUserReviews />
         </Route>
         <Route path='/store-manager' exact={true} >
           <StoreManager />
         </Route>
+        <Route path='/cart' exact={true}>
+            <Cart />
+          </Route>
       </Switch>
     </BrowserRouter>
   );

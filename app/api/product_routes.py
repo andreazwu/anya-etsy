@@ -249,10 +249,10 @@ def add_product_image(product_id):
   """
   logged in user can add images to their product listing
   """
+  print('in addd_product_image-----start')
   product = Product.query.get(product_id)
   form = ImageForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-
   if product is None:
     return {"errors" : "Product couldn't be found"}, 404
   if product.seller_id != current_user.id:
@@ -260,7 +260,7 @@ def add_product_image(product_id):
   if form.validate_on_submit():
     new_image = Image(
       url=form.data["url"],
-      product_id=product_id
+      product_id = product_id
     )
     db.session.add(new_image)
     db.session.commit()
@@ -417,22 +417,36 @@ def create_review(product_id):
 @login_required
 def create_cart_item(product_id):
   item = Product.query.get(product_id)
+  cartItem = db.session.query(CartItem) \
+                            .filter(CartItem.user_id == current_user.id) \
+                            .filter(CartItem.product_id == product_id) \
+                            .first()
+  print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",cartItem.product_id)
+  print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",cartItem.quantity)
+  print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",cartItem.product.name)
   form = CartItemForm()
   form["csrf_token"].data = request.cookies["csrf_token"]
-  if item is None:
+  if not item:
     return {"errors" : "Product couldn't be found"}, 404
   if item.seller_id == current_user.id:
-    return {"error" : "You can not add your own product to cart"}, 400
+    return {"errors" : "You can not add your own product to cart"}, 400
+
   if form.validate_on_submit():
-    data = CartItem(
-      user_id = current_user.id,
-      product_id = product_id,
-      quantity = form.data["quantity"],
-      order_id = 0
-    )
-    db.session.add(data)
-    db.session.commit()
-    return data.to_dict(), 200
+    if not cartItem:
+      data = CartItem(
+        user_id = current_user.id,
+        product_id = product_id,
+        quantity = form.data["quantity"],
+        order_id = 0
+      )
+      print("!!!!!!!!!!!!!!!!!!!!!!!!!",data)
+      db.session.add(data)
+      db.session.commit()
+      return data.to_dict(), 200
+    else:
+      cartItem.quantity += form.data["quantity"]
+      db.session.commit()
+      return cartItem.to_dict(), 200
   else:
     return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
