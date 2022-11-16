@@ -54,7 +54,7 @@ const ProductsBySearch = () =>{
                     </div>
                   </>
                   }
-                  <div className='search-product-price'>${product?.price}</div>
+                  <div className='search-product-price'>${parseFloat(product?.price).toFixed(2)}</div>
                   <div className='search-product-shop'>{currUser?.username}</div>
                 </div>
               </NavLink>
