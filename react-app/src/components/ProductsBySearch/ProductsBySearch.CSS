@@ -15,8 +15,8 @@
 .search-header {
   font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
   font-size: 1.5rem;
-  width: 1220px;
-  margin: 2rem auto;
+  width: 100%;
+  margin: 3rem 5rem 5rem 5rem;
 }
 
 .search-sum {
@@ -32,9 +32,10 @@
   padding-top: 100px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   margin: 0 auto 1.5rem;
   width: 1220px;
+  min-height: 850px;
 }
 
 .search-caption {

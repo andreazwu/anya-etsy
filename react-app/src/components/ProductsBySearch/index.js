@@ -17,7 +17,6 @@ const ProductsBySearch = () =>{
 
 
   return (
-    <>
     <div className='search-product-container'>
       <div className='search-header-container'>
         <div className='search-header'>
@@ -59,14 +58,12 @@ const ProductsBySearch = () =>{
                   <div className='search-product-shop'>{currUser?.username}</div>
                 </div>
               </NavLink>
-
             )
           })}
         </div>
       </div>
-    </div>
     <Footer />
-    </>
+    </div>
   )
 }
 
