@@ -156,6 +156,7 @@ select:focus {
 
 .form-input-wrapper {
   border: rgb(200, 200, 200) 1px solid;
+  width: 80%;
   border-radius: 9px;
   margin: 15px 25px 25px 25px;
   padding-left: 10px;
@@ -175,7 +176,7 @@ select:focus {
 }
 
 .modal-submit-button {
-  width: 89%;
+  width: 85%;
   padding: 10px;
   margin: 0px 25px 5px 25px;
   border: 1px rgb(241, 101, 34) solid;
@@ -189,6 +190,19 @@ select:focus {
   background: white;
   border: 1px rgb(241, 101, 34) solid;
   color:rgb(241, 101, 34);
+}
+
+.create-review-wrapper {
+  position: fixed;
+  width: 90%;
+  /* top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 

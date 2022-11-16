@@ -62,8 +62,8 @@ const CreateReviewForm = () => {
   }
 
   return (
-    <div>
-      {/* <div className="review-modal-subheader">Did you enjoy this product?</div> */}
+    <div className="create-review-wrapper">
+      <div className="review-modal-subheader">Did you enjoy this product?</div>
 
       <div className="validation-errors">
         {

@@ -65,7 +65,6 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
 
   return (
     <div>
-      <div className="review-modal-subheader">Did you enjoy this product?</div>
 
       <div className="validation-errors">
         {

@@ -14,7 +14,7 @@ const StoreManager = () => {
 
   useEffect(()=>{
     dispatch(thunkGetMyProducts())
-  }, [dispatch, currentUser, productsObj])
+  }, [dispatch, currentUser, productsObj]) //<<<<<
 
   if (!currentUser) return <Redirect to="/" />
 
