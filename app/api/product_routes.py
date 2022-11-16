@@ -418,6 +418,8 @@ def create_cart_item(product_id):
     return {"errors" : "Product couldn't be found"}, 404
   if item.seller_id == current_user.id:
     return {"errors" : "You can not add your own product to cart"}, 400
+  cartItem = CartItem.query.get(product_id)
+  # if cartItem
   if form.validate_on_submit():
     data = CartItem(
       user_id = current_user.id,

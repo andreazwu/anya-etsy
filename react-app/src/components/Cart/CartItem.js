@@ -9,7 +9,7 @@ export default function CartItem({ item }) {
     const history = useHistory()
     const [quantity, setQuantity] = useState(Number(item?.quantity));
 // console.log("%%%%%%%%%%%%%%%%%%%%item", item)
-
+    // const product = item.Product
     let [revenue, setRevenue] = useState(Number(item?.quantity * item?.Product?.price))
 // console.log("QQQQQQQQQQQQQQQQuantity", quantity)
 // console.log("RRRRRRRRRRRRRRRRevenue", revenue)
@@ -43,9 +43,9 @@ export default function CartItem({ item }) {
 
     return (
         <>
-        <div className="cart-item-name" onClick={() => history.push(`/products/${item.id}`)}>{item?.Product?.name}</div>
+        <div className="cart-item-name" onClick={() => history.push(`/products/${item.Product.id}`)}>{item?.Product?.name}</div>
         <div className="cart-item-container-div">
-            <div className="cart-image-container" onClick={() => history.push(`/products/${item.id}`)}>
+            <div className="cart-image-container" onClick={() => history.push(`/products/${item.Product.id}`)}>
 
                 <img src={item?.Product?.previewImage} alt='product' />
             </div>

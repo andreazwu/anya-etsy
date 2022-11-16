@@ -28,11 +28,15 @@
 .cart-empty-message{
     text-decoration: none;
     margin-top: 50px;
+
+
+}
+/* .cart-is-empty{
     text-decoration-line: underline;
     text-decoration-color: lightgreen;
     text-decoration-thickness: 20px;
 
-}
+} */
 .cart-need-login{
     font-size: 35px;
     text-align: center;

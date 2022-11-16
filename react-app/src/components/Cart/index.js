@@ -67,7 +67,7 @@ const Cart = () => {
           }
           {!cartItems?.length &&
             <div className="cart-empty-message">
-              <h1>Your cart is empty.</h1>
+              <h1 className="cart-is-empty">Your cart is empty.</h1>
               <NavLink style={{
                 color: 'black'
               }} to='/'>Discover something unique to fill it up</NavLink>
