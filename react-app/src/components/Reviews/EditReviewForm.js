@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, Component } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import { thunkEditReview } from "../../store/reviews"
+import LoadUserReviews from "./LoadUserReviews"
 
 // import "./EditReview.css"
 
@@ -13,11 +14,13 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
   const [editreview, setEditReview] = useState(myreview.review)
   const [stars, setStars] = useState(myreview.stars)
   const [errors, setErrors] = useState([])
-
   const [hasSubmitted, setHasSubmitted] = useState(false)
+  const reviewId = myreview?.id
 
+  console.log("to be edited: stars:", stars, "review:", editreview, "reviewId:", reviewId)
 
   const handleSubmit = async (e) => {
+    {console.log("HANDLE SUBMIT")}
     e.preventDefault()
     setErrors([])
     setHasSubmitted(true)
@@ -30,22 +33,22 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
 
     if (errorsArr.length) return
 
+    setShowEditReview(false)
+
     const reviewInfo = { editreview, stars }
-
-    const newReview = await dispatch(thunkEditReview(reviewInfo, myreview.Product.id))
-      .catch(async (res) => {
-        const message = await res.json()
-        const messageErrors = []
-        if (message) {
-          messageErrors.push(message.message)
-          setErrors(messageErrors)
-        }
-      })
-
-    // if (newReview) setShowModal(false)
+    console.log("before dispatch thunk, reviewInfo:", reviewInfo)
+    const editedReview = await dispatch(thunkEditReview(reviewInfo, reviewId))
+      .then(()=>history.push(`/my-reviews`))
+      // .catch(async (res) => {
+      //   const message = await res.json()
+      //   const messageErrors = []
+      //   if (message) {
+      //     messageErrors.push(message.message)
+      //     setErrors(messageErrors)
+      //   }
+      // })
+    if (editedReview) history.push(`/my-reviews`)
     reset()
-    // history.push(`/products/${myreview.Product.id}`) //<<<<<
-    history.push(`/my-reviews`) //<<<<<
   }
 
   const reset = () => {
@@ -57,7 +60,7 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
 
   return (
     <div className="edit-review-form">
-
+      {console.log("EDIT REVIEW FORM RETURN, BEFORE FORM")}
       <div className="validation-errors">
         {
         hasSubmitted &&
@@ -68,6 +71,7 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
 
       <form onSubmit={handleSubmit}>
       <div className="form-input-wrapper">
+      {console.log("EDIT REVIEW FORM RETURN, INSIDE FORM")}
 
             <label className="review-field">
               Rating:&nbsp;
@@ -76,7 +80,7 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
                 value={stars}
                 onChange={(e) => setStars(e.target.value)}
               >
-                {[1,2,3,4,5].map((num)=>(<option>{num}</option>))}
+                {[1,2,3,4,5].map((num)=>(<option key={num}>{num}</option>))}
               </select>
             </label>
             <div className="form-input-break"></div>
@@ -97,9 +101,7 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
         //   errors.length > 0 ? true : false
         // }
         className="modal-submit-button"
-        onClick={()=>{
-          if (!errors.length) setShowEditReview(false)
-        }}
+        onClick={handleSubmit}
         >
           Submit
         </button>
