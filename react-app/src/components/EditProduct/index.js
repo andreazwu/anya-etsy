@@ -23,7 +23,7 @@ const EditProduct = () => {
         if (name?.length < 10 || name?.trim().length < 10) errors.push('Name: Name requires 10 characters minimum')
         if (name?.length > 250) errors.push('Name: Name exceeds 250 character limit')
         if (category?.length === 0) errors.push('Category: Category selection is required')
-        if (description.length < 10 || description?.trim().length < 10) errors.push('Description: Description requires 10 characters minimum')
+        if (description?.length < 10 || description?.trim().length < 10) errors.push('Description: Description requires 10 characters minimum')
         if (description.length > 2000) errors.push('Description: Description exceeds 2000 character limit')
         if (price && isNaN(price)) errors.push('Price: Price must be a number')
         if (price < 0.1) errors.push('Price: Minimum price of $0.10 required')
