@@ -254,7 +254,8 @@ def add_product_image(product_id):
     return {"errors" : "You are not the seller of this product"}, 403
   if form.validate_on_submit():
     new_image = Image(
-      url=form.data["url"]
+      url=form.data["url"],
+      product_id = product_id
     )
     db.session.add(new_image)
     db.session.commit()

@@ -157,8 +157,8 @@ export const addImgs = (imgDatas, productId) => async dispatch => {
 
             if (response.ok) {
                 const newImg = await response.json();
-                console.log("in createProduct thunk----newImg", newImg)
-                dispatch(createOneProduct(newImg));
+                console.log("in addImgs thunk----newImg", newImg)
+                dispatch(addImg(newImg));
                 return newImg
             }
         } catch(error) {
@@ -243,8 +243,7 @@ const products = (state = initialState, action) => {
             newState = { ...state, allProducts: { ...state.allProducts, [action.product.id]: action.product} };
             return newState
         case ADD_IMG:
-            newState = { ...state, singleProduct: { ...state.singleProduct}}
-            newState.singleProduct.productImages.append(action.imgData)
+            newState = { ...state, singleProduct: { ...state.singleProduct, productImages:[action.imgData]}}
             return newState
         case UPDATE_PRODUCT:
             newState = { ...state, allProducts:{ [action.product.id]: {...state[action.product.id]}, ...action.product} };

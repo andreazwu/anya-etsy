@@ -18,23 +18,25 @@ const AddImages = (productId) => {
         else if (url2) setImgs([url1, url2])
         else if (url1) setImgs([url1])
         else setImgs([])
-        console.log('in CreateProduct-imgs:', imgs)
+        console.log('in ADDimgs-imgs:', imgs)
         // if ((url1 && !url1.startWith('https://')) || (url2 && !url2.startWith('https://')) || (url3 && !url3.startWith('https://'))) {
         //     errors.push("Please provide a vaild url with 'https://'")
         // }
-        if ((url1 && !url1.startWith('https://'))) {
-            errors.push("Please provide a vaild url with 'https://'")
-        }
+        // if ((url1 && !url1.startWith('https://'))) {
+        //     errors.push("Please provide a vaild url with 'https://'")
+        // }
         setErrors(errors);
 
     }, [url1, url2, url3])
+    console.log('in ADDimgs-productid:', productId)
 
     const imageSubmit = async(e) => {
         e.preventDefault()
         const payload = {imgs, productId}
-        console.log('in CreateProduct-payload:', payload)
+        const imgProductId = productId.productId
+        console.log('in ADDimgs-imgProductId:', imgProductId)
 
-        const response = await dispatch(addImgs(imgs, productId)).catch(async(res) => {
+        const response = await dispatch(addImgs(imgs, imgProductId)).catch(async(res) => {
             const error = await res.json()
             console.log('in AddImages-error:', error)
         })
