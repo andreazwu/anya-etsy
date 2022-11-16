@@ -1,23 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getAllProducts } from '../../store/products';
+import { getProductsBySearch } from '../../store/products';
 import './SearchBar.css'
 
 const SearchBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const productsObj = useSelector(state => state.session.products)
+  const allProducts = useSelector(state => state.products.allProducts)
   const [keyword, setKeyword] = useState("");
   const [errors, setErrors] = useState([]);
 
 
   const handleSearch = async (e) => {
     e.preventDefault()
-    if (keyword.trim().length === 0) {
-      return setErrors(["Please enter a keyword!"])
+    // if (keyword.trim().length === 0) {
+    //   return setErrors(["Please enter a keyword!"])
+    // }
+    // history.push(`/search/${keyword}`)
+    const response = await dispatch(getProductsBySearch(keyword))
+    if (response) {
+      history.push(`/search/${keyword}`)
     }
-    history.push(`/search/${keyword}`)
     setKeyword("")
     setErrors([])
   }

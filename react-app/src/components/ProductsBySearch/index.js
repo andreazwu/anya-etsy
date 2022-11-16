@@ -14,7 +14,7 @@ const ProductsBySearch = () =>{
 
   useEffect(() => {
     dispatch(getProductsBySearch(keyword))
-  }, [dispatch])
+  }, [dispatch, keyword])
 
 
   return (

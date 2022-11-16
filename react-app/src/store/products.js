@@ -229,12 +229,12 @@ export const addImgs = (imgDatas, productId) => async dispatch => {
 
 // line 230 SEARCH_PRODUCTS Thunk
 export const getProductsBySearch = (keyword) => async (dispatch) => {
-    // console.log("SEARCH_PRODUCTS Thunk - keyword:", keyword)
+    console.log("SEARCH_PRODUCTS Thunk - keyword:", keyword)
     const response = await fetch(`/api/products/search/${keyword}`);
-    // console.log("SEARCH_PRODUCTS Thunk - response:", response)
+    console.log("SEARCH_PRODUCTS Thunk - response:", response)
     if (response.ok) {
         const products = await response.json();
-        // console.log("SEARCH_PRODUCTS Thunk - products:", products)
+        console.log("SEARCH_PRODUCTS Thunk - products:", products)
         dispatch(loadSearchProducts(products));
         return products;
     }
@@ -283,12 +283,12 @@ const products = (state = initialState, action) => {
 
             return state
         case SEARCH_PRODUCTS:
-            newState = {...state, searchedProducts: {...state.searchedProducts}};
-            // console.log("in SEARCH_PRODUCTS action.products:", action.products)
+            newState = {...state, searchedProducts: {}};
+            console.log("in SEARCH_PRODUCTS action.products:", action.products)
             action.products.Products.forEach(product => {
                 newState.searchedProducts[product.id] = product
             })
-            // console.log("in SEARCH_PRODUCTS reducer, newState:", newState)
+            console.log("in SEARCH_PRODUCTS reducer, newState:", newState)
             return newState
         default:
             return state;
