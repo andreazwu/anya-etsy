@@ -31,7 +31,7 @@ const CreateReviewForm = () => {
 
     const errorsArr = []
 
-    if (!review.length || review.length > 2000) errorsArr.push("please enter a valid review fewer than 2000 characters long")
+    if (review.length > 2000) errorsArr.push("please enter a valid review fewer than 2000 characters long")
 
     setErrors(errorsArr)
 
@@ -49,10 +49,9 @@ const CreateReviewForm = () => {
         }
       })
 
-
-    // if (newReview) setShowNewReviewModal(false)
     reset()
     history.push(`/products/${productId}`)
+    return newReview
   }
 
   const reset = () => {
@@ -92,6 +91,7 @@ const CreateReviewForm = () => {
               Review:
               <textarea
                 type="text"
+                placeholder="Optional"
                 value={review}
                 onChange={(e) => setReview(e.target.value)}
               />

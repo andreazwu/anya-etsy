@@ -13,38 +13,43 @@ const LoadUserReviews = () => {
   useEffect(()=>{
     dispatch(thunkGetUserReviews())
   }, [dispatch, currentUser,
-    // reviewsObj])
-    reviewsArr.length])
+    reviewsObj])
+    // reviewsArr.length])
 
   if (!currentUser) return <Redirect to="/" />
 
   return (
-    <>
-      <div>
+    <div className="my-reviews-main">
+      <div className="my-reviews-upper">
+        <div className="my-reviews-header">My Reviews</div>
+        {currentUser?.firstName &&
+          <div className="my-reviews-name">
+              <span>{currentUser?.firstName}{" "}{currentUser?.lastName}</span>
+              &nbsp;
+              {/* <i class="fa-solid fa-angle-right"></i> */}
+          </div>
+        }
+      </div>
+      {/* <div>
         {
           reviewsArr.length === 0 ?
           (<>
-            <h1>My Reviews</h1>
             <h4>You Don't Have Any Reviews!</h4>
           </>):
-          <h1>My Reviews</h1>
+          <h1></h1>
         }
-      </div>
+      </div> */}
 
-      <div className="wrapper-center">
-        <div className="my-reviews-container">
+      <div className="my-reviews-outer">
+        <div className="my-reviews-inner">
           {
-            <div className="my-reviews-wrapper-wrapper">
-              <div className="my-reviews-wrapper">
-                {reviewsArr.map((review) => (
-                  <MyReview key={review.id} review={review} user={currentUser}/>
-                ))}
-              </div>
-            </div>
+            reviewsArr.map((review) => (
+              <MyReview key={review.id} review={review} user={currentUser}/>
+            ))
           }
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -18,14 +18,24 @@ const MyReview = ({review, user}) => {
   }
 
   return (
-    <div>
+    <div className="myproducts-product-container">
 
+      <div div className="myproducts-product-image-container">
+        <Link style={{ textDecoration: "none", color: "black" }} to={`/products/${review.Product.id}`}>
+          {/* {review.Product.previewImage ?
+            (<img src={review.Product.previewImage} />) :
+            (<img src={noimage} alt="noimage" />)
+          } */}
+          <img src={review.Product.previewImage} />
+        </Link>
+      </div>
+
+<div className="my-single-info">
       <div className="my-single-header">
-        Review For {" "}
-        {/* <Link to={`/Products/${review.Product.id}`}> */}
-        <Link to={`/Products/${review.Product.id}`}>
+        Review For:
+        <div className="my-single-product-name">
           {review.Product.name.split(",")[0].split("|")[0]}
-        </Link>:
+        </div>
       </div>
 
 
@@ -34,14 +44,9 @@ const MyReview = ({review, user}) => {
             {new Date(review.createdAt).toString().slice(3,-42)}
         </p>
         <div className="my-single-rating">
-          {/* <i className="fa-solid fa-star"></i>
-          <span className="my-single-rating-number">
-            {" "}{review.stars}
-          </span> */}
             {
               [...Array(review.stars)].map((star) => (<i className="fa-solid fa-star"></i>))
             }
-
         </div>
 
         <div className="my-single-review">
@@ -82,7 +87,7 @@ const MyReview = ({review, user}) => {
             Delete Review
           </button>
         </div>
-
+</div>
       </div>
     </div>
   )
