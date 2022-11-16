@@ -267,7 +267,7 @@ const products = (state = initialState, action) => {
             newState = { ...state, singleProduct: { ...state.singleProduct, productImages:[action.imgData]}}
             return newState
         case UPDATE_PRODUCT:
-            newState = { ...state, allProducts:{ [action.product.id]: {...state[action.product.id]}, ...action.product} };
+            newState = { ...state, allProducts:{ ...state.allProducts, [action.product.id]: action.product}};
             return newState
 
 
@@ -294,7 +294,7 @@ const products = (state = initialState, action) => {
             newState = {...state}
             newState.allProducts = {...state.allProducts}
             newState.singleProduct = {...state.singleProduct}
-            delete newState.allProducts[action.ProductId]
+            delete newState.allProducts[action.productId]
             if (newState.singleProduct.id === action.productId) newState.singleProduct = {}
             return newState
 

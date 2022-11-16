@@ -41,6 +41,7 @@ const EditProduct = () => {
 
         const response = await dispatch(editProduct(payload, productId))
         // if (response) setShowEditForm(false)
+        history.push(`/store-manager`)
     }
 
     return (
