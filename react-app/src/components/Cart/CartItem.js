@@ -11,10 +11,10 @@ export default function CartItem({ item }) {
 // console.log("%%%%%%%%%%%%%%%%%%%%item", item)
     // const product = item.Product
     let [revenue, setRevenue] = useState(Number(item?.quantity * item?.Product?.price))
-// console.log("QQQQQQQQQQQQQQQQuantity", quantity)
-// console.log("RRRRRRRRRRRRRRRRevenue", revenue)
+    const stock = item.Product.stock
+
     const options = [];
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= stock; i++) {
         options.push(i);
     }
 
