@@ -3,18 +3,19 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/Navigation/NavBar.js';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import ProductDetails from './components/ProductDetails';
-import ProductsBrower from './components/ProductsBrowser';
+import ProductsBrowser from './components/ProductsBrowser';
 import CreatePreoduct from './components/CreateProduct';
 import { authenticate } from './store/session';
 import LoadUserReviews from './components/Reviews/LoadUserReviews';
 import CreateReviewForm from './components/Reviews/CreateReviewForm';
 import EditReviewForm from './components/Reviews/EditReviewForm';
 import StoreManager from './components/StoreManager';
+import ProductsBySearch from './components/ProductsBySearch'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,7 +37,10 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path='/'>
-          <ProductsBrower/>
+          <ProductsBrowser/>
+        </Route>
+        <Route path='/search/:keyword'>
+            <ProductsBySearch />
         </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -44,12 +48,12 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
+        <Route path='/users' exact={true} >
           <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        </Route>
+        <Route path='/users/:userId' exact={true} >
           <User />
-        </ProtectedRoute>
+        </Route>
         <Route path='/products/:productId/new-review' exact={true} >
           <CreateReviewForm />
         </Route>

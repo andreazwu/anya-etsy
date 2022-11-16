@@ -7,6 +7,7 @@ const UPDATE_PRODUCT = 'products/updateproduct';
 const REMOVE_PRODUCT = 'products/deleteproduct';
 const MY_PRODUCTS = 'products/myproduct';
 const RESET_PRODUCTS = 'products/RESET_PRODUCTS'
+const SEARCH_PRODUCTS = 'products/searchedProducts';
 
 export const acResetProducts = () => {
     return { type: RESET_PRODUCTS }
@@ -18,7 +19,7 @@ const allProducts = (products) => ({
     products
 })
 
-//line 21 LOAD_ONE_PRODUCT
+// LOAD_ONE_PRODUCT
 const loadOneProduct = (product) => {
     return {
         type: LOAD_ONE_PRODUCT,
@@ -27,8 +28,7 @@ const loadOneProduct = (product) => {
 }
 
 
-
-// line 31CREATE_PRODUCT
+// line 31 CREATE_PRODUCT
 const createOneProduct = (product) => {
     return {
         type: CREATE_PRODUCT,
@@ -78,7 +78,17 @@ const acLoadMyProducts = (products) => {
 
 
 
-/////line 81 thunk
+//line 81 SEARCH_PRODUCTS
+const loadSearchProducts = (products) => {
+    return {
+        type: SEARCH_PRODUCTS,
+        products
+    }
+}
+
+
+
+/////line 91 thunk
 // LOAD_ALL_PRODUCTS
 export const getAllProducts = () => async (dispatch) => {
     const response = await fetch('/api/products');
@@ -97,7 +107,7 @@ export const getAllProducts = () => async (dispatch) => {
 
 
 
-//line 100 LOAD_ONE_PRODUCT
+//line 110 LOAD_ONE_PRODUCT
 export const getOneProduct = (productId) => async dispatch => {
     console.log("in thunk----productId", productId)
     const response = await fetch(`/api/products/${productId}`)
@@ -117,7 +127,7 @@ export const getOneProduct = (productId) => async dispatch => {
 
 
 
-//line 120 CREATE_PRODUCT
+//line 130 CREATE_PRODUCT
 export const createProduct = (product) => async dispatch => {
     console.log("in createProduct thunk----product", product)
     try {
@@ -141,7 +151,7 @@ export const createProduct = (product) => async dispatch => {
     }
 }
 
-// Add_IMG
+// line 154 Add_IMG
 export const addImgs = (imgDatas, productId) => async dispatch => {
     console.log("in addImg thunk----product", imgDatas, productId)
     for (const imgData of imgDatas) {
@@ -167,17 +177,7 @@ export const addImgs = (imgDatas, productId) => async dispatch => {
     }
 }
 
-//line 170 UPDATE_PRODUCT
-
-
-
-
-
-
-
-
-
-
+//line 180 UPDATE_PRODUCT
 
 
 
@@ -217,10 +217,26 @@ export const thunkGetMyProducts = () => async (dispatch) => {
 
 
 
-// line 220
+// line 230 SEARCH_PRODUCTS Thunk
+export const getProductsBySearch = (keyword) => async (dispatch) => {
+    // console.log("SEARCH_PRODUCTS Thunk - keyword:", keyword)
+    const response = await fetch(`/api/products/search/${keyword}`);
+    // console.log("SEARCH_PRODUCTS Thunk - response:", response)
+    if (response.ok) {
+        const products = await response.json();
+        // console.log("SEARCH_PRODUCTS Thunk - products:", products)
+        dispatch(loadSearchProducts(products));
+        return products;
+    }
+}
+
+
+
+// line 245
 const initialState = {
     allProducts: {},
     singleProduct: {},
+    searchedProducts: {},
 }
 
 const products = (state = initialState, action) => {
@@ -236,7 +252,7 @@ const products = (state = initialState, action) => {
 
         case LOAD_ONE_PRODUCT:
             newState = { ...state, singleProduct: { ...action.product } };
-            console.log("in load_one_product reducer, newState:", newState)
+            // console.log("in load_one_product reducer, newState:", newState)
             return newState
 
         case CREATE_PRODUCT:
@@ -259,9 +275,14 @@ const products = (state = initialState, action) => {
 
 
 
-
-
-
+        case SEARCH_PRODUCTS:
+            newState = {...state, searchedProducts: {}};
+            // console.log("in SEARCH_PRODUCTS action.products:", action.products)
+            action.products.Products.forEach(product => {
+                newState.searchedProducts[product.id] = product
+            })
+            // console.log("in SEARCH_PRODUCTS reducer, newState:", newState)
+            return newState
 
         case REMOVE_PRODUCT:
             newState = {...state}
@@ -276,7 +297,7 @@ const products = (state = initialState, action) => {
             const normalizedProducts = {}
             action.products.Products.forEach(product => normalizedProducts[product.id] = product)
             newState.allProducts = normalizedProducts
-            newState.singleProduct = {}
+            // newState.singleProduct = {}
             return newState
 
         case RESET_PRODUCTS:

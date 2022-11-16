@@ -17,7 +17,7 @@ const StoreManager = () => {
     // return () => {
     //   dispatch(acResetProducts())
     // }
-  }, [dispatch]) //<<<<<
+  }, [dispatch, productsArr]) //<<<<<
 
   if (!currentUser) return <Redirect to="/" />
 

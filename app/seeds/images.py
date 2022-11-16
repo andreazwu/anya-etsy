@@ -154,10 +154,10 @@ def seed_images():
     url='https://i.etsystatic.com/8826700/r/il/a69117/1698270685/il_794xN.1698270685_bvkd.jpg', product_id=22)
 
   product23_image1 = Image(
-    url='https://i.etsystatic.com/8826700/r/il/80ecd8/880320395/il_794xN.880320395_qrh2.jpg', product_id=23)
+    url='https://i.etsystatic.com/37032663/r/il/6dbe80/4347034261/il_794xN.4347034261_elrr.jpg', product_id=23)
 
   product23_image2 = Image(
-    url='https://i.etsystatic.com/8826700/r/il/f6fae2/682901948/il_794xN.682901948_dyie.jpg', product_id=23)
+    url='https://i.etsystatic.com/37032663/r/il/6d2b83/4299638754/il_794xN.4299638754_1561.jpg', product_id=23)
 
   product24_image1 = Image(
     url='https://i.etsystatic.com/8826700/r/il/268e1b/684729134/il_794xN.684729134_iojt.jpg', product_id=24)

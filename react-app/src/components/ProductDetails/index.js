@@ -3,8 +3,8 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneProduct } from "../../store/products";
 import LoadProductReviews from "../Reviews/LoadProductReviews";
-// import CreateReviewModal from "../Reviews/CreateReviewModal"
 import CreateReviewForm from "../Reviews/CreateReviewForm";
+import Footer from '../Navigation/Footer.js';
 import './productDetails.css'
 
 const ProductDetails = () => {
@@ -78,7 +78,7 @@ const ProductDetails = () => {
             <div className="one-spot-reviews-container">
                 <LoadProductReviews productId={productId}/>
             </div>
-
+        <Footer />
         </div>
     )
 }
