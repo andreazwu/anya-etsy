@@ -1,5 +1,6 @@
 import { Link, useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
+import { thunkRemoveProduct } from "../../store/products"
 import noimage from "./noimage.jpg"
 
 import "./StoreManager.css"
@@ -8,18 +9,19 @@ const MyProduct = ({product}) => {
   const dispatch = useDispatch()
   const history = useHistory()
 
-  //verify if currentUser is seller of Product
+  //verify if currentUser is seller of product
   const currentUser = useSelector((state) => state.session.user)
   let seller = false
   if (currentUser?.id === product.sellerId) seller = true
 
-  //handle delete Product click
+  //handle delete product click
   const deleteProductHandleClick = async () => {
-    // if (window.confirm("Are you sure you want to delete this Product?")) {
-    //   await dispatch(thunkRemoveProduct(product.id))
-    // }
+    if (window.confirm("Are you sure you want to delete this Product?")) {
+      await dispatch(thunkRemoveProduct(product.id))
+    }
   }
 
+  //handle edit product click
   const editProductHandleClick = async () => {
     // history.push(`/myproducts/edit/${product.id}`)
     // await dispatch(thunkEditProduct(Product.id))
@@ -58,24 +60,20 @@ const MyProduct = ({product}) => {
             {product.stock} left in stock
           </div>
         </div>
-
-
       </Link>
 
-
-        {/* only show edit/delete buttons to seller of Product */}
         <div className="myproduct-buttons-container">
           {seller && (
             <>
               <button
               className="myproduct-buttons"
               onClick={editProductHandleClick}>
-                Edit Product
+                Edit
               </button>
               <button
               className="myproduct-buttons"
               onClick={deleteProductHandleClick}>
-                Delete Product
+                Delete
               </button>
             </>
           )}

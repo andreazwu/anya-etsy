@@ -59,12 +59,12 @@ const addImg = (imgData) => {
 
 
 //line 61 REMOVE_PRODUCT
-
-
-
-
-
-
+const acRemoveProduct = (productId) => {
+    return {
+        type: REMOVE_PRODUCT,
+        productId
+    }
+}
 
 
 
@@ -188,14 +188,14 @@ export const addImgs = (imgDatas, productId) => async dispatch => {
 
 
 //line 190 REMOVE_PRODUCT
-
-
-
-
-
-
-
-
+export const thunkRemoveProduct = (productId) => async (dispatch) => {
+    const response = await fetch(`/api/products/${productId}`, {
+        method: "DELETE"
+    })
+    if (response.ok) {
+        dispatch(acRemoveProduct(productId))
+    }
+}
 
 
 
@@ -248,10 +248,28 @@ const products = (state = initialState, action) => {
 
             return state
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         case REMOVE_PRODUCT:
-
-
-            return state
+            newState = {...state}
+            newState.allProducts = {...state.allProducts}
+            newState.singleProduct = {...state.singleProduct}
+            delete newState.allProducts[action.ProductId]
+            if (newState.singleProduct.id === action.productId) newState.singleProduct = {}
+            return newState
 
         case MY_PRODUCTS:
             newState = {...state}
