@@ -3,10 +3,10 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { editProduct, getAllProducts } from "../../store/products";
 
-const EditProduct = () => {
+const EditProduct = ({ productId, setShowEditForm}) => {
     const dispatch = useDispatch()
     const history = useHistory()
-    const { productId } = useParams()
+    // const { productId } = useParams()
     const product = useSelector((state)=> state.products.allProducts[productId])
     // console.log('in EditProducct ----product', product)
     const categories = ['Halloween', 'Valentine', 'Thanksgiving', 'Christmas', 'Easter', 'Spring Festival']
@@ -40,8 +40,8 @@ const EditProduct = () => {
         const payload = {name, category, description, price, stock}
 
         const response = await dispatch(editProduct(payload, productId))
-        // if (response) setShowEditForm(false)
-        history.push(`/store-manager`)
+        if (response) setShowEditForm(false)
+        // history.push(`/store-manager`)
     }
 
     return (
