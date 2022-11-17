@@ -4,14 +4,14 @@ import { useSelector, useDispatch} from "react-redux";
 import { getOneProduct } from "../../store/products";
 import {addCartItemThunk, getCartItemsThunk} from "../../store/cartItems"
 import LoadProductReviews from "../Reviews/LoadProductReviews";
-import CreateReviewForm from "../Reviews/CreateReviewForm";
+// import CreateReviewForm from "../Reviews/CreateReviewForm";
+import CreateReviewModal from "../Reviews/CreateReviewModal"
 import Footer from '../Navigation/Footer.js';
 import './productDetails.css'
 
 const ProductDetails = () => {
     const history = useHistory()
     const { productId } = useParams();
-    // console.log("in ProductDetails----productId", productId)
     const [showNewReviewModal, setShowNewReviewModal] = useState(false)
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)
@@ -139,17 +139,21 @@ const ProductDetails = () => {
                 sessionUser &&
                 !seller &&
                 !product.reviewers.includes(sessionUser.id) &&
-                (<div>
-                    <button
-                        className="create-new-review-button"
-                        onClick={()=>history.push(`/products/${productId}/new-review`)}
-                    >
-                        Create a new review
-                        {/* <CreateReviewForm productId={productId}/> */}
-                    </button>
-                </div>)
+                // (<div>
+                //     <button
+                //         className="create-new-review-button"
+                //         onClick={()=>history.push(`/products/${productId}/new-review`)}
+                //     >
+                //         Create a new review
+                //         {/* <CreateReviewForm productId={productId}/> */}
+                //     </button>
+                // </div>)
+                <CreateReviewModal
+                    productId={productId}
+                    showNewReviewModal={showNewReviewModal}
+                    setShowNewReviewModal={setShowNewReviewModal}
+                />
                 }
-            {/* {console.log("product details, showNewReviewModal:", showNewReviewModal)} */}
             </div>
             <div className="one-spot-reviews-container">
                 <LoadProductReviews productId={productId} user={sessionUser}/>
