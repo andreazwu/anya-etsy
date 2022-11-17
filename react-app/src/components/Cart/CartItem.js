@@ -67,9 +67,9 @@ export default function CartItem({ item }) {
                  </div>
             <div className="quantity-price-box">
                 <div className="item-total-container">
-                    <p>$ {revenue}</p>
+                    <p>$ {revenue.toFixed(2)}</p>
                     x{quantity}
-                    <p>(${item?.Product?.price} each)</p>
+                    <p>(${item?.Product?.price.toFixed(2)} each)</p>
                 </div>
             </div>
         </div>

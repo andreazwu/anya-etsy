@@ -38,13 +38,13 @@ const LoadProductReviews = ({ productId, user }) => {
             <p className="single-review-review">
               {/* <i className="fa fa-quote-left fa-lg" aria-hidden="true"></i> */}
               <span>
-                {review.review}
+                {review?.review}
               </span>
               {/* <i className="fa fa-quote-right fa-lg" aria-hidden="true"></i> */}
             </p>
 
             {
-              review?.userId==user.id &&
+              review?.userId==user?.id &&
               <div className="product-review-button-wrap">
                 {/* <span>
                   <button

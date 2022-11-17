@@ -39,7 +39,7 @@ const ProfileButton = ({user}) => {
           <NavLink to='/my-reviews' style={{textDecoration: 'none'}}>
             <div className='dropdown-item'>
               <div className='my-reviews-img'><i class="fa-solid fa-list-ul"></i></div>
-              <div className='my-reviews'>My reviews</div>
+              <div className='my-reviews'>My Reviews</div>
             </div>
           </NavLink>
           <NavLink to='/new-product' style={{textDecoration: 'none'}}>

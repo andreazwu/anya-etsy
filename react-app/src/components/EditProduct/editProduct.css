@@ -1,13 +1,11 @@
-#modal-content {
-    width: 600px;
-    height: 600px;
-    border-radius: 12px;
-}
 .editproduct-wrapper {
     padding: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 600px;
+    height: 600px;
+    border-radius: 12px;
 }
 .editproduct-title {
     font-size: 18px;

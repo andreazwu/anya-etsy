@@ -75,7 +75,7 @@ const AddImages = (productId) => {
                         />
                     </label>
                     <br></br>
-                    <label>Image 2(optional)
+                    <label>Image 2 (optional)
                         <br></br>
                         <input className='addImage-input'
                             type="text"
@@ -84,7 +84,7 @@ const AddImages = (productId) => {
                         />
                     </label>
                     <br></br>
-                    <label>Image 3(optional)
+                    <label>Image 3 (optional)
                         <br></br>
                         <input className='addImage-input'
                             type="text"
