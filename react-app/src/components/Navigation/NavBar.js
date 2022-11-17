@@ -28,7 +28,7 @@ const NavBar = () => {
             <>
               <div className='navBar-link-icon'>
                 <NavLink to='/store-manager' exact={true} activeClassName='active'>
-                  <img src={myShop} alt='shop'></img>
+                  <img src={myShop} alt='myShop'></img>
                 </NavLink>
               </div>
               <div className='navBar-link-profile'>

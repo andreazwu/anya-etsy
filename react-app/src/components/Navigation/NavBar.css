@@ -1,27 +1,20 @@
-.logo {
-  left: 62px;
-  height: 50px;
+nav {
   width: auto;
-  margin-top: 0.1em;
-  margin-left: 0.5em;
-}
-
-
-NavLink {
-  text-decoration: none;
+  max-width: 94rem;
+  margin: 0 auto;
 }
 
 .navBar-main {
   box-sizing: border-box;
-  min-height: 101px;
+  min-height: 100px;
   margin: 0 auto;
-  width: 1450px;
+  width: 100%;
 }
 
 .navBar-outer {
   display: flex;
   flex-direction: row;
-  margin: 20px auto 10px;
+  margin: 20px auto;
   justify-content: center;
   position: relative;
   box-sizing: border-box;
@@ -33,17 +26,17 @@ NavLink {
   align-items: center;
 }
 
-.sign-in {
-  font-family: GraphikRegular, Arial, Helvetica, sans-serif;
-  font-size: 0.85rem;
-  border-radius: 35%;
-  padding: 0 10px;
+.logo {
+  /* left: 62px; */
+  height: 60px;
+  width: auto;
+  margin-top: 0;
 }
 
 .navBar-link-icon {
   display: flex;
   align-items: center;
-  padding: 5px 10px;
+  padding: 0 10px 5px;
   border-radius: 50%;
 }
 
@@ -55,30 +48,12 @@ NavLink {
 }
 
 .navBar-link-profile {
+  display: flex;
+  align-items: center;
   padding: 0 10px 5px;
+  margin-top: -5px;
   margin-left: 10px;
-  display: flex;
-  align-items: center;
   border-radius: 35%;
-}
-
-.navBar-home {
-  color: #F1641E;
-  font-family: GuardianEgypRegular, Arial, Helvetica, sans-serif;
-  font-size: 39px;
-  line-height: 19.6px;
-  padding-right: 5px;
-}
-
-.navBar-searchBar-outer {
-  border: black 2.5px solid;
-  border-radius: 30px;
-  background-color: #F3F3F3;
-  width: 98%;
-  height: 43px;
-  display: flex;
-  align-items: center;
-  margin: 0 10px 0 5px;
 }
 
 .navBar-featured-outer {
@@ -108,34 +83,3 @@ NavLink {
   border-bottom: 1px solid black;
   box-sizing: border-box;
 }
-
-@media screen and (min-width: 1281px) and (max-width: 1440px) {
-  .navBar-main {
-    width: 1416px;
-  }
-
-  .navBar-featured-outer {
-    width: 1400px;
-    margin: 0 auto;
-  }
-
-  .navBar-feature, .navBar-feature-active {
-    margin: 0 1.6rem;
-  }
-}
-
-@media screen and (max-width: 1280px) {
-  .navBar-main {
-    width: 1216px;
-  }
-
-  .navBar-featured-outer {
-    width: 1200px;
-    margin: 0 auto;
-  }
-
-  .navBar-feature, .navBar-feature-active {
-    margin: 0 1.1rem;
-  }
-}
-
