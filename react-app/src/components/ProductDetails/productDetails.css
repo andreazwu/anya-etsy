@@ -93,8 +93,30 @@ font-family: GraphikLight, Arial, Helvetica, sans-serif;
   width: 570px;
   line-height: 32px;
 }
-
+.single-product-price{
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  font-family: GraphikProduktRegular, Arial, Helvetica, sans-serif;
+}
 /* ##########stock, cart,description,############### */
+.single-product-stock{
+  margin-top: 130px
+}
+.single-product-quantity{
+  position: relative;
+  margin-top: 7px;
+  width: fit-content;
+  height: fit-content;
+
+}
+.product-input-quantity{
+  width: 5em;
+  height: 3em;
+  border: 1px solid rgb(195, 194, 194);
+  box-shadow: 0 0 5px #bdbdbd;
+  border-radius: .3em;
+  padding-left: .5em;
+}
 .addtocart-button{
   cursor: pointer
 

@@ -166,7 +166,7 @@ const ProductDetails = () => {
 
             <div className="single-product-stock">stock: {product.stock}</div>
             <div className="single-product-quantity">
-                <select className="input-quantity" value={quantity} onChange={e => setQuantity(e.target.value)}>
+                <select className="product-input-quantity" value={quantity} onChange={e => setQuantity(e.target.value)}>
                 {options.map(option => (
                             <option key={option} value={option}>{option}</option>
                         ))}
