@@ -39,6 +39,7 @@ const ProductsBrowser = () => {
   }, [dispatch])
 
   if (!productsObj) return null;
+  if (!thanksgivingProducts.length || !christmasProducts.length || !springFestivalProducts.length || !valentineProducts.length || !easterProducts.length) return null;
 
   return (
     <div>
