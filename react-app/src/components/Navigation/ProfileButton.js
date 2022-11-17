@@ -48,10 +48,10 @@ const ProfileButton = ({user}) => {
               <div className='my-products'>Sell on Anya</div>
             </div>
           </NavLink>
-          <div className='dropdown-item'>
-            <div className='sign-out-img'><i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i></div>
+          {/* <div className='dropdown-item'>
+            <div className='sign-out-img'><i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i></div> */}
             <LogoutButton />
-          </div>
+          {/* </div> */}
         </div>
       </>}
     </div >
