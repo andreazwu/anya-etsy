@@ -190,8 +190,9 @@ const ProductDetails = () => {
         <div className="product-detail-gift">
             <i className="fa-solid fa-gift fa-2xl"></i>
             <div className="product-detail-text">
-              <span className="ajw">A sought-after gift</span>-over 20 people have this in their carts
-              right now.
+              <span className="ajw">A sought-after gift</span>
+              {/* -over 20 people have this in their carts
+              right now. */}
             </div>
           </div>
           <div className="product-detail-award">

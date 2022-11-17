@@ -335,13 +335,12 @@ input[type="radio"]{
 }
 
 .create-review-field {
-  color: rgb(241, 101, 34);
+  /* color: rgb(241, 101, 34); */
+  color: black;
   padding-left: 3px;
 }
 
-.create-review-modal-whole form {
-  padding: 10px 20px 10px 20px;
-}
+
 .create-review-modal-whole textarea {
   resize: none;
   width: 100%;
@@ -353,23 +352,14 @@ input[type="radio"]{
   margin: 4px 0px;
 }
 
-.create-review-modal-whole .form-input-wrapper {
-  border: rgb(200, 200, 200) 1px solid;
-  width: 95%;
-  border-radius: 9px;
-  /* margin: 15px 25px 25px 25px; */
-  margin-top: 5px;
-  padding-left: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
 .create-review-modal-whole .stars-wrapper {
   margin-top: -20px;
   margin-bottom: 5px;
   margin-left: -10px;
 }
 .create-review-modal-whole .review-field {
-  color: rgb(241, 101, 34);
+  /* color: rgb(241, 101, 34); */
+  color: black;
   /* font-size: 12px; */
   padding-left: 3px;
 }
@@ -385,8 +375,8 @@ input[type="radio"]{
 
 .create-review-modal-whole textarea {
   resize: none;
-  width: 90%;
-  height: 62px;
+  width: 100%;
+  height: 120px;
   font-size: 16px;
   padding-left: 4px;
   border: none;
@@ -402,27 +392,35 @@ textarea:focus {
   background-color: rgb(200, 200, 200);
   height:1px;
   margin-left: -11px;
-  width: 103%;
-  margin-top: 4px;
-  margin-bottom: 4px;
+  width: 104%;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .create-review-modal-whole .form-input-wrapper {
   border: rgb(200, 200, 200) 1px solid;
-  width: 95%;
+  width: 100%;
   border-radius: 9px;
   /* margin: 15px 25px 25px 25px; */
   margin-top: 5px;
+  margin-bottom: 0px;
   padding-left: 10px;
   /* padding-top: 5px; */
 }
 
+.create-modal-button-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
 .create-review-modal-whole .modal-submit-button {
-  width: 98%;
+  width: 85%;
   padding: 10px;
   font-size: 16px;
   /* margin: 0px 25px 5px 25px; */
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-bottom: 10px;
   border: 1px rgb(241, 101, 34) solid;
   border-radius: 4px;
   background: rgb(241, 101, 34);
@@ -433,4 +431,15 @@ textarea:focus {
   background: white;
   border: 1px rgb(241, 101, 34) solid;
   color:rgb(241, 101, 34);
+}
+
+.create-review-modal-whole  {
+  width: 500px;
+  padding: 10px;
+}
+
+.create-form-input-wrapper {
+  padding-left: 45px;
+  padding-right: 45px;
+  margin-top: 15px;
 }

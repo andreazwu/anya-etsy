@@ -58,7 +58,8 @@
 
 }
 .single-product-numReviews{
-  margin: 1rem 0;
+  margin-top: 1.4em;
+  margin-bottom: 0.7em;
   /* font-family: GuardianEgypThin, Arial, Helvetica, sans-serif; */
   font-size: 1.4rem;
 
@@ -105,7 +106,7 @@
 }
 /* ##########stock, cart,description,############### */
 .single-product-stock{
-  margin-top: 130px
+  margin-top: 50px
 }
 .single-product-quantity{
   /* position: relative; */
@@ -218,7 +219,7 @@ margin-top: 30px;
 
   font-weight: 800;
   margin-top: 30px;
-  margin-bottom: -8px;
+  margin-bottom: -6px;
 
   }
 
