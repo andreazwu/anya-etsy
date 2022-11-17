@@ -10,7 +10,7 @@
   background-color: rgb(241, 101, 34, 0.2);
   position: absolute;
   left: 0;
-  top: 9rem;
+  top: 7.5rem;
   width: 100%;
   min-height: 100px;
   min-width: 100%;
@@ -33,7 +33,7 @@
 
 .my-products-outer {
   width: 1226px;
-  padding-top: 5rem;
+  padding-top: 8.2rem;
 }
 
 .my-products-inner {
@@ -46,7 +46,8 @@
 
 .myproducts-product-container {
   display: grid;
-  grid-template-columns: minmax(0,40%) minmax(0, 60%)
+  grid-template-columns: minmax(0,40%) minmax(0, 60%);
+  margin-bottom: 10px;
 }
 
 .myproducts-product-image-container {
@@ -97,7 +98,7 @@
   display: flex;
   justify-content:space-between;
   padding: 0px 2px 2px 0px;
-  margin-top: -5px;
+  margin-top: -8px;
   margin-bottom: 15px;
   min-width: 0;
 }
