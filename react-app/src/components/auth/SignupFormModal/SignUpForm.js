@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { signUp } from '../../../store/session';
 import LoginFormModal from '../LoginFormModal';
 import LoginForm from '../LoginFormModal/LoginForm'
-
+import './SignupForm.css';
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
@@ -70,7 +70,7 @@ const SignUpForm = () => {
           <div className="signup-errors" key={ind}>{error}</div>
         ))}
       </div>
-      <div className="sign-field-outer">
+      <div className="signup-field-outer">
         <label className="signup-label">User Name</label>
         <input
           className="signup-input"
@@ -80,7 +80,7 @@ const SignUpForm = () => {
           value={username}
         ></input>
       </div>
-      <div className="sign-field-outer">
+      <div className="signup-field-outer">
       <label className="signup-label">Email</label>
         <input
           className="signup-input"
@@ -90,7 +90,7 @@ const SignUpForm = () => {
           value={email}
         ></input>
       </div>
-      <div className="sign-field-outer">
+      <div className="signup-field-outer">
       <label className="signup-label">First Name</label>
         <input
           className="signup-input"
@@ -100,7 +100,7 @@ const SignUpForm = () => {
           value={firstName}
         ></input>
       </div>
-      <div className="sign-field-outer">
+      <div className="signup-field-outer">
       <label className="signup-label">Last Name</label>
         <input
           className="signup-input"
@@ -110,7 +110,7 @@ const SignUpForm = () => {
           value={lastName}
         ></input>
       </div>
-      <div className="sign-field-outer">
+      <div className="signup-field-outer">
       <label className="signup-label">Password</label>
         <input
           className="signup-input"
@@ -120,7 +120,7 @@ const SignUpForm = () => {
           value={password}
         ></input>
       </div>
-      <div className="sign-field-outer">
+      <div className="signup-field-outer">
       <label className="signup-label">Confirm Password</label>
         <input
           className="signup-input"
@@ -133,13 +133,13 @@ const SignUpForm = () => {
       </div>
       <div className='signIn-account-message'>
         Already have an account?
-        <span className='signup-login-button' onClick={() => handleLogin()}>Login In</span>
+        <span className='signup-login-button' onClick={() => handleLogin()}>  Login In</span>
       </div>
       <div className='signup-buttons-outer'>
-      <button className="signup-buttons-button" type='submit'>Register</button>
+      <button className="signup-form-button" type='submit'>Register</button>
       </div>
     </form>
-    }
+     }
     </>
   );
 };

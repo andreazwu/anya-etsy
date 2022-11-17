@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 // import { Redirect } from 'react-router-dom';
 import { login } from '../../../store/session';
 import SignUpForm from '../SignupFormModal/SignUpForm';
-
+import './LoginForm.css';
 const LoginForm = () => {
   // console.log("LOGINFORM COMPONENT STARTS:")
   const dispatch = useDispatch();
