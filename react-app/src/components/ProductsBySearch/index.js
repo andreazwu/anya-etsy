@@ -31,25 +31,25 @@ const ProductsBySearch = () =>{
         <div className='search-products-main'>
           {productsArr?.map((product, i) => {
             return (
-              <NavLink to={`/products/${product?.id}`} style={{textDecoration: 'none'}} key={i}>
-                <div className='search-product-body'>
-                  <div className='search-product-img-container'>
-                    <img src={product?.previewImage} className='search-product-img' alt='images'></img>
-                  </div>
-                  <div className='search-product-name'>{product.name}</div>
-                  {product?.numReviews > 0 && <>
-                    <div className='search-product-stars'>
-                      <span className='search-product-num-reviews'>
-                      {[...Array(Math.floor(product.avgRating))].map(star => <i class="fa-sharp fa-solid fa-star"></i>)}
-                      ({product.numReviews})
-                      </span>
+              <div className='search-product-body'>
+                <NavLink to={`/products/${product?.id}`} style={{textDecoration: 'none'}} key={i}>
+                    <div className='search-product-img-container'>
+                      <img src={product?.previewImage} className='search-product-img' alt='images'></img>
                     </div>
-                  </>
-                  }
-                  <div className='search-product-price'>${parseFloat(product?.price).toFixed(2)}</div>
-                  <div className='search-product-shop'>{currUser?.username}</div>
-                </div>
-              </NavLink>
+                    <div className='search-product-name'>{product.name}</div>
+                    {product?.numReviews > 0 && <>
+                      <div className='search-product-stars'>
+                        <span className='search-product-num-reviews'>
+                        {[...Array(Math.floor(product.avgRating))].map(star => <i class="fa-sharp fa-solid fa-star"></i>)}
+                        ({product.numReviews})
+                        </span>
+                      </div>
+                    </>
+                    }
+                    <div className='search-product-price'>${parseFloat(product?.price).toFixed(2)}</div>
+                </NavLink>
+                <div className='search-product-shop'>{currUser?.username}</div>
+              </div>
             )
           })}
         </div>
