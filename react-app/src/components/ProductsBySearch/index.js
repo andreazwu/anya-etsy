@@ -28,7 +28,6 @@ const ProductsBySearch = () =>{
         </div>
       </div>
       <div className='search-main'>
-        {/* <div className='search-caption'></div> */}
         <div className='search-products-main'>
           {productsArr?.map((product, i) => {
             return (
@@ -40,17 +39,10 @@ const ProductsBySearch = () =>{
                   <div className='search-product-name'>{product.name}</div>
                   {product?.numReviews > 0 && <>
                     <div className='search-product-stars'>
-                      {/* {product?.avg_stars <= 0.5 && <span>{starsDisplay(halfStars)}</span>}
-                      {product?.avg_stars > 0.5 && product?.avg_stars <= 1 && <span>{starsDisplay(oneStar)}</span>}
-                      {product?.avg_stars > 1 && product?.avg_stars <= 1.5 && <span>{starsDisplay(oneHalfStar)}</span>}
-                      {product?.avg_stars > 1.5 && product?.avg_stars <= 2 && <span>{starsDisplay(twoStar)}</span>}
-                      {product?.avg_stars > 2 && product?.avg_stars <= 2.5 && <span>{starsDisplay(twoHalfStar)}</span>}
-                      {product?.avg_stars > 2.5 && product?.avg_stars <= 3 && <span>{starsDisplay(threeStar)}</span>}
-                      {product?.avg_stars > 3 && product?.avg_stars <= 3.5 && <span>{starsDisplay(threeHalfStar)}</span>}
-                      {product?.avg_stars > 3.5 && product?.avg_stars <= 4 && <span>{starsDisplay(fourStar)}</span>}
-                      {product?.avg_stars > 4 && product?.avg_stars <= 4.5 && <span>{starsDisplay(fourHalfStar)}</span>}
-                      {product?.avg_stars > 4.5 && <span>{starsDisplay(fiveStar)}</span>} */}
-                      <span className='search-product-num-reviews'>({product.numReviews})</span>
+                      <span className='search-product-num-reviews'>
+                      {[...Array(Math.floor(product.avgRating))].map(star => <i class="fa-sharp fa-solid fa-star"></i>)}
+                      ({product.numReviews})
+                      </span>
                     </div>
                   </>
                   }
