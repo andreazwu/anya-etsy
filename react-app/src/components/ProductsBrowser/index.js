@@ -25,7 +25,6 @@ const ProductsBrowser = () => {
   const displayProducts = randomProducts.slice(0,8)
   const sponsorProducts = randomProducts.slice(8, 13)
   const EditorPickProducts = randomProducts.slice(13, 18)
-  console.log(EditorPickProducts)
 
 
   /* if we want to do shops: */

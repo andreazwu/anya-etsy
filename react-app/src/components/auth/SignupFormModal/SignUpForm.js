@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { signUp } from '../../../store/session';
-import LoginFormModal from '../LoginFormModal';
 import LoginForm from '../LoginFormModal/LoginForm'
 
 const SignUpForm = () => {

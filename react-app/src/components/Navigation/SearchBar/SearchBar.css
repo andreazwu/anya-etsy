@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-top: 5px;
   margin-right: 5px;
-  width: 50%;
+  width: 60%;
 }
 
 .navBar-searchBar-container {
@@ -50,6 +51,7 @@
 
 .fa-sharp.fa-solid.fa-magnifying-glass {
   font-size: 1.3rem;
+  color: black;
 }
 
 .searchBar-button {
