@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector} from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import SearchBar from '../SearchBar';
+import SearchBar from './SearchBar';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../auth/LoginFormModal';
 import logo from '../images/logo.jpg';

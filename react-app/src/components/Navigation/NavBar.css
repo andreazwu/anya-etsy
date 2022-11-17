@@ -37,7 +37,7 @@ nav {
   display: flex;
   align-items: center;
   padding: 0 10px 5px;
-  border-radius: 50%;
+  border-radius: 35%;
 }
 
 .navBar-link-icon:hover,
@@ -50,36 +50,8 @@ nav {
 .navBar-link-profile {
   display: flex;
   align-items: center;
-  padding: 0 10px 5px;
+  padding: 0 12px 5px;
   margin-top: -5px;
-  margin-left: 10px;
+  margin-left: 4px;
   border-radius: 35%;
-}
-
-.navBar-featured-outer {
-  display: flex;
-  justify-content: center;
-  font-family: GraphikLight, Arial, Helvetica, sans-serif;
-  font-size: 0.83rem;
-  box-sizing: border-box;
-  align-items: center;
-  width: 1450px;
-  letter-spacing: 0.03rem;
-}
-
-.navBar-feature, .navBar-feature-active {
-  border-bottom: 1px solid rgba(0, 0, 0, 0);
-  padding: 0.5rem 0 1.09rem;
-  margin: 0 1.5rem;
-  white-space: nowrap;
-}
-
-.navBar-feature-active {
-  border-bottom: 1px solid black;
-}
-
-.navBar-feature:hover {
-  cursor: pointer;
-  border-bottom: 1px solid black;
-  box-sizing: border-box;
 }
