@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import { useDispatch } from 'react-redux'
+import { signUp } from '../../../store/session';
+import LoginFormModal from '../LoginFormModal';
+import LoginForm from '../LoginFormModal/LoginForm'
 
 const SignUpForm = () => {
+  const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -11,8 +13,7 @@ const SignUpForm = () => {
   const [lastName, setlastName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setconfirmPassword] = useState('');
-  const user = useSelector(state => state.session.user);
-  const dispatch = useDispatch();
+  const [showSignIn, setShowSignIn] = useState(false);
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -50,11 +51,15 @@ const SignUpForm = () => {
     setconfirmPassword(e.target.value);
   };
 
-  if (user) {
-    return <Redirect to='/' />;
+  const handleLogin =(e) =>{
+    setShowSignIn(true);
   }
 
+
   return (
+    <>
+    {showSignIn ? <LoginForm/>
+    :
     <form onSubmit={onSignUp}>
       <div>
         {errors.map((error, ind) => (
@@ -116,8 +121,14 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <span>
+        Already have an account?
+        <div className='signup-login-button' onClick={() => handleLogin()}>Login In</div>
+      </span>
+      <button type='submit'>Register</button>
     </form>
+    }
+    </>
   );
 };
 
