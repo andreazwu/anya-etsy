@@ -86,7 +86,7 @@ const ProductDetails = () => {
 }
 
     return (
-        <>
+        <div>
         <div className="single-product-wrapper">
             <div className="product-left-part">
 
@@ -175,21 +175,45 @@ const ProductDetails = () => {
             <div className="single-product-addtocart">
 
                 {currentUser ?
-                              <button id="add-to-cart-button" type='button' variant='outlined'
+                              <button className="add-to-cart-button" type='button' variant='outlined'
                               disabled={product.stock === 0}
                               onClick={addToCart}>
                               {getCartButtonMessage(product.stock)}
                               </button>
                 : <button className="not-login-addtocart-button">Please log in to purchase</button>
                 }
+        <div className="product-detail-gift">
+            <i className="fa-solid fa-gift fa-2xl"></i>
+            <div className="descriptiondetail_text">
+              <span className="ajw">A sought-after gift</span> -over {Math.floor(Math.random() * 60 + 2)} people have this in their carts
+              right now.
             </div>
-            <div className="single-product-description">Description: {product.description}</div>
+          </div>
+          <div className="product-detail-award">
+            <i className="fa-solid fa-award fa-2xl"></i>
+            <div className="descriptiondetail_text">
+              <span className="ajw">Star Seller.&nbsp;</span>This seller consistently earned 5-star reviews,
+              shipped on time, and replied quickly to any messages they
+              received.
+            </div>
+          </div>
+          <div className="product-detail-truck">
+          <i class="fa-solid fa-truck-fast fa-2xl"></i>
+            <div className="descriptiondetail_text">
+              <span className="ajw">Hooray!&nbsp;</span>This item ships
+              free to the US.
+            </div>
+          </div>
+
+            </div>
+                <div className="single-product-description">Description</div>
+                <div className="single-product-description-content"> {product.description}</div>
             </div>
 
       </div>
         <Footer />
 
-        </>
+        </div>
     )
 }
 

@@ -47,7 +47,13 @@ export default function CartItem({ item }) {
             <div className="cart-image-container" onClick={() => history.push(`/products/${item.Product.id}`)}>
                 <img src={item?.Product?.previewImage} alt='product' />
             </div>
-            <div className="cart-item-name" onClick={() => history.push(`/products/${item.Product.id}`)}>{item?.Product?.name}</div>
+            <div>
+             <div className="cart-item-name" onClick={() => history.push(`/products/${item.Product.id}`)}>{item?.Product?.name}</div>
+              <div className="other-people-message">
+                 {Math.floor(Math.random() * 20 + 2)} people have this in their cart
+
+              </div>
+            </div>
             <div className="cart-product-name-remove">
 
                 <div className="cart-item-quantity-select">

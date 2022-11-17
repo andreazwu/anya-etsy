@@ -37,6 +37,8 @@
 }
 .product-preview-image:hover {
   cursor: pointer;
+  border: 1px solid rgb(195, 194, 194);
+  box-shadow: 0 0 8px #bdbdbd;
 }
 .product-main-image-outer {
   width: 35rem;
@@ -84,45 +86,93 @@ font-family: GraphikLight, Arial, Helvetica, sans-serif;
   padding-left: .5rem
 }
 .single-product-name{
+  /* font-family:'Courier New', Courier, monospace; */
   font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
   font-size: 26px;
-  font-weight: 300;
+  font-weight: 500;
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
-  width: 570px;
+  width: 550px;
   line-height: 32px;
 }
 .single-product-price{
   margin-top: 1rem;
   font-size: 1.4rem;
   font-family: GraphikProduktRegular, Arial, Helvetica, sans-serif;
+  font-weight: bolder;
 }
 /* ##########stock, cart,description,############### */
 .single-product-stock{
   margin-top: 130px
 }
 .single-product-quantity{
-  position: relative;
+  /* position: relative; */
   margin-top: 7px;
-  width: fit-content;
+  width: stretch;
   height: fit-content;
+
 
 }
 .product-input-quantity{
-  width: 5em;
+
+  width: 500px;
   height: 3em;
   border: 1px solid rgb(195, 194, 194);
   box-shadow: 0 0 5px #bdbdbd;
   border-radius: .3em;
   padding-left: .5em;
 }
-.addtocart-button{
-  cursor: pointer
+.product-input-quantity:hover{
+    cursor: pointer;
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px grey;
 
+}
+.add-to-cart-button{
+  cursor: pointer;
+  width: 500px;
+  height: 44px;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  font-family: GraphikRegular, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  margin-top: 30px
+}
+.add-to-cart-button:hover{
+  transform:scale(1.06,1.06);
 }
 .not-login-addtocart-button{
   cursor: not-allowed;
   color: grey;
+  width: 500px;
+  height: 44px;
+  font-size: 16px;
+  margin-top: 30px;
+  border: none;
+  border-radius: 20px;
+}
 
+.single-product-description{
+font-family:'Courier New', Courier, monospace;
+font-weight: 800;
+margin-top: 50px
+
+}
+.single-product-description-content{
+  width:100%;
+  font-weight: 500;
+  font-family:'Courier New', Courier, monospace
+}
+
+.product-detail-gift,
+.product-detail-award,
+.product-detail-truck
+ {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 15px;
 }
