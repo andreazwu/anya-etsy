@@ -300,6 +300,7 @@ const products = (state = initialState, action) => {
         case RESET_PRODUCTS:
             newState = {...state}
             newState.allProducts = {}
+            newState.singleProduct = {}
             return newState
 
         default:

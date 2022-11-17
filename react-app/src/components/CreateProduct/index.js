@@ -17,6 +17,7 @@ const CreatePreoduct = () => {
     const [productId, setProductId] = useState()
     const [page, setPage] = useState(0)
     const [errors, setErrors] = useState([]);
+    const user = useSelector(state => state.session.user);
 
     useEffect(() => {
         dispatch(getAllProducts())
@@ -47,6 +48,10 @@ const CreatePreoduct = () => {
             setProductId(response.id)
             setPage(1)
         }
+    }
+
+    if (!user) {
+        history.push("/")
     }
 
     return (
