@@ -1,5 +1,10 @@
 * {
   font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
+  /* font-family: GraphikRegular, Arial, Helvetica, sans-serif; */
+}
+
+* {
+  text-decoration: none;
 }
 
 .myreviews-review-container {
@@ -299,6 +304,10 @@ input[type="radio"]{
   transition: color 200ms;
   margin-right: 1px;
 
+}
+
+.prod-star {
+  margin-bottom: -3px;
 }
 
 .stars-wrapper {
