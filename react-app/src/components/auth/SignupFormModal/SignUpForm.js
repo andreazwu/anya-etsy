@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { signUp } from '../../../store/session';
 import LoginForm from '../LoginFormModal/LoginForm'
-
+import './SignupForm.css';
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
@@ -59,60 +59,70 @@ const SignUpForm = () => {
     <>
     {showSignIn ? <LoginForm/>
     :
-    <form onSubmit={onSignUp}>
-      <div>
+    <form onSubmit={onSignUp} className="signup-form-main">
+       <div className='signup-upper'>
+       <div className='signup-header'>Create your account</div>
+        <div className='signup-caption'>Registration is easy.</div>
+      </div>
+      <div className="signup-error-outer">
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div className="signup-errors" key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <label>User Name</label>
+      <div className="signup-field-outer">
+        <label className="signup-label">User Name *</label>
         <input
+          className="signup-input"
           type='text'
           name='username'
           onChange={updateUsername}
           value={username}
         ></input>
       </div>
-      <div>
-        <label>Email</label>
+      <div className="signup-field-outer">
+      <label className="signup-label">Email *</label>
         <input
+          className="signup-input"
           type='text'
           name='email'
           onChange={updateEmail}
           value={email}
         ></input>
       </div>
-      <div>
-        <label>First Name</label>
+      <div className="signup-field-outer">
+      <label className="signup-label">First Name *</label>
         <input
+          className="signup-input"
           type='text'
           name='email'
           onChange={updatefirstName}
           value={firstName}
         ></input>
       </div>
-      <div>
-        <label>Last Name</label>
+      <div className="signup-field-outer">
+      <label className="signup-label">Last Name *</label>
         <input
+          className="signup-input"
           type='text'
           name='email'
           onChange={updatelastName}
           value={lastName}
         ></input>
       </div>
-      <div>
-        <label>Password</label>
+      <div className="signup-field-outer">
+      <label className="signup-label">Password *</label>
         <input
+          className="signup-input"
           type='password'
           name='password'
           onChange={updatePassword}
           value={password}
         ></input>
       </div>
-      <div>
-        <label>Confirm Password</label>
+      <div className="signup-field-outer">
+      <label className="signup-label">Confirm Password *</label>
         <input
+          className="signup-input"
           type='password'
           name='confirm_password'
           onChange={updateconfirmPassword}
@@ -120,13 +130,15 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <span>
+      <div className='signIn-account-message'>
         Already have an account?
-        <div className='signup-login-button' onClick={() => handleLogin()}>Login In</div>
-      </span>
-      <button type='submit'>Register</button>
+        <span className='signup-login-button' onClick={() => handleLogin()}>  Login In</span>
+      </div>
+      <div className='signup-buttons-outer'>
+      <button className="signup-form-button" type='submit'>Register</button>
+      </div>
     </form>
-    }
+     }
     </>
   );
 };

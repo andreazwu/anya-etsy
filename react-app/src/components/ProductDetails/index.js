@@ -86,7 +86,10 @@ const ProductDetails = () => {
 }
 
     return (
+        <div>
         <div className="single-product-wrapper">
+            <div className="product-left-part">
+
             <div className='product-image-main'>
                 <div className='product-preview-image-outer'>
                     { product.productImages.length > 0 && product.productImages.map((image, i) => {
@@ -100,52 +103,9 @@ const ProductDetails = () => {
                 </div>
             </div>
 
-
-
-
-            <div className="single-product-seller">{product.seller}</div>
-            <div>{product.salesNumber} sales
-            <span>
-            {
-              Number(product.avgRating) % 1 ?
-              <span>
-                {[...Array(Math.floor(product.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
-                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-              </span>
-              :
-              <span>
-                {[...Array(product.avgRating)].map((star) => (<i className="fa-solid fa-star"></i>))}
-              </span>
-            }
-            </span>
-            </div>
-            <div className="single-product-name">{product.name}</div>
-            <div className="single-product-price">${product.price}</div>
-            ------------------------------------------------------------
-            <div className="single-product-stock">stock: {product.stock}</div>
-            <div className="single-product-quantity">
-                <select className="input-quantity" value={quantity} onChange={e => setQuantity(e.target.value)}>
-                {options.map(option => (
-                            <option key={option} value={option}>{option}</option>
-                        ))}
-                </select>
-            </div>
-            <div className="single-product-addtocart">
-
-                {currentUser ?
-                              <button id="add-to-cart-button" type='button' variant='outlined'
-                              disabled={product.stock === 0}
-                              onClick={addToCart}>
-                              {getCartButtonMessage(product.stock)}
-                              </button>
-                : <button className="not-login-addtocart-button">Please log in to purchase</button>
-                }
-            </div>
-            <div className="single-product-description">Description: {product.description}</div>
-            -------------------------------------------------------------
-            <div className="single-product-reviews">
-                <div className="single-product-numReviews">{product.numReviews} reviews
-                <span>
+           <div className="single-product-reviews">
+           <div className="single-product-numReviews">{product.numReviews} review(s)
+                <span className="product-detail-avgrating-star">
                     {
                     Number(product.avgRating) % 1 ?
                     <span>
@@ -159,7 +119,7 @@ const ProductDetails = () => {
                     }
                 </span>
                 </div>
-            </div>
+
             {/* only show "create review" button to logged in user/ who has not left a review/ NON-seller */}
             <div>
                 {
@@ -185,7 +145,104 @@ const ProductDetails = () => {
             <div className="one-spot-reviews-container">
                 <LoadProductReviews productId={productId} user={sessionUser}/>
             </div>
+            </div>
+                </div>
+                    <div className="product-right-part">
+            <div className="single-product-seller">{product.seller}</div>
+            <div className="single-product-sales">{product.salesNumber} sales  <span className="vertical-seperate">|</span>
+            <span className="product-detail-avgrating-star">
+            {
+              Number(product.avgRating) % 1 ?
+              <span>
+                {[...Array(Math.floor(product.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
+                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+              </span>
+              :
+              <span>
+                {[...Array(product.avgRating)].map((star) => (<i className="fa-solid fa-star"></i>))}
+              </span>
+            }
+            </span>
+            </div>
+            <div className="single-product-name">{product.name}</div>
+
+            <div className="single-product-price">${product.price}</div>
+
+            <div className="single-product-stock">stock: {product.stock}</div>
+            <div className="single-product-quantity">
+                <select className="product-input-quantity" value={quantity} onChange={e => setQuantity(e.target.value)}>
+                {options.map(option => (
+                            <option key={option} value={option}>{option}</option>
+                        ))}
+                </select>
+            </div>
+            <div className="single-product-addtocart">
+
+                {currentUser ?
+                              <button className="add-to-cart-button" type='button' variant='outlined'
+                              disabled={product.stock === 0}
+                              onClick={addToCart}>
+                              {getCartButtonMessage(product.stock)}
+                              </button>
+                : <button className="not-login-addtocart-button">Please log in to purchase</button>
+                }
+        <div className="product-detail-gift">
+            <i className="fa-solid fa-gift fa-2xl"></i>
+            <div className="product-detail-text">
+              <span className="ajw">A sought-after gift</span>-over 20 people have this in their carts
+              right now.
+            </div>
+          </div>
+          <div className="product-detail-award">
+            <i className="fa-solid fa-award fa-2xl"></i>
+            <div className="product-detail-text">
+              <span className="ajw">Star Seller.&nbsp;</span>This seller consistently earned 5-star reviews,
+              shipped on time, and replied quickly to any messages they
+              received.
+            </div>
+          </div>
+          <div className="product-detail-truck">
+          <i class="fa-solid fa-truck-fast fa-2xl"></i>
+            <div className="product-detail-text">
+              <span className="ajw">Hooray!&nbsp;</span>This item ships
+              free to the US.
+            </div>
+          </div>
+
+            </div>
+                <div className="single-product-description">Description</div>
+                <div className="single-product-description-content"> {product.description}</div>
+                <div className="single-product-shipping">Cost to ship</div>
+          <div className="free-shipping">Free</div>
+          <div className="free-shipping-message">
+            Artsy offsets carbon emissions from shipping and packaging on this
+            purchase.
+          </div>
+          <div className="return-exchange-div">
+            <div>
+              <div className="return-exchange-smalltext">
+                Returns & exchanges
+              </div>
+              <div className="return-exchange-bigtext">Accepted</div>
+              <div className="return-exchange-smalltext">
+                Exceptions may apply
+              </div>
+            </div>
+            <div>
+              <div className="return-exchange-smalltext">
+                Return & exchange window
+              </div>
+              <div className="return-exchange-bigtext">30 days</div>
+              <div className="return-exchange-smalltext">
+                from item delivery
+              </div>
+            </div>
+          </div>
+            </div>
+
+      </div>
         <Footer />
+
         </div>
     )
 }
