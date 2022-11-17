@@ -44,7 +44,7 @@ const LoadProductReviews = ({ productId, user }) => {
             </p>
 
             {
-              review?.userId==user.id &&
+              review?.userId==user?.id &&
               <div className="product-review-button-wrap">
                 {/* <span>
                   <button

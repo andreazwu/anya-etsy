@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch} from "react-redux";
-import { getOneProduct } from "../../store/products";
+import { acResetProducts, getOneProduct } from "../../store/products";
 import {addCartItemThunk, getCartItemsThunk} from "../../store/cartItems"
 import LoadProductReviews from "../Reviews/LoadProductReviews";
 // import CreateReviewForm from "../Reviews/CreateReviewForm";
@@ -16,7 +16,7 @@ const ProductDetails = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)
     const product = useSelector(state => state.products.singleProduct)[0]
-    const [selectedImage, setSelectedImage] = useState(product?.productImages[0])
+    const [selectedImage, setSelectedImage] = useState(null)
     const avgRating = product?.avgRating
     console.log("in ProductDetails----avgRating", avgRating)
     console.log("in ProductDetails----product", product)
@@ -28,8 +28,9 @@ const ProductDetails = () => {
 
     // console.log("in ProductDetails----product", product)
 
-    useEffect(() => {
+    useEffect(async () => {
         dispatch(getOneProduct(productId))
+        // return dispatch(acResetProducts())
     }, [dispatch, productId, reviewsArr.length])
 
     //verify if currentUser is seller of product
