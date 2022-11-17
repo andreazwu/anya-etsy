@@ -53,18 +53,13 @@ const NavBar = () => {
                   </Modal>
                 )} */}
               </div>
-              <div className='navBar-link sign-in'>
-                <NavLink to='/login' exact={true} activeClassName='active'>
-                  Login
-                </NavLink>
-              </div>
             </>
           }
-          <div className='navBar-link sign-in'>
+          {/* <div className='navBar-link sign-in'>
             <NavLink to='/sign-up' exact={true} activeClassName='active'>
               Sign Up
             </NavLink>
-          </div>
+          </div> */}
           <div>
           </div>
         </div>
