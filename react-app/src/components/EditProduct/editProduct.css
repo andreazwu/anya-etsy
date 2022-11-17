@@ -1,6 +1,7 @@
 #modal-content {
     width: 600px;
     height: 600px;
+    border-radius: 12px;
 }
 .editproduct-wrapper {
     padding: 25px;
