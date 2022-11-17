@@ -18,6 +18,7 @@ import CreateReviewForm from './components/Reviews/CreateReviewForm';
 import EditReviewForm from './components/Reviews/EditReviewForm';
 import StoreManager from './components/StoreManager';
 import ProductsBySearch from './components/ProductsBySearch'
+import PageNotFound from './components/PageNotFound'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -76,7 +77,10 @@ function App() {
         </Route>
         <Route path='/cart' exact={true}>
             <Cart />
-          </Route>
+        </Route>
+        <Route>
+          <PageNotFound />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

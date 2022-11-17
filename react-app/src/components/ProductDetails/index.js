@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch} from "react-redux";
-import { getOneProduct } from "../../store/products";
+import { acResetProducts, getOneProduct } from "../../store/products";
 import {addCartItemThunk, getCartItemsThunk} from "../../store/cartItems"
 import LoadProductReviews from "../Reviews/LoadProductReviews";
 // import CreateReviewForm from "../Reviews/CreateReviewForm";
@@ -28,8 +28,9 @@ const ProductDetails = () => {
 
     // console.log("in ProductDetails----product", product)
 
-    useEffect(() => {
+    useEffect(async () => {
         dispatch(getOneProduct(productId))
+        // return dispatch(acResetProducts())
     }, [dispatch, productId, reviewsArr.length])
 
     //verify if currentUser is seller of product
@@ -189,8 +190,9 @@ const ProductDetails = () => {
         <div className="product-detail-gift">
             <i className="fa-solid fa-gift fa-2xl"></i>
             <div className="product-detail-text">
-              <span className="ajw">A sought-after gift</span>-over 20 people have this in their carts
-              right now.
+              <span className="ajw">A sought-after gift</span>
+              {/* -over 20 people have this in their carts
+              right now. */}
             </div>
           </div>
           <div className="product-detail-award">

@@ -1,0 +1,24 @@
+.notfound-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logo-back {
+  display: flex;
+  justify-content: center;
+  background-image: url("../images/logo.jpg");
+  height: 300px;
+  width: 300px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.logo-back:hover {
+  cursor: pointer;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+  text-decoration: underline;
+}

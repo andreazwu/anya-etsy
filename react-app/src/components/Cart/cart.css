@@ -181,6 +181,8 @@
     border-radius: .7em;
     margin-top: 10em;
     padding: 1em;
+    background-color: white;
+    z-index: 500;
 }
 
 .checkout-card{

@@ -58,8 +58,9 @@
 
 }
 .single-product-numReviews{
-  margin: 1rem 0;
-  font-family: GuardianEgypThin, Arial, Helvetica, sans-serif;
+  margin-top: 1.4em;
+  margin-bottom: 0.7em;
+  /* font-family: GuardianEgypThin, Arial, Helvetica, sans-serif; */
   font-size: 1.4rem;
 
 }
@@ -73,12 +74,12 @@
 
 /* #############store name,  price####### */
 .single-product-seller{
-  font-family: GraphikRegular, Arial, Helvetica, sans-serif;
+  /* font-family: GraphikRegular, Arial, Helvetica, sans-serif; */
   font-size: 1rem;
   margin-bottom: 0.9rem;
 }
 .single-product-sales{
-font-family: GraphikLight, Arial, Helvetica, sans-serif;
+/* font-family: GraphikLight, Arial, Helvetica, sans-serif; */
   font-size: 0.9rem;
   padding: 0 0.3rem 1rem 0;
 }
@@ -88,7 +89,7 @@ font-family: GraphikLight, Arial, Helvetica, sans-serif;
 }
 .single-product-name{
   /* font-family:'Courier New', Courier, monospace; */
-  font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
+  /* font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif; */
   font-size: 26px;
   font-weight: 500;
   overflow-wrap: break-word;
@@ -100,12 +101,12 @@ font-family: GraphikLight, Arial, Helvetica, sans-serif;
 .single-product-price{
   margin-top: 1rem;
   font-size: 1.4rem;
-  font-family: GraphikProduktRegular, Arial, Helvetica, sans-serif;
+  /* font-family: GraphikProduktRegular, Arial, Helvetica, sans-serif; */
   font-weight: bolder;
 }
 /* ##########stock, cart,description,############### */
 .single-product-stock{
-  margin-top: 130px
+  margin-top: 50px
 }
 .single-product-quantity{
   /* position: relative; */
@@ -138,7 +139,7 @@ font-family: GraphikLight, Arial, Helvetica, sans-serif;
   color: white;
   border-radius: 20px;
   border: none;
-  font-family: GraphikRegular, Arial, Helvetica, sans-serif;
+  /* font-family: GraphikRegular, Arial, Helvetica, sans-serif; */
   font-size: 16px;
   margin-top: 30px;
   margin-bottom: 16px;
@@ -158,7 +159,8 @@ font-family: GraphikLight, Arial, Helvetica, sans-serif;
 }
 
 .single-product-description{
-font-family:'Courier New', Courier, monospace;
+/* font-family:'Courier New', Courier, monospace; */
+margin-bottom: 10px;
 font-weight: 800;
 margin-top: 30px;
 
@@ -166,7 +168,7 @@ margin-top: 30px;
 .single-product-description-content{
   width:100%;
   font-weight: 500;
-  font-family:'Courier New', Courier, monospace
+  /* font-family:'Courier New', Courier, monospace */
 }
 
 .product-detail-gift,
@@ -181,6 +183,24 @@ margin-top: 30px;
   padding-bottom: 15px
 }
 
+.product-detail-gift {
+  margin-top: 10px;
+}
+.product-detail-award .product-detail-text{
+  margin-left: 15px;
+}
+.fa-award{
+  margin-left: 5px;
+}
+.product-detail-truck .product-detail-text{
+  margin-left: 5px;
+}
+.product-detail-gift .product-detail-text{
+  margin-left: 11px;
+}
+.fa-gift{
+  margin-left: 2px;
+}
 .fa-gift,
 .fa-award,
 .fa-truck-fast{
@@ -199,6 +219,7 @@ margin-top: 30px;
 
   font-weight: 800;
   margin-top: 30px;
+  margin-bottom: -6px;
 
   }
 
