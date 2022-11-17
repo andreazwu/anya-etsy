@@ -51,8 +51,8 @@ export default function CartItem({ item }) {
              <div className="cart-item-name" onClick={() => history.push(`/products/${item.Product.id}`)}>{item?.Product?.name}</div>
               <div className="other-people-message">
                  {Math.floor(Math.random() * 20 + 2)} people have this in their cart
-
               </div>
+              <button className='cart-item-remove-item-button' onClick={() => deleteCartItem()}> Remove</button>
             </div>
             <div className="cart-product-name-remove">
 
@@ -63,7 +63,6 @@ export default function CartItem({ item }) {
                         ))}
                     </select>
                 </div>
-                <button className='cart-item-remove-item-button' onClick={() => deleteCartItem()}><i class="fa-regular fa-trash-can"></i>  Remove</button>
 
                  </div>
             <div className="quantity-price-box">

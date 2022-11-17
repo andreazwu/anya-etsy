@@ -11,9 +11,10 @@
 }
 .product-left-part {
   width: 665px;
+  padding: 0 1.5rem
 }
 .product-right-part{
-  padding: 0 0.5rem;
+  padding: 0 1.5rem;
   position: relative;
   box-sizing: border-box;
   width: 580px;
@@ -139,7 +140,8 @@ font-family: GraphikLight, Arial, Helvetica, sans-serif;
   border: none;
   font-family: GraphikRegular, Arial, Helvetica, sans-serif;
   font-size: 16px;
-  margin-top: 30px
+  margin-top: 30px;
+  margin-bottom: 16px;
 }
 .add-to-cart-button:hover{
   transform:scale(1.06,1.06);
@@ -158,7 +160,7 @@ font-family: GraphikLight, Arial, Helvetica, sans-serif;
 .single-product-description{
 font-family:'Courier New', Courier, monospace;
 font-weight: 800;
-margin-top: 50px
+margin-top: 30px;
 
 }
 .single-product-description-content{
@@ -173,6 +175,61 @@ margin-top: 50px
  {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  padding: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px
+}
+
+.fa-gift,
+.fa-award,
+.fa-truck-fast{
+ color: navy;
+ padding-right: 5px;
+}
+.product-detail-text{
+  font-size: 14px
+}
+
+.ajw{
+  font-weight: bold;
+  font-size: 15px
+}
+.single-product-shipping{
+
+  font-weight: 800;
+  margin-top: 30px;
+
+  }
+
+.free-shipping {
+  font-size: 25pt;
+  padding: 15px 0;
+  margin-bottom: 5px;
+}
+
+.free-shipping-message {
+  border: 20px solid rgb(225, 235, 228);
+  border-radius: 10px;
+  background-color: rgb(225, 235, 228);
+  width: 450px;
+  padding: 1px 8px;
+  margin-bottom: 25px;
+}
+
+.return-exchange-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 65px
+}
+.return-exchange-smalltext {
+  font-size: 10pt;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  color: grey;
+}
+
+.return-exchange-bigtext {
+  font-size: 20pt;
 }
