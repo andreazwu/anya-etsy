@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import { thunkCreateNewReview } from "../../store/reviews"
-
-// import "./CreateReview.css"
+import HoverStars from "./HoverStars"
+import "./Reviews.css"
 
 const CreateReviewForm = () => {
   const dispatch = useDispatch()
@@ -78,13 +78,14 @@ const CreateReviewForm = () => {
 
             <label className="review-field">
               Rating:&nbsp;
-              <select
+              {/* <select
                 type="number"
                 value={stars}
                 onChange={(e) => setStars(e.target.value)}
               >
                 {[1,2,3,4,5].map((num)=>(<option>{num}</option>))}
-              </select>
+              </select> */}
+              <HoverStars stars={stars} setStars={setStars}/>
             </label>
             <div className="form-input-break"></div>
             <label className="review-field">

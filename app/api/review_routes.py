@@ -59,7 +59,7 @@ def edit_review(review_id):
   if review.user_id == current_user.id:
     if form.validate_on_submit():
       review.review = form.data['review']
-      review.srars = form.data['stars']
+      review.stars = form.data['stars']
 
       db.session.commit()
 
