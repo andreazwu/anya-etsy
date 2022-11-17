@@ -61,6 +61,7 @@ select:focus {
   background: rgb(241, 101, 34);
   color: white;
   font: bold;
+  font-size: 15px;
 }
 
 .create-review-button:hover {

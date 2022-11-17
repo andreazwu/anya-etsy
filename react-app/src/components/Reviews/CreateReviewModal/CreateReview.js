@@ -73,8 +73,9 @@ const CreateReview = ({productId, setShowNewReviewModal}) => {
         }
       </div>
 
+      {/* <div className="create-review-form"> */}
       <form onSubmit={handleSubmit}>
-      <div className="form-input-wrapper">
+      <div className="create-form-input-wrapper">
 
             <label className="create-review-field">
               Rating:&nbsp;
@@ -100,7 +101,7 @@ const CreateReview = ({productId, setShowNewReviewModal}) => {
               />
             </label>
         </div>
-
+        <div className="create-modal-button-wrap">
         <button
         // disabled={
         //   hasSubmitted &&
@@ -110,9 +111,11 @@ const CreateReview = ({productId, setShowNewReviewModal}) => {
         >
           Create Review
         </button>
+        </div>
 
       </form>
-    </div>
+      </div>
+    // </div>
   )
 }
 

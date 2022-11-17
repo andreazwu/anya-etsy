@@ -43,8 +43,9 @@
     color: rgba(241, 100, 34, 0.878);
     font-size: 50px;
     font-weight: 500;
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
+    margin: auto;
 }
 
 .createproduct-form {
