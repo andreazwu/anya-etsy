@@ -3,7 +3,7 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { editProduct, getAllProducts } from "../../store/products";
 import "./editProduct.css"
-
+import { thunkGetMyProducts } from "../../store/products";
 const EditProduct = ({ productId, setShowEditForm}) => {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -19,7 +19,7 @@ const EditProduct = ({ productId, setShowEditForm}) => {
     const [errors, setErrors] = useState([]);
 
     useEffect(() => {
-        dispatch(getAllProducts())
+        dispatch(thunkGetMyProducts())
         const errors = []
         if (name?.length < 10 || name?.trim().length < 10) errors.push('Name: Name requires 10 characters minimum')
         if (name?.length > 250) errors.push('Name: Name exceeds 250 character limit')

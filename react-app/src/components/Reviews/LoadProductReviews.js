@@ -54,7 +54,7 @@ const LoadProductReviews = ({ productId, user }) => {
                     Edit
                   </button>
                 </span> */}
-                <span>
+                {/* <span>
                   <button
                   className="product-review-button"
                   onClick={async () => {
@@ -65,7 +65,7 @@ const LoadProductReviews = ({ productId, user }) => {
                   >
                     Delete
                   </button>
-                </span>
+                </span> */}
               </div>
               }
               {/* {

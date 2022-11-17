@@ -19,31 +19,35 @@ const Footer = () => {
             <div className='socials-inner'>
               <div><i class="fa-brands fa-github"></i></div>
               <div>
-                <a href='https://github.com/andreazwu/anya-etsy.git' className="social-link" target="_blank" >Github</a>
+                <a href='https://github.com/andreazwu/anya-etsy.git' className="social-link" target="_blank" >Project Repo</a>
               </div>
             </div>
             <div className='socials-inner'>
-              <div><i class="fa-brands fa-linkedin"></i></div>
+              {/* <div><i class="fa-brands fa-linkedin"></i></div> */}
+              <div><i class="fa-brands fa-github"></i></div>
               <div>
-                <a href='https://www.linkedin.com/in/aijia-wang-b18726131' className="social-link" target="_blank">Aijia Wang</a>
+                <a href='https://github.com/wangaijia618' className="social-link" target="_blank">Aijia Wang</a>
               </div>
             </div>
             <div className='socials-inner'>
-              <div><i class="fa-brands fa-linkedin"></i></div>
+              {/* <div><i class="fa-brands fa-linkedin"></i></div> */}
+              <div><i class="fa-brands fa-github"></i></div>
               <div>
-                <a href='https://www.linkedin.com/in/nannan-zhang-2333b021b' className="social-link" target="_blank">Nannan Zhang</a>
+                <a href='https://github.com/codeznn' className="social-link" target="_blank">Nannan Zhang</a>
               </div>
             </div>
             <div className='socials-inner'>
-              <div><i class="fa-brands fa-linkedin"></i></div>
+              {/* <div><i class="fa-brands fa-linkedin"></i></div> */}
+              <div><i class="fa-brands fa-github"></i></div>
               <div>
-                <a href='https://www.linkedin.com/in/yashayang/' className="social-link" target="_blank">Yasha Yang</a>
+                <a href='https://github.com/yashayang' className="social-link" target="_blank">Yasha Yang</a>
               </div>
             </div>
             <div className='socials-inner'>
-              <div><i class="fa-brands fa-linkedin"></i></div>
+              {/* <div><i class="fa-brands fa-linkedin"></i></div> */}
+              <div><i class="fa-brands fa-github"></i></div>
               <div>
-                <a href='https://www.linkedin.com/in/andreazwu' className="social-link" target="_blank">Andrea Wu</a>
+                <a href='https://github.com/andreazwu' className="social-link" target="_blank">Andrea Wu</a>
               </div>
             </div>
           </div>
