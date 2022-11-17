@@ -53,10 +53,10 @@ const AddImages = (productId) => {
     }
 
     return (
-        <div className='addImage-wrapper'>
-            <h1>Add Images</h1>
-            <div className='addImage-title'>Upload at least one image to show your item's most important qualities. *Only URLs accepted.</div>
-            <div className='createproduct-errors'>
+        <div className='createproduct-wrapper'>
+            <h1 className='createproduct-form-title'>Add Images</h1>
+            <div className='createproduct-title'>Upload at least one image to show your item's most important qualities.</div>
+            <div className='img-product-errors'>
                     <ul>
                         {errors && errors.map((err) => (
                             <li key={err}>{err}</li>
@@ -65,7 +65,8 @@ const AddImages = (productId) => {
             </div>
             <div className='addImage-content'>
                 <form>
-                    <label> Image 1:
+                    <label> Image 1 (required)
+                        <br></br>
                         <input className='addImage-input'
                             type="text"
                             value={url1}
@@ -74,7 +75,8 @@ const AddImages = (productId) => {
                         />
                     </label>
                     <br></br>
-                    <label>Image 2:
+                    <label>Image 2 (optional)
+                        <br></br>
                         <input className='addImage-input'
                             type="text"
                             value={url2}
@@ -82,7 +84,8 @@ const AddImages = (productId) => {
                         />
                     </label>
                     <br></br>
-                    <label>Image 3:
+                    <label>Image 3 (optional)
+                        <br></br>
                         <input className='addImage-input'
                             type="text"
                             value={url3}
@@ -90,7 +93,7 @@ const AddImages = (productId) => {
                         />
                     </label>
                 </form>
-                <button className="createproduct-button" onClick={imageSubmit}>Submit</button>
+                <button className="imgproduct-button" onClick={imageSubmit}>Submit</button>
             </div>
         </div>
     )

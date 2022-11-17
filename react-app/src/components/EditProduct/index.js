@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { editProduct, getAllProducts } from "../../store/products";
-
-const EditProduct = () => {
+import "./editProduct.css"
+import { thunkGetMyProducts } from "../../store/products";
+const EditProduct = ({ productId, setShowEditForm}) => {
     const dispatch = useDispatch()
     const history = useHistory()
-    const { productId } = useParams()
+    // const { productId } = useParams()
     const product = useSelector((state)=> state.products.allProducts[productId])
     // console.log('in EditProducct ----product', product)
     const categories = ['Halloween', 'Valentine', 'Thanksgiving', 'Christmas', 'Easter', 'Spring Festival']
@@ -18,7 +19,7 @@ const EditProduct = () => {
     const [errors, setErrors] = useState([]);
 
     useEffect(() => {
-        dispatch(getAllProducts())
+        dispatch(thunkGetMyProducts())
         const errors = []
         if (name?.length < 10 || name?.trim().length < 10) errors.push('Name: Name requires 10 characters minimum')
         if (name?.length > 250) errors.push('Name: Name exceeds 250 character limit')
@@ -40,13 +41,13 @@ const EditProduct = () => {
         const payload = {name, category, description, price, stock}
 
         const response = await dispatch(editProduct(payload, productId))
-        // if (response) setShowEditForm(false)
-        history.push(`/store-manager`)
+        if (response) setShowEditForm(false)
+        // history.push(`/store-manager`)
     }
 
     return (
         <div className='editproduct-wrapper'>
-            <h1>Edit Product</h1>
+            <div className='editproduct-form-title'>Edit Product</div>
             <form className='editproduct-form' onSubmit={editSubmit}>
                 {/* <div className='eidtproduct-errors'>
                     <ul>
@@ -55,10 +56,10 @@ const EditProduct = () => {
                         ))}
                     </ul>
                 </div> */}
-                <div className='createproduct-content'>
-                        <label className='createproduct-label'>
-                            <span className="createproduct-title">Name* </span>
-                            <span className="createproduct-sub-title">Include keywords that buyers would use to search for your item.</span>
+                <div className='editproduct-content'>
+                        <label className='editproduct-label'>
+                            <span className="editproduct-title">Name* </span>
+                            <span className="editproduct-sub-title">Update the keywords used to search for your item.</span>
                             <br></br>
                             {errors?.map((error, i) => {
                                 if (error.split(":")[0] === 'Name')
@@ -66,7 +67,7 @@ const EditProduct = () => {
                                         <div key={i} className='edit-product-errors'>•{error.split(":")[1]}</div>
                                     )
                             })}
-                            <input className='createproduct-input'
+                            <input className='editproduct-input'
                                 type="text"
                                 value={name}
                                 required
@@ -74,9 +75,9 @@ const EditProduct = () => {
                             />
                         </label>
                         <br></br>
-                        <label className='createproduct-label'>
-                            <span className="createproduct-title">Category* </span>
-                            <span className="createproduct-sub-title">Select a category to help shoppers search your product.</span>
+                        <label className='editproduct-label'>
+                            <span className="editproduct-title">Category* </span>
+                            <span className="editproduct-sub-title">Change the category your product is listed under.</span>
                             <br></br>
                             {errors?.map((error, i) => {
                                 if (error.split(":")[0] === 'Category')
@@ -87,7 +88,7 @@ const EditProduct = () => {
                             <select
                                 htmlFor='category'
                                 name='category'
-                                className='createproduct-input'
+                                className='editproduct-input-select'
                                 required
                                 onChange={(e) => setCategory(e.target.value)}
                             >
@@ -101,27 +102,9 @@ const EditProduct = () => {
                     </select>
                         </label>
                         <br></br>
-                        <label className='createproduct-label'>
-                            <span className="createproduct-title">Description* </span>
-                            <span className="createproduct-sub-title">Start with a brief overview that describes your item's finest features.</span>
-                            <br></br>
-                            {errors?.map((error, i) => {
-                                if (error.split(":")[0] === 'Description')
-                                    return (
-                                        <div key={i} className='edit-product-errors'>•{error.split(":")[1]}</div>
-                                    )
-                            })}
-                            <input className='createproduct-input'
-                                type="text"
-                                value={description}
-                                required
-                                onChange={(e) => setDescription(e.target.value)}
-                            />
-                        </label>
-                        <br></br>
-                        <label className='createproduct-label'>
-                            <span className="createproduct-title">Price* </span>
-                            <span className="createproduct-sub-title">Remember to factor in the cost of materials, labor, and other business expenses.</span>
+                        <label className='editproduct-label'>
+                            <span className="editproduct-title">Price* </span>
+                            <span className="editproduct-sub-title">Update the price of your product.</span>
                             <br></br>
                             {errors?.map((error, i) => {
                                 if (error.split(":")[0] === 'Price')
@@ -129,7 +112,7 @@ const EditProduct = () => {
                                         <div key={i} className='edit-product-errors'>•{error.split(":")[1]}</div>
                                     )
                             })}
-                            <input className='createproduct-input'
+                            <input className='editproduct-input'
                                 type="text"
                                 value={price}
                                 required
@@ -137,9 +120,9 @@ const EditProduct = () => {
                             />
                         </label>
                         <br></br>
-                        <label className='createproduct-label'>
-                            <span className="createproduct-title">Stock* </span>
-                            <span className="createproduct-sub-title">Provide the stock of your product.</span>
+                        <label className='editproduct-label'>
+                            <span className="editproduct-title">Stock* </span>
+                            <span className="editproduct-sub-title">Update the stock of your product.</span>
                             <br></br>
                             {errors?.map((error, i) => {
                                 if (error.split(":")[0] === 'Stock')
@@ -147,11 +130,29 @@ const EditProduct = () => {
                                         <div key={i} className='edit-product-errors'>•{error.split(":")[1]}</div>
                                     )
                             })}
-                            <input className='createproduct-input'
+                            <input className='editproduct-input'
                                 type="text"
                                 value={stock}
                                 required
                                 onChange={(e) => setStock(e.target.value)}
+                            />
+                        </label>
+                        <br></br>
+                        <label className='editproduct-label'>
+                            <span className="editproduct-title">Description* </span>
+                            <span className="editproduct-sub-title">Modify the description of your product.</span>
+                            <br></br>
+                            {errors?.map((error, i) => {
+                                if (error.split(":")[0] === 'Description')
+                                    return (
+                                        <div key={i} className='edit-product-errors'>•{error.split(":")[1]}</div>
+                                    )
+                            })}
+                            <textarea className='editproduct-input-description'
+                                type="text"
+                                value={description}
+                                required
+                                onChange={(e) => setDescription(e.target.value)}
                             />
                         </label>
                         <br></br>

@@ -68,9 +68,6 @@ function App() {
         <Route path='/new-product' exact={true} >
           <CreatePreoduct />
         </Route>
-        <Route path='/edit-product/:productId' exact={true} >
-          <EditProduct />
-        </Route>
         <Route path='/my-reviews' exact={true} >
           <LoadUserReviews />
         </Route>

@@ -39,7 +39,7 @@ const ProfileButton = ({user}) => {
           <NavLink to='/my-reviews' style={{textDecoration: 'none'}}>
             <div className='dropdown-item'>
               <div className='my-reviews-img'><i class="fa-solid fa-list-ul"></i></div>
-              <div className='my-reviews'>My reviews</div>
+              <div className='my-reviews'>My Reviews</div>
             </div>
           </NavLink>
           <NavLink to='/new-product' style={{textDecoration: 'none'}}>
@@ -48,10 +48,10 @@ const ProfileButton = ({user}) => {
               <div className='my-products'>Sell on Anya</div>
             </div>
           </NavLink>
-          <div className='dropdown-item'>
-            <div className='sign-out-img'><i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i></div>
+          {/* <div className='dropdown-item'>
+            <div className='sign-out-img'><i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i></div> */}
             <LogoutButton />
-          </div>
+          {/* </div> */}
         </div>
       </>}
     </div >

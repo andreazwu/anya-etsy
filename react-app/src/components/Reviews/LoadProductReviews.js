@@ -38,7 +38,7 @@ const LoadProductReviews = ({ productId, user }) => {
             <p className="single-review-review">
               {/* <i className="fa fa-quote-left fa-lg" aria-hidden="true"></i> */}
               <span>
-                {review.review}
+                {review?.review}
               </span>
               {/* <i className="fa fa-quote-right fa-lg" aria-hidden="true"></i> */}
             </p>
@@ -54,7 +54,7 @@ const LoadProductReviews = ({ productId, user }) => {
                     Edit
                   </button>
                 </span> */}
-                <span>
+                {/* <span>
                   <button
                   className="product-review-button"
                   onClick={async () => {
@@ -65,7 +65,7 @@ const LoadProductReviews = ({ productId, user }) => {
                   >
                     Delete
                   </button>
-                </span>
+                </span> */}
               </div>
               }
               {/* {

@@ -89,19 +89,19 @@ const MyProduct = ({ product }) => {
       <div className="myproduct-buttons-container">
         {/* {seller && (
           <> */}
-          <Link to={`/edit-product/${product.id}`}>
+          {/* <Link to={`/edit-product/${product.id}`}>
             <button className="myproduct-buttons">
               Edit
             </button>
-          </Link>
-          {/* <button className="myproduct-buttons" onClick={() => editProductHandleClick(product?.id)}> Edit </button>
+          </Link> */}
+          <button className="myproduct-buttons" onClick={() => editProductHandleClick(product?.id)}> Edit </button>
           <div>
             {showEditForm && (
               <Modal onClose={() => setShowEditForm(false)}>
                 <EditProduct productId={productId} setShowEditForm={setShowEditForm} />
               </Modal>
             )}
-          </div> */}
+          </div>
           <button
           className="myproduct-buttons"
           onClick={deleteProductHandleClick}>
