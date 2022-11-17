@@ -10,5 +10,6 @@
 }
 
 .edit-product-errors {
-    color: red
+    color: red;
+    margin-top: 5px;
 }
