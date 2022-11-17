@@ -10,7 +10,7 @@ const CreateReviewModal = ({productId, showNewReviewModal, setShowNewReviewModal
   // console.log("before onClick showModal:", showModal)
 
   return (
-    <>
+    <div className="create-review-modal-wrap">
       <button
       className="create-review-button"
       // onClick={() => setShowModal(true)}>
@@ -32,7 +32,7 @@ const CreateReviewModal = ({productId, showNewReviewModal, setShowNewReviewModal
         </Modal>
       )}
 
-    </>
+    </div>
   )
 }
 
