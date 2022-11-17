@@ -4,7 +4,7 @@ import { useSelector, useDispatch} from "react-redux";
 import { acResetProducts, getOneProduct } from "../../store/products";
 import {addCartItemThunk, getCartItemsThunk} from "../../store/cartItems"
 import LoadProductReviews from "../Reviews/LoadProductReviews";
-// import CreateReviewForm from "../Reviews/CreateReviewForm";
+import { FaStar } from "react-icons/fa"
 import CreateReviewModal from "../Reviews/CreateReviewModal"
 import Footer from '../Navigation/Footer.js';
 import './productDetails.css'
@@ -153,6 +153,7 @@ const ProductDetails = () => {
             <div className="single-product-sales">{product.salesNumber} sales  <span className="vertical-seperate">|</span>
             <span className="product-detail-avgrating-star">
             {
+              product.avgRating &&
               Number(product.avgRating) % 1 ?
               <span>
                 {[...Array(Math.floor(product.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
@@ -161,6 +162,12 @@ const ProductDetails = () => {
               :
               <span>
                 {[...Array(product.avgRating)].map((star) => (<i className="fa-solid fa-star"></i>))}
+              </span>
+            }
+            {
+              !product.avgRating &&
+              <span>
+              {[...Array(5)].map((star) => (<FaStar className="prod-star" color="#e4e5e9" size={16.5}/>))}
               </span>
             }
             </span>

@@ -301,6 +301,10 @@ input[type="radio"]{
 
 }
 
+.prod-star {
+  margin-bottom: -3px;
+}
+
 .stars-wrapper {
   margin-left: 5px;
   margin-top: -12px;
