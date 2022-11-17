@@ -1,23 +1,17 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
-import { thunkGetProductReviews } from "../../store/reviews"
+import { thunkGetProductReviews, thunkEditReview, thunkRemoveReview } from "../../store/reviews"
+import EditReviewForm from "./EditReviewForm"
 
-
-
-const LoadProductReviews = () => { //pass in productId props
-  // console.log("COMPONENT - LOADPRODUCTREVIEWS STARTS")
+const LoadProductReviews = ({ productId, user }) => {
   const dispatch = useDispatch()
-  const { productId } = useParams() //delete
   const productReviews = useSelector((state)=>state.reviews.product) //normalized obj
   const reviewsArr = Object.values(productReviews) //array
-  // console.log("REVIEWSARR FROM USE SELECTOR:", reviewsArr)
+  const [showEditReview, setShowEditReview] = useState(false)
 
   useEffect(() => {
-    // console.log("LOADPRODUCTREVIEWS USE EFFECT RUNNING: DISPATCH THUNK")
     dispatch(thunkGetProductReviews(productId))
-  }, [dispatch, productId, reviewsArr.length])
-
+  }, [dispatch, productId])
 
   if (!reviewsArr.length) return null
 
@@ -30,24 +24,59 @@ const LoadProductReviews = () => { //pass in productId props
       {
         reviewsArr.map((review)=>(
           <div className="single-review">
-            <h3>{review.User.first_name}{" "}{review.User.last_name}</h3>
-            <p className="single-review-date">
+            <div className="single-review-name" >{review.User.first_name}{" "}{review.User.last_name}</div>
+            <div className="my-single-review-date">
               {new Date(review.createdAt).toString().slice(3,-42)}
-            </p>
+            </div>
 
-            <p className="single-review-stars">
+            <div className="single-review-stars">
               {
                 [...Array(review.stars)].map((star) => (<i className="fa-solid fa-star"></i>))
               }
-            </p>
+            </div>
 
             <p className="single-review-review">
               {/* <i className="fa fa-quote-left fa-lg" aria-hidden="true"></i> */}
               <span>
-                {review.review}
+                {review?.review}
               </span>
               {/* <i className="fa fa-quote-right fa-lg" aria-hidden="true"></i> */}
             </p>
+
+            {
+              review?.userId==user?.id &&
+              <div className="product-review-button-wrap">
+                {/* <span>
+                  <button
+                  className="product-review-button"
+                  onClick={()=>setShowEditReview(!showEditReview)}
+                  >
+                    Edit
+                  </button>
+                </span> */}
+                {/* <span>
+                  <button
+                  className="product-review-button"
+                  onClick={async () => {
+                    if (window.confirm("Are you sure you want to remove this review?")){
+                      await dispatch(thunkRemoveReview(review?.id))
+                    }
+                  }}
+                  >
+                    Delete
+                  </button>
+                </span> */}
+              </div>
+              }
+              {/* {
+                showEditReview &&
+                review?.userId==user.id &&
+                <EditReviewForm
+                  myreview={review}
+                  showEditReview={showEditReview}
+                  setShowEditReview={setShowEditReview}
+                />
+              } */}
           </div>
         ))
       }
@@ -56,10 +85,3 @@ const LoadProductReviews = () => { //pass in productId props
 }
 
 export default LoadProductReviews
-
-// eventually add product reviews component to <load one product component>
-// return: product info xxxx
-// <div className="one-product-reviews-container">
-//    <LoadProductReviews productId={productId} />
-// </div>
-// (get rid of test path & useParams & pass {productId} in parameter)

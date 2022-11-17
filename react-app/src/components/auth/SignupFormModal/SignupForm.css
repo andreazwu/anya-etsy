@@ -1,0 +1,97 @@
+.signup-form-main {
+    padding: 24px 24px 12px;
+    width: 410px;
+  }
+
+  .signup-upper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.8rem;
+  }
+
+  .signup-header {
+    font-family: GraphikMedium, Arial, Helvetica, sans-serif;
+    font-size: 20px;
+  }
+
+  .signup-caption {
+    font-family: GraphikRegular, Arial, Helvetica, sans-serif;
+    margin-top: 0.5rem;
+  }
+
+  .signup-field-outer {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0 0.5rem;
+  }
+
+  .signup-label {
+    font-family: GraphikMedium, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    margin-bottom: 0.3rem;
+   
+  }
+
+  .signup-input {
+    font-family: GraphikRegular, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    border: 1px solid rgba(128, 128, 128, 0.336);
+    height: 36px;
+    border-radius: 10px;
+    padding-left: 14px;
+    outline: none;
+  }
+
+  .signup-form-button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0.925);
+    color: white;
+    font-family: GraphikMedium, Arial, Helvetica, sans-serif;
+    height: 45px;
+    border-radius: 20px;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 15px
+  }
+  .signup-form-button:hover{
+    transform:scale(1.06,1.06);
+  }
+
+  .signup-error-outer {
+    margin-bottom: 0.5rem;
+  }
+
+  .signup-errors {
+    font-family: GraphikRegular, Arial, Helvetica, sans-serif;
+    color: rgb(255, 0, 0);
+    font-size: 12px;
+  }
+
+  .signup-buttons-outer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .signIn-account-message {
+    font-family: GraphikRegular, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin-top: 1rem;
+  }
+
+  .signIn-from-register {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .signIn-from-register:hover {
+    color: rgb(61, 61, 61)
+  }
+
+  .signup-login-button{
+    text-decoration: underline;
+  }
+  .signup-login-button:hover{
+    color: orange;
+    cursor: pointer
+  }

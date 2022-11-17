@@ -18,7 +18,7 @@
 
 .items-count-in-cart{
     font-size: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 120px;
     font-weight: 500
 
 }
@@ -51,12 +51,12 @@
 
 .cart-item-container-div{
     display: flex;
-    margin-top: -80px;
+    margin-top: -30px;
     margin-bottom: 50px;
     justify-content: space-between;
     border-bottom: 1px solid rgb(217, 217, 217);
     width: 100%;
-
+/* padding-top: 40px */
 }
 
 
@@ -84,11 +84,11 @@
 }
 
 .cart-item-name{
-    width: 450px;
+    width: 400px;
     height: 60px;
     position: relative;
-    left:250px;
-    top: 13px;
+    left:15px;
+    top: 33px;
     font-size: 18px;
     cursor: pointer;
 }
@@ -97,12 +97,12 @@
 }
 
 .cart-product-name-remove{
-    width: 30%;
-    max-width: 30%;
+    /* width: 30%;
+    max-width: 30%; */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
 
 }
 
@@ -111,12 +111,15 @@
     width: fit-content;
     border-style: none;
     padding: .5em .8em;
-    transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42), background 200ms ease-out,box-shadow 200ms ease-out;
-    margin-left: -1.9em;
-    margin-top: 110px;
+    /* transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42), background 200ms ease-out,box-shadow 200ms ease-out; */
+    margin-left: .2em;
+    margin-top:40px;
     background-color: white;
     cursor: pointer;
-    font-size: 18px
+    font-size: 16px;
+    border-radius: 18px;
+    font-weight: 570;
+
 }
 
 
@@ -125,7 +128,7 @@
     position: relative;
     width: fit-content;
     height: fit-content;
-    top: 2em;
+    top: 33px;
 }
 
 
@@ -152,12 +155,16 @@
 
 
 .quantity-price-box{
-
+ width: 100px
 }
 
 
 .item-total-container{
-
+ /* padding-top: 5px */
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    top: 20px;
 }
 
 
@@ -172,7 +179,7 @@
     height: 20em;
     box-shadow: 0 0 12px #c3c3c3;
     border-radius: .7em;
-    margin-top: 5em;
+    margin-top: 10em;
     padding: 1em;
 }
 
@@ -220,4 +227,12 @@
     transform:scale(1.1,1.1);
     /* -webkit-transform:scale(1.3,1.3);
     -moz-transform:scale(1.3,1.3); */
+}
+.other-people-message{
+    color: rgb(241, 101, 34);
+    margin-top: 70px;
+    margin-left: 15px;
+    font-weight: 500;
+    font-size: 17px
+
 }
