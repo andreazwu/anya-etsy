@@ -85,6 +85,11 @@
   margin-bottom: 2px;
 }
 
+.my-single-review {
+  margin-top: 5px;
+  overflow-y: auto;
+  height: 100px;
+}
 
 .review-button-wrap {
   display: flex;
@@ -104,14 +109,17 @@
   /* margin: 3px 0px 20px 0px; */
   border: 1px rgb(241, 101, 34) solid;
   border-radius: 4px;
+  /* background: rgb(241, 101, 34); */
   background: rgb(241, 101, 34);
   color: white;
 }
 
 .review-button:hover {
   background: white;
+  /* border: 1px rgb(241, 101, 34) solid; */
   border: 1px rgb(241, 101, 34) solid;
   color:rgb(241, 101, 34);
+  /* color:rgb(241, 101, 34); */
 }
 /*
 .fa-quote-left {
