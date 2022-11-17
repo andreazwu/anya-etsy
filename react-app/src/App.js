@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
+import LoginForm from './components/auth/LoginFormModal/LoginForm';
+import SignUpForm from './components/auth/SignupFormModal/SignUpForm';
 import NavBar from './components/Navigation/NavBar.js';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -67,9 +67,6 @@ function App() {
         </Route>
         <Route path='/new-product' exact={true} >
           <CreatePreoduct />
-        </Route>
-        <Route path='/edit-product/:productId' exact={true} >
-          <EditProduct />
         </Route>
         <Route path='/my-reviews' exact={true} >
           <LoadUserReviews />

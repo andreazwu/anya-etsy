@@ -59,11 +59,11 @@ def edit_review(review_id):
   if review.user_id == current_user.id:
     if form.validate_on_submit():
       review.review = form.data['review']
-      review.srars = form.data['stars']
+      review.stars = form.data['stars']
 
       db.session.commit()
 
-      return review.to_dict(), 201
+      return review.to_dict_my_reviews(), 201
     else:
       return {'errors': validation_errors_to_error_messages(form.errors)}, 400
   else:

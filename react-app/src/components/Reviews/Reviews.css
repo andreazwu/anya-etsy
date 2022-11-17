@@ -2,6 +2,26 @@
   font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
 }
 
+.myreviews-review-container {
+  display: grid;
+  grid-template-columns: minmax(0,40%) minmax(0, 60%);
+  grid-template-rows: auto;
+  height: auto;
+  margin-bottom: 60px;
+}
+
+.myreviews-image-container {
+  min-width: 210px;
+  height: 170px;
+  margin-bottom: 1rem;
+}
+
+.myreviews-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .my-reviews-main {
   margin-bottom: 1.5rem;
   display: flex;
@@ -14,7 +34,7 @@
   background-color: rgb(241, 101, 34, 0.2);
   position: absolute;
   left: 0;
-  top: 9rem;
+  top: 7.5rem;
   width: 100%;
   min-height: 100px;
   min-width: 100%;
@@ -38,7 +58,7 @@
 
 .my-reviews-outer {
   width: 1226px;
-  padding-top: 5rem;
+  padding-top: 8.2rem;
 }
 
 .my-reviews-inner {
@@ -55,15 +75,29 @@
 
 .my-single-product-name {
   color: rgb(241, 101, 34, 0.8);
+  font-size: 18px;
+}
+
+.my-single-review-date {
+  color: rgba(180, 173, 173, 0.8);
+  font-size: 15px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 
+.review-button-wrap {
+  display: flex;
+  justify-content:space-between;
+  align-items: baseline;
+  padding: 0px 2px 2px 0px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  min-width: 0;
+}
 
 
-
-
-
-.delete-review-button {
+.review-button {
   cursor: pointer;
   width: 115px;
   padding: 3px 10px;
@@ -72,10 +106,9 @@
   border-radius: 4px;
   background: rgb(241, 101, 34);
   color: white;
-  font: bold;
 }
 
-.delete-review-button:hover {
+.review-button:hover {
   background: white;
   border: 1px rgb(241, 101, 34) solid;
   color:rgb(241, 101, 34);
@@ -100,14 +133,35 @@
 }
 
 .single-review {
-  font-weight: bolder;
+  /* font-weight: bolder; */
   margin-bottom: 30px;
 }
 
+.single-review-name {
+  font-weight: bold;
+  font-size: 20px;
+}
 
-/* -----create review-------- */
+.single-review-review {
+  margin-top: 5px;
+}
 
-.review-field {
+/* -------edit review-------- */
+
+.edit-review-form {
+  z-index: 500;
+}
+
+.edit-review-form .form-input-wrapper {
+  border: rgb(200, 200, 200) 1px solid;
+  width: 95%;
+  border-radius: 9px;
+  /* margin: 15px 25px 25px 25px; */
+  margin-top: 5px;
+  padding-left: 10px;
+}
+
+.edit-review-form .review-field {
   color: rgb(241, 101, 34);
   /* font-size: 12px; */
   padding-left: 3px;
@@ -122,50 +176,50 @@
   margin: 20px 20px 10px 20px;
 }
 
-textarea {
+.edit-review-form textarea {
   resize: none;
   width: 90%;
-  font-size: 14px;
-  padding: 4px;
+  height: 62px;
+  font-size: 16px;
+  padding-left: 4px;
   border: none;
   border-radius: 4px;
-  margin: 4px 0px;
+  margin: 2px 0px;
 }
 
 textarea:focus {
   outline: none;
 }
 
-select {
-  /* color: rgb(241, 101, 34); */
-  /* width: 12%; */
+/* .form-input-wrapper select {
   font-size: 14px;
   padding: 4px;
   border: none;
   border-radius: 4px;
   margin: 4px 0px;
-}
+} */
 
 select:focus {
   outline: none;
 }
 
-.form-input-break{
+.edit-review-form .form-input-break{
   background-color: rgb(200, 200, 200);
   height:1px;
   margin-left: -11px;
-  width: 103%;
+  width: 104%;
   margin-top: 4px;
   margin-bottom: 4px;
 }
 
-.form-input-wrapper {
+.edit-review-form .form-input-wrapper {
   border: rgb(200, 200, 200) 1px solid;
-  width: 80%;
+  width: 95%;
   border-radius: 9px;
-  margin: 15px 25px 25px 25px;
+  /* margin: 15px 25px 25px 25px; */
+  margin-top: 5px;
   padding-left: 10px;
-  padding-top: 5px;
+  /* padding-top: 5px; */
 }
 
 .validation-errors {
@@ -180,35 +234,32 @@ select:focus {
   margin-left: 50px; */
 }
 
-.modal-submit-button {
-  width: 85%;
+.edit-review-form .modal-submit-button {
+  width: 99%;
   padding: 10px;
-  margin: 0px 25px 5px 25px;
+  font-size: 14px;
+  /* font-weight: bold; */
+  margin-top: 10px;
   border: 1px rgb(241, 101, 34) solid;
   border-radius: 4px;
   background: rgb(241, 101, 34);
   color: white;
-  font: bold;
 }
 
-.modal-submit-button:hover {
+.edit-review-form .modal-submit-button:hover {
   background: white;
   border: 1px rgb(241, 101, 34) solid;
   color:rgb(241, 101, 34);
 }
 
-.create-review-wrapper {
+/* .create-review-wrapper {
   position: fixed;
   width: 90%;
-  /* top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
 
 
 /* ----product detail create review button-------- */
@@ -222,7 +273,6 @@ select:focus {
   border-radius: 4px;
   background: rgb(241, 101, 34);
   color: white;
-  font: bold;
 }
 
 .create-new-review-button:hover {
@@ -230,3 +280,185 @@ select:focus {
   border: 1px rgb(241, 101, 34) solid;
   color:rgb(241, 101, 34);
 }
+
+/* ---------Hover Stars--------- */
+input[type="radio"]{
+  display: none;
+}
+
+.star {
+  cursor: pointer;
+  transition: color 200ms;
+  margin-right: 1px;
+
+}
+
+.stars-wrapper {
+  margin-left: 5px;
+  margin-top: -12px;
+}
+
+/* -------product details page reviews------- */
+
+.product-review-button-wrap {
+  display: flex;
+  /* justify-content:space-around; */
+  align-items: baseline;
+  padding: 0px 2px 2px 0px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  min-width: 0;
+}
+
+
+.product-review-button {
+  cursor: pointer;
+  width: 80px;
+  padding: 3px 10px;
+  /* margin: 3px 0px 20px 0px; */
+  border: 1px rgb(241, 101, 34) solid;
+  border-radius: 4px;
+  background: rgb(241, 101, 34);
+  color: white;
+}
+
+.product-review-button:hover {
+  background: white;
+  border: 1px rgb(241, 101, 34) solid;
+  color:rgb(241, 101, 34);
+}
+
+
+/* -------create review modal------- */
+.create-hover {
+  margin-left: 80px;
+}
+
+.create-review-field {
+  color: rgb(241, 101, 34);
+  padding-left: 3px;
+}
+
+.create-review-modal-whole form {
+  padding: 10px 20px 10px 20px;
+}
+.create-review-modal-whole textarea {
+  resize: none;
+  width: 100%;
+  height: 120px;
+  font-size: 16px;
+  padding-left: 4px;
+  border: none;
+  border-radius: 4px;
+  margin: 4px 0px;
+}
+
+.create-review-modal-whole .form-input-wrapper {
+  border: rgb(200, 200, 200) 1px solid;
+  width: 95%;
+  border-radius: 9px;
+  /* margin: 15px 25px 25px 25px; */
+  margin-top: 5px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.create-review-modal-whole .stars-wrapper {
+  margin-top: -20px;
+  margin-bottom: 5px;
+  margin-left: -10px;
+}
+.create-review-modal-whole .review-field {
+  color: rgb(241, 101, 34);
+  /* font-size: 12px; */
+  padding-left: 3px;
+}
+
+.review-modal-subheader {
+  display: flex;
+  justify-content: center;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 20px 20px 10px 20px;
+}
+
+.create-review-modal-whole textarea {
+  resize: none;
+  width: 90%;
+  height: 62px;
+  font-size: 16px;
+  padding-left: 4px;
+  border: none;
+  border-radius: 4px;
+  margin: 2px 0px;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.create-review-modal-whole .form-input-break{
+  background-color: rgb(200, 200, 200);
+  height:1px;
+  margin-left: -11px;
+  width: 103%;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.create-review-modal-whole .form-input-wrapper {
+  border: rgb(200, 200, 200) 1px solid;
+  width: 95%;
+  border-radius: 9px;
+  /* margin: 15px 25px 25px 25px; */
+  margin-top: 5px;
+  padding-left: 10px;
+  /* padding-top: 5px; */
+}
+
+.create-review-modal-whole .modal-submit-button {
+  width: 98%;
+  padding: 10px;
+  font-size: 16px;
+  /* margin: 0px 25px 5px 25px; */
+  margin-top: 10px;
+  border: 1px rgb(241, 101, 34) solid;
+  border-radius: 4px;
+  background: rgb(241, 101, 34);
+  color: white;
+}
+
+.create-review-modal-whole .modal-submit-button:hover {
+  background: white;
+  border: 1px rgb(241, 101, 34) solid;
+  color:rgb(241, 101, 34);
+}
+
+/* .create-review-modal-whole #modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-review-modal-whole #modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.create-review-modal-whole #modal-content {
+  position: absolute;
+  background-color: white;
+  width: 600px;
+  padding-bottom: 200px;
+  border-radius: 4px;
+} */

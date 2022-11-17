@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { thunkCreateNewReview } from "../../../store/reviews"
+import HoverStars from "../HoverStars"
 
 import "./CreateReview.css"
 
@@ -10,7 +11,7 @@ const CreateReview = ({productId, setShowNewReviewModal}) => {
   const history = useHistory()
 
   const [review, setReview] = useState("")
-  const [stars, setStars] = useState(5)
+  const [stars, setStars] = useState(null)
   const [errors, setErrors] = useState([])
 
   const [hasSubmitted, setHasSubmitted] = useState(false)
@@ -29,8 +30,8 @@ const CreateReview = ({productId, setShowNewReviewModal}) => {
     setHasSubmitted(true)
 
     const errorsArr = []
-
-    if (!review.length || review.length > 2000) errorsArr.push("please enter a valid review fewer than 2000 characters long")
+    if (stars <= 0) errorsArr.push("please enter a star rating between 1 and 5")
+    if (review.length > 2000) errorsArr.push("please enter a valid review fewer than 2000 characters long")
 
     setErrors(errorsArr)
 
@@ -61,7 +62,7 @@ const CreateReview = ({productId, setShowNewReviewModal}) => {
   }
 
   return (
-    <div>
+    <div className="create-review-modal-whole">
       <div className="review-modal-subheader">Did you enjoy this product?</div>
 
       <div className="validation-errors">
@@ -75,15 +76,18 @@ const CreateReview = ({productId, setShowNewReviewModal}) => {
       <form onSubmit={handleSubmit}>
       <div className="form-input-wrapper">
 
-            <label className="review-field">
+            <label className="create-review-field">
               Rating:&nbsp;
-              <select
+              {/* <select
                 type="number"
                 value={stars}
                 onChange={(e) => setStars(e.target.value)}
               >
                 {[1,2,3,4,5].map((num)=>(<option>{num}</option>))}
-              </select>
+              </select> */}
+              <div className="create-hover">
+                <HoverStars stars={stars} setStars={setStars}/>
+              </div>
             </label>
             <div className="form-input-break"></div>
             <label className="review-field">
@@ -91,6 +95,7 @@ const CreateReview = ({productId, setShowNewReviewModal}) => {
               <textarea
                 type="text"
                 value={review}
+                placeholder="Optional"
                 onChange={(e) => setReview(e.target.value)}
               />
             </label>

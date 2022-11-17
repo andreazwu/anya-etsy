@@ -25,7 +25,6 @@ const ProductsBrowser = () => {
   const displayProducts = randomProducts.slice(0,8)
   const sponsorProducts = randomProducts.slice(8, 13)
   const EditorPickProducts = randomProducts.slice(13, 18)
-  console.log(EditorPickProducts)
 
 
   /* if we want to do shops: */
@@ -106,7 +105,7 @@ const ProductsBrowser = () => {
                 <div className='display-img-outer'>
                   <img src={product.previewImage} className={`display-product-img img${i}`} alt={product.id}/>
                 </div>
-                <div className='display-product-price'>${product.price}</div>
+                <div className='display-product-price'>${parseFloat(product.price).toFixed(2)}</div>
               </NavLink>
             </div>
           )
@@ -124,7 +123,7 @@ const ProductsBrowser = () => {
                 <div className='sponsored-img-outer'>
                   <img src={product.previewImage} className={`sponsored-product-img s-img${i}`} alt={product.id}></img>
                 </div>
-                <div className='sponsored-product-price'>${product.price}</div>
+                <div className='sponsored-product-price'>${parseFloat(product.price).toFixed(2)}</div>
               </NavLink>
             </div>
           )
@@ -144,7 +143,7 @@ const ProductsBrowser = () => {
                 <div className='edit-pick-img-outer'>
                   <img src={product.previewImage} className={`edit-pick-product-img e-img${i}`} alt='product'></img>
                 </div>
-                <div className='edit-pick-product-price'>${product.price}</div>
+                <div className='edit-pick-product-price'>${parseFloat(product.price).toFixed(2)}</div>
               </NavLink>
             </div>
           )

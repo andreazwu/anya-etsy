@@ -305,7 +305,7 @@ def update_product(product_id):
       edit_product.stock = form.data['stock']
 
       db.session.commit()
-      return edit_product.to_dict(), 200
+      return edit_product.to_dict_search(), 200
     else:
       return {"errors" : validation_errors_to_error_messages(form.errors)}, 400
 

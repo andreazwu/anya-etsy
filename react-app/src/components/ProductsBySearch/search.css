@@ -1,4 +1,4 @@
-.search-header-container {
+/* .search-header-container {
   font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
   background-color: #F8EBE5;
   border-top: 1px solid rgb(243, 220, 211);
@@ -6,20 +6,21 @@
   left: 0;
   top: 120px;
   width: 100%;
-  height: 150px;
+  height: 100px;
   min-height: 100px;
   min-width: 100%;
-  /* z-index: -3; */
-}
+  z-index: -3;
+} */
 
-.search-header {
+/* .search-header {
   font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
   font-size: 1.5rem;
   width: 100%;
   margin: 3rem 5rem 5rem 5rem;
-}
+} */
 
 .search-sum {
+  font-family: GraphikRegular, Arial, Helvetica, sans-serif;
   max-width: 97%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -29,7 +30,7 @@
 }
 
 .search-main {
-  padding-top: 100px;
+  padding-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -97,8 +98,11 @@
 .search-product-num-reviews {
   font-family: GraphikLight, Arial, Helvetica, sans-serif;
   font-size: 14px;
-  padding-left: 5px;
   color: #616161;
+}
+
+.fa-sharp.fa-solid.fa-star {
+  color: black;
 }
 
 .search-product-price {

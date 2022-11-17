@@ -28,36 +28,39 @@ const ProductsBySearch = () =>{
         </div>
       </div>
       <div className='search-main'>
-        {/* <div className='search-caption'></div> */}
         <div className='search-products-main'>
           {productsArr?.map((product, i) => {
             return (
-              <NavLink to={`/products/${product?.id}`} style={{textDecoration: 'none'}} key={i}>
-                <div className='search-product-body'>
-                  <div className='search-product-img-container'>
-                    <img src={product?.previewImage} className='search-product-img' alt='images'></img>
-                  </div>
-                  <div className='search-product-name'>{product.name}</div>
-                  {product?.numReviews > 0 && <>
-                    <div className='search-product-stars'>
-                      {/* {product?.avg_stars <= 0.5 && <span>{starsDisplay(halfStars)}</span>}
-                      {product?.avg_stars > 0.5 && product?.avg_stars <= 1 && <span>{starsDisplay(oneStar)}</span>}
-                      {product?.avg_stars > 1 && product?.avg_stars <= 1.5 && <span>{starsDisplay(oneHalfStar)}</span>}
-                      {product?.avg_stars > 1.5 && product?.avg_stars <= 2 && <span>{starsDisplay(twoStar)}</span>}
-                      {product?.avg_stars > 2 && product?.avg_stars <= 2.5 && <span>{starsDisplay(twoHalfStar)}</span>}
-                      {product?.avg_stars > 2.5 && product?.avg_stars <= 3 && <span>{starsDisplay(threeStar)}</span>}
-                      {product?.avg_stars > 3 && product?.avg_stars <= 3.5 && <span>{starsDisplay(threeHalfStar)}</span>}
-                      {product?.avg_stars > 3.5 && product?.avg_stars <= 4 && <span>{starsDisplay(fourStar)}</span>}
-                      {product?.avg_stars > 4 && product?.avg_stars <= 4.5 && <span>{starsDisplay(fourHalfStar)}</span>}
-                      {product?.avg_stars > 4.5 && <span>{starsDisplay(fiveStar)}</span>} */}
-                      <span className='search-product-num-reviews'>({product.numReviews})</span>
+              <div className='search-product-body'>
+                <NavLink to={`/products/${product?.id}`} style={{textDecoration: 'none'}} key={i}>
+                    <div className='search-product-img-container'>
+                      <img src={product?.previewImage} className='search-product-img' alt='images'></img>
                     </div>
-                  </>
-                  }
-                  <div className='search-product-price'>${product?.price}</div>
-                  <div className='search-product-shop'>{currUser?.username}</div>
-                </div>
-              </NavLink>
+                    <div className='search-product-name'>{product.name}</div>
+                    {product?.numReviews > 0 && <>
+                      <div className='search-product-stars'>
+                        <span className='search-product-num-reviews'>
+                        {
+                            Number(product.avgRating) % 1 ?
+                            <span>
+                              {[...Array(Math.floor(product.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
+                              <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            </span>
+                            :
+                            <span>
+                              {[...Array(product.avgRating)].map((star) => (<i className="fa-solid fa-star"></i>))}
+                            </span>
+                        }
+                        {/* {[...Array(Math.floor(product.avgRating))].map(star => <i class="fa-sharp fa-solid fa-star"></i>)} */}
+                        &nbsp;({product.numReviews})
+                        </span>
+                      </div>
+                    </>
+                    }
+                    <div className='search-product-price'>${parseFloat(product?.price).toFixed(2)}</div>
+                </NavLink>
+                <div className='search-product-shop'>{currUser?.username}</div>
+              </div>
             )
           })}
         </div>
