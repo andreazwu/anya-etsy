@@ -54,7 +54,7 @@ const CreatePreoduct = () => {
         {page === 0 &&
             <>
             <div className='createproduct-wrapper'>
-                <h1>Create Product</h1>
+                <h1 className="createproduct-form-title">Create Product</h1>
                 <form className='createproduct-form' onSubmit={createSubmit}>
                     {/* <div className='createproduct-errors'>
                         <ul>
@@ -95,7 +95,7 @@ const CreatePreoduct = () => {
                             <select
                                 htmlFor='category'
                                 name='category'
-                                className='createproduct-input'
+                                className='createproduct-input-select'
                                 required
                                 onChange={(e) => setCategory(e.target.value)}
                             >
@@ -108,24 +108,7 @@ const CreatePreoduct = () => {
                                 })}
                     </select>
                         </label>
-                        <br></br>
-                        <label className='createproduct-label'>
-                            <span className="createproduct-title">Description* </span>
-                            <span className="createproduct-sub-title">Start with a brief overview that describes your item's finest features.</span>
-                            <br></br>
-                            {errors?.map((error, i) => {
-                                if (error.split(":")[0] === 'Description')
-                                    return (
-                                        <div key={i} className='edit-product-errors'>•{error.split(":")[1]}</div>
-                                    )
-                            })}
-                            <input className='createproduct-input'
-                                type="text"
-                                value={description}
-                                required
-                                onChange={(e) => setDescription(e.target.value)}
-                            />
-                        </label>
+
                         <br></br>
                         <label className='createproduct-label'>
                             <span className="createproduct-title">Price* </span>
@@ -160,6 +143,24 @@ const CreatePreoduct = () => {
                                 value={stock}
                                 required
                                 onChange={(e) => setStock(e.target.value)}
+                            />
+                        </label>
+                        <br></br>
+                        <label className='createproduct-label'>
+                            <span className="createproduct-title">Description* </span>
+                            <span className="createproduct-sub-title">Start with a brief overview that describes your item's finest features.</span>
+                            <br></br>
+                            {errors?.map((error, i) => {
+                                if (error.split(":")[0] === 'Description')
+                                    return (
+                                        <div key={i} className='edit-product-errors'>•{error.split(":")[1]}</div>
+                                    )
+                            })}
+                            <textarea className='createproduct-input-description'
+                                type="text"
+                                value={description}
+                                required
+                                onChange={(e) => setDescription(e.target.value)}
                             />
                         </label>
                         <br></br>
