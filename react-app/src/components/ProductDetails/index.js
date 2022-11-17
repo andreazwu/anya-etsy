@@ -104,7 +104,20 @@ const ProductDetails = () => {
 
 
             <div className="single-product-seller">{product.seller}</div>
-            <div>{product.salesNumber} sales {reviewStars(product.avgRating)}
+            <div>{product.salesNumber} sales
+            <span>
+            {
+              Number(product.avgRating) % 1 ?
+              <span>
+                {[...Array(Math.floor(product.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
+                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+              </span>
+              :
+              <span>
+                {[...Array(product.avgRating)].map((star) => (<i className="fa-solid fa-star"></i>))}
+              </span>
+            }
+            </span>
             </div>
             <div className="single-product-name">{product.name}</div>
             <div className="single-product-price">${product.price}</div>
@@ -131,7 +144,21 @@ const ProductDetails = () => {
             <div className="single-product-description">Description: {product.description}</div>
             -------------------------------------------------------------
             <div className="single-product-reviews">
-                <div className="single-product-numReviews">{product.numReviews} reviews {product.avgRating.toFixed(2)} stars</div>
+                <div className="single-product-numReviews">{product.numReviews} reviews
+                <span>
+                    {
+                    Number(product.avgRating) % 1 ?
+                    <span>
+                        {[...Array(Math.floor(product.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
+                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                    </span>
+                    :
+                    <span>
+                        {[...Array(product.avgRating)].map((star) => (<i className="fa-solid fa-star"></i>))}
+                    </span>
+                    }
+                </span>
+                </div>
             </div>
             {/* only show "create review" button to logged in user/ who has not left a review/ NON-seller */}
             <div>
