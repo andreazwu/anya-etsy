@@ -104,7 +104,7 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
         className="modal-submit-button"
         onClick={handleSubmit}
         >
-          Update Review!
+          Update Review
         </button>
 
       </form>

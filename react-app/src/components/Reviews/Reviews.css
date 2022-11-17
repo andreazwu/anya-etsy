@@ -106,7 +106,6 @@
   border-radius: 4px;
   background: rgb(241, 101, 34);
   color: white;
-  font: bold;
 }
 
 .review-button:hover {
@@ -238,13 +237,13 @@ select:focus {
 .edit-review-form .modal-submit-button {
   width: 99%;
   padding: 10px;
-  /* margin: 0px 25px 5px 25px; */
+  font-size: 14px;
+  /* font-weight: bold; */
   margin-top: 10px;
   border: 1px rgb(241, 101, 34) solid;
   border-radius: 4px;
   background: rgb(241, 101, 34);
   color: white;
-  font: bold;
 }
 
 .edit-review-form .modal-submit-button:hover {
@@ -274,7 +273,6 @@ select:focus {
   border-radius: 4px;
   background: rgb(241, 101, 34);
   color: white;
-  font: bold;
 }
 
 .create-new-review-button:hover {
@@ -322,7 +320,6 @@ input[type="radio"]{
   border-radius: 4px;
   background: rgb(241, 101, 34);
   color: white;
-  font: bold;
 }
 
 .product-review-button:hover {
@@ -430,7 +427,6 @@ textarea:focus {
   border-radius: 4px;
   background: rgb(241, 101, 34);
   color: white;
-  font: bold;
 }
 
 .create-review-modal-whole .modal-submit-button:hover {
