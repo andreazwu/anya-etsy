@@ -1,6 +1,6 @@
 .signup-form-main {
     padding: 24px 24px 12px;
-    width: 400px;
+    width: 410px;
   }
 
   .signup-upper {
@@ -29,6 +29,7 @@
     font-family: GraphikMedium, Arial, Helvetica, sans-serif;
     font-size: 13px;
     margin-bottom: 0.3rem;
+   
   }
 
   .signup-input {
