@@ -7,6 +7,7 @@ import LoadProductReviews from "../Reviews/LoadProductReviews";
 import { FaStar } from "react-icons/fa"
 import CreateReviewModal from "../Reviews/CreateReviewModal"
 import Footer from '../Navigation/Footer.js';
+import noimage from '../images/noimage.jpg'
 import './productDetails.css'
 
 const ProductDetails = () => {
@@ -41,7 +42,7 @@ const ProductDetails = () => {
 
     if (!product) return null;
     // if (!sellerId) return null;
-// console.log("!!!!!!!!!!!!!!!!!!!!!!", sessionUser.id, product.sellerId)
+    // console.log("!!!!!!!!!!!!!!!!!!!!!!", sessionUser.id, product.sellerId)
     const addToCart = async () => {
        if(sessionUser){
            if (sessionUser.id == product.sellerId) {
@@ -76,15 +77,15 @@ const ProductDetails = () => {
 
         return messageBase;
   }
-  const reviewStars = (avgRating) => {
-    if (avgRating == 0) {
-        return <span>"New"</span>
-    } else if (Number.isInteger(avgRating)) {
-        return <span> <i className="fa-solid fa-star"> *{avgRating}</i></span>
-    } else {
-        return <span>{Math.round(avgRating)} * <i className="fa-solid fa-star"></i> + <i class="fa fa-star-half-o" aria-hidden="true"></i></span>
-    }
-}
+  // const reviewStars = (avgRating) => {
+  //   if (avgRating == 0) {
+  //       return <span>"New"</span>
+  //   } else if (Number.isInteger(avgRating)) {
+  //       return <span> <i className="fa-solid fa-star"> *{avgRating}</i></span>
+  //   } else {
+  //       return <span>{Math.round(avgRating)} * <i className="fa-solid fa-star"></i> + <i class="fa fa-star-half-o" aria-hidden="true"></i></span>
+  //   }
+  // }
 
     return (
         <div>
@@ -93,14 +94,27 @@ const ProductDetails = () => {
 
             <div className='product-image-main'>
                 <div className='product-preview-image-outer'>
-                    { product.productImages.length > 0 && product.productImages.map((image, i) => {
+                    {
+                    product.productImages.length > 0 &&
+                    product.productImages.map((image, i) => {
                     return (
-                        <img src={image} className='product-preview-image' key={i} onClick={() => { setSelectedImage(image) }} alt='product'></img>
+                        <img src={image} className='product-preview-image' key={i} onClick={() => { setSelectedImage(image) }} alt='productimage'></img>
                     )
                     })}
+                    {
+                      !product.productImages.length &&
+                      <img src={noimage} className='product-preview-image' onClick={() => { setSelectedImage(noimage) }} alt='noimage'></img>
+                    }
                 </div>
                 <div className='product-main-image-outer'>
-                    <img src={selectedImage ? selectedImage : product.productImages[0]} className='product-main-image' alt='product'></img>
+                  {
+                    !product.productImages.length &&
+                    <img src={selectedImage ? selectedImage : noimage} className='product-main-image' alt='productimage'></img>
+                  }
+                  {
+                    product.productImages.length > 0 &&
+                    <img src={selectedImage ? selectedImage : product.productImages[0]} className='product-main-image' alt="productimage"></img>
+                  }
                 </div>
             </div>
 
