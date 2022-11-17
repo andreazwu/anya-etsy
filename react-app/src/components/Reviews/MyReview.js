@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { thunkGetUserReviews, thunkRemoveReview } from "../../store/reviews"
-// import EditReviewModal from "./EditReviewModal"
 import EditReviewForm from "./EditReviewForm"
 import "./Reviews.css"
 
@@ -86,45 +85,8 @@ const MyReview = ({review, user}) => {
           }
         </div>
       </div>
-
-      {/* <div className="review-button-wrap">
-        <span>
-          <button
-          className="review-button"
-          // onClick={()=>history.push(`/products/${review.Product.id}/edit-review`)}>
-          onClick={()=>setShowEditReview(!showEditReview)}>
-            Edit
-          </button>
-        </span>
-        <span>
-          <button
-          className="review-button"
-          onClick={deleteReviewHandleClick}>
-            Delete
-          </button>
-        </span>
-      </div> */}
-      {/* <div>
-        {showEditReview &&
-            <EditReviewForm
-              myreview={review}
-              showEditReview={showEditReview}
-              setShowEditReview={setShowEditReview}
-              />
-        }
-      </div> */}
-
     </div>
   )
 }
 
 export default MyReview
-
-  // review prop looks like this:
-
-  // { id, userId, ProductId, review, stars,
-  //   User: { id, firstName, lastName },
-  //   Product: { id, ownerId, add, city, state, coun,
-  //           lat, lng, name, price,
-  //           previewImage },
-  //   ReviewImages: [ { id, url }, {}, {} ] }

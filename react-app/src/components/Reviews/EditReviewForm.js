@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import { thunkEditReview } from "../../store/reviews"
 import LoadUserReviews from "./LoadUserReviews"
-
+import HoverStars from "./HoverStars"
 import "./Reviews.css"
 
 const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
@@ -11,13 +11,13 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
   const dispatch = useDispatch()
   const history = useHistory()
 
-  const [editreview, setEditReview] = useState(myreview.review)
-  const [stars, setStars] = useState(myreview.stars)
+  const [editReview, setEditReview] = useState(myreview.review)
+  const [editStars, setEditStars] = useState(myreview.stars)
   const [errors, setErrors] = useState([])
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const reviewId = myreview?.id
 
-  console.log("to be edited: stars:", stars, "review:", editreview, "reviewId:", reviewId)
+  console.log("to be edited: stars:", editStars, "review:", editReview, "reviewId:", reviewId)
 
   const handleSubmit = async (e) => {
     {console.log("HANDLE SUBMIT")}
@@ -27,7 +27,7 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
 
     const errorsArr = []
 
-    if (editreview.length > 2000) errorsArr.push("please enter a valid review fewer than 2000 characters long")
+    if (editReview.length > 2000) errorsArr.push("please enter a valid review fewer than 2000 characters long")
 
     setErrors(errorsArr)
 
@@ -35,7 +35,7 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
 
     setShowEditReview(false)
 
-    const reviewInfo = { "review": editreview, "stars": stars }
+    const reviewInfo = { "review": editReview, "stars": editStars }
     console.log("before dispatch thunk, reviewInfo:", reviewInfo)
     const editedReview = await dispatch(thunkEditReview(reviewInfo, reviewId))
       .then(()=>history.push(`/my-reviews`))
@@ -53,7 +53,7 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
 
   const reset = () => {
     setEditReview("")
-    setStars(5)
+    setEditStars(5)
     setErrors([])
     setHasSubmitted(false)
   }
@@ -74,22 +74,23 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
       {console.log("EDIT REVIEW FORM RETURN, INSIDE FORM")}
 
             <label className="review-field">
-              Rating:&nbsp;
-              <select
+              {/* Rating:&nbsp; */}
+              {/* <select
                 type="number"
-                value={stars}
-                onChange={(e) => setStars(e.target.value)}
+                value={editStars}
+                onChange={(e) => setEditStars(e.target.value)}
               >
                 {[1,2,3,4,5].map((num)=>(<option key={num}>{num}</option>))}
-              </select>
+              </select> */}
+              <HoverStars stars={editStars} setStars={setEditStars}/>
             </label>
             <div className="form-input-break"></div>
             <label className="review-field">
-              Review:
+              {/* Review: */}
               <textarea
                 type="text"
                 placeholder="Optional"
-                value={editreview}
+                value={editReview}
                 onChange={(e) => setEditReview(e.target.value)}
               />
             </label>
@@ -103,7 +104,7 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
         className="modal-submit-button"
         onClick={handleSubmit}
         >
-          Submit
+          Update Review!
         </button>
 
       </form>

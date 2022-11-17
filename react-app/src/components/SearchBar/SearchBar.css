@@ -3,7 +3,7 @@
   flex-direction: column;
   position: relative;
   margin-right: 5px;
-  width: 50%;
+  width: 65%;
 }
 
 .navBar-searchBar-container {
@@ -14,7 +14,7 @@
   height: 43px;
   display: flex;
   align-items: center;
-  margin: 0 10px 0 5px;
+  margin: 4px 10px 0 5px;
 }
 
 .product-not-found-outer {

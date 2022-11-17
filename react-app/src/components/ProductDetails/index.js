@@ -152,7 +152,7 @@ const ProductDetails = () => {
             {/* {console.log("product details, showNewReviewModal:", showNewReviewModal)} */}
             </div>
             <div className="one-spot-reviews-container">
-                <LoadProductReviews productId={productId}/>
+                <LoadProductReviews productId={productId} user={sessionUser}/>
             </div>
         <Footer />
         </div>

@@ -34,7 +34,7 @@
   background-color: rgb(241, 101, 34, 0.2);
   position: absolute;
   left: 0;
-  top: 9rem;
+  top: 7.5rem;
   width: 100%;
   min-height: 100px;
   min-width: 100%;
@@ -58,7 +58,7 @@
 
 .my-reviews-outer {
   width: 1226px;
-  padding-top: 5rem;
+  padding-top: 8.2rem;
 }
 
 .my-reviews-inner {
@@ -134,18 +134,41 @@
 }
 
 .single-review {
-  font-weight: bolder;
+  /* font-weight: bolder; */
   margin-bottom: 30px;
+}
+
+.single-review-name {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.single-review-review {
+  margin-top: 5px;
 }
 
 /* -------edit review-------- */
 
 .edit-review-form {
   z-index: 500;
-
 }
 
+.edit-review-form .form-input-wrapper {
+  border: rgb(200, 200, 200) 1px solid;
+  width: 95%;
+  border-radius: 9px;
+  /* margin: 15px 25px 25px 25px; */
+  margin-top: 5px;
+  padding-left: 10px;
+}
 
+.stars-wrapper {
+  margin-left: 5px;
+  margin-top: -12px;
+}
+.star {
+  margin-right: 1px;
+}
 /* -----create review-------- */
 
 .review-field {
@@ -180,15 +203,13 @@ textarea:focus {
   outline: none;
 }
 
-.form-input-wrapper select {
-  /* color: rgb(241, 101, 34); */
-  /* width: 12%; */
+/* .form-input-wrapper select {
   font-size: 14px;
   padding: 4px;
   border: none;
   border-radius: 4px;
   margin: 4px 0px;
-}
+} */
 
 select:focus {
   outline: none;
@@ -198,7 +219,7 @@ select:focus {
   background-color: rgb(200, 200, 200);
   height:1px;
   margin-left: -11px;
-  width: 103%;
+  width: 104%;
   margin-top: 4px;
   margin-bottom: 4px;
 }
@@ -268,6 +289,47 @@ select:focus {
 }
 
 .create-new-review-button:hover {
+  background: white;
+  border: 1px rgb(241, 101, 34) solid;
+  color:rgb(241, 101, 34);
+}
+
+/* ---------Hover Stars--------- */
+input[type="radio"]{
+  display: none;
+}
+
+.star {
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+/* -------product details page reviews------- */
+
+.product-review-button-wrap {
+  display: flex;
+  /* justify-content:space-around; */
+  align-items: baseline;
+  padding: 0px 2px 2px 0px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  min-width: 0;
+}
+
+
+.product-review-button {
+  cursor: pointer;
+  width: 115px;
+  padding: 3px 10px;
+  /* margin: 3px 0px 20px 0px; */
+  border: 1px rgb(241, 101, 34) solid;
+  border-radius: 4px;
+  background: rgb(241, 101, 34);
+  color: white;
+  font: bold;
+}
+
+.product-review-button:hover {
   background: white;
   border: 1px rgb(241, 101, 34) solid;
   color:rgb(241, 101, 34);
