@@ -55,11 +55,11 @@ const NavBar = () => {
               </div>
             </>
           }
-          <div className='navBar-link sign-in'>
+          {/* <div className='navBar-link sign-in'>
             <NavLink to='/sign-up' exact={true} activeClassName='active'>
               Sign Up
             </NavLink>
-          </div>
+          </div> */}
           <div>
           </div>
         </div>
