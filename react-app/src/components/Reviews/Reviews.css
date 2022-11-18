@@ -157,6 +157,8 @@
 
 .single-review-review {
   margin-top: 5px;
+  height: 60px;
+  overflow-y: auto;
 }
 
 /* -------edit review-------- */
