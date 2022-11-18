@@ -7,9 +7,7 @@ import { thunkGetMyProducts } from "../../store/products";
 const EditProduct = ({ productId, setShowEditForm}) => {
     const dispatch = useDispatch()
     const history = useHistory()
-    // const { productId } = useParams()
     const product = useSelector((state)=> state.products.allProducts[productId])
-    // console.log('in EditProducct ----product', product)
     const categories = ['Halloween', 'Valentine', 'Thanksgiving', 'Christmas', 'Easter', 'Spring Festival']
     const [name, setName] = useState(product?.name);
     const [category, setCategory] = useState("");

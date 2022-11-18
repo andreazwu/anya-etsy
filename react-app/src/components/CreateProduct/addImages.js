@@ -26,7 +26,6 @@ const AddImages = (productId) => {
         setErrors(errors);
 
     }, [url1, url2, url3])
-    console.log('in ADDimgs-productid:', productId)
 
     const imageSubmit = async(e) => {
         e.preventDefault()
@@ -35,7 +34,6 @@ const AddImages = (productId) => {
         }
 
         const imgProductId = productId.productId
-        console.log('in ADDimgs-imgProductId:', imgProductId)
 
         if (url1) {
             await dispatch(addImgs(url1, imgProductId))

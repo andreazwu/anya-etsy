@@ -26,14 +26,6 @@ const ProductsBrowser = () => {
   const sponsorProducts = randomProducts.slice(8, 13)
   const EditorPickProducts = randomProducts.slice(13, 18)
 
-
-  /* if we want to do shops: */
-  // const randomUserIds = [1, 2, 3, 5].sort(() => 0.5 - Math.random())
-  // const shop1 = randomProducts.filter(product => product.seller_id === randomUserIds[0])
-  // const shop2 = randomProducts.filter(product => product.seller_id === randomUserIds[1])
-  // const shop3 = randomProducts.filter(product => product.seller_id === randomUserIds[2])
-  // console.log("PRODUCTS BROWER_ thanksgiving products:", thanksgivingProducts)
-
   useEffect(() => {
     dispatch(getAllProducts(productsObj));
   }, [dispatch])
@@ -133,7 +125,7 @@ const ProductsBrowser = () => {
       <div className='edit-pick-products-main'>
         <div className='edit-pick-products-header'>
           The Holiday Shop
-          <i class="fa-solid fa-arrow-right"></i>
+          <i className="fa-solid fa-arrow-right"></i>
           {/* <img className='unique-right-arrow' src={rightArrow}></img> */}
         </div>
         <div className='edit-pick-subtitle'>Special bonds call for special finds! From decor to gifts, discover memorable items at merry prices.</div>

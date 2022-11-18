@@ -52,12 +52,9 @@ const acDeleteReview = (reviewId) => {
 // THUNK ACs:
 // load all Product reviews thunk
 export const thunkGetProductReviews = (ProductId) => async (dispatch) => {
-  // console.log("THUNK STARTS RUNNING, BEFORE FETCH FROM BACKEND")
   const response = await fetch(`/api/products/${ProductId}/reviews`)
-  // console.log("THUNK STARTS RUNNING, AFTER FETCH FROM BACKEND")
 
   if (response.ok) {
-    // console.log("THUNK, BEFORE DISPATCH ACTION CREATOR")
     // {
     //   "Reviews": [
     //     {
@@ -75,7 +72,6 @@ export const thunkGetProductReviews = (ProductId) => async (dispatch) => {
     const data = await response.json() //object
     const reviewsArr = data.Reviews //array [{}, {}]
     dispatch(acLoadProductReviews(reviewsArr))
-    // console.log("THUNK, AFTER DISPATCH ACTION CREATOR -- CYCLE ENDS")
     return data
   }
 }
@@ -176,25 +172,21 @@ const reviews = (state = initialState, action) => {
   let newState
   switch (action.type){
     case LOAD_PRODUCT_REVIEWS:
-      console.log("REVIEWSREDUCER LOAD Product REVIEWS BEGIN:", state)
       newState = {...state}
       const normalizedReviews = {}
       //payload = reviews = [{}, {}]
       action.reviews.forEach((review) => normalizedReviews[review.id] = review)
       newState.product = normalizedReviews
       newState.user = {}
-      console.log("REVIEWSREDUCER LOAD Product REVIEWS BEGIN:", newState)
       return newState
 
     case LOAD_USER_REVIEWS:
-      // console.log("REVIEWSREDUCER LOAD USER REVIEWS BEGIN:", state)
       newState = {...state}
       const normalizedUserReviews = {}
       //payload = reviews = [{}, {}]
       action.reviews.forEach((review) => normalizedUserReviews[review.id] = review)
       newState.user = normalizedUserReviews
       // newState.product = {}
-      // console.log("REVIEWSREDUCER LOAD USER REVIEWS BEGIN:", newState)
       return newState
 
     case CREATE_REVIEW:

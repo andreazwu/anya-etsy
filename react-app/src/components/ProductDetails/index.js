@@ -19,15 +19,11 @@ const ProductDetails = () => {
     const product = useSelector(state => state.products.singleProduct)[0]
     const [selectedImage, setSelectedImage] = useState(null)
     const avgRating = product?.avgRating
-    console.log("in ProductDetails----avgRating", avgRating)
-    console.log("in ProductDetails----product", product)
     const reviewsObj = useSelector(state => state.reviews.product)
     const reviewsArr = Object.values(reviewsObj)
     const [quantity, setQuantity] = useState(1);
-    console.log("in ProductDetails----product", product)
     let currentUser
 
-    // console.log("in ProductDetails----product", product)
 
     useEffect(async () => {
         dispatch(getOneProduct(productId))
@@ -38,22 +34,24 @@ const ProductDetails = () => {
     let seller = false
     if (sessionUser?.id === product?.sellerId) seller = true
 
-    // {console.log("product details, (before return), showNewReviewModal:", showNewReviewModal)}
 
     if (!product) return null;
     // if (!sellerId) return null;
-    // console.log("!!!!!!!!!!!!!!!!!!!!!!", sessionUser.id, product.sellerId)
     const addToCart = async () => {
-       if(sessionUser){
-           if (sessionUser.id == product.sellerId) {
-                     await window.alert("You are the owner of this product! You cannot add it to cart")
-                     history.push('/')
-                  }
-         await dispatch(addCartItemThunk(productId, {quantity}))
-         history.push('/cart')
-        } else{
+        if(sessionUser){
+            if (sessionUser.id === product.sellerId) {
+                await window.alert("You are the owner of this product! You cannot add it to cart")
+                return history.push('/')
+            }
+        console.log("-------ProductDetail---BEFORE---dispatchThunk-----")
+        console.log(`productId: +${productId} is a ${typeof(+productId)}`)
+        console.log(`product.id: ${product.id} is a ${typeof(product.id)}`)
+        await dispatch(addCartItemThunk(product.id, quantity))
+        console.log("-------ProductDetail---AFTER---dispatchThunk-----")
+        return history.push('/cart')
+        } else {
             window.alert(`Please sign in to purchase.`)
-          }
+        }
     }
     if (sessionUser && product) {
         if (sessionUser.id === product.seller_Id) {
@@ -67,23 +65,19 @@ const ProductDetails = () => {
 
      const getCartButtonMessage = (stock) => {
         if (stock === 0) return 'Out of stock'
-
-
         let messageBase = 'Add to cart';
-
         if (stock <= 5) {
               messageBase += ` | Only ${stock} available`
         }
-
         return messageBase;
-  }
+     }
   // const reviewStars = (avgRating) => {
   //   if (avgRating == 0) {
   //       return <span>"New"</span>
   //   } else if (Number.isInteger(avgRating)) {
   //       return <span> <i className="fa-solid fa-star"> *{avgRating}</i></span>
   //   } else {
-  //       return <span>{Math.round(avgRating)} * <i className="fa-solid fa-star"></i> + <i class="fa fa-star-half-o" aria-hidden="true"></i></span>
+  //       return <span>{Math.round(avgRating)} * <i className="fa-solid fa-star"></i> + <i className="fa fa-star-half-o" aria-hidden="true"></i></span>
   //   }
   // }
 
@@ -125,7 +119,7 @@ const ProductDetails = () => {
                     Number(product.avgRating) % 1 ?
                     <span>
                         {[...Array(Math.floor(product.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
-                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        <i className="fa fa-star-half-o" aria-hidden="true"></i>
                     </span>
                     :
                     <span>
@@ -171,7 +165,7 @@ const ProductDetails = () => {
               Number(product.avgRating) % 1 ?
               <span>
                 {[...Array(Math.floor(product.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
-                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                <i className="fa fa-star-half-o" aria-hidden="true"></i>
               </span>
               :
               <span>
@@ -225,7 +219,7 @@ const ProductDetails = () => {
             </div>
           </div>
           <div className="product-detail-truck">
-          <i class="fa-solid fa-truck-fast fa-2xl"></i>
+          <i className="fa-solid fa-truck-fast fa-2xl"></i>
             <div className="product-detail-text">
               <span className="ajw">Hooray!&nbsp;</span>This item ships
               free to the US.

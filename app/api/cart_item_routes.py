@@ -35,12 +35,6 @@ def checkout_cart_items():
     logged in user can checkout items in their cart (that has not been checked out before (aka current order_id == 0); checking out a cart item will update the product's stock, and change the cart item's order_id to 1, indicating that is has been checked out.
     """
 
-  # print("-------beforeform-------")
-  # form = CartItemCheckoutForm()
-  # print("--------lalalala--------")
-  # form['csrf_token'].data = request.cookies['csrf_token']
-
-  # if form.validate_on_submit():
     cart_items = CartItem.query.filter(CartItem.user_id == current_user.id).filter(CartItem.order_id == 0).join(Product).all() #<<<<<<<<
 
     out_of_stock_message = []
