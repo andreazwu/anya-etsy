@@ -67,6 +67,8 @@ def inject_csrf_token(response):
             'FLASK_ENV') == 'production' else None,
         httponly=True)
     return response
+
+
 @app.route("/api/docs")
 def api_help():
     """
@@ -77,6 +79,8 @@ def api_help():
                     app.view_functions[rule.endpoint].__doc__ ]
                     for rule in app.url_map.iter_rules() if rule.endpoint != 'static' }
     return route_list
+
+
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def react_root(path):
@@ -92,4 +96,4 @@ def react_root(path):
 
 @app.errorhandler(404)
 def not_found(e):
-  return app.send_static_file('index.html')
+    return app.send_static_file('index.html')
