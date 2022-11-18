@@ -11,7 +11,6 @@ const StoreManager = () => {
   const currentUser = useSelector(state=>state.session.user)
   const productsObj = useSelector(state=>state.products.allProducts)
   const productsArr = Object.values(productsObj)
-  console.log("in storeManager--productArr", productsArr)
 
   useEffect(()=>{
     dispatch(thunkGetMyProducts())
@@ -30,7 +29,7 @@ const StoreManager = () => {
           <div className="my-products-shop">
               <span className="shop-manager-shop-name">{currentUser?.username}</span>
               &nbsp;
-              <i class="fa-solid fa-angle-right"></i>
+              <i className="fa-solid fa-angle-right"></i>
           </div>
         }
       </div>
