@@ -32,6 +32,7 @@ class CartItem(db.Model):
             'productId': self.product_id,
             'orderId': self.order_id,
             'quantity': self.quantity,
+            'message': "",
             'Product': {
                 "id": self.product.id,
                 'category': self.product.category,

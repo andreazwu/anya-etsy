@@ -13,12 +13,8 @@ export default function CartTotal({ cartItems, initialSubtotal }) {
     const deleteCart = async e => {
         e.preventDefault();
         if (window.confirm('Are you sure you want to checkout?')){
-            for (let cartItem of cartItems) {
-                if (cartItem.Product.stock < cartItem.quantity){
-
-                }
         await dispatch(checkoutCartThunk())}
-        history.push('/cart');
+        return history.push('/cart');
     };
 
     return (

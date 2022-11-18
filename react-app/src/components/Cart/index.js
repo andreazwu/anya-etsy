@@ -13,7 +13,7 @@ const Cart = () => {
     const [cartLoaded, setCartLoaded] = useState(false);
     const sessionUser = useSelector(state => state.session.user)
     const cartItems = useSelector(state => Object.values(state.cart));
-
+    // const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
     let initialSubtotal = 0;
     if (cartItems) {
