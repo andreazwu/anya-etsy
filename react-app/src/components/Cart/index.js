@@ -8,7 +8,7 @@ import './cart.css';
 import { authenticate } from '../../store/session';
 
 const Cart = () => {
-    const [loaded, setLoaded] = useState(false);
+    // const [loaded, setLoaded] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
     const [cartLoaded, setCartLoaded] = useState(false);
     const sessionUser = useSelector(state => state.session.user)
@@ -35,13 +35,13 @@ const Cart = () => {
             await dispatch(getCartItemsThunk())
             setCartLoaded(true)
           }
-          setLoaded(true);
+          // setLoaded(true);
         })();
       }, [dispatch, cartItems.length]);
 
-      if (!loaded) {
-        return null;
-      }
+      // if (!loaded) {
+      //   return null;
+      // }
       if (!sessionUser) return (
         <div  className="cart-need-login">
           Please log in to checkout your cart

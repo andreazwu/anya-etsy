@@ -40,21 +40,24 @@ export const getCartItemsThunk = () => async dispatch => {
     };
 };
 
-export const addCartItemThunk = (id, quantity) => async dispatch => {
-    const response = await fetch(`/api/products/${id}/cart_items`, {
+export const addCartItemThunk = (productId, quantity) => async dispatch => {
+    console.log("------ADDTHUNK-----begins-----")
+    const response = await fetch(`/api/products/${productId}/cart_items`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(quantity)
+        body: JSON.stringify({ "quantity": quantity })
     });
-
+    console.log("------ADDTHUNK-----response:", response)
     if (response.ok) {
         const cartItem = await response.json();
         dispatch(addItemToCartAction(cartItem));
+        console.log("------ADDTHUNK-----if res.ok----cartItem:", cartItem)
         return cartItem;
     } else {
         const data = await response.json();
+        console.log("------ADDTHUNK-----if res not ok----data.errors:", data.errors)
         return data.errors;
     }
 };
@@ -65,7 +68,7 @@ export const editCartItemThunk = (id, quantity) => async dispatch => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ quantity })
+        body: JSON.stringify({ "quantity": quantity })
     });
     if (response.ok) {
         const cartItem = await response.json();
