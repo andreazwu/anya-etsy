@@ -44,7 +44,7 @@ const ProductDetails = () => {
                 return history.push('/')
             }
         console.log("-------ProductDetail---BEFORE---dispatchThunk-----")
-        console.log(`productId: ${productId} is a ${typeof(productId)}`)
+        console.log(`productId: +${productId} is a ${typeof(+productId)}`)
         console.log(`product.id: ${product.id} is a ${typeof(product.id)}`)
         await dispatch(addCartItemThunk(product.id, quantity))
         console.log("-------ProductDetail---AFTER---dispatchThunk-----")
