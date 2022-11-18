@@ -57,6 +57,7 @@ export const addCartItemThunk = (productId, quantity) => async dispatch => {
         return cartItem;
     } else {
         const data = await response.json();
+        console.log("------ADDTHUNK-----if res not ok----data.errors:", data.errors)
         return data.errors;
     }
 };
