@@ -13,9 +13,10 @@ const SearchBar = () => {
 
   const handleSearch = async (e) => {
     e.preventDefault()
-    // if (keyword.trim().length === 0) {
-    //   return setErrors(["Please enter a keyword!"])
-    // }
+    if (keyword.trim().length === 0) {
+      // return setErrors(["Please enter a keyword!"])
+      return
+    }
     // history.push(`/search/${keyword}`)
     const response = await dispatch(getProductsBySearch(keyword))
     if (response) {

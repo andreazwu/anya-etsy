@@ -15,7 +15,6 @@ const ProductsBySearch = () =>{
     dispatch(getProductsBySearch(keyword))
   }, [dispatch, keyword])
 
-
   return (
     <div className='search-product-container'>
       <div className='search-header-container'>
