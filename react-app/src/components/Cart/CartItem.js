@@ -51,7 +51,7 @@ export default function CartItem({ item }) {
                  {item.message &&
                     <div>{item?.message}</div>} */}
                  {item?.quantity == stock && <div>You have reached the maximum stock for this product.</div>}
-                 {Math.floor(Math.random() * 20 + 2)} people have this in their cart
+                 {/* {Math.floor(Math.random() * 20 + 2)} people have this in their cart */}
               </div>
               <button className='cart-item-remove-item-button' onClick={() => deleteCartItem()}> Remove</button>
             </div>
