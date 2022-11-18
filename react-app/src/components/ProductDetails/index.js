@@ -30,8 +30,8 @@ const ProductDetails = () => {
     // console.log("in ProductDetails----product", product)
 
     useEffect(async () => {
-        dispatch(getOneProduct(productId))
-        // return dispatch(acResetProducts())
+      dispatch(getOneProduct(productId))
+      // return dispatch(acResetProducts())
     }, [dispatch, productId, reviewsArr.length])
 
     //verify if currentUser is seller of product
@@ -44,16 +44,16 @@ const ProductDetails = () => {
     // if (!sellerId) return null;
     // console.log("!!!!!!!!!!!!!!!!!!!!!!", sessionUser.id, product.sellerId)
     const addToCart = async () => {
-       if(sessionUser){
-           if (sessionUser.id == product.sellerId) {
-                     await window.alert("You are the owner of this product! You cannot add it to cart")
-                     history.push('/')
-                  }
-         await dispatch(addCartItemThunk(productId, {quantity}))
-         history.push('/cart')
+      if(sessionUser){
+        if (sessionUser.id === product.sellerId) {
+          await window.alert("You are the owner of this product! You cannot add it to cart")
+          return history.push('/')
+        }
+        await dispatch(addCartItemThunk(productId, {quantity}))
+        history.push('/cart')
         } else{
             window.alert(`Please sign in to purchase.`)
-          }
+        }
     }
     if (sessionUser && product) {
         if (sessionUser.id === product.seller_Id) {
