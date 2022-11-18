@@ -50,7 +50,7 @@ const ProductDetails = () => {
                      return history.push('/')
                   }
          await dispatch(addCartItemThunk(productId, {quantity}))
-         history.push('/cart')
+         return history.push('/cart')
         } else{
             window.alert(`Please sign in to purchase.`)
           }
