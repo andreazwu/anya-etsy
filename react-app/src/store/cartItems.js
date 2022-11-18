@@ -46,7 +46,7 @@ export const addCartItemThunk = (id, quantity) => async dispatch => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(quantity)
+        body: JSON.stringify({ "quantity": quantity })
     });
 
     if (response.ok) {
@@ -65,7 +65,7 @@ export const editCartItemThunk = (id, quantity) => async dispatch => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ quantity })
+        body: JSON.stringify({ "quantity": quantity })
     });
     if (response.ok) {
         const cartItem = await response.json();

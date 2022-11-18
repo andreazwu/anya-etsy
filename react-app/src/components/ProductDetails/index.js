@@ -43,7 +43,7 @@ const ProductDetails = () => {
                      await window.alert("You are the owner of this product! You cannot add it to cart")
                      return history.push('/')
                   }
-         await dispatch(addCartItemThunk(productId, {quantity}))
+         await dispatch(addCartItemThunk(productId, quantity))
          return history.push('/cart')
         } else{
             window.alert(`Please sign in to purchase.`)

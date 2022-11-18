@@ -103,7 +103,7 @@ def get_my_products():
         for review in productreviews:
           total_stars += review.to_dict()["stars"]
         avgRating = total_stars / numReviews
-      product['avgRating'] = avgRating
+        product['avgRating'] = avgRating
 
       products_result.append(product)
 

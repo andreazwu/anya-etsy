@@ -6,7 +6,7 @@ import noimage from "./noimage.jpg"
 import "./StoreManager.css"
 import { useState } from "react"
 import { Modal } from "../../context/Modal"
-
+import { FaStar } from "react-icons/fa"
 
 const MyProduct = ({ product }) => {
   const dispatch = useDispatch()
@@ -62,7 +62,14 @@ const MyProduct = ({ product }) => {
               (<span>★ no review</span>)
             } */}
             {
-              Number(product.avgRating) % 1 ?
+              !Number(product.avgRating) &&
+              <span>
+              {[...Array(5)].map((star) => (<FaStar className="prod-star" color="#e4e5e9" size={16.5}/>))}
+              </span>
+            }
+            {
+              Number(product.avgRating) > 0 &&
+              ( Number(product.avgRating) % 1 ?
               <span>
                 {[...Array(Math.floor(product.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
                 <i className="fa fa-star-half-o" aria-hidden="true"></i>
@@ -70,7 +77,7 @@ const MyProduct = ({ product }) => {
               :
               <span>
                 {[...Array(product.avgRating)].map((star) => (<i className="fa-solid fa-star"></i>))}
-              </span>
+              </span> )
             }
           </div>
         </div>
