@@ -3,6 +3,7 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { createProduct, getAllProducts } from "../../store/products";
 import AddImages from "./addImages";
+import { thunkGetMyProducts } from "../../store/products";
 import './createProduct.css'
 
 const CreatePreoduct = () => {
@@ -20,7 +21,7 @@ const CreatePreoduct = () => {
     const user = useSelector(state => state.session.user);
 
     useEffect(() => {
-        dispatch(getAllProducts())
+        dispatch(thunkGetMyProducts())
 
         const errors = []
         if (name.length < 10 || name.trim().length < 10) errors.push('Name: Name requires 10 characters minimum')
