@@ -1,0 +1,89 @@
+.login-form-main {
+    padding: 33px;
+    width: 300px;
+    /* height: 350px */
+  }
+  .login-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .login-title {
+    font-family: GraphikMedium, Arial, Helvetica, sans-serif;
+    font-size: 20px;
+  }
+  .login-register-button {
+    font-family: GraphikMedium, Arial, Helvetica, sans-serif;
+    border: 2.5px solid black;
+    background: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.822);
+    cursor: pointer;
+  }
+  .login-register-button:hover{
+    box-shadow: 0 0 7px grey;
+  }
+  .login-field-outer {
+    display: flex;
+    flex-direction: column;
+    margin: .2rem .2rem 1rem;
+  }
+  .login-label {
+    font-family: GraphikMedium, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    margin-bottom: 0.3rem;
+  }
+
+  .login-input {
+    font-family: GraphikRegular, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    border: 1px solid rgba(128, 128, 128, 0.336);
+    height: 36px;
+    border-radius: 10px;
+    padding-left: 14px;
+    outline: none;
+  }
+  .login-form-button,
+  .login-form-demo-button {
+    font-size: 16px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.925);
+    color: white;
+    font-family: GraphikMedium, Arial, Helvetica, sans-serif;
+    height: 45px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .login-form-button:hover,
+  .login-form-demo-button:hover {
+    transform:scale(1.06, 1.06)
+  }
+
+  .login-form-button {
+    margin: 2rem 0 1rem 0;
+  }
+  .login-form-demo-button {
+    margin: 0 0 1rem 0;
+  }
+  .login-error-outer {
+    margin-bottom: 0.5rem;
+  }
+
+  .login-errors {
+    font-family: GraphikRegular, Arial, Helvetica, sans-serif;
+    color: rgb(255, 0, 0);
+    font-size: 12px;
+  }
+
+  .login-buttons-outer {
+    display: flex;
+    flex-direction: column;
+  }
+.profile-btm-div {
+  font-family: GraphikRegular, Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  border-radius: 35%;
+  padding: 18px;
+}

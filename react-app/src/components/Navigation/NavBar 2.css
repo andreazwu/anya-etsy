@@ -1,0 +1,57 @@
+nav {
+  width: auto;
+  max-width: 90rem;
+  margin: 0 auto;
+}
+
+.navBar-main {
+  box-sizing: border-box;
+  min-height: 100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.navBar-outer {
+  display: flex;
+  flex-direction: row;
+  margin: 20px auto;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.navBar-link {
+  margin: 0 5px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  /* left: 62px; */
+  height: 60px;
+  width: auto;
+  margin-top: 0;
+}
+
+.navBar-link-icon {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-radius: 48%;
+}
+
+.navBar-link-icon:hover,
+.navBar-link-profile:hover,
+.profile-btm-div:hover {
+  background-color: rgba(128, 128, 128, 0.095);
+  cursor: pointer;
+}
+
+.navBar-link-profile {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin-top: -5px;
+  margin-left: 4px;
+  border-radius: 35%;
+}
