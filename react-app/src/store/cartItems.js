@@ -111,10 +111,6 @@ export default function cartItemsReducer(state = {}, action) {
     switch (action.type) {
         case GET_CART_ITEMS: {
             const newState = {};
-<<<<<<< HEAD
-            // console.log("@@@@@@@@@@@@action.cartItems: ", action.cartItems.CartItems)
-=======
->>>>>>> main
             action.cartItems.CartItems.forEach(item => {
                 newState[item.id] = item;
             });
