@@ -196,13 +196,7 @@ width: 100px
 .last-total{
   font-weight: 550;
 }
-.sales-tax,
-.shipping-cost,
-.items.total  {
 
-
-
-}
 .cart-checkout-button{
   color: white;
   background-color: black;
@@ -1776,6 +1770,8 @@ margin-top: 30px;
 
 .single-review-review {
   margin-top: 5px;
+  height: 60px;
+  overflow-y: auto;
 }
 
 /* -------edit review-------- */

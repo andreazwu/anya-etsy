@@ -64,7 +64,7 @@ const MyProduct = ({ product }) => {
             {
               !Number(product.avgRating) &&
               <span>
-              {[...Array(5)].map((star) => (<FaStar className="prod-star" color="#e4e5e9" size={16.5}/>))}
+              {[...Array(5)].map((star) => (<FaStar className="prod-star" color="#e4e5e9" size={18}/>))}
               </span>
             }
             {
