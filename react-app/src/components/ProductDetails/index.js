@@ -19,15 +19,11 @@ const ProductDetails = () => {
     const product = useSelector(state => state.products.singleProduct)[0]
     const [selectedImage, setSelectedImage] = useState(null)
     const avgRating = product?.avgRating
-    console.log("in ProductDetails----avgRating", avgRating)
-    console.log("in ProductDetails----product", product)
     const reviewsObj = useSelector(state => state.reviews.product)
     const reviewsArr = Object.values(reviewsObj)
     const [quantity, setQuantity] = useState(1);
-    console.log("in ProductDetails----product", product)
     let currentUser
 
-    // console.log("in ProductDetails----product", product)
 
     useEffect(async () => {
         dispatch(getOneProduct(productId))
@@ -38,11 +34,9 @@ const ProductDetails = () => {
     let seller = false
     if (sessionUser?.id === product?.sellerId) seller = true
 
-    // {console.log("product details, (before return), showNewReviewModal:", showNewReviewModal)}
 
     if (!product) return null;
     // if (!sellerId) return null;
-    // console.log("!!!!!!!!!!!!!!!!!!!!!!", sessionUser.id, product.sellerId)
     const addToCart = async () => {
        if(sessionUser){
            if (sessionUser.id === product.sellerId) {
@@ -50,7 +44,7 @@ const ProductDetails = () => {
                      return history.push('/')
                   }
          await dispatch(addCartItemThunk(productId, {quantity}))
-         history.push('/cart')
+         return history.push('/cart')
         } else{
             window.alert(`Please sign in to purchase.`)
           }
@@ -83,7 +77,7 @@ const ProductDetails = () => {
   //   } else if (Number.isInteger(avgRating)) {
   //       return <span> <i className="fa-solid fa-star"> *{avgRating}</i></span>
   //   } else {
-  //       return <span>{Math.round(avgRating)} * <i className="fa-solid fa-star"></i> + <i class="fa fa-star-half-o" aria-hidden="true"></i></span>
+  //       return <span>{Math.round(avgRating)} * <i className="fa-solid fa-star"></i> + <i className="fa fa-star-half-o" aria-hidden="true"></i></span>
   //   }
   // }
 
@@ -125,7 +119,7 @@ const ProductDetails = () => {
                     Number(product.avgRating) % 1 ?
                     <span>
                         {[...Array(Math.floor(product.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
-                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        <i className="fa fa-star-half-o" aria-hidden="true"></i>
                     </span>
                     :
                     <span>
@@ -171,7 +165,7 @@ const ProductDetails = () => {
               Number(product.avgRating) % 1 ?
               <span>
                 {[...Array(Math.floor(product.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
-                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                <i className="fa fa-star-half-o" aria-hidden="true"></i>
               </span>
               :
               <span>
@@ -225,7 +219,7 @@ const ProductDetails = () => {
             </div>
           </div>
           <div className="product-detail-truck">
-          <i class="fa-solid fa-truck-fast fa-2xl"></i>
+          <i className="fa-solid fa-truck-fast fa-2xl"></i>
             <div className="product-detail-text">
               <span className="ajw">Hooray!&nbsp;</span>This item ships
               free to the US.

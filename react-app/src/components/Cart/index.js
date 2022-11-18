@@ -13,10 +13,7 @@ const Cart = () => {
     const [cartLoaded, setCartLoaded] = useState(false);
     const sessionUser = useSelector(state => state.session.user)
     const cartItems = useSelector(state => Object.values(state.cart));
-    // const items = Object.values(cartItems)
-    //  console.log("###########", sessionUser)
-    //  console.log("!!!!!!!!!!!!!!!!!!!!!!",cartItems,"!!!!!!!!!!!!!!!!!!!")
-    //  console.log("!!!!!!!!!!!!!!!!!!!!!!",items,"!!!!!!!!!!!!!!!!!!!")
+
     const dispatch = useDispatch();
     let initialSubtotal = 0;
     if (cartItems) {
@@ -33,10 +30,10 @@ const Cart = () => {
 
       useEffect(() => {
         (async () => {
-          await dispatch(authenticate());
+          // await dispatch(authenticate());
           if (sessionUser) {
             await dispatch(getCartItemsThunk())
-              setCartLoaded(true)
+            setCartLoaded(true)
           }
           setLoaded(true);
         })();
