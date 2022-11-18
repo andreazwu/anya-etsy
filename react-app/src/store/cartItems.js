@@ -41,6 +41,7 @@ export const getCartItemsThunk = () => async dispatch => {
 };
 
 export const addCartItemThunk = (id, quantity) => async dispatch => {
+    console.log("-----addCartItemThunk----id:", typeof id)
     const response = await fetch(`/api/products/${id}/cart_items`, {
         method: 'POST',
         headers: {
@@ -113,7 +114,7 @@ export default function cartItemsReducer(state = {}, action) {
     switch (action.type) {
         case GET_CART_ITEMS: {
             const newState = {};
-            console.log("@@@@@@@@@@@@action.cartItems: ", action.cartItems.CartItems)
+            // console.log("@@@@@@@@@@@@action.cartItems: ", action.cartItems.CartItems)
             action.cartItems.CartItems.forEach(item => {
                 newState[item.id] = item;
             });
