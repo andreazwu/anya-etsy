@@ -301,27 +301,6 @@ def update_product(product_id):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #line 330
 @product_routes.route("/<int:product_id>", methods=["DELETE"])
 @login_required
@@ -371,7 +350,6 @@ def get_product_reviews(product_id):
 
 
 
-#line 380
 @product_routes.route("/<int:product_id>/reviews", methods=["POST"])
 @login_required
 def create_review(product_id):
@@ -405,7 +383,7 @@ def create_review(product_id):
 
 
 
-#line 410 (add product<id> to cart)
+# (add product<id> to cart)
 @product_routes.route("/<int:product_id>/cart_items", methods=["POST"])
 @login_required
 def create_cart_item(product_id):

@@ -38,16 +38,18 @@ const ProductDetails = () => {
     if (!product) return null;
     // if (!sellerId) return null;
     const addToCart = async () => {
-       if(sessionUser){
-           if (sessionUser.id === product.sellerId) {
-                     await window.alert("You are the owner of this product! You cannot add it to cart")
-                     return history.push('/')
-                  }
-         await dispatch(addCartItemThunk(productId, quantity))
-         return history.push('/cart')
-        } else{
+        if(sessionUser){
+            if (sessionUser.id === product.sellerId) {
+                await window.alert("You are the owner of this product! You cannot add it to cart")
+                return history.push('/')
+            }
+        console.log("-------ProductDetail---BEFORE---dispatchThunk-----")
+        await dispatch(addCartItemThunk(+productId, quantity))
+        console.log("-------ProductDetail---AFTER---dispatchThunk-----")
+        return history.push('/cart')
+        } else {
             window.alert(`Please sign in to purchase.`)
-          }
+        }
     }
     if (sessionUser && product) {
         if (sessionUser.id === product.seller_Id) {
@@ -61,16 +63,12 @@ const ProductDetails = () => {
 
      const getCartButtonMessage = (stock) => {
         if (stock === 0) return 'Out of stock'
-
-
         let messageBase = 'Add to cart';
-
         if (stock <= 5) {
               messageBase += ` | Only ${stock} available`
         }
-
         return messageBase;
-  }
+     }
   // const reviewStars = (avgRating) => {
   //   if (avgRating == 0) {
   //       return <span>"New"</span>
