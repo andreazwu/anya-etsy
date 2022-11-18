@@ -30,24 +30,6 @@ def get_my_reviews():
 # .then(console.log)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#line 50
 @review_routes.route("/<int:review_id>", methods=["PUT"])
 @login_required
 def edit_review(review_id):
@@ -70,23 +52,6 @@ def edit_review(review_id):
   # return "edit review"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#line 90
 @review_routes.route("/<int:review_id>", methods=["DELETE"])
 @login_required
 def delete_review(review_id):
