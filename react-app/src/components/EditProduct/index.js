@@ -7,9 +7,7 @@ import { thunkGetMyProducts } from "../../store/products";
 const EditProduct = ({ productId, setShowEditForm}) => {
     const dispatch = useDispatch()
     const history = useHistory()
-    // const { productId } = useParams()
     const product = useSelector((state)=> state.products.allProducts[productId])
-    // console.log('in EditProducct ----product', product)
     const categories = ['Halloween', 'Valentine', 'Thanksgiving', 'Christmas', 'Easter', 'Spring Festival']
     const [name, setName] = useState(product?.name);
     const [category, setCategory] = useState("");
@@ -27,7 +25,7 @@ const EditProduct = ({ productId, setShowEditForm}) => {
         if (description?.length < 10 || description?.trim().length < 10) errors.push('Description: Description requires 10 characters minimum')
         if (description.length > 2000) errors.push('Description: Description exceeds 2000 character limit')
         if (price && isNaN(price)) errors.push('Price: Price must be a number')
-        if (price < 0.1) errors.push('Price: Minimum price of $0.10 required')
+        if (price <= 0.1) errors.push('Price: Price must be greater than $0.10 ')
         if (price > 1000000) errors.push('Price: Price exceeds $1,000,000 limit')
         if (stock && (!Number.isInteger(+stock)|| stock < 1)) errors.push('Stock: Stock must be an integer more than 0')
         if (stock > 10000) errors.push('Stock: Stcok must be less than 10000')

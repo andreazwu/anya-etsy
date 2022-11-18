@@ -109,12 +109,10 @@ export const getAllProducts = () => async (dispatch) => {
 
 //line 110 LOAD_ONE_PRODUCT
 export const getOneProduct = (productId) => async dispatch => {
-    console.log("in thunk----productId", productId)
     const response = await fetch(`/api/products/${productId}`)
 
     if (response.ok) {
         const product = await response.json()
-        console.log("in thunk----product", product)
         dispatch(loadOneProduct(product))
         return product
     }
@@ -129,7 +127,6 @@ export const getOneProduct = (productId) => async dispatch => {
 
 //line 130 CREATE_PRODUCT
 export const createProduct = (product) => async dispatch => {
-    console.log("in createProduct thunk----product", product)
     try {
         const response = await fetch(`/api/products`, {
             method: "POST",
@@ -141,7 +138,6 @@ export const createProduct = (product) => async dispatch => {
 
         if (response.ok) {
             const newProduct = await response.json();
-            console.log("in createProduct thunk----newproduct", newProduct)
             dispatch(createOneProduct(newProduct));
             return newProduct
         }
@@ -153,8 +149,6 @@ export const createProduct = (product) => async dispatch => {
 
 // line 154 Add_IMG
 export const addImgs = (url, productId) => async dispatch => {
-    console.log("in addImg thunk----productId", productId)
-    console.log("in addImg thunk----url",url)
 
     const response = await fetch(`/api/products/${productId}/images`, {
         method: "POST",
@@ -166,7 +160,6 @@ export const addImgs = (url, productId) => async dispatch => {
 
     if (response.ok) {
         const newImg = await response.json();
-        console.log("in addImgs thunk----newImg", newImg)
         dispatch(addImg(newImg));
         return newImg
     }
@@ -184,7 +177,6 @@ export const editProduct = (product, productId) => async dispatch => {
         });
         if (response.ok) {
             const newProduct = await response.json();
-            console.log("in editProduct thunk----newproduct", newProduct)
             dispatch(updateOneProduct(newProduct));
             return newProduct
         }
@@ -212,7 +204,6 @@ export const thunkGetMyProducts = () => async (dispatch) => {
     const response = await fetch("/api/products/current")
     if (response.ok) {
         const products = await response.json()
-        console.log('in thunkGetMyProducts--products', products)
         dispatch(acLoadMyProducts(products))
     }
 }
@@ -226,12 +217,9 @@ export const thunkGetMyProducts = () => async (dispatch) => {
 
 // line 230 SEARCH_PRODUCTS Thunk
 export const getProductsBySearch = (keyword) => async (dispatch) => {
-    // console.log("SEARCH_PRODUCTS Thunk - keyword:", keyword)
     const response = await fetch(`/api/products/search/${keyword}`);
-    // console.log("SEARCH_PRODUCTS Thunk - response:", response)
     if (response.ok) {
         const products = await response.json();
-        // console.log("SEARCH_PRODUCTS Thunk - products:", products)
         dispatch(loadSearchProducts(products));
         return products;
     }
@@ -259,7 +247,6 @@ const products = (state = initialState, action) => {
 
         case LOAD_ONE_PRODUCT:
             newState = { ...state, singleProduct: { ...action.product } };
-            // console.log("in load_one_product reducer, newState:", newState)
             return newState
 
         case CREATE_PRODUCT:
@@ -274,11 +261,9 @@ const products = (state = initialState, action) => {
 
         case SEARCH_PRODUCTS:
             newState = {...state, searchedProducts: {}};
-            // console.log("in SEARCH_PRODUCTS action.products:", action.products)
             action.products.Products.forEach(product => {
                 newState.searchedProducts[product.id] = product
             })
-            // console.log("in SEARCH_PRODUCTS reducer, newState:", newState)
             return newState
 
         case REMOVE_PRODUCT:

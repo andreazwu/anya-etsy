@@ -5,9 +5,6 @@ import CreateReview from "./CreateReview"
 import "./CreateReview.css"
 
 const CreateReviewModal = ({productId, showNewReviewModal, setShowNewReviewModal}) => {
-  console.log("CREATE REVIEW MODAL COMPONENT STARTS for product:", productId)
-  // const [showModal, setShowModal] = useState(false)
-  // console.log("before onClick showModal:", showModal)
 
   return (
     <div className="create-review-modal-wrap">
@@ -15,7 +12,6 @@ const CreateReviewModal = ({productId, showNewReviewModal, setShowNewReviewModal
       className="create-review-button"
       // onClick={() => setShowModal(true)}>
       onClick={() => setShowNewReviewModal(true)}>
-        {console.log("after onClick showNewReviewModal:", showNewReviewModal)}
         Review This Product
       </button>
 

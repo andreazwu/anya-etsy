@@ -26,7 +26,7 @@ const LoadUserReviews = () => {
           <div className="my-reviews-name">
               <span>{currentUser?.firstName}{" "}{currentUser?.lastName}</span>
               &nbsp;
-              {/* <i class="fa-solid fa-angle-right"></i> */}
+              {/* <i className="fa-solid fa-angle-right"></i> */}
           </div>
         }
       </div>

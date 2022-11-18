@@ -5,7 +5,6 @@ import { login } from '../../../store/session';
 import SignUpForm from '../SignupFormModal/SignUpForm';
 import './LoginForm.css';
 const LoginForm = () => {
-  // console.log("LOGINFORM COMPONENT STARTS:")
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
@@ -14,10 +13,8 @@ const LoginForm = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    console.log("LOGINFORM BEFORE DISPATCH EMAIL PW:", email, password)
     const data = await dispatch(login(email, password));
     if (data) {
-      // console.log("LOGINFORM AFTER DISPATCH, DATA:", data)
       setErrors(data);
     }
   };

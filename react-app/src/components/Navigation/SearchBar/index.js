@@ -44,7 +44,7 @@ const SearchBar = () => {
           maxLength="140"
         />
         <button type='submit' className='searchBar-button'>
-        <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+        <i className="fa-sharp fa-solid fa-magnifying-glass"></i>
         </button>
       </form>
     </div>
