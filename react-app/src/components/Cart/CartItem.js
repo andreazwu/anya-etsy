@@ -46,10 +46,11 @@ export default function CartItem({ item }) {
             <div>
              <div className="cart-item-name" onClick={() => history.push(`/products/${item.Product.id}`)}>{item?.Product?.name}</div>
               <div className="other-people-message">
-                 {console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@message", item.message)}
+                 {/* {console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@message", item.message)}
                  {console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@", item)}
                  {item.message &&
-                    <div>{item?.message}</div>}
+                    <div>{item?.message}</div>} */}
+                 {item?.quantity == stock && <div>You have reached the maximum stock for this product.</div>}
                  {Math.floor(Math.random() * 20 + 2)} people have this in their cart
               </div>
               <button className='cart-item-remove-item-button' onClick={() => deleteCartItem()}> Remove</button>
