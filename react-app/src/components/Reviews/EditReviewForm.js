@@ -7,7 +7,6 @@ import HoverStars from "./HoverStars"
 import "./Reviews.css"
 
 const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
-  console.log("EDIT REVIEW FORM COMPONENT STARTS, myreview:", myreview)
   const dispatch = useDispatch()
   const history = useHistory()
 
@@ -17,10 +16,8 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const reviewId = myreview?.id
 
-  console.log("to be edited: stars:", editStars, "review:", editReview, "reviewId:", reviewId)
 
   const handleSubmit = async (e) => {
-    {console.log("HANDLE SUBMIT")}
     e.preventDefault()
     setErrors([])
     setHasSubmitted(true)
@@ -36,7 +33,6 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
     setShowEditReview(false)
 
     const reviewInfo = { "review": editReview, "stars": editStars }
-    console.log("before dispatch thunk, reviewInfo:", reviewInfo)
     const editedReview = await dispatch(thunkEditReview(reviewInfo, reviewId))
       .then(()=>history.push(`/my-reviews`))
       .catch(async (res) => {
@@ -60,7 +56,6 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
 
   return (
     <div className="edit-review-form">
-      {console.log("EDIT REVIEW FORM RETURN, BEFORE FORM")}
       <div className="validation-errors">
         {
         hasSubmitted &&
@@ -71,7 +66,6 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
 
       <form onSubmit={handleSubmit}>
       <div className="form-input-wrapper">
-      {console.log("EDIT REVIEW FORM RETURN, INSIDE FORM")}
 
             <label className="review-field">
               {/* Rating:&nbsp; */}

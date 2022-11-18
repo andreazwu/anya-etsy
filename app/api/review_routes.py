@@ -30,24 +30,6 @@ def get_my_reviews():
 # .then(console.log)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#line 50
 @review_routes.route("/<int:review_id>", methods=["PUT"])
 @login_required
 def edit_review(review_id):
@@ -55,7 +37,6 @@ def edit_review(review_id):
   form['csrf_token'].data = request.cookies["csrf_token"]
   # review = Review.query.get(review_id)
   review = Review.query.filter(Review.id == review_id).first()
-  print(current_user)
   if review.user_id == current_user.id:
     if form.validate_on_submit():
       review.review = form.data['review']
@@ -71,23 +52,6 @@ def edit_review(review_id):
   # return "edit review"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#line 90
 @review_routes.route("/<int:review_id>", methods=["DELETE"])
 @login_required
 def delete_review(review_id):

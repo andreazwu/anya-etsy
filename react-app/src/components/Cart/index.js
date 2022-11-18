@@ -8,15 +8,12 @@ import './cart.css';
 import { authenticate } from '../../store/session';
 
 const Cart = () => {
-    const [loaded, setLoaded] = useState(false);
+    // const [loaded, setLoaded] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
     const [cartLoaded, setCartLoaded] = useState(false);
     const sessionUser = useSelector(state => state.session.user)
     const cartItems = useSelector(state => Object.values(state.cart));
-    // const items = Object.values(cartItems)
-    //  console.log("###########", sessionUser)
-    //  console.log("!!!!!!!!!!!!!!!!!!!!!!",cartItems,"!!!!!!!!!!!!!!!!!!!")
-    //  console.log("!!!!!!!!!!!!!!!!!!!!!!",items,"!!!!!!!!!!!!!!!!!!!")
+    // const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
     let initialSubtotal = 0;
     if (cartItems) {
@@ -33,18 +30,18 @@ const Cart = () => {
 
       useEffect(() => {
         (async () => {
-          await dispatch(authenticate());
+          // await dispatch(authenticate());
           if (sessionUser) {
             await dispatch(getCartItemsThunk())
-              setCartLoaded(true)
+            setCartLoaded(true)
           }
-          setLoaded(true);
+          // setLoaded(true);
         })();
       }, [dispatch, cartItems.length]);
 
-      if (!loaded) {
-        return null;
-      }
+      // if (!loaded) {
+      //   return null;
+      // }
       if (!sessionUser) return (
         <div  className="cart-need-login">
           Please log in to checkout your cart

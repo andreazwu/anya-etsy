@@ -3,6 +3,7 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { createProduct, getAllProducts } from "../../store/products";
 import AddImages from "./addImages";
+import { thunkGetMyProducts } from "../../store/products";
 import './createProduct.css'
 
 const CreatePreoduct = () => {
@@ -20,7 +21,7 @@ const CreatePreoduct = () => {
     const user = useSelector(state => state.session.user);
 
     useEffect(() => {
-        dispatch(getAllProducts())
+        dispatch(thunkGetMyProducts())
 
         const errors = []
         if (name.length < 10 || name.trim().length < 10) errors.push('Name: Name requires 10 characters minimum')
@@ -29,7 +30,7 @@ const CreatePreoduct = () => {
         if (description.length < 10 || description.trim().length < 10) errors.push('Description: Description requires 10 characters minimum')
         if (description.length > 2000) errors.push('Description: Description exceeds 2000 character limit')
         if (isNaN(price)) errors.push('Price: Price must be a number')
-        if (price < 0.1) errors.push('Price: Minimum price of $0.10 required')
+        if (price <= 0.1) errors.push('Price: Price must be greater than $0.10 ')
         if (price > 1000000) errors.push('Price: Price exceeds $1,000,000 limit')
         if (!Number.isInteger(+stock)|| stock < 1) errors.push('Stock: Stock must be an integer more than 0')
         if (stock > 10000) errors.push('Stock: Stcok must be less than 10000')
