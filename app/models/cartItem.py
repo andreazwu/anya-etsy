@@ -10,7 +10,8 @@ class CartItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     product_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('products.id')), nullable=False)
-    order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('orders.id')), nullable=False)
+    order_id = db.Column(db.Integer, nullable=False)
+    # order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('orders.id')), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
 #relationship
     # order = db.relationship("Order", back_populates="cartItems")
