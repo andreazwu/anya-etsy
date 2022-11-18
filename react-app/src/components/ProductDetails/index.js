@@ -45,9 +45,9 @@ const ProductDetails = () => {
     // console.log("!!!!!!!!!!!!!!!!!!!!!!", sessionUser.id, product.sellerId)
     const addToCart = async () => {
        if(sessionUser){
-           if (sessionUser.id == product.sellerId) {
+           if (sessionUser.id === product.sellerId) {
                      await window.alert("You are the owner of this product! You cannot add it to cart")
-                     history.push('/')
+                     return history.push('/')
                   }
          await dispatch(addCartItemThunk(productId, {quantity}))
          history.push('/cart')
