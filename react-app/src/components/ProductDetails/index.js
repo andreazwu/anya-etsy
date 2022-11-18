@@ -31,7 +31,6 @@ const ProductDetails = () => {
 
     useEffect(async () => {
       dispatch(getOneProduct(productId))
-      // return dispatch(acResetProducts())
     }, [dispatch, productId, reviewsArr.length])
 
     //verify if currentUser is seller of product
@@ -55,7 +54,7 @@ const ProductDetails = () => {
             window.alert(`Please sign in to purchase.`)
         }
     }
-    if (sessionUser && product) {
+      if (sessionUser && product) {
         if (sessionUser.id === product.seller_Id) {
           currentUser = false;
         } else currentUser = true;
@@ -65,7 +64,7 @@ const ProductDetails = () => {
           options.push(i);
       }
 
-     const getCartButtonMessage = (stock) => {
+      const getCartButtonMessage = (stock) => {
         if (stock === 0) return 'Out of stock'
 
 
