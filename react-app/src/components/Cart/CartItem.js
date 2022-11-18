@@ -8,8 +8,6 @@ export default function CartItem({ item }) {
     const dispatch = useDispatch();
     const history = useHistory()
     const [quantity, setQuantity] = useState(Number(item?.quantity));
-// console.log("%%%%%%%%%%%%%%%%%%%%item", item)
-    // const product = item.Product
     let [revenue, setRevenue] = useState(Number(item?.quantity * item?.Product?.price))
     const stock = item.Product.stock
 
@@ -21,11 +19,8 @@ export default function CartItem({ item }) {
     useEffect(() => {
         dispatch(editCartItemThunk(item.id, quantity)).then(async () => {
             const allItems = await dispatch(getCartItemsThunk());
-            // console.log("^^^^^^^^^^^^^^^^^^allItems", allItems)
             const cartDetails = allItems.CartItems
-            // console.log("*******************cartDetails", cartDetails)
             const editedItem = cartDetails.find(editItem => editItem.id === item.id);
-            // console.log("(((((((((((((((((((editedItem", editedItem)
             setRevenue(Number(editedItem?.quantity) * Number(editedItem?.Product.price))
         });
     }, [quantity]);

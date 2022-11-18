@@ -40,9 +40,7 @@ def get_all_products():
 #line 40: query filter
 @product_routes.route("/search/<keyword>")
 def search_product(keyword):
-  # print("=================In search endroute START!!!")
   products = Product.query.filter(Product.name.like(f"%{keyword}%")).all()
-  # print("=================In search endroute - products:", products)
   return {
     "Products": [
       product.to_dict_search() for product in products
@@ -82,7 +80,6 @@ def search_product(keyword):
 @product_routes.route("/current")
 @login_required
 def get_my_products():
-  print(current_user)
   user_id = current_user.id
   products = Product.query.filter(Product.seller_id == user_id).all()
 
@@ -138,11 +135,7 @@ def get_one_product(product_id):
   if product:
     user_id = product.seller_id
     seller = User.query.get(user_id)
-  print ("product in get_one_product", product)
-  print ("review in get_one_product", reviews)
-  print ("images in get_one_product", images)
-  print ("seller in get_one_product", seller)
-  print ("--------------reviews----------", reviews)
+
   if reviews:
     numReviews = len(reviews)
     total_stars = 0
@@ -170,8 +163,6 @@ def get_one_product(product_id):
     product["seller"] = seller.username
     product["reviewers"] = list_of_reviewers
     product_details.append(product)
-
-    print ("product_details in get_one_product", product_details)
 
     return jsonify(product_details)
   else:
@@ -249,7 +240,6 @@ def add_product_image(product_id):
   """
   logged in user can add images to their product listing
   """
-  print('in addd_product_image-----start')
   product = Product.query.get(product_id)
   form = ImageForm()
   form['csrf_token'].data = request.cookies['csrf_token']
@@ -337,7 +327,6 @@ def update_product(product_id):
 @login_required
 def delete_product(product_id):
   product = Product.query.get(product_id)
-  print(product.seller_id)
 
   if product.seller_id == current_user.id:
     db.session.delete(product)
@@ -406,12 +395,16 @@ def create_review(product_id):
       stars = form.data["stars"],
       created_at = datetime.now()
     )
-    print("new_review in create_review", new_review)
     db.session.add(new_review)
     db.session.commit()
     return new_review.to_dict(), 201
   else:
     return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+
+
+
+
+
 #line 410 (add product<id> to cart)
 @product_routes.route("/<int:product_id>/cart_items", methods=["POST"])
 @login_required
@@ -422,9 +415,7 @@ def create_cart_item(product_id):
                             .filter(CartItem.product_id == product_id) \
                             .filter(CartItem.order_id == 0)\
                             .first()
-  # print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",cartItem.product_id)
-  # print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",cartItem.quantity)
-  # print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",cartItem.product.name)
+
   form = CartItemForm()
   form["csrf_token"].data = request.cookies["csrf_token"]
   if not item:
@@ -440,14 +431,13 @@ def create_cart_item(product_id):
         quantity = form.data["quantity"],
         order_id = 0
       )
-      print("!!!!!!!!!!!!!!!!!!!!!!!!!",data)
       db.session.add(data)
       db.session.commit()
-      return data.to_dict(), 200
+      return data.to_dict_current(), 200
     else:
       cartItem.quantity += form.data["quantity"]
       db.session.commit()
-      return cartItem.to_dict(), 200
+      return cartItem.to_dict_current(), 200
   else:
     return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 

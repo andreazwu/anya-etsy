@@ -44,14 +44,14 @@ const ProductsBySearch = () =>{
                             Number(product.avgRating) % 1 ?
                             <span>
                               {[...Array(Math.floor(product.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
-                              <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                              <i className="fa fa-star-half-o" aria-hidden="true"></i>
                             </span>
                             :
                             <span>
                               {[...Array(product.avgRating)].map((star) => (<i className="fa-solid fa-star"></i>))}
                             </span>
                         }
-                        {/* {[...Array(Math.floor(product.avgRating))].map(star => <i class="fa-sharp fa-solid fa-star"></i>)} */}
+                        {/* {[...Array(Math.floor(product.avgRating))].map(star => <i className="fa-sharp fa-solid fa-star"></i>)} */}
                         &nbsp;({product.numReviews})
                         </span>
                       </div>

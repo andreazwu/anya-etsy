@@ -60,8 +60,6 @@ export const addCartItemThunk = (id, quantity) => async dispatch => {
 };
 
 export const editCartItemThunk = (id, quantity) => async dispatch => {
-    // console.log("!!!!!!!!!!!!!!!!!editCartItemThunk")
-    // console.log("!!!!!!!!!!!!!ID && QUantity", id, quantity)
     const response = await fetch(`/api/cart_items/${id}`, {
         method: 'PUT',
         headers: {
@@ -69,11 +67,9 @@ export const editCartItemThunk = (id, quantity) => async dispatch => {
         },
         body: JSON.stringify({ quantity })
     });
-    // console.log("!!!!!!!!!!@@@@@@@@@@@@@", response)
     if (response.ok) {
         const cartItem = await response.json();
         dispatch(editCartItemAction(id, quantity));
-        // console.log("EditcartTHunk REsponse" ,cartItem)
         return cartItem;
     } else {
         const data = await response.json();
@@ -100,7 +96,6 @@ export const checkoutCartThunk = () => async dispatch => {
     const response = await fetch('/api/cart_items/checkout', {method: 'DELETE'});
     if (response.ok) {
         const data = await response.json();
-        console.log("ChekckXXXXXXXXXXXXXXXXXXcartTHunk REsponse" ,data)
         dispatch(checkoutCartAction());
         return data;
     } else {
@@ -113,7 +108,6 @@ export default function cartItemsReducer(state = {}, action) {
     switch (action.type) {
         case GET_CART_ITEMS: {
             const newState = {};
-            console.log("@@@@@@@@@@@@action.cartItems: ", action.cartItems.CartItems)
             action.cartItems.CartItems.forEach(item => {
                 newState[item.id] = item;
             });

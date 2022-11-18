@@ -27,18 +27,18 @@ const ProfileButton = ({user}) => {
   return (
     <div className='navbar-profile-container'>
     <div onClick={openMenu} className='navbar-profile-button'>
-      <i class="fa-solid fa-user"></i>
-      <i class="fa-solid fa-angle-down"></i>
+      <i className="fa-solid fa-user"></i>
+      <i className="fa-solid fa-angle-down"></i>
     </div>
     {showMenu && <>
         <div className='profile-dropdown'>
           <div className='dropdown-item-top'>
-            <div className='profile-user-img'><i class="fa-solid fa-user"></i></div>
+            <div className='profile-user-img'><i className="fa-solid fa-user"></i></div>
             <div className='profile-name'>{user.firstName}</div>
           </div>
           <NavLink to='/my-reviews' style={{textDecoration: 'none'}}>
             <div className='dropdown-item'>
-              <div className='my-reviews-img'><i class="fa-solid fa-list-ul"></i></div>
+              <div className='my-reviews-img'><i className="fa-solid fa-list-ul"></i></div>
               <div className='my-reviews'>My Reviews</div>
             </div>
           </NavLink>
@@ -49,7 +49,7 @@ const ProfileButton = ({user}) => {
             </div>
           </NavLink>
           {/* <div className='dropdown-item'>
-            <div className='sign-out-img'><i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i></div> */}
+            <div className='sign-out-img'><i className="fa-sharp fa-solid fa-arrow-right-from-bracket"></i></div> */}
             <LogoutButton />
           {/* </div> */}
         </div>

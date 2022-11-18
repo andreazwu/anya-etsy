@@ -65,7 +65,7 @@ const MyProduct = ({ product }) => {
               Number(product.avgRating) % 1 ?
               <span>
                 {[...Array(Math.floor(product.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
-                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                <i className="fa fa-star-half-o" aria-hidden="true"></i>
               </span>
               :
               <span>

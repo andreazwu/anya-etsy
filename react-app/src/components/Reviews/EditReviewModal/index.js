@@ -5,7 +5,6 @@ import EditReview from "./EditReview"
 import "./EditReview.css"
 
 const EditReviewModal = ({productId}) => {
-  console.log("EDIT REVIEW MODAL COMPONENT STARTS for product:", productId)
   const [showModal, setShowModal] = useState(false)
 
   return (
