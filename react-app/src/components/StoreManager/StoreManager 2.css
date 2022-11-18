@@ -1,0 +1,123 @@
+.my-products-main {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-products-upper {
+  border-top: 1px solid rgb(241, 101, 34, 0.2);
+  background-color: rgb(241, 101, 34, 0.2);
+  position: absolute;
+  left: 0;
+  top: 7.5rem;
+  width: 100%;
+  min-height: 100px;
+  min-width: 100%;
+  z-index: -5
+}
+
+.my-products-header {
+  margin: 2rem auto 0.5rem;
+  font-size: 1.5rem;
+  width: 1220px;
+}
+
+.my-products-shop {
+  font-size: 1rem;
+  margin: 0 auto 2rem;
+  width: 1220px;
+  display: flex;
+  align-items: center;
+}
+
+.my-products-outer {
+  width: 1226px;
+  padding-top: 8.2rem;
+}
+
+.my-products-inner {
+  display: grid;
+  /* grid-template-columns: minmax(210px, 18.75%) minmax(360px, 31.25%) minmax(210px, 18.75%) minmax(360px, 31.25%); */
+  grid-template-columns: minmax(0,50%) minmax(0,50%);
+  /* justify-content: center; */
+  margin-top: 1rem;
+}
+
+.myproducts-product-container {
+  display: grid;
+  grid-template-columns: minmax(0,40%) minmax(0, 60%);
+  margin-bottom: 10px;
+}
+
+.myproducts-product-image-container {
+  min-width: 210px;
+  height: 170px;
+  margin-bottom: 1rem;
+}
+
+.myproducts-product-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.myproducts-product-info {
+  padding: 0px 10px 15px 25px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.myproducts-product-category {
+  font-size: 18px;
+  color: rgb(241, 101, 34, 0.8);
+}
+
+.myproducts-product-rating {
+  color: rgba(180, 173, 173, 0.8);
+}
+
+/* .myproducts-product-price {
+  color: rgba(180, 173, 173, 0.8);
+  margin-top: 88px;
+  font-size: 14px;
+} */
+
+.myproducts-product-stock {
+  /* margin-top: 90px; */
+  color: rgb(241, 101, 34, 0.8);
+}
+
+
+
+
+
+.myproduct-buttons-container {
+  display: flex;
+  justify-content:space-between;
+  padding: 0px 2px 2px 0px;
+  margin-top: -8px;
+  margin-bottom: 15px;
+  min-width: 0;
+}
+
+
+.myproduct-buttons {
+  cursor: pointer;
+  width: 115px;
+  padding: 3px 10px;
+  margin: 6px 0px 3px 0px;
+  border: 1px rgb(241, 101, 34) solid;
+  border-radius: 4px;
+  background: rgb(241, 101, 34);
+  color: white;
+  font: bold;
+}
+
+.myproduct-buttons:hover {
+  background: white;
+  border: 1px rgb(241, 101, 34) solid;
+  color:rgb(241, 101, 34);
+}

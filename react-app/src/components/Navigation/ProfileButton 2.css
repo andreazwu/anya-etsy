@@ -1,0 +1,90 @@
+.navbar-profile-container {
+  position: relative;
+  z-index: 3;
+}
+
+.navbar-profile-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.fa-solid.fa-angle-down {
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 50px;
+  right: -5px;
+  border-radius: 10px;
+  border: 1px solid rgba(105, 105, 105, 0.223);
+  background-color: white;
+  box-shadow: 0 4px 20px rgb(34 34 34 / 15%);
+  width: 232px;
+  padding-bottom: 10px;
+  z-index: 2;
+}
+
+.dropdown-item-top {
+  display: flex;
+  align-items: center;
+  padding: 16px 15px 12px;
+  cursor: default;
+}
+
+.profile-user-img {
+  width: 27px;
+  border-radius: 50%;
+}
+
+.fa-solid.fa-user {
+  font-size: 20px;
+  margin-left: 3px;
+}
+
+.profile-name {
+  font-family: GraphikMedium, Arial, Helvetica, sans-serif;
+  color: #222222;
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 15px;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(128, 128, 128, 0.095);
+  cursor: pointer;
+}
+
+.my-reviews {
+  font-family: GraphikRegular, Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  margin-left: 14px;
+  color: black;
+}
+
+.my-products,
+.sign-out {
+  font-family: GraphikRegular, Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  margin-left: 10px;
+  color: black;
+}
+
+.my-reviews-img,
+.sign-out-img {
+  font-size: 22px;
+  color: black;
+}
+
+.sign-out-img {
+  margin-left: 2px;
+  transform: rotate(180deg);
+}
+

@@ -1,0 +1,119 @@
+.footer-main-container {
+  position: absolute;
+  bottom: -1;
+  left: 0;
+  width: 100%;
+  margin-top: 120px;
+}
+
+.footer-img-container {
+  overflow-y: hidden;
+  height: 50px;
+}
+
+.main-footer-img {
+  width: 100%;
+}
+
+.footer-middle {
+  overflow-y: hidden;
+  width: 100%;
+  height: 18px;
+  background-color: #2252E1;
+}
+
+.footer-lower {
+  overflow-y: hidden;
+  min-width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background-color: #1E3A66;
+}
+
+.footer-happily-header {
+  font-family:  "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+  color: white;
+  font-size: 1.3rem;
+}
+
+.footer-happily-description {
+  font-family:  "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+  color: white;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+}
+
+.socials-main,
+.socials-inner,
+.footer-middle-right {
+  display: flex;
+  flex-direction: row;
+}
+
+.socials-main {
+  width: 100%;
+  justify-content: space-between;
+  width: 1230px;
+}
+
+.socials-inner {
+  align-items: flex-end;
+  margin-left: 1rem;
+  color: white;
+}
+
+.social-link{
+  font-family:  "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+  color: white;
+  text-decoration: none;
+  margin: 4px 12px;
+  font-size: 1rem;
+}
+
+.social-link:hover {
+  color: #E8E4DE;
+}
+
+.fa-brands.fa-github,
+.fa-brands.fa-linkedin{
+  color: white;
+  font-size: 1.5rem;
+}
+
+
+@media screen and (min-width: 1920px) {
+  .footer-middle {
+    height: 25px;
+  }
+
+  .footer-upper {
+    height: 30px;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .footer-upper {
+    height: 28px;
+  }
+
+  .footer-middle {
+    height: 30px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .socials-outer {
+    width: 1180px;
+  }
+
+  .footer-upper {
+    height: 28px;
+  }
+
+  .footer-middle {
+    height: 30px;
+  }
+}

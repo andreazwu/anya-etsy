@@ -26,12 +26,19 @@ const ProductsBrowser = () => {
   const sponsorProducts = randomProducts.slice(8, 13)
   const EditorPickProducts = randomProducts.slice(13, 18)
 
+
+  /* if we want to do shops: */
+  // const randomUserIds = [1, 2, 3, 5].sort(() => 0.5 - Math.random())
+  // const shop1 = randomProducts.filter(product => product.seller_id === randomUserIds[0])
+  // const shop2 = randomProducts.filter(product => product.seller_id === randomUserIds[1])
+  // const shop3 = randomProducts.filter(product => product.seller_id === randomUserIds[2])
+  // console.log("PRODUCTS BROWER_ thanksgiving products:", thanksgivingProducts)
+
   useEffect(() => {
     dispatch(getAllProducts(productsObj));
   }, [dispatch])
 
   if (!productsObj) return null;
-  if (!thanksgivingProducts.length || !christmasProducts.length || !springFestivalProducts.length || !valentineProducts.length || !easterProducts.length) return null;
 
   return (
     <div>
@@ -51,7 +58,7 @@ const ProductsBrowser = () => {
         <div className='circle-container'>
           <NavLink to={`/products/${christmasProducts[0]?.id}`}>
             <div className='img-outer'>
-              <img src={christmasProducts[0]?.previewImage} className='featured-img' alt='featured'></img>
+              <img src={christmasProducts[1]?.previewImage} className='featured-img' alt='featured'></img>
             </div>
           </NavLink>
           <div className='category-name'>Christmas</div>
@@ -59,7 +66,7 @@ const ProductsBrowser = () => {
         <div className='circle-container'>
           <NavLink to={`/products/${springFestivalProducts[0]?.id}`}>
             <div className='img-outer'>
-              <img src={springFestivalProducts[0]?.previewImage} className='featured-img' alt='featured'></img>
+              <img src={springFestivalProducts[1]?.previewImage} className='featured-img' alt='featured'></img>
             </div>
           </NavLink>
           <div className='category-name'>Spring Festival</div>
@@ -67,7 +74,7 @@ const ProductsBrowser = () => {
         <div className='circle-container'>
           <NavLink to={`/products/${valentineProducts[0]?.id}`}>
             <div className='img-outer'>
-              <img src={valentineProducts[0]?.previewImage} className='featured-img' alt='featured'></img>
+              <img src={valentineProducts[1]?.previewImage} className='featured-img' alt='featured'></img>
             </div>
           </NavLink>
           <div className='category-name'>Valentine</div>
@@ -75,7 +82,7 @@ const ProductsBrowser = () => {
         <div className='circle-container'>
           <NavLink to={`/products/${easterProducts[0]?.id}`}>
             <div className='img-outer'>
-              <img src={easterProducts[0]?.previewImage} className='featured-img' alt='featured'></img>
+              <img src={easterProducts[1]?.previewImage} className='featured-img' alt='featured'></img>
             </div>
           </NavLink>
           <div className='category-name'>Easter</div>
@@ -83,7 +90,7 @@ const ProductsBrowser = () => {
         <div className='circle-container'>
           <NavLink to={`/products/${halloweenProducts[0]?.id}`}>
             <div className='img-outer'>
-              <img src={halloweenProducts[0]?.previewImage} className='featured-img' alt='featured'></img>
+              <img src={halloweenProducts[1]?.previewImage} className='featured-img' alt='featured'></img>
             </div>
           </NavLink>
           <div className='category-name'>Halloween</div>
@@ -125,7 +132,7 @@ const ProductsBrowser = () => {
       <div className='edit-pick-products-main'>
         <div className='edit-pick-products-header'>
           The Holiday Shop
-          <i className="fa-solid fa-arrow-right"></i>
+          <i class="fa-solid fa-arrow-right"></i>
           {/* <img className='unique-right-arrow' src={rightArrow}></img> */}
         </div>
         <div className='edit-pick-subtitle'>Special bonds call for special finds! From decor to gifts, discover memorable items at merry prices.</div>
