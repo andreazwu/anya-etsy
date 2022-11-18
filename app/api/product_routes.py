@@ -422,12 +422,17 @@ def create_cart_item(product_id):
       print(f"-------555BACKEND -------if not cartItem, data.to_dict: {data.to_dict_current()}")
       return data.to_dict_current(), 200
     else:
-      cartItem.quantity += form.data["quantity"]
-      db.session.commit()
-      print(f"-------555BACKEND -------if cartItem, cartItem.to_dict: {cartItem.to_dict_current()}")
-      return cartItem.to_dict_current(), 200
+      if cartItem.quantity + form.data["quantity"] > cartItem.product.stock:
+        cartItem.quantity = cartItem.product.stock
+        cartItem.message = "You have reached the maximum stock for this product."
+        db.session.commit()
+        return cartItem.to_dict_current(), 200
+      else:
+        cartItem.quantity += form.data["quantity"]
+        db.session.commit()
+        return cartItem.to_dict_current(), 200
   else:
-    print(f"-------666 form didn't pass validate on submit-------errors: {validation_errors_to_error_messages(form.errors)}")
+
     return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
 # fetch("http://localhost:3000/api/products/5/cart_items", {
