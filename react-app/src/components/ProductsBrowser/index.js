@@ -4,35 +4,28 @@ import { NavLink } from 'react-router-dom';
 import { getAllProducts } from '../../store/products';
 import Footer from '../Navigation/Footer.js';
 import "./ProductsBrowser.css";
-
 const ProductsBrowser = () => {
   const dispatch = useDispatch();
   const currUser = useSelector(state => state.session.user)
   const productsObj = useSelector(state => state.products.allProducts)
   const productArr = Object.values(productsObj)
-
   /*Math.random() - 0.5 is a random number that may be positive or negative,
   so the sorting function reorders elements randomly.*/
   const randomProducts = productArr.sort(() => 0.5 - Math.random())
-
   const thanksgivingProducts = productArr.filter(product => product.category === 'Thanksgiving')
   const christmasProducts = productArr.filter(product => product.category === 'Christmas')
   const springFestivalProducts = productArr.filter(product => product.category === 'Spring Festival')
   const valentineProducts = productArr.filter(product => product.category === 'Valentine')
   const easterProducts = productArr.filter(product => product.category === 'Easter')
   const halloweenProducts = productArr.filter(product => product.category === 'Halloween')
-
   const displayProducts = randomProducts.slice(0,8)
   const sponsorProducts = randomProducts.slice(8, 13)
   const EditorPickProducts = randomProducts.slice(13, 18)
-
   useEffect(() => {
     dispatch(getAllProducts(productsObj));
   }, [dispatch])
-
   if (!productsObj) return null;
   if (!thanksgivingProducts.length || !christmasProducts.length || !springFestivalProducts.length || !valentineProducts.length || !easterProducts.length) return null;
-
   return (
     <div>
       {currUser ? <div className='home-header'>Welcome back,&nbsp;{currUser.firstName}</div>
@@ -89,7 +82,6 @@ const ProductsBrowser = () => {
           <div className='category-name'>Halloween</div>
         </div>
       </div>
-
       <div className='display-product-main'>
         {displayProducts?.map((product, i) => {
           return(
@@ -146,5 +138,4 @@ const ProductsBrowser = () => {
     </div>
   )
 }
-
 export default ProductsBrowser;
