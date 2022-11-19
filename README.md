@@ -1,6 +1,6 @@
 # Welcome to Anya!
 
-<img src="https://static.tvtropes.org/pmwiki/pub/images/anya_happy.png" width=50% height=50%>
+<img src="https://static.tvtropes.org/pmwiki/pub/images/anya_happy.png" width="50" height=50px>
 
 Anya is a full-stack e-commerce clone of [Etsy](https://www.etsy.com/) with a holiday theme. Users can browse a variety holiday products. Users can create their own product listings and manage them (edit/ delete) in Store Manager. Users can add items to cart, edit/ remove items in their cart and check out. Users can also leave reviews on products that they didn't list, and manage their reviews in their profile dropdown menu. 
 
