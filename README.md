@@ -107,7 +107,7 @@ npm start
 
 ## Our Contact Info:
 
-ANYA - (A) Aijia || (N) Nannan || (Y) Yasha || (A) Andrea
+ANYA - (A)ijia, (N)annan, (Y)asha, (A)ndrea
 
 ### Aijia Wang
 
