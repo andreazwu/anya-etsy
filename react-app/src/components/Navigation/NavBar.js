@@ -11,6 +11,9 @@ import './NavBar.css';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user);
+  const cartItems = useSelector(state => Object.values(state.cart));
+  let notifications = 0
+  if (cartItems.length) notifications = cartItems.length
 
   return (
     <nav>
@@ -42,9 +45,13 @@ const NavBar = () => {
               </div>
             </>
           }
-          <div className='navBar-link-icon'>
+          <div className='navBar-link-icon nav-cart-notif-outer'>
             <NavLink to='/cart' exact={true} activeClassName='active'>
-              <img src={shoppingCart} alt='cart'></img>
+              <img className='nav-cart' src={shoppingCart} alt='cart'></img>
+              {
+                notifications > 0 &&
+                <div className='nav-notif'>{notifications}</div>
+              }
             </NavLink>
           </div>
         </div>
