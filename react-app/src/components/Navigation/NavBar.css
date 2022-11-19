@@ -44,6 +44,7 @@ nav {
 .navBar-link-profile:hover,
 .profile-btm-div:hover {
   background-color: rgba(128, 128, 128, 0.095);
+  border-radius: 40%;
   cursor: pointer;
 }
 
