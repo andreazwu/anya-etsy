@@ -111,7 +111,7 @@ ANYA - Aijia, Nannan, Yasha, Andrea
 
 ### Aijia Wang
 
-#### ![linkedin](https://img.shields.io/badge/Render-12100E?style=for-the-badge&logo=Render)(https://www.linkedin.com/in/aijia-wang-b18726131/)
+#### ![[linkedin](https://img.shields.io/badge/Render-12100E?style=for-the-badge&logo=Render)](https://www.linkedin.com/in/aijia-wang-b18726131/)
 
 #### [GitHub](https://github.com/wangaijia618)
 
