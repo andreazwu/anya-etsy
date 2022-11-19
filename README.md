@@ -115,19 +115,13 @@ ANYA - Aijia, Nannan, Yasha, Andrea
 
 ### Nannan Zhang
 
-#### [LinkedIn](https://www.linkedin.com/in/nannan-zhang-2333b021b/)
-
-#### [GitHub](https://github.com/codeznn)
+[LinkedIn](https://www.linkedin.com/in/nannan-zhang-2333b021b/) || [GitHub](https://github.com/codeznn)
 
 ### Yasha Yang
 
-#### [LinkedIn](https://www.linkedin.com/in/yashayang/)
-
-#### [GitHub](https://github.com/yashayang)
+[LinkedIn](https://www.linkedin.com/in/yashayang/) || [GitHub](https://github.com/yashayang)
 
 ### Andrea Wu
 
-#### [LinkedIn](https://www.linkedin.com/in/andreazwu/)
-
-#### [GitHub](https://github.com/andreazwu)
+[LinkedIn](https://www.linkedin.com/in/andreazwu/) || [GitHub](https://github.com/andreazwu)
 
