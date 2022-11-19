@@ -22,7 +22,7 @@ Anya is a full-stack e-commerce clone of [Etsy](https://www.etsy.com/) with a ho
 ![Render](https://img.shields.io/badge/Render-12100E?style=for-the-badge&logo=Render)
 
 ## Wiki Links:
-* [Happily Wiki](https://github.com/andreazwu/anya-etsy/wiki)
+* [Anya Wiki](https://github.com/andreazwu/anya-etsy/wiki)
 * [Database Schema](https://github.com/andreazwu/anya-etsy/wiki/Database-Schema)
 * [Features List](https://github.com/andreazwu/anya-etsy/wiki/Feature-List)
 * [User Stories](https://github.com/andreazwu/anya-etsy/wiki/User-Stories)
@@ -107,6 +107,8 @@ npm start
 ```
 
 6. Navigate to [localhost:3000](http://localhost:3000)
+
+
 
 ## Our Contact Info:
 
