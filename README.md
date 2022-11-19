@@ -59,8 +59,8 @@ Anya is a full-stack e-commerce clone of [Etsy](https://www.etsy.com/) with a ho
 ## Shop Manager
 ![image](https://user-images.githubusercontent.com/17817050/202823981-581e9534-7243-43fb-a73d-89d419896969.png)
 
-## Cart
-![image](https://user-images.githubusercontent.com/17817050/202824045-dccff42f-a8f5-471d-8bc7-f43272133487.png)
+## Shopping Cart
+![image](https://user-images.githubusercontent.com/17817050/202861268-058568fa-92cf-42d7-a9b1-37c4693d9968.png)
 
 
 ## Add Reviews
