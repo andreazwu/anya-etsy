@@ -4,7 +4,7 @@
 
 Our Live Site: [Anya](https://anya-etsy.onrender.com/)
 
-Anya is a full-stack e-commerce clone of [Etsy](https://www.etsy.com/) with a holiday theme. Users can browse a variety holiday products. Users can create their own product listings and manage them (edit/ delete) in Store Manager. Users can add items to cart, edit/ remove items in their cart and check out. Users can also leave reviews on products that they didn't list, and manage their reviews in their profile dropdown menu. 
+Anya is a full-stack e-commerce clone of [Etsy](https://www.etsy.com/) with a holiday theme. Users can browse a variety of holiday items. Users can create their own product listings and manage them (edit/ delete) in Store Manager. Users can add items to cart, edit/ remove items in their cart and check out. Users can also leave reviews on products that they didn't list, and manage their reviews in the profile dropdown menu. 
 
 
 ## Languages, Frameworks, Platforms and Libraries
