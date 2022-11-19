@@ -18,7 +18,7 @@
 
 .items-count-in-cart{
   font-size: 30px;
-  margin-bottom: 120px;
+  margin-bottom: 50px;
   font-weight: 500
 
 }
@@ -164,6 +164,8 @@ width: 100px
   position: relative;
   width: fit-content;
   height: fit-content;
+  text-align: end;
+  /* font-size: 15px; */
   top: 20px;
 }
 
@@ -180,7 +182,7 @@ width: 100px
   height: 20em;
   box-shadow: 0 0 12px #c3c3c3;
   border-radius: .7em;
-  margin-top: 10em;
+  margin-top: 7em;
   padding: 1em;
   background-color: white;
   /* z-index: 100; */
@@ -197,7 +199,13 @@ width: 100px
 .last-total{
   font-weight: 550;
 }
+/* .sales-tax,
+.shipping-cost,
+.items.total  {
 
+
+
+} */
 .cart-checkout-button{
   color: white;
   background-color: black;
@@ -221,7 +229,7 @@ width: 100px
 }
 
 .cart-checkout-button:hover{
-  transform:scale(1.1,1.1);
+  transform:scale(1.03,1.03);
   /* -webkit-transform:scale(1.3,1.3);
   -moz-transform:scale(1.3,1.3); */
 }
@@ -1033,7 +1041,7 @@ nav {
   margin-bottom: 16px;
 }
 .add-to-cart-button:hover{
-  transform:scale(1.06,1.06);
+  transform:scale(1.03,1.03);
 }
 .not-login-addtocart-button{
   cursor: not-allowed;

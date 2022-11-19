@@ -145,7 +145,7 @@
   margin-bottom: 16px;
 }
 .add-to-cart-button:hover{
-  transform:scale(1.06,1.06);
+  transform:scale(1.03,1.03);
 }
 .not-login-addtocart-button{
   cursor: not-allowed;
