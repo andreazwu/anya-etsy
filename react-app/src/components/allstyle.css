@@ -171,7 +171,8 @@ width: 100px
 /* ###############Cart Total Card############## */
 .cart-checkout-card{
   display: flex;
-  width: 30%;
+  width: 25%;
+  padding: 10px;
   position: sticky;
   top: 20px;
   flex-direction: column;
@@ -182,7 +183,7 @@ width: 100px
   margin-top: 10em;
   padding: 1em;
   background-color: white;
-  z-index: 500;
+  /* z-index: 100; */
 }
 
 .checkout-card{

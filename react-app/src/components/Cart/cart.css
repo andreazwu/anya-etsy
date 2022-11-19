@@ -18,7 +18,7 @@
 
 .items-count-in-cart{
     font-size: 30px;
-    margin-bottom: 120px;
+    margin-bottom: 50px;
     font-weight: 500
 
 }
@@ -164,6 +164,8 @@
     position: relative;
     width: fit-content;
     height: fit-content;
+    text-align: end;
+    /* font-size: 15px; */
     top: 20px;
 }
 
@@ -171,7 +173,8 @@
 /* ###############Cart Total Card############## */
 .cart-checkout-card{
     display: flex;
-    width: 30%;
+    width: 25%;
+    padding: 10px;
     position: sticky;
     top: 20px;
     flex-direction: column;
@@ -179,10 +182,10 @@
     height: 20em;
     box-shadow: 0 0 12px #c3c3c3;
     border-radius: .7em;
-    margin-top: 10em;
+    margin-top: 7em;
     padding: 1em;
     background-color: white;
-    z-index: 500;
+    /* z-index: 100; */
 }
 
 .checkout-card{
@@ -226,7 +229,7 @@
 }
 
 .cart-checkout-button:hover{
-    transform:scale(1.1,1.1);
+    transform:scale(1.03,1.03);
     /* -webkit-transform:scale(1.3,1.3);
     -moz-transform:scale(1.3,1.3); */
 }
