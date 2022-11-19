@@ -15,6 +15,8 @@ Live Site: [Anya](https://anya-etsy.onrender.com/)
 ### Frontend
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
+### Hosting
+![image](https://user-images.githubusercontent.com/17817050/202824554-ba64d20d-cf56-4f71-9ced-8604b1344ea9.png)
 
 ## Wiki Links:
 * [Happily Wiki](https://github.com/andreazwu/anya-etsy/wiki)
@@ -47,8 +49,8 @@ Live Site: [Anya](https://anya-etsy.onrender.com/)
 
 
 ## Add New Products and Upload Images
-![image](https://user-images.githubusercontent.com/17817050/202823896-f758ac42-5572-4a2b-9c7f-9b3df2054ef2.png)
-![image](https://user-images.githubusercontent.com/17817050/202823930-4243586e-cae8-4bc3-9be0-82e621064647.png)
+![image](https://user-images.githubusercontent.com/17817050/202824507-ac681031-86bb-419d-a758-dcfe36c3a592.png)
+![image](https://user-images.githubusercontent.com/17817050/202824554-ba64d20d-cf56-4f71-9ced-8604b1344ea9.png)
 
 
 ## Shop Manager
@@ -60,6 +62,10 @@ Live Site: [Anya](https://anya-etsy.onrender.com/)
 
 ## Add Reviews
 ![image](https://user-images.githubusercontent.com/17817050/202824090-f9137b72-2b08-4200-9ae2-7758394720c9.png)
+
+
+## Manage My Reviews
+![image](https://user-images.githubusercontent.com/17817050/202824412-188642ee-7a47-479a-9422-b59f5fa6df32.png)
 
 
 ## Steps to clone locally:
