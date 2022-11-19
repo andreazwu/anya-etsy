@@ -16,7 +16,7 @@ Live Site: [Anya](https://anya-etsy.onrender.com/)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
 ### Hosting
-![image](https://user-images.githubusercontent.com/17817050/202824554-ba64d20d-cf56-4f71-9ced-8604b1344ea9.png)
+![Render](https://img.shields.io/badge/Render-12100E?style=for-the-badge&logo=Render)
 
 ## Wiki Links:
 * [Happily Wiki](https://github.com/andreazwu/anya-etsy/wiki)
