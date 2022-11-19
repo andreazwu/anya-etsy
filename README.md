@@ -104,3 +104,32 @@ npm start
 ```
 
 6. Navigate to [localhost:3000](http://localhost:3000)
+
+## Our Contact Info:
+
+ANYA - Aijia, Nannan, Yasha, Andrea
+
+### Aijia Wang
+
+#### [LinkedIn](https://www.linkedin.com/in/aijia-wang-b18726131/)
+
+#### [GitHub](https://github.com/wangaijia618)
+
+### Nannan Zhang
+
+#### [LinkedIn](https://www.linkedin.com/in/nannan-zhang-2333b021b/)
+
+#### [GitHub](https://github.com/codeznn)
+
+### Yasha Yang
+
+#### [LinkedIn](https://www.linkedin.com/in/yashayang/)
+
+#### [GitHub](https://github.com/yashayang)
+
+### Andrea Wu
+
+#### [LinkedIn](https://www.linkedin.com/in/andreazwu/)
+
+#### [GitHub](https://github.com/andreazwu)
+
