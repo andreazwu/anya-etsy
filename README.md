@@ -71,7 +71,7 @@ Live Site: [Anya](https://anya-etsy.onrender.com/)
 ## Steps to clone locally:
 1. Clone this repository:
 ```bash
-git clone https://github.com/lynnettenguyen/happily.git
+git clone [https://github.com/andreazwu/anya-etsy.git]
 ```
 
 2. Install backend dependencies:
